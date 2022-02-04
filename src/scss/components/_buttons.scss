@@ -1,0 +1,21 @@
+.btn-default:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+// https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+.btn-square {
+  height: 44px;
+  width: 44px;
+}
+
+// https://codepen.io/lekoalabe/pen/JjWExoN
+.btn-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  > * {
+    margin-right: 0.5ch;
+  }
+}

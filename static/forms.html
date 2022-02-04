@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- page meta -->
+	<meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5">
+	<meta name="author" content="LeKoala">
+	<meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic">
+
+	<!-- performance -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- page title & icon -->
+	<link rel="icon" type="image/svg+xml"
+		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2285%22>💠</text></svg>" />
+	<title>Admini</title>
+
+	<!-- styles -->
+	<link href="css/admini.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<!-- icons -->
+	<script>
+		window.LastIcon = {
+			types: {
+				material: "twotone",
+			},
+			defaultSet: "material",
+			fonts: ["material"],
+		};
+	</script>
+	<script src="js/last-icon.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="module" src="js/admini.min.js"></script>
+	<script type="module">
+		document.querySelectorAll("#otherAction").forEach((btn) => {
+			btn.addEventListener("click", (ev) => {
+				ev.preventDefault();
+				const toast = new bs5Toast({
+					body: 'Action done',
+					className: 'border-0 bg-info text-white',
+					btnCloseWhite: true,
+				})
+				toast.show()
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
+			<a class="sidebar-brand" href="index.html">
+				<span class="sidebar-brand-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
+							font-size="85">💠</text></svg>
+				</span>
+				<span class="sidebar-brand-title">Admini</span>
+			</a>
+
+			<!-- sidebar-content -->
+			<div class="sidebar-content scroller">
+				<ul class="sidebar-nav">
+					<li class="sidebar-nav-header">
+						UI
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="index.html">
+							<l-i name="dashboard"></l-i> <span>Dashboard</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="bottom.html">
+							<l-i name="vertical_align_bottom"></l-i> <span>Bottom actions</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="tabs.html">
+							<l-i name="tab"></l-i> <span>Tabbed navigation</span>
+						</a>
+					</li>
+
+					<li class="sidebar-nav-header">
+						Components
+					</li>
+
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="forms.html">
+							<l-i name="feed"></l-i> <span>Forms</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="datatable.html">
+							<l-i name="view_agenda"></l-i> <span>Datatable</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="icons.html">
+							<l-i name="star"></l-i> <span>Icons</span> <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">1.100+</span>
+						</a>
+					</li>
+
+					<li class="sidebar-nav-header">
+						Useful links
+					</li>
+
+					<li class="sidebar-item"><a class="sidebar-link" href="https://github.com/lekoala/admini">
+							<l-i name="star"></l-i> <span>Repository</span>
+						</a></li>
+				</ul>
+			</div>
+			<!-- /sidebar-content -->
+
+			<!-- sidebar-footer -->
+			<div class="sidebar-footer">
+				<button class="btn btn-default sidebar-toggle" id="js-sidebar-toggle">
+					<l-i name="menu_open"></l-i>
+				</button>
+				<div class="dropup">
+					<button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
+						<l-i name="help_outline"></l-i>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
+						<li><a class="dropdown-item" href="help.html">Help</a></li>
+						<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<p class="m-3 mb-0">
+							<small>Built with Admini</small>
+						</p>
+					</ul>
+				</div>
+			</div>
+			<!-- /sidebar-footer -->
+		</aside>
+
+		<!-- The form can contain multiple tabs. It's easier to wrap everything -->
+		<form action="" class="needs-validation">
+			<main class="main">
+				<header class="main-header">
+					<div class="main-header-sidebar">
+						<button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+							<l-i name="menu"></l-i>
+						</button>
+					</div>
+					<div class="main-header-info">
+						<nav aria-label="breadcrumb">
+							<div class="breadcrumb">
+								<li class="breadcrumb-item active" aria-current="page">Forms</li>
+							</div>
+						</nav>
+					</div>
+					<div class="main-header-nav main-header-tabs">
+						<ul class="nav nav-tabs nav-tabs-deep nav-tabs-responsive" role="tablist">
+							<li class="nav-item" role="tablist">
+								<a class="nav-link" id="tab-1" data-bs-toggle="tab" data-bs-target="#panel-1" type="button" role="tab" aria-controls="panel-1"
+									aria-selected="false">
+									Main
+								</a>
+							</li>
+							<li class="nav-item" role="tablist">
+								<a class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#panel-2" type="button" role="tab" aria-controls="panel-2"
+									aria-selected="false">Details</a>
+							</li>
+						</ul>
+					</div>
+				</header>
+				<section class="scroller">
+					<div class="tab-content">
+						<div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+							<div class="form-holder">
+								<label for="exampleCombineRow" class="form-label">Name</label>
+								<div class="form-field">
+									<div class="row" id="exampleCombineRow">
+										<div class="col-6">
+											<input type="text" class="form-control" placeholder="First name" aria-label="First name">
+										</div>
+										<div class="col-6">
+											<input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="exampleInputEmail1" class="form-label">Email address<br />On two lines<br />Or even three</label>
+								<div class="form-field">
+									<input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+									<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+									<div class="invalid-feedback">
+										Please enter a valid email
+									</div>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="exampleInputPassword1" class="form-label">Password <l-i name="help" title="It should be secure!" data-bs-toggle="tooltip"></l-i></label>
+								<div class="form-field">
+									<input type="password" class="form-control" id="exampleInputPassword1">
+								</div>
+							</div>
+							<div class="form-holder">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" id="exampleCheck1">
+									<label class="form-check-label" for="exampleCheck1">Check me out</label>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="inputRadioGroup" class="form-label">Radio group</label>
+								<div class="form-field" id="inputRadioGroup">
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+										<label class="form-check-label" for="exampleRadios1">
+											Default radio
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+										<label class="form-check-label" for="exampleRadios2">
+											Second default radio
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+										<label class="form-check-label" for="exampleRadios3">
+											Disabled radio
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="disabledTextInput" class="form-label">Disabled input</label>
+								<div class="form-field">
+									<input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayout</label>
+								<div class="form-field">
+									<input type="text" id="disabledTextInput2" class="form-control" placeholder="Disabled input">
+								</div>
+							</div>
+							<div class="form-holder">
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+									<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input<br />On two lines</label>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="selectInput" class="form-label">Select something</label>
+								<div class="form-field">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>Open this select menu</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="validationTagsClear" class="form-label">Roles</label>
+								<div class="form-field">
+									<select class="form-select" id="validationTagsClear" multiple data-allow-clear="true">
+										<option selected disabled hidden value="">Choose a role...</option>
+										<option value="1" selected="selected">Admin</option>
+										<option value="2">Editor</option>
+										<option value="3">Subscriber</option>
+									</select>
+									<div class="invalid-feedback">Please select a valid role.</div>
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="dateMask" class="form-label">Date (mask)</label>
+								<div class="form-field">
+									<input id="dateMask" class="form-control cleave" placeholder="YYYY-MM-DD" data-date="true" data-delimiter="-"
+										data-date-pattern="['Y', 'm', 'd']" />
+								</div>
+							</div>
+							<div class="form-holder">
+								<label for="datePicker" class="form-label">Date (picker)</label>
+								<div class="form-field">
+									<input id="datePicker" class="form-control flatpickr" data-alt-input="true" data-alt-format="F j, Y" data-date-format="Y-m-d" />
+								</div>
+							</div>
+
+							<div class="accordion" id="accordionExample">
+								<div class="accordion-item">
+									<h2 class="accordion-header" id="headingOne">
+										<!-- it needs the collapsed class to start hidden -->
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+											Hidden field element
+										</button>
+									</h2>
+									<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+										<div class="accordion-body">
+											<div class="form-holder">
+												<label for="messageInput" class="form-label">Type a message</label>
+												<div class="form-field">
+													<textarea cols="50" rows="10" id="messageInput" class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+							<div class="form-holder">
+								<label for="formFile" class="form-label">Default file input example</label>
+								<div class="form-field superfile">
+									<div class="input-group">
+										<input class="form-control" type="file" id="formFile" name="file" />
+										<button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
+									</div>
+									<img class="img-fluid superfile-preview" />
+								</div>
+							</div>
+
+							<div class="form-holder">
+								<p class="form-label">Avatar</p>
+								<div class="form-field">
+									<div class="superfile avatar">
+										<label for="formFile5" class="form-label">Avatar upload</label>
+										<button type="button" class="btn-close superfile-clear" aria-label="Clear avatar"></button>
+										<div class="input-group">
+											<!-- double width/height for retina display -->
+											<input class="form-control" type="file" id="formFile5" name="file5" accept="image/*" data-max-width="200" data-max-height="200"
+												data-hide-clear="1" data-ratio="1:1" />
+										</div>
+										<img src="https://randomuser.me/api/portraits/men/36.jpg" class="img-fluid superfile-preview" />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-holder">
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" id="exampleCheckRequired" required>
+									<label class="form-check-label" for="exampleCheckRequired">This must be ticked</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<footer class="main-footer">
+					<div>
+						<button type="submit" class="btn btn-success">
+							<l-i name="done"></l-i>
+							Save
+						</button>
+						<button type="button" class="btn btn-primary" id="otherAction">Other action</button>
+					</div>
+					<div class="btn-group" aria-label="Navigation">
+						<button type="button" class="btn btn-light">
+							<l-i name="navigate_before"></l-i>
+						</button>
+						<button type="button" class="btn btn-light">
+							<l-i name="navigate_next"></l-i>
+						</button>
+					</div>
+				</footer>
+			</main>
+		</form>
+	</div>
+</body>
+
+</html>

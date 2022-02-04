@@ -1,0 +1,33 @@
+l-i {
+  --size: 1em;
+  display: inline-flex;
+  width: var(--size);
+  height: var(--size);
+  vertical-align: middle;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  i {
+    font-size: var(--size) !important;
+    color: currentColor;
+  }
+}
+p,
+button,
+a,
+span {
+  l-i:not([size]) {
+    vertical-align: -0.125em;
+  }
+}
+
+/* Material icon two tones for icon fonts */
+.material-icons-two-tone {
+  background-color: currentColor;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

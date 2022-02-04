@@ -1,0 +1,270 @@
+.sidebar {
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
+  transition: $sidebar-transition;
+  direction: ltr;
+  background: $sidebar-bg;
+  display: none;
+  flex-direction: column;
+
+  // Sticky sidebar
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+}
+
+// It should have a .scroller class as well
+.sidebar-content {
+  --scroller-color: #{$sidebar-scroller-color};
+  --scroller-color-lightness: #{$sidebar-scroller-lightness};
+  transition: $sidebar-transition;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  // This allow cta to be at the bottom
+  justify-content: space-between;
+  background: $sidebar-bg;
+  overscroll-behavior: contain;
+  overflow-y: auto;
+}
+
+.sidebar-nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+// Sidebar links
+.sidebar-link {
+  display: block;
+  padding: $sidebar-link-padding;
+  font-weight: $sidebar-link-font-weight;
+  transition: background 0.1s ease-in-out;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  border-left-style: solid;
+  border-left-width: 3px;
+  color: $sidebar-link-color;
+  background: $sidebar-link-bg;
+  border-left-color: $sidebar-link-border-left-color;
+
+  l-i {
+    margin-right: 0.5rem;
+    color: $sidebar-link-icon-color;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    color: $sidebar-link-hover-color;
+    background: $sidebar-link-hover-bg;
+    border-left-color: $sidebar-link-hover-border-left-color;
+    text-decoration: none;
+
+    l-i {
+      color: $sidebar-link-icon-hover-color;
+    }
+  }
+}
+
+// Active items
+.sidebar-item.active > .sidebar-link,
+.sidebar-item.active .sidebar-link:hover {
+  color: $sidebar-link-active-color;
+  background: $sidebar-link-active-bg;
+  border-left-color: $sidebar-link-active-border-left-color;
+
+  l-i {
+    color: $sidebar-link-icon-active-color;
+  }
+}
+
+// Sidebar brand
+.sidebar-brand {
+  font-weight: $sidebar-brand-font-weight;
+  font-size: $sidebar-brand-font-size;
+  padding: 0 $sidebar-brand-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $sidebar-brand-color;
+  flex: 0 0 $sidebar-brand-height;
+  background: $sidebar-brand-bg;
+
+  &:hover {
+    text-decoration: none;
+    color: $sidebar-brand-color;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  .sidebar-brand-icon {
+    margin-right: 0.5rem;
+
+    svg,
+    img {
+      max-height: $sidebar-brand-height * 0.75;
+      width: auto;
+    }
+  }
+}
+
+.sidebar-footer {
+  border-top: 1px solid $sidebar-cta-bg;
+  display: flex;
+  flex: 0 0 $sidebar-footer-height;
+  align-items: center;
+  justify-content: space-between;
+
+  > button,
+  > div {
+    max-width: 50%;
+  }
+
+  div button {
+    max-width: 100%;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+
+    height: 100%;
+    border-radius: 0;
+
+    l-i {
+      --size: 20px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+
+    &:focus {
+      background: $sidebar-brand-bg;
+      box-shadow: none;
+    }
+  }
+}
+
+// Sidebar nav header
+.sidebar-nav-header {
+  background: transparent;
+  padding: $sidebar-nav-header-padding;
+  font-size: $sidebar-nav-header-font-size;
+  color: $sidebar-nav-header-color;
+}
+
+// Badges
+.sidebar-badge {
+  position: absolute;
+  right: 15px;
+  top: 14px;
+  z-index: 1;
+}
+
+// Sidebar bottom (thanks to sidebar-content being flexed)
+.sidebar-cta {
+  .dropdown-toggle {
+    display: none;
+    background: $sidebar-cta-bg;
+    color: $sidebar-cta-color;
+  }
+  .dropdown-menu {
+    display: block;
+    position: inherit;
+  }
+  .sidebar-cta-content {
+    min-width: calc($sidebar-width - ($sidebar-cta-margin * 2));
+    max-width: 100%;
+    padding: $sidebar-cta-padding;
+    margin: $sidebar-cta-margin;
+    border-radius: $sidebar-cta-border-radius;
+    background: $sidebar-cta-bg;
+    color: $sidebar-cta-color;
+  }
+}
+
+// Compact sidebar
+.minimenu .sidebar {
+  min-width: $sidebar-compact-width;
+  max-width: $sidebar-compact-width;
+
+  .sidebar-nav-header {
+    display: none;
+  }
+
+  .sidebar-brand {
+    .sidebar-brand-title {
+      display: none;
+    }
+    .sidebar-brand-icon {
+      margin-right: 0;
+    }
+  }
+
+  .sidebar-link {
+    padding: $sidebar-link-compact-padding;
+    l-i {
+      --size: 24px;
+      display: flex;
+      margin: 0 auto;
+    }
+    span {
+      display: none;
+    }
+    // Collapse to dot
+    span.sidebar-badge {
+      text-indent: -9999px;
+      display: block;
+      padding: 0;
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  .sidebar-cta {
+    padding: 0.5rem;
+
+    &.dropdown {
+      position: inherit;
+    }
+
+    .dropdown-toggle {
+      display: block;
+    }
+    .dropdown-menu {
+      display: none;
+      top: auto !important;
+      left: $sidebar-compact-width + 2px !important;
+      bottom: $sidebar-cta-padding !important;
+      
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  .sidebar-toggle {
+    transform: scaleX(-1);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .sidebar {
+    display: flex;
+  }
+}
+.sidebar.show {
+  display: flex;
+  position: fixed;
+}

@@ -1,0 +1,25 @@
+// Without this, multi line tabs look very ugly
+.nav-tabs li a {
+  height: calc(100% + 1px);
+}
+
+// Prevent layout change due to js init
+.nav-tabs-deep,
+.nav-tabs-responsive {
+  visibility: hidden;
+}
+
+// Applied if too big for container
+.nav-tabs-dropdown {
+  a.active {
+    @include caret();
+  }
+  a:not(.active) {
+    display: none;
+  }
+}
+
+// Invalid tabs
+.nav-link.is-invalid {
+  color: $danger;
+}

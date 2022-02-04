@@ -1,0 +1,52 @@
+{
+  "name": "admini",
+  "version": "1.0.0",
+  "description": "Minimalistic Admin Panel built with Bootstrap 5",
+  "main": "src/js/index.js",
+  "keywords": [
+    "bootstrap",
+    "bootstrap 5",
+    "admin",
+    "admin template",
+    "admin panel",
+    "template",
+    "responsive",
+    "css",
+    "sass",
+    "html",
+    "theme",
+    "front-end",
+    "ui kit",
+    "web",
+    "minimalistic"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap5-tags": "^1.4.21",
+    "bs5-toast": "^1.0.0",
+    "cleave.js": "^1.6.0",
+    "flatpickr": "^4.6.9",
+    "js-cookie": "^3.0.1",
+    "last-icon": "^1.3.0",
+    "superfile": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild --bundle --minify --format=esm --sourcemap src/js/index.js --outfile=static/js/admini.min.js",
+    "start": "npm run build -- --servedir=./static",
+    "watch": "npm run build -- --watch",
+    "compile-css": "sass src/scss/admini.scss:static/css/admini.min.css --style compressed",
+    "watch-css": "npm run compile-css -- --watch --poll",
+    "prefix-css": "postcss static/css/admini.min.css --replace --use autoprefixer",
+    "build-css": "npm run compile-css && npm run prefix-css",
+    "copy-assets": "copyfiles -f ./node_modules/last-icon/last-icon.min.js* ./static/js/",
+    "build-all": "npm run build && npm run build-css && git add -A && git commit -m \"build files\"",
+    "bump": "npm run build-all && npm version patch"
+  },
+  "author": "LeKoala",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lekoala/admini"
+  },
+  "license": "MIT"
+}

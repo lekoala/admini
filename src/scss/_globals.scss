@@ -1,0 +1,19 @@
+body,
+html {
+  height: 100%;
+}
+
+html {
+  overflow-y: auto;
+}
+
+img:not([src]) {
+  display: none;
+}
+
+// @link https://tobiasahlin.com/blog/flexbox-break-to-new-row/
+.flex-break {
+  flex-basis: 100%;
+  height: 0;
+  width: 0;
+}

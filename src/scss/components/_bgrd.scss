@@ -1,0 +1,6 @@
+@each $color, $value in $theme-colors {
+  .bgrd-#{$color} {
+    background: $value !important;
+    color: color-contrast($value) !important;
+  }
+}

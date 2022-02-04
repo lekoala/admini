@@ -1,0 +1,5 @@
+{
+    "dartsass.targetDirectory": "static/css",
+    "dartsass.debug": true,
+    "dartsass.disableCompileOnSave": true
+}

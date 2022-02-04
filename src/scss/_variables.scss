@@ -1,0 +1,323 @@
+@use "sass:color";
+
+// Fonts
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 600 !default;
+$font-size-base: 0.875rem !default;
+$font-size-lg: 0.925rem !default;
+$font-size-sm: 0.75rem !default;
+$small-font-size: 80% !default;
+
+// Spacer
+$spacer: 1rem !default;
+
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25,
+  ),
+  2: (
+    $spacer * 0.5,
+  ),
+  3: $spacer, // This needs to stay
+  4: (
+    $spacer * 1.5,
+  ),
+  5: (
+    $spacer * 3,
+  ),
+  6: (
+    $spacer * 4.5,
+  ),
+  7: (
+    $spacer * 6,
+  ),
+) !default;
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+// Grid gutter
+$grid-gutter-width: 24px;
+
+// Grid containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+) !default;
+
+$container-padding-x: 0.75rem !default;
+
+// Options
+$min-contrast-ratio: 3 !default;
+$enable-validation-icons: false !default;
+$enable-rfs: false !default;
+$enable-negative-margins: true !default;
+
+// Transitions
+$transition-base: all 0.35s ease-in-out !default;
+
+// Theme colors, based on https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+$blue: #007bc2 !default;
+$red: #e32b24 !default;
+$orange: #ff6d00 !default;
+$green: #2e7d32 !default;
+$cyan: #00b8d4 !default;
+// Other colors
+$yellow: #ffd600 !default;
+$teal: #00bfa5 !default;
+$indigo: #1c1d1f !default;
+$purple: #6200ea !default;
+$pink: #c51162 !default;
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$primary: $blue !default;
+$primary-hs: color.hue($blue), color.saturation($blue) !default;
+$primary-l: color.lightness($blue) !default;
+$secondary: #5a6169 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $orange !default;
+$danger: $red !default;
+$light: #e9ecef !default;
+$dark: #212529 !default;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+) !default;
+
+// Social colors
+$social-colors: (
+  "facebook": #3b5998,
+  "twitter": #1da1f2,
+  "google": #dc4e41,
+  "youtube": #f00,
+  "vimeo": #1ab7ea,
+  "dribbble": #ea4c89,
+  "github": #181717,
+  "instagram": #e4405f,
+  "pinterest": #bd081c,
+  "flickr": #0063dc,
+  "bitbucket": #0052cc,
+) !default;
+
+// Body
+$body-bg: #fafbfc !default;
+$body-color: $gray-700 !default;
+
+// Header
+$header-bg: #f4f6f8 !default;
+
+// Links
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
+// Common
+$border-width: 1px !default;
+
+// Fonts
+$line-height-base: 1.5 !default;
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.5 !default;
+
+// Headings
+$h1-font-size: $font-size-base * 2 !default;
+$h2-font-size: $font-size-base * 1.75 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.25 !default;
+$h5-font-size: $font-size-base !default;
+$h6-font-size: $font-size-base !default;
+$headings-color: $black !default;
+$headings-font-weight: 400 !default;
+
+// Displays
+$display-font-sizes: (
+  1: 6rem,
+  2: 5.5rem,
+  3: 4.5rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem,
+) !default;
+
+// Navbar input
+$navbar-input-bg: darken($body-bg, 0.5%) !default;
+
+// Border radius
+$border-radius-sm: 0.1rem !default;
+$border-radius: 0.2rem !default;
+$border-radius-lg: 0.3rem !default;
+
+// Navbar
+$navbar-padding-y: $spacer * 0.875 !default;
+$navbar-padding-x: $spacer * 1.375 !default;
+$navbar-nav-link-padding-x: 0.5rem !default;
+$navbar-border-bottom: 0 !default;
+$navbar-box-shadow: 0 0 2rem 0 rgba($dark, 0.1) !default;
+
+// Navbar brand
+$navbar-brand-padding-y: $spacer * 0.875 !default;
+$navbar-brand-padding-x: 0 !default;
+$navbar-brand-color: $gray-100 !default;
+$navbar-brand-font-weight: $font-weight-normal !default;
+$navbar-brand-font-size: 1.15rem !default;
+$navbar-brand-icon-color: $primary !default;
+
+$navbar-bg: $white !default;
+
+// Footer
+$footer-bg: $white !default;
+
+// Forms
+$input-bg: $white !default;
+$input-disabled-bg: $gray-200 !default;
+$input-color: $gray-700 !default;
+$input-btn-border-width: $border-width !default;
+$input-btn-line-height: $line-height-base !default;
+$input-btn-line-height-sm: $line-height-sm !default;
+$input-btn-line-height-lg: $line-height-lg !default;
+$input-btn-focus-width: 0.2rem !default;
+$input-btn-padding-y: 0.3rem !default;
+$input-btn-padding-y-sm: 0.2rem !default;
+$input-btn-padding-y-lg: 0.4rem !default;
+$input-btn-padding-x: 0.85rem !default;
+$input-border-width: $input-btn-border-width !default;
+$input-height-border: $input-border-width * 2 !default;
+$input-height-inner: ($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2) !default;
+$input-height: calc(#{$input-height-inner} + #{$input-height-border}) !default;
+$input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2) !default;
+$input-height-sm: calc(#{$input-height-inner-sm} + #{$input-height-border}) !default;
+$input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) !default;
+$input-height-lg: calc(#{$input-height-inner-lg} + #{$input-height-border}) !default;
+
+// Cards
+$card-border-radius: 0.25rem !default;
+$card-inner-border-radius: $card-border-radius !default;
+$card-border-width: 0 !default;
+$card-border-color: transparent !default;
+$card-cap-bg: $white !default;
+$card-shadow: 0 0 0.875rem 0 rgba($dark, 0.05) !default;
+$card-title-font-size: $font-size-lg !default;
+$card-title-font-weight: $font-weight-bold !default;
+$card-title-color: lighten($gray-600, 15%) !default;
+$card-spacer-y: 1.25rem !default;
+$card-spacer-x: 1.25rem !default;
+$card-cap-padding-y: 1rem !default;
+$card-cap-padding-x: $card-spacer-x !default;
+
+// Tables
+$table-cell-padding-y: 0.75rem !default;
+$table-cell-padding-x: 0.75rem !default;
+$table-cell-padding-y-sm: 0.3rem !default;
+$table-cell-padding-x-sm: 0.3rem !default;
+$table-striped-bg: $gray-100 !default;
+$table-hover-bg: rgba($black, 0.0375) !default;
+
+// Sidebar general
+$sidebar-width: 260px !default;
+$sidebar-compact-width: 80px !default;
+$sidebar-transition: margin-left 0.35s ease-in-out, left 0.35s ease-in-out, margin-right 0.35s ease-in-out, right 0.35s ease-in-out !default;
+$sidebar-bg: desaturate(mix(black, $primary, 90%), 20%) !default;
+
+// Sidebar brand
+$sidebar-brand-height: 60px;
+$sidebar-brand-padding: 1.15rem !default;
+$sidebar-brand-font-weight: $font-weight-bold !default;
+$sidebar-brand-font-size: 1.15rem !default;
+$sidebar-brand-color: $gray-100 !default;
+$sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
+
+// Sidebar scroller
+$sidebar-scroller-color: color.hue($sidebar-brand-bg), color.saturation($sidebar-brand-bg) * 0.5 !default;
+$sidebar-scroller-lightness: 30% !default;
+
+// Sidebar nav header
+$sidebar-nav-header-padding: 1.5rem 1.5rem 0.375rem !default;
+$sidebar-nav-header-font-size: $font-size-sm !default;
+$sidebar-nav-header-color: $gray-600 !default;
+
+// Sidebar footer
+$sidebar-footer-height: 52px;
+
+// Sidebar link
+$sidebar-link-padding: 0.625rem 1.625rem !default;
+$sidebar-link-compact-padding: 0.625rem 0.625rem !default;
+$sidebar-link-font-weight: 400 !default;
+$sidebar-link-bg: $sidebar-bg !default;
+$sidebar-link-color: rgba($gray-200, 0.7) !default;
+$sidebar-link-border-left-color: transparent !default;
+
+$sidebar-link-hover-font-weight: $font-weight-normal !default;
+$sidebar-link-hover-bg: $sidebar-bg !default;
+$sidebar-link-hover-color: #{rgba($gray-200, 1)} !default;
+$sidebar-link-hover-border-left-color: transparent !default;
+
+$sidebar-link-active-font-weight: $font-weight-normal !default;
+$sidebar-link-active-bg: #{linear-gradient(90deg, rgba($primary, 0.1) 0%, rgba($primary, 0.0875) 50%, rgba($black, 0) 100%)} !default;
+$sidebar-link-active-color: $gray-200 !default;
+$sidebar-link-active-border-left-color: $primary !default;
+
+// Sidebar link icon
+$sidebar-link-icon-color: #{rgba($gray-200, 0.7)} !default;
+$sidebar-link-icon-hover-color: #{rgba($gray-200, 1)} !default;
+$sidebar-link-icon-active-color: $gray-200 !default;
+
+// Sidebar cta
+$sidebar-cta-color: $gray-200 !default;
+$sidebar-cta-bg: mix(white, $sidebar-bg, 10%) !default;
+$sidebar-cta-padding: $spacer * 1.5 !default;
+$sidebar-cta-margin: $spacer * 1.75 !default;
+$sidebar-cta-border-radius: $border-radius-lg !default;
+
+// Transitions
+$transition-appearance: background 0.4s ease-in-out, color 0.4s ease-in-out !default;
+$transition-appearance-slow: background 0.6s ease-in-out, color 0.6s ease-in-out !default;
+$transition-appearance-fast: background 0.1s ease-in-out, color 0.1s ease-in-out !default;
+
+// Modals
+$modal-content-border-width: 0 !default;
+$modal-header-border-width: 1px !default;
+$modal-footer-border-width: 1px !default;
+$modal-xl: 1140px !default;
+$modal-lg: 900px !default;
+$modal-md: 600px !default;
+$modal-sm: 400px !default;
+$modal-transition: transform 0.25s ease-out !default;
+
+// Badges
+$badge-font-size: 80% !default;
+$badge-padding-y: 0.3em !default;
+$badge-padding-x: 0.45em !default;
+
+// Cards
+$card-badge-bg: lighten($primary, 35%) !default;
+$card-badge-color: $primary !default;

@@ -1,0 +1,160 @@
+.wrapper {
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+  background: $sidebar-bg;
+}
+
+/* Main container */
+
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  transition: $sidebar-transition;
+  background: $body-bg;
+  flex-direction: column;
+  overflow: hidden;
+
+  section {
+    flex: 1 1 auto;
+    padding: $spacer;
+
+    &.scroller {
+      overflow-y: auto;
+    }
+  }
+
+  // which is basically .mx-n3
+  .main-expand {
+    margin-left: -($spacer);
+    margin-right: -($spacer);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .main {
+    max-height: 100vh;
+  }
+}
+
+/* Header */
+
+.main-header {
+  background: $header-bg;
+  min-height: $sidebar-brand-height;
+  border-bottom: 1px solid $nav-tabs-border-color;
+
+  // We try to fit as much things on one line, then wrap
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-header-sidebar {
+  position: fixed;
+  left: 0;
+  top: $spacer * 0.5;
+  z-index: 1040;
+
+  button {
+    border-radius: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.main-header-info {
+  display: flex;
+  flex-grow: 0;
+
+  // Make space for fixed menu icon
+  padding-left: 44px;
+  @include media-breakpoint-up(md) {
+    padding-left: $spacer;
+  }
+
+  .main-header-info-back {
+    l-i {
+      --size: 24px;
+    }
+  }
+
+  .breadcrumb {
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+    min-height: 44px;
+    align-items: center;
+  }
+  .breadcrumb-item {
+    font-size: $font-size-sm;
+
+    &.active {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      max-width: 380px;
+      clear: both;
+      padding-left: 0;
+
+      // Hide separator
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .breadcrumb {
+      padding-top: 0;
+    }
+    .breadcrumb-item {
+      &.active {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+.main-header-nav {
+  padding: ($spacer * 0.5) $spacer;
+  display: flex;
+  justify-content: end; // Align to end
+  flex-grow: 1; // Fill space to allow responsive tabs
+}
+
+// Nicely tuck the tabs to the bottom
+.main-header-tabs {
+  padding-bottom: 0;
+  display: flex;
+  flex-grow: 1; // Fill space to allow responsive tabs
+  align-items: flex-end; // Align to bottom of container
+  justify-content: end; // Align to end
+  align-self: flex-end;
+  position: relative;
+  .nav-tabs {
+    border-bottom: 0;
+  }
+}
+
+/* Footer */
+
+.main-footer {
+  background: $header-bg;
+  border-top: 1px solid $nav-tabs-border-color;
+  min-height: $sidebar-footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ($spacer * 0.5) $spacer;
+}
+
+/* Main form */
+.wrapper > form {
+  display: flex;
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+.table {
+  tr,
+  td,
+  th {
+    border-color: $table-border-color;
+  }
+
+  & > :not(:first-child) {
+    border-color: $table-border-color;
+  }
+
+  th,
+  td {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+
+  > tbody {
+    background: #fff;
+
+    > tr > td {
+      vertical-align: middle;
+    }
+  }
+}
