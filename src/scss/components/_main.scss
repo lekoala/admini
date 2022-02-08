@@ -25,7 +25,7 @@
     }
   }
 
-  // which is basically .mx-n3
+  // which is basically an alias of .mx-n3
   .main-expand {
     margin-left: -($spacer);
     margin-right: -($spacer);
@@ -88,6 +88,12 @@
     margin-bottom: 0;
     min-height: 44px;
     align-items: center;
+  }
+  // @link https://tobiasahlin.com/blog/flexbox-break-to-new-row/
+  .breadcrumb-break {
+    flex-basis: 100%;
+    height: 0;
+    width: 0;
   }
   .breadcrumb-item {
     font-size: $font-size-sm;

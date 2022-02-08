@@ -62,12 +62,13 @@ class AdminiUi {
   toggleMobileTooltips(w) {
     document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
       let tooltip = bootstrap.Tooltip.getOrCreateInstance(el);
+      // On large screen, display the badge
       if (w > MOBILE_SIZE && el.offsetWidth > 12) {
         tooltip.disable();
         el.removeAttribute("title");
       } else {
+        // Enable tooltip for small screen or small items based on its content
         tooltip.enable();
-        el.setAttribute("title", el.innerHTML);
       }
     });
   }

@@ -46,7 +46,7 @@ $grid-breakpoints: (
   xxl: 1400px,
 ) !default;
 
-// Grid gutter
+// Grid gutter (allows consistent spacing with cards inside grid)
 $grid-gutter-width: 24px;
 
 // Grid containers
@@ -57,7 +57,7 @@ $container-max-widths: (
   xl: 1200px,
 ) !default;
 
-$container-padding-x: 0.75rem !default;
+$container-padding-x: 12px !default;
 
 // Options
 $min-contrast-ratio: 3 !default;
@@ -177,26 +177,6 @@ $border-radius-sm: 0.1rem !default;
 $border-radius: 0.2rem !default;
 $border-radius-lg: 0.3rem !default;
 
-// Navbar
-$navbar-padding-y: $spacer * 0.875 !default;
-$navbar-padding-x: $spacer * 1.375 !default;
-$navbar-nav-link-padding-x: 0.5rem !default;
-$navbar-border-bottom: 0 !default;
-$navbar-box-shadow: 0 0 2rem 0 rgba($dark, 0.1) !default;
-
-// Navbar brand
-$navbar-brand-padding-y: $spacer * 0.875 !default;
-$navbar-brand-padding-x: 0 !default;
-$navbar-brand-color: $gray-100 !default;
-$navbar-brand-font-weight: $font-weight-normal !default;
-$navbar-brand-font-size: 1.15rem !default;
-$navbar-brand-icon-color: $primary !default;
-
-$navbar-bg: $white !default;
-
-// Footer
-$footer-bg: $white !default;
-
 // Forms
 $input-bg: $white !default;
 $input-disabled-bg: $gray-200 !default;
@@ -297,11 +277,6 @@ $sidebar-cta-bg: mix(white, $sidebar-bg, 10%) !default;
 $sidebar-cta-padding: $spacer * 1.5 !default;
 $sidebar-cta-margin: $spacer * 1.75 !default;
 $sidebar-cta-border-radius: $border-radius-lg !default;
-
-// Transitions
-$transition-appearance: background 0.4s ease-in-out, color 0.4s ease-in-out !default;
-$transition-appearance-slow: background 0.6s ease-in-out, color 0.6s ease-in-out !default;
-$transition-appearance-fast: background 0.1s ease-in-out, color 0.1s ease-in-out !default;
 
 // Modals
 $modal-content-border-width: 0 !default;

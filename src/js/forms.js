@@ -71,14 +71,21 @@ class AdminiForms {
       form.addEventListener(
         "submit",
         (event) => {
-          form.querySelectorAll(".nav-tabs .nav-link").forEach((link) => {
+          form.querySelectorAll(".nav-tabs .nav-link.is-invalid").forEach((link) => {
             link.classList.remove("is-invalid");
+          });
+          form.querySelectorAll(".accordion-item.is-invalid").forEach((accordionItem) => {
+            accordionItem.classList.remove("is-invalid");
           });
           Array.from(form.elements).forEach((el) => {
             if (!el.checkValidity()) {
-              // Mark all tabs as invalid as well
+              // Mark all tabs and accordions as invalid as well
               let parent = el.parentElement;
+              let accordion = null;
               while (parent && !parent.classList.contains("tab-pane")) {
+                if (parent.classList.contains("accordion-item")) {
+                  accordion = parent;
+                }
                 parent = parent.parentElement;
               }
               if (parent && !parent.classList.contains("active")) {
@@ -86,6 +93,9 @@ class AdminiForms {
                 if (link) {
                   link.classList.add("is-invalid");
                 }
+              }
+              if (accordion) {
+                accordion.classList.add("is-invalid");
               }
             }
           });

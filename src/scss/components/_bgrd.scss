@@ -1,3 +1,4 @@
+// Same as .bg util but with automatic text contrast
 @each $color, $value in $theme-colors {
   .bgrd-#{$color} {
     background: $value !important;

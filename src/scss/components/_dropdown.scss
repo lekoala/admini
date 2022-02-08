@@ -1,14 +1,4 @@
-.navbar-nav .dropdown-menu {
-  box-shadow: $box-shadow;
-}
-
-.dropdown .dropdown-menu.show {
-  animation-name: dropdownAnimation;
-  animation-duration: .25s;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-}
+$dropdown-fast-transition: background 0.1s ease-in-out, color 0.1s ease-in-out !default;
 
 @keyframes dropdownAnimation {
   from {
@@ -21,6 +11,23 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  // Animate drop appearance
+  .dropdown .dropdown-menu.show {
+    animation-name: dropdownAnimation;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
+}
+
+// Always enable shadow
+header .dropdown-menu {
+  box-shadow: $dropdown-box-shadow;
+}
+
+// Restyle the caret icon
 .dropdown-toggle:after {
   border: solid;
   border-width: 0 2px 2px 0;
@@ -30,15 +37,12 @@
 }
 
 .dropdown-item {
-  transition: $transition-appearance-fast;
+  transition: $dropdown-fast-transition;
 }
 
-.dropdown-menu {
-  top: auto;
-}
-
+// Allow large dropdown menus
 .dropdown-menu-lg {
-  min-width: $dropdown-min-width*2;
+  min-width: $dropdown-min-width * 2;
 }
 
 .dropdown .list-group .list-group-item {
@@ -46,6 +50,9 @@
   border-bottom-width: 1px;
   margin-bottom: 0;
 
+  &:first-child {
+    border-top-width: 1px;
+  }
   &:first-child,
   &:last-child {
     border-radius: 0;
@@ -54,18 +61,26 @@
   &:hover {
     background: $gray-100;
   }
+
+  l-i {
+    --size: 24px;
+  }
 }
 
-.dropdown-menu-header {
-  padding: $spacer*0.75;
-  text-align: center;
-  font-weight: $font-weight-bold;
-  border-bottom: 1px solid $gray-300;
-}
-
-.dropdown-menu-footer {
-  padding: $spacer*0.5;
-  text-align: center;
+// Pendant of https://getbootstrap.com/docs/5.1/components/dropdowns/#headers
+.dropdown-footer {
   display: block;
-  font-size: $font-size-sm;
+  padding: $dropdown-header-padding;
+  background-color: $list-group-border-color;
+  margin-bottom: 0; // for use with heading elements
+  @include font-size($font-size-sm);
+  color: $dropdown-header-color;
+  white-space: nowrap; // as with > li > a
+  text-align: center;
+
+  &:hover {
+    background-color: $list-group-hover-bg;
+    color: $dropdown-header-color;
+    text-decoration: none;
+  }
 }

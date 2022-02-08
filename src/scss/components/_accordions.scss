@@ -1,0 +1,5 @@
+.accordion-item.is-invalid {
+  .accordion-header button[aria-expanded="false"] {
+    color: $danger;
+  }
+}
