@@ -21,10 +21,12 @@ $spacers: (
   2: (
     $spacer * 0.5,
   ),
-  3: $spacer, // This needs to stay
-  4: (
-    $spacer * 1.5,
-  ),
+  3: $spacer,
+  // This needs to stay
+  4:
+    (
+      $spacer * 1.5,
+    ),
   5: (
     $spacer * 3,
   ),
@@ -198,6 +200,23 @@ $input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) + ($input-bt
 $input-height-sm: calc(#{$input-height-inner-sm} + #{$input-height-border}) !default;
 $input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) !default;
 $input-height-lg: calc(#{$input-height-inner-lg} + #{$input-height-border}) !default;
+
+// Do not show valid state
+$form-feedback-invalid-color: $danger !default;
+$form-feedback-icon-invalid-color: $danger !default;
+$form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
+
+$form-validation-states: (
+  // "valid": (
+  //   "color": $form-feedback-valid-color,
+  //   "icon": $form-feedback-icon-valid
+  // ),
+  "invalid":
+    (
+      "color": $form-feedback-invalid-color,
+      "icon": $form-feedback-icon-invalid,
+    )
+) !default;
 
 // Cards
 $card-border-radius: 0.25rem !default;

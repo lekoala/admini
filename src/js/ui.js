@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import * as bootstrap from "bootstrap";
+import bs5 from "bs5-toast";
 
 const MOBILE_SIZE = 768;
 class AdminiUi {

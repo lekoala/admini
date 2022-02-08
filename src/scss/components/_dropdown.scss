@@ -71,8 +71,6 @@ header .dropdown-menu {
 .dropdown-footer {
   display: block;
   padding: $dropdown-header-padding;
-  background-color: $list-group-border-color;
-  margin-bottom: 0; // for use with heading elements
   @include font-size($font-size-sm);
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a

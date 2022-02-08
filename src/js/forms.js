@@ -2,6 +2,7 @@ import Superfile from "superfile";
 import Tags from "bootstrap5-tags";
 import flatpickr from "flatpickr";
 import Cleave from "cleave.js";
+import bs5 from "bs5-toast";
 
 class AdminiForms {
   constructor() {}
@@ -103,6 +104,15 @@ class AdminiForms {
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
+            // Show message
+            if (form.dataset.validationMessage) {
+              const errToast = new bs5.Toast({
+                body: form.dataset.validationMessage,
+                className: "border-0 bg-danger text-white",
+                btnCloseWhite: true,
+              });
+              errToast.show();
+            }
           }
 
           form.classList.add("was-validated");
