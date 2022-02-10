@@ -49,6 +49,7 @@
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
 // Admini
+@import "mixins";
 @import "globals";
 @import "components/accordions";
 @import "components/avatar";
@@ -59,6 +60,7 @@
 @import "components/dropdown";
 @import "components/flatpickr";
 @import "components/forms";
+@import "components/grid";
 @import "components/last-icon";
 @import "components/main";
 @import "components/scroller";

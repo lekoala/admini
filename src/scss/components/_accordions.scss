@@ -1,5 +1,5 @@
 .accordion-item.is-invalid {
   .accordion-header button:not([aria-expanded="true"]) {
-    color: $danger;
+    @include validation-error-icon();
   }
 }
