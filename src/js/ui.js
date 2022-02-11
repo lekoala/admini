@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 import * as bootstrap from "bootstrap";
-import bs5 from "bs5-toast";
 
 const MOBILE_SIZE = 768;
+
 class AdminiUi {
   constructor() {
     this.sidebar = document.querySelector("#sidebar");
@@ -117,6 +117,9 @@ class AdminiUi {
     });
   }
 
+  /**
+   * Create test from html. To create toast from js, use bs5.toast
+   */
   toasts() {
     let list = document.querySelectorAll(".toast");
     list.forEach((el) => {

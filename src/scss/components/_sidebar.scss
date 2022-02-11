@@ -36,6 +36,18 @@
   list-style: none;
 }
 
+#sidebar-selector {
+  background-color: desaturate(mix(black, $primary, 80%), 20%);
+  border:0;
+  border-bottom: 1px solid $sidebar-cta-bg;
+  border-radius: 0;
+  color: $sidebar-link-color;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 // Sidebar links
 .sidebar-link {
   display: block;
@@ -127,6 +139,7 @@
     text-align: left;
 
     img {
+      display: block;
       float: left;
       margin-right: $spacer * 0.5;
     }

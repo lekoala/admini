@@ -11,8 +11,8 @@
 
   th,
   td {
-    padding-left: $spacer;
-    padding-right: $spacer;
+    padding-left: $grid-gutter-width * 0.5;
+    padding-right: $grid-gutter-width * 0.5;
   }
 
   > tbody {

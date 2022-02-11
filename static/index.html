@@ -56,6 +56,14 @@
 				<span class="sidebar-brand-title">Admini</span>
 			</a>
 
+			<!-- optional selector -->
+			<select name="" id="sidebar-selector" class="form-select">
+				<option value="">Main site</option>
+				<option value="" style="background:crimson;color:#fff">This site</option>
+				<option value="">That site</option>
+				<option value="">Other site with a long name&nbsp;&nbsp;</option><!-- cheap trick to add space after -->
+			</select>
+
 			<!-- optional dropdown or profile -->
 			<div class="sidebar-profile dropdown">
 				<button class="btn btn-default" id="profile-trigger" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -63,7 +71,7 @@
 					<div class="sidebar-profile-name dropdown-toggle">John Nemo</div>
 					<div class="sidebar-profile-subtitle">Administrator</div>
 				</button>
-				
+
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="#">Log out</a>
 				</div>
@@ -185,7 +193,7 @@
 						</div>
 					</nav>
 				</div>
-				<div class="pe-3">
+				<div class="main-header-nav">
 					<nav class="nav">
 						<div class="nav-item">
 							<div class="dropdown dropleft">
@@ -240,163 +248,164 @@
 				</div>
 			</header>
 			<section class="scroller">
-				<h1 class="my-4"><strong>Welcome</strong> to admini</h1>
+				<div class="container-fluid">
+					<h1 class="my-4"><strong>Welcome</strong> to admini</h1>
 
-				<div class="row">
-					<div class="col-md-3">
-						<div class="card card-default">
-							<div class="card-badge bgrd-danger">
-								<l-i name="star"></l-i>
-							</div>
-							<div class="card-body">
-								<div class="card-title">Item</div>
-								<div class="card-text">
-									<div class="fs-1 mt-1 mb-3">1.000</div>
-									<div class="mb-0">
-										<span class="text-danger">
-											<l-i name="trending_down"></l-i> -3.75%
-										</span>
-										<span class="text-muted">Since last week</span>
-									</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="card card-default">
+								<div class="card-badge bgrd-danger">
+									<l-i name="star"></l-i>
 								</div>
-							</div>
-						</div>
-						<div class="card card-default">
-							<div class="card-badge bgrd-success">
-								<l-i name="attach_money"></l-i>
-							</div>
-							<div class="card-body">
-								<div class="card-title">Item</div>
-								<div class="card-text">
-									<div class="fs-1 mt-1 mb-3">100.000,00 $</div>
-									<div class="mb-0">
-										<span class="text-success">
-											<l-i name="trending_up"></l-i> +10.00%
-										</span>
-										<span class="text-muted">Since last week</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card card-default">
-							<div class="card-badge text-primary">
-								<l-i name="star"></l-i>
-							</div>
-							<svg class="card-img-svg card-img-top" width="100%" height="154" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-								<rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-							</svg>
-							<div class="card-body card-body-expand">
-								<div class="card-title">Item</div>
-								<div class="card-text">
-									<div class="fs-1 mt-1 mb-3">2.382</div>
-								</div>
-							</div>
-						</div>
-						<div class="card card-default">
-							<div class="card-badge text-primary">
-								<l-i name="star"></l-i>
-							</div>
-							<div class="card-body">
-								<div class="card-title">Item</div>
-								<div class="card-text">
-									<div class="fs-1 mt-1 mb-3">2.000</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="card card-full">
-							<div class="card-body">
-								<div class="row">
-									<div class="col mt-0">
-										<h5 class="card-title">Chart</h5>
-									</div>
-									<div class="col-auto">
-										<div class="card-badge text-primary">
-											<l-i name="star"></l-i>
+								<div class="card-body">
+									<div class="card-title">Item</div>
+									<div class="card-text">
+										<div class="fs-1 mt-1 mb-3">1.000</div>
+										<div class="mb-0">
+											<span class="text-danger">
+												<l-i name="trending_down"></l-i> -3.75%
+											</span>
+											<span class="text-muted">Since last week</span>
 										</div>
 									</div>
 								</div>
-								<!-- pick size according to number of tiles on the side in desktop layout -->
-								<canvas id="myChart" width="400" height="440" style="max-height: 440px;"></canvas>
-								<script type="module">
-									const ctx = document.getElementById('myChart').getContext('2d');
-									const myChart = new Chart(ctx, {
-										type: 'bar',
-										data: {
-											labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-											datasets: [{
-												label: '# of Votes',
-												data: [12, 19, 3, 5, 2, 3],
-												backgroundColor: [
-													'rgba(255, 99, 132, 0.2)',
-													'rgba(54, 162, 235, 0.2)',
-													'rgba(255, 206, 86, 0.2)',
-													'rgba(75, 192, 192, 0.2)',
-													'rgba(153, 102, 255, 0.2)',
-													'rgba(255, 159, 64, 0.2)'
-												],
-												borderColor: [
-													'rgba(255, 99, 132, 1)',
-													'rgba(54, 162, 235, 1)',
-													'rgba(255, 206, 86, 1)',
-													'rgba(75, 192, 192, 1)',
-													'rgba(153, 102, 255, 1)',
-													'rgba(255, 159, 64, 1)'
-												],
-												borderWidth: 1
-											}]
-										},
-										options: {
-											scales: {
-												y: {
-													beginAtZero: true
+							</div>
+							<div class="card card-default">
+								<div class="card-badge bgrd-success">
+									<l-i name="attach_money"></l-i>
+								</div>
+								<div class="card-body">
+									<div class="card-title">Item</div>
+									<div class="card-text">
+										<div class="fs-1 mt-1 mb-3">100.000,00 $</div>
+										<div class="mb-0">
+											<span class="text-success">
+												<l-i name="trending_up"></l-i> +10.00%
+											</span>
+											<span class="text-muted">Since last week</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card card-default">
+								<div class="card-badge text-primary">
+									<l-i name="star"></l-i>
+								</div>
+								<svg class="card-img-svg card-img-top" width="100%" height="154" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
+									preserveAspectRatio="xMidYMid slice" focusable="false">
+									<rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+								</svg>
+								<div class="card-body card-body-expand">
+									<div class="card-title">Item</div>
+									<div class="card-text">
+										<div class="fs-1 mt-1 mb-3">2.382</div>
+									</div>
+								</div>
+							</div>
+							<div class="card card-default">
+								<div class="card-badge text-primary">
+									<l-i name="star"></l-i>
+								</div>
+								<div class="card-body">
+									<div class="card-title">Item</div>
+									<div class="card-text">
+										<div class="fs-1 mt-1 mb-3">2.000</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card card-full">
+								<div class="card-body">
+									<div class="row">
+										<div class="col mt-0">
+											<h5 class="card-title">Chart</h5>
+										</div>
+										<div class="col-auto">
+											<div class="card-badge text-primary">
+												<l-i name="star"></l-i>
+											</div>
+										</div>
+									</div>
+									<!-- pick size according to number of tiles on the side in desktop layout -->
+									<canvas id="myChart" width="400" height="440" style="max-height: 440px;"></canvas>
+									<script type="module">
+										const ctx = document.getElementById('myChart').getContext('2d');
+										const myChart = new Chart(ctx, {
+											type: 'bar',
+											data: {
+												labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+												datasets: [{
+													label: '# of Votes',
+													data: [12, 19, 3, 5, 2, 3],
+													backgroundColor: [
+														'rgba(255, 99, 132, 0.2)',
+														'rgba(54, 162, 235, 0.2)',
+														'rgba(255, 206, 86, 0.2)',
+														'rgba(75, 192, 192, 0.2)',
+														'rgba(153, 102, 255, 0.2)',
+														'rgba(255, 159, 64, 0.2)'
+													],
+													borderColor: [
+														'rgba(255, 99, 132, 1)',
+														'rgba(54, 162, 235, 1)',
+														'rgba(255, 206, 86, 1)',
+														'rgba(75, 192, 192, 1)',
+														'rgba(153, 102, 255, 1)',
+														'rgba(255, 159, 64, 1)'
+													],
+													borderWidth: 1
+												}]
+											},
+											options: {
+												scales: {
+													y: {
+														beginAtZero: true
+													}
 												}
 											}
-										}
-									});
-								</script>
+										});
+									</script>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<h2>Users</h2>
-				<!-- use main expand to expand outside main container. Useful for border to border layout -->
-				<div class="main-expand">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td colspan="2">Larry the Bird</td>
-								<td>@twitter</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="container-fluid">
+					<h2>Users</h2>
 				</div>
+				<!-- table default padding aligns to container if border to border-->
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">First</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td colspan="2">Larry the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
 			</section>
 		</main>
 	</div>

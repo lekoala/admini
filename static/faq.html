@@ -37,6 +37,30 @@
 	<script src="js/last-icon.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+	<style type="text/css">
+		.grid l-i {
+			--size: 36px;
+			margin-bottom: 1rem;
+		}
+
+		.icon-wrapper>div {
+			background: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			padding: 1rem;
+		}
+
+		.icon-wrapper>div:after {
+			content: attr(data-name);
+			display: block;
+			font-size: 12px;
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	</style>
 
 	<!-- scripts -->
 	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
@@ -74,7 +98,7 @@
 						</a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="tabs.html">
 							<l-i name="tab"></l-i> <span>Tabbed navigation</span>
 						</a>
@@ -145,109 +169,18 @@
 					</button>
 				</div>
 				<div class="main-header-info">
-					<a class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back" href="#">
-						<l-i name="navigate_before"></l-i>
-						<span class="visually-hidden">Navigate up a folder</span>
-					</a>
 					<nav aria-label="breadcrumb">
 						<div class="breadcrumb">
-							<li class="breadcrumb-item active" aria-current="page">Tabs (let's have a very long name to see how it fits)</li>
+							<li class="breadcrumb-item active" aria-current="page">Faq</li>
 						</div>
 					</nav>
 				</div>
-				<div class="main-header-nav main-header-tabs">
-					<ul class="nav nav-tabs nav-tabs-deep nav-tabs-responsive" role="tablist">
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-1" data-bs-toggle="tab" data-bs-target="#panel-1" type="button" role="tab" aria-controls="panel-1" aria-selected="false">
-								<l-i name="home"></l-i> Panel 1
-							</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#panel-2" type="button" role="tab" aria-controls="panel-2"
-								aria-selected="false">Panel 2</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#panel-3" type="button" role="tab" aria-controls="panel-3"
-								aria-selected="false">Panel 3</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link disabled">Disabled<br>On two lines</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link disabled">A very long disabled tabs to see how it fits</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-6" data-bs-toggle="tab" data-bs-target="#panel-6" type="button" role="tab" aria-controls="panel-6">
-								<l-i name="star"></l-i>
-							</a>
-						</li>
-					</ul>
-				</div>
 			</header>
 			<section class="scroller">
-				<div class="tab-content container-fluid  py-3">
-					<div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
-						<h1>Panel 1</h1>
-						<p>Tabs are fully responsive and take into account available width in the container.</p>
-						<div class="alert alert-primary" role="alert">
-							Check the tab 2 with nested panel!
-						</div>
-						<!-- dismissable alerts -->
-						<div class="alert alert-warning alert-dismissible fade show" id="dismissable-alert" role="alert">
-							<strong>Holy guacamole!</strong> You can dismiss this alert and it won't show again!
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						</div>
+				<div class="container-fluid py-3">
 
-					</div>
-					<div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
-						<h1>Panel 2 has nested panels</h1>
-						<div class="mx-n3">
-							<ul class="nav nav-tabs nav-tabs-deep px-3" role="tablist">
-								<li class="nav-item" role="tablist">
-									<a class="nav-link" id="nested-tab-1" data-bs-toggle="tab" data-bs-target="#panel-2__nested-panel-1" type="button" role="tab"
-										aria-controls="panel-2__nested-panel-1" aria-selected="false">
-										Nested Panel 1</a>
-								</li>
-								<li class="nav-item" role="tablist">
-									<a class="nav-link" id="nested-tab-2" data-bs-toggle="tab" data-bs-target="#panel-2__nested-panel-2" type="button" role="tab"
-										aria-controls="panel-2__nested-panel-2" aria-selected="false">Nested Panel 2</a>
-								</li>
-							</ul>
-							<div class="tab-content p-4 bg-white">
-								<div class="tab-pane fade" id="panel-2__nested-panel-1" role="tabpanel" aria-labelledby="nested-tab-1">
-									Nested tab 1. Refresh the page and I will be selected.
-								</div>
-								<div class="tab-pane fade" id="panel-2__nested-panel-2" role="tabpanel" aria-labelledby="nested-tab-2">
-									Nested tab 2. Refresh the page and I will be selected.
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
-						Panel 3
-					</div>
-					<div class="tab-pane fade" id="panel-6" role="tabpanel" aria-labelledby="tab-6">
-						Panel 6
-					</div>
 				</div>
 			</section>
-			<footer class="main-footer">
-				<div class="btn-group" role="group" aria-label="Actions">
-					<button type="button" class="btn btn-success">
-						<l-i name="done"></l-i>
-						Save
-					</button>
-					<button type="button" class="btn btn-primary">Other action</button>
-				</div>
-				<div class="btn-group" aria-label="Navigation">
-					<button type="button" class="btn btn-light">
-						<l-i name="navigate_before"></l-i>
-					</button>
-					<button type="button" class="btn btn-light">
-						<l-i name="navigate_next"></l-i>
-					</button>
-				</div>
-			</footer>
 		</main>
 	</div>
 </body>
