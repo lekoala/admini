@@ -20,6 +20,10 @@ Icons are powered by [Last Icon](https://github.com/lekoala/last-icon)
 
 Default set is [material icons](https://fonts.google.com/icons)
 
+## Demo
+
+[Demo is available on Vercel](https://admini.vercel.app/)
+
 ## Try at home
 
 ### The build setup
