@@ -116,6 +116,32 @@
   }
 }
 
+.sidebar-profile {
+  border-bottom: 1px solid $sidebar-cta-bg;
+  padding: ($sidebar-cta-padding * 0.5) $sidebar-cta-padding;
+
+  > button {
+    display: block;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+
+    img {
+      float: left;
+      margin-right: $spacer * 0.5;
+    }
+  }
+
+  .dropdown-menu {
+    left: calc($sidebar-cta-padding + ($spacer * 0.5) + 44px);
+    top: $spacer * 2;
+  }
+
+  .sidebar-profile-name {
+    color: $primary;
+  }
+}
+
 .sidebar-footer {
   border-top: 1px solid $sidebar-cta-bg;
   display: flex;
@@ -247,10 +273,27 @@
       top: auto !important;
       left: $sidebar-compact-width + 2px !important;
       bottom: $sidebar-cta-padding !important;
-      
+
       &.show {
         display: block;
       }
+    }
+  }
+
+  .sidebar-profile {
+    padding: ($sidebar-cta-padding * 0.5);
+    > button {
+      text-align: center;
+      width: auto;
+      margin: 0 auto;
+      img {
+        float: none;
+        margin: 0 auto;
+      }
+    }
+    .sidebar-profile-name,
+    .sidebar-profile-subtitle {
+      display: none;
     }
   }
 
