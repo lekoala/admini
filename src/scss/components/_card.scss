@@ -21,19 +21,20 @@
     text-anchor: middle;
   }
 
+  // Top right badges
   .card-badge {
-    position:absolute;
+    position: absolute;
     right: $spacer;
     top: $spacer;
 
     background: $card-badge-bg;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: $card-badge-size;
+    height: $card-badge-size;
     align-items: center;
     justify-content: center;
     display: flex;
-  
+
     l-i {
       --size: 18px;
     }
@@ -53,6 +54,7 @@
     font-weight: $font-weight-normal;
   }
 
+  // Allow alignment of table content
   .card-table {
     margin-bottom: 0;
   }
@@ -67,13 +69,10 @@
     padding-right: $card-spacer-x;
   }
 
+  // Responsive card images by default
   .card-img,
   .card-img-top,
   .card-img-bottom {
     @include img-fluid;
-
-    @media all and (-ms-high-contrast: none) {
-      height: 100%;
-    }
   }
 }

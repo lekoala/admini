@@ -142,10 +142,10 @@
   background: $header-bg;
   border-top: 1px solid $nav-tabs-border-color;
   min-height: $sidebar-footer-height;
+  padding: ($spacer * 0.5) $spacer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ($spacer * 0.5) $spacer;
 }
 
 /* Main form */

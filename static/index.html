@@ -252,7 +252,7 @@
 					<h1 class="my-4"><strong>Welcome</strong> to admini</h1>
 
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="card card-default">
 								<div class="card-badge bgrd-danger">
 									<l-i name="star"></l-i>
@@ -287,8 +287,21 @@
 									</div>
 								</div>
 							</div>
+							<div class="card card-default">
+								<div class="card-header card-title">Table</div>
+								<table class="table card-table">
+									<tr>
+										<th>Pos</th>
+										<th>Name</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>John Nemo</td>
+									</tr>
+								</table>
+							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-lg-3">
 							<div class="card card-default">
 								<div class="card-badge text-primary">
 									<l-i name="star"></l-i>
@@ -316,7 +329,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-lg-6">
 							<div class="card card-full">
 								<div class="card-body">
 									<div class="row">
@@ -330,7 +343,7 @@
 										</div>
 									</div>
 									<!-- pick size according to number of tiles on the side in desktop layout -->
-									<canvas id="myChart" width="400" height="440" style="max-height: 440px;"></canvas>
+									<canvas id="myChart" height="440" style="max-height: 440px;"></canvas>
 									<script type="module">
 										const ctx = document.getElementById('myChart').getContext('2d');
 										const myChart = new Chart(ctx, {

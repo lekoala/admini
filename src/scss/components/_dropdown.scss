@@ -45,6 +45,7 @@ header .dropdown-menu {
   min-width: $dropdown-min-width * 2;
 }
 
+// List group in drops
 .dropdown .list-group .list-group-item {
   border-width: 0;
   border-bottom-width: 1px;
@@ -67,7 +68,7 @@ header .dropdown-menu {
   }
 }
 
-// Pendant of https://getbootstrap.com/docs/5.1/components/dropdowns/#headers
+// Bottom action of dropdown
 .dropdown-footer {
   display: block;
   padding: $dropdown-header-padding;

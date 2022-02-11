@@ -171,9 +171,6 @@ $display-font-sizes: (
   6: 2.5rem,
 ) !default;
 
-// Navbar input
-$navbar-input-bg: darken($body-bg, 0.5%) !default;
-
 // Border radius
 $border-radius-sm: 0.1rem !default;
 $border-radius: 0.2rem !default;
@@ -233,6 +230,11 @@ $card-spacer-x: 1.25rem !default;
 $card-cap-padding-y: 1rem !default;
 $card-cap-padding-x: $card-spacer-x !default;
 
+// Cards badge
+$card-badge-bg: lighten($primary, 35%) !default;
+$card-badge-color: $primary !default;
+$card-badge-size: 36px;
+
 // Tables
 $table-cell-padding-y: 0.75rem !default;
 $table-cell-padding-x: 0.75rem !default;
@@ -241,6 +243,7 @@ $table-cell-padding-x-sm: 0.3rem !default;
 $table-striped-bg: $gray-100 !default;
 $table-hover-bg: rgba($black, 0.0375) !default;
 
+// Sidebar //
 // Sidebar general
 $sidebar-width: 260px !default;
 $sidebar-compact-width: 80px !default;
@@ -296,6 +299,7 @@ $sidebar-cta-bg: mix(white, $sidebar-bg, 10%) !default;
 $sidebar-cta-padding: $spacer * 1.5 !default;
 $sidebar-cta-margin: $spacer * 1.75 !default;
 $sidebar-cta-border-radius: $border-radius-lg !default;
+// End of Sidebar //
 
 // Modals
 $modal-content-border-width: 0 !default;
@@ -306,12 +310,3 @@ $modal-lg: 900px !default;
 $modal-md: 600px !default;
 $modal-sm: 400px !default;
 $modal-transition: transform 0.25s ease-out !default;
-
-// Badges
-$badge-font-size: 80% !default;
-$badge-padding-y: 0.3em !default;
-$badge-padding-x: 0.45em !default;
-
-// Cards
-$card-badge-bg: lighten($primary, 35%) !default;
-$card-badge-color: $primary !default;
