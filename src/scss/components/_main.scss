@@ -121,7 +121,7 @@
 .main-header-tabs {
   padding: ($spacer * 0.5) ($grid-gutter-width * 0.5);
   display: flex;
-  justify-content: end; // Align to end
+  justify-content: flex-end; // Align to end
   flex-grow: 1; // Fill space to allow responsive tabs
 }
 
