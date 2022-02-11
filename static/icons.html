@@ -34,6 +34,20 @@
 			fonts: ["material"],
 		};
 	</script>
+	<script type="module">
+		const f = document.querySelector("#icon-search");
+		f.addEventListener("input", (ev) => {
+			const text = f.value;
+			document.querySelectorAll('.icon-wrapper > div').forEach((div) => {
+				if (div.dataset.name.includes(text)) {
+					div.classList.remove("d-none");
+				}
+				else {
+					div.classList.add("d-none");
+				}
+			});
+		});
+	</script>
 	<script src="js/last-icon.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
@@ -181,6 +195,8 @@
 					<h1>Powered by Last Icon</h1>
 					<p>The icon system from Admini is powered by <a href="https://github.com/lekoala/last-icon">Last Icon</a>, a custom element dedicated to use flexible icons.</p>
 					<p>The built-in set is the Google Material DuoTones icon set, but you are free to use any of the supported set or bring your own.</p>
+
+					<input type="search" class="form-control mb-3" placeholder="search icon" id="icon-search">
 
 					<div class="grid icon-wrapper">
 						<div data-code="e84d" data-name="3d_rotation">

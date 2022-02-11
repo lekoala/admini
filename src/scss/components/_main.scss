@@ -20,7 +20,7 @@
     flex: 1 1 auto;
 
     &.scroller {
-      overflow-y: auto;
+      overflow: auto;
     }
   }
 }
@@ -65,7 +65,7 @@
   flex-grow: 0;
 
   // Make space for fixed menu icon
-  padding-left: 44px;
+  padding-left: 44px + ($grid-gutter-width * 0.5);
   padding-top: $spacer * 0.5;
   padding-bottom: $spacer * 0.5;
   @include media-breakpoint-up(md) {
