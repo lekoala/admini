@@ -1,7 +1,6 @@
 .sidebar {
   min-width: $sidebar-width;
   max-width: $sidebar-width;
-  transition: $sidebar-transition;
   direction: ltr;
   background: $sidebar-bg;
   display: none;
@@ -13,13 +12,23 @@
   top: 0;
   left: 0;
   z-index: 1050;
+
+  // Offcanvas
+  &.offcanvas {
+    position: absolute;
+    display: flex;
+    transform: translateX(-100%);
+
+    &.show {
+      transform: none;
+    }
+  }
 }
 
 // It should have a .scroller class as well
 .sidebar-content {
   --scroller-color: #{$sidebar-scroller-color};
   --scroller-color-lightness: #{$sidebar-scroller-lightness};
-  transition: $sidebar-transition;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;

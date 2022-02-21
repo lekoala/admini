@@ -2,7 +2,7 @@
 
 /**
  * Create a toast object
- * 
+ *
  * @param {string} attr.body Body content. Can also be filled with html tags (eg: Hello <b>World</b>)
  * @param {string} attr.header (none) Header content. Can also be filled with html tags (eg : <h6 class="mb-0">Success</h6>)
  * @param {string} attr.className (none) Additional classes for toast element (eg: 'border-0 bg-danger text-white')

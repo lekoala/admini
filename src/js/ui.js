@@ -16,7 +16,7 @@ class AdminiUi {
     el.addEventListener("click", (ev) => {
       ev.preventDefault();
 
-      document.body.classList.toggle("minimenu");
+      this.triggerMinimenu();
       if (document.body.classList.contains("minimenu")) {
         Cookies.set("minimenu", 1);
       } else {
@@ -26,8 +26,12 @@ class AdminiUi {
       this.toggleMobileTooltips(window.innerWidth);
     });
     if (Cookies.get("minimenu")) {
-      document.body.classList.add("minimenu");
+      this.triggerMinimenu();
     }
+  }
+
+  triggerMinimenu() {
+    document.body.classList.toggle("minimenu");
   }
 
   /**
@@ -66,10 +70,19 @@ class AdminiUi {
    * visibility if it was hidden
    * @param {int} w
    */
-  toggleSidebar(w) {
+  toggleSidebar(w = null) {
+    if (w === null) {
+      w = window.innerWidth;
+    }
     if (w > MOBILE_SIZE) {
       // A simple fix in case we resized the window and the menu was hidden by offcanvas
       this.sidebar.style.visibility = "visible";
+      this.sidebar.classList.remove("offcanvas");
+    }
+    // BSN Native does not init offcanvas like BS5
+    if (w <= MOBILE_SIZE) {
+      this.sidebar.classList.add("offcanvas");
+      const sidebarOffcanvas = bootstrap.Offcanvas.getInstance(this.sidebar) || new bootstrap.Offcanvas(this.sidebar);
     }
   }
 
@@ -265,6 +278,7 @@ class AdminiUi {
     this.dismissableAlerts();
     this.confirmable();
     this.toasts();
+    this.toggleSidebar();
   }
 }
 
