@@ -10,7 +10,7 @@
 - A powerful action system that supports many use cases (multiple actions, drops, navigation, offcanvas panel...)
 - Smart tabs that are fully responsive *based on their content* and that can deep link specific parts of the UI
 - A sane default layout for forms (includes tabbed form support and responsive by default)
-- Toast notifications thanks to bs5-toast
+- Toast notifications
 - A nice default set of colors that are more accessible
 - Carefully selected form components (cleave, flatpickr, bootstrap 5 tags, superfile)
 
