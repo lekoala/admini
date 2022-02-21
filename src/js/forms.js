@@ -2,7 +2,7 @@ import Superfile from "superfile";
 import Tags from "bootstrap5-tags";
 import flatpickr from "flatpickr";
 import Cleave from "cleave.js";
-import bs5 from "bs5-toast";
+import toaster from "./toaster.js";
 
 class AdminiForms {
   constructor() {}
@@ -14,9 +14,13 @@ class AdminiForms {
     // https://github.com/lekoala/superfile
     Superfile.init();
 
+    // https://nosir.github.io/cleave.js/
     this.cleave();
+
+    // https://flatpickr.js.org/
     this.flatpickr();
 
+    // https://getbootstrap.com/docs/5.0/forms/validation/
     this.validation();
   }
 
@@ -106,12 +110,10 @@ class AdminiForms {
             event.stopPropagation();
             // Show message
             if (form.dataset.validationMessage) {
-              const errToast = new bs5.Toast({
+              toaster({
                 body: form.dataset.validationMessage,
                 className: "border-0 bg-danger text-white",
-                btnCloseWhite: true,
               });
-              errToast.show();
             }
           }
 

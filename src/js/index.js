@@ -1,17 +1,17 @@
 "use strict";
 
-import Cookies from "js-cookie";
-import * as bootstrap from "bootstrap";
-// import * as bootstrap from "bootstrap.native";
+import Cookies from "../../node_modules/js-cookie/index";
+// import * as bootstrap from "bootstrap";
+import BSN from "./custom-bsn.js";
 import AdminiUi from "./ui.js";
 import AdminiForms from "./forms.js";
-import bs5 from "bs5-toast";
+import toaster from "./toaster.js";
 
 // Make globally available
-window.bootstrap = bootstrap;
+// window.bootstrap = bootstrap;
+window.bootstrap = BSN;
 window.Cookies = Cookies;
-// https://bs5-toast.vercel.app/
-window.bs5Toast = bs5.Toast;
+window.toaster = toaster;
 
 // Start
 let ui = new AdminiUi();

@@ -55,22 +55,20 @@
 		document.getElementById("demo-grid").addEventListener("action", (ev) => {
 			let grid = document.getElementById("demo-grid");
 			let className = ev.detail.action == "delete" ? "bg-danger" : "bg-info";
-			const toast = new bs5Toast({
+			const toast = toaster({
 				body: ev.detail.action,
 				className: 'border-0 ' + className + ' text-white',
 				btnCloseWhite: true,
 			})
-			toast.show();
 		}
 		);
 		document.getElementById("demo-grid").addEventListener("edit", (ev) => {
 			let grid = document.getElementById("demo-grid");
-			const toast = new bs5Toast({
+			const toast = toaster({
 				body: "Record edited",
 				className: 'border-0 bg-success text-white',
 				btnCloseWhite: true,
 			})
-			toast.show();
 		}
 		);
 	</script>

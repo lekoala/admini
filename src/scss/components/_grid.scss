@@ -1,6 +1,6 @@
 .grid {
   --min: 15ch;
-  --gap: 1rem;
+  --gap: #{$grid-gutter-width};
 
   display: grid;
   grid-gap: var(--gap);

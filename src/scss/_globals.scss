@@ -10,3 +10,8 @@ html {
 img:not([src]) {
   display: none;
 }
+
+.container-expand {
+  margin-left: $grid-gutter-width * -0.5;
+  margin-right: $grid-gutter-width * -0.5;
+}

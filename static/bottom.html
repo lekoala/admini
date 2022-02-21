@@ -46,12 +46,11 @@
 		document.querySelectorAll("button[type='submit']").forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
 				ev.preventDefault();
-				const toast = new bs5Toast({
+				const toast = toaster({
 					body: 'Form submitted',
 					className: 'border-0 bg-success text-white',
 					btnCloseWhite: true,
 				})
-				toast.show()
 			})
 		});
 	</script>
@@ -231,7 +230,7 @@
 				</div>
 			</section>
 			<footer class="main-footer">
-				<div id="main-footer-start">
+				<div class="main-footer-start">
 					<div class="btn-group" role="group" aria-label="Actions">
 						<button type="submit" class="btn btn-success">
 							<l-i name="done"></l-i>
@@ -239,23 +238,27 @@
 						</button>
 						<button type="submit" class="btn btn-primary">Other action</button>
 					</div>
-					<button id="secondary-actions" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="secondary-actions">
-						<li><a class="dropdown-item" href="#">Do this</a></li>
-						<li><a class="dropdown-item" href="#">Do that</a></li>
-					</ul>
-					<button id="more-actions" type="button" class="btn btn-default" data-bs-toggle="dropdown" aria-expanded="false">
-						<l-i name="more_vert" size="24"></l-i>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="more-actions">
-						<li><a class="dropdown-item" href="#">Do this</a></li>
-						<li><a class="dropdown-item" href="#">Do that</a></li>
-					</ul>
+					<div class="dropdown">
+						<button id="secondary-actions" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							Dropdown
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="secondary-actions">
+							<li><a class="dropdown-item" href="#">Do this</a></li>
+							<li><a class="dropdown-item" href="#">Do that</a></li>
+						</ul>
+					</div>
+					<div class="dropdown">
+						<button id="more-actions" type="button" class="btn btn-default" data-bs-toggle="dropdown" aria-expanded="false">
+							<l-i name="more_vert" size="24"></l-i>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="more-actions">
+							<li><a class="dropdown-item" href="#">Do this</a></li>
+							<li><a class="dropdown-item" href="#">Do that</a></li>
+						</ul>
+					</div>
 				</div>
 
-				<div id="main-footer-right">
+				<div class="main-footer-end">
 					<div class="btn-group" aria-label="Navigation">
 						<button type="button" class="btn btn-light" title="Go prev" data-bs-toggle="tooltip" disabled>
 							<l-i name="navigate_before"></l-i>

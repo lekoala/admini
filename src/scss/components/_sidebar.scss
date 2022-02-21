@@ -38,7 +38,7 @@
 
 #sidebar-selector {
   background-color: desaturate(mix(black, $primary, 80%), 20%);
-  border:0;
+  border: 0;
   border-bottom: 1px solid $sidebar-cta-bg;
   border-radius: 0;
   color: $sidebar-link-color;
@@ -146,8 +146,9 @@
   }
 
   .dropdown-menu {
+    // Align with actual trigger, not with the icon
     left: calc($sidebar-cta-padding + ($spacer * 0.5) + 44px);
-    top: $spacer * 2;
+    margin-top: $spacer * -2;
   }
 
   .sidebar-profile-name {
@@ -304,6 +305,11 @@
         margin: 0 auto;
       }
     }
+
+    .dropdown-menu {
+      margin-top: $spacer * -3.5;
+    }
+
     .sidebar-profile-name,
     .sidebar-profile-subtitle {
       display: none;

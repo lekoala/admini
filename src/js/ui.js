@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import * as bootstrap from "bootstrap";
 
 const MOBILE_SIZE = 768;
 
@@ -39,9 +38,27 @@ class AdminiUi {
       if (!el.hasAttribute("title")) {
         el.setAttribute("title", el.innerHTML);
       }
-      let tooltip = bootstrap.Tooltip.getOrCreateInstance(el);
+      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
     });
     this.toggleMobileTooltips(window.innerWidth);
+  }
+
+  /**
+   * Some elements are collapsed down to tooltips (eg: badges) if the screen size is too small
+   * @param {int} w
+   */
+  toggleMobileTooltips(w) {
+    document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
+      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+      // On large screen, display the badge
+      if (w > MOBILE_SIZE && el.offsetWidth > 12) {
+        tooltip.disable();
+        el.removeAttribute("title");
+      } else {
+        // Enable tooltip for small screen or small items based on its content
+        tooltip.enable();
+      }
+    });
   }
 
   /**
@@ -54,24 +71,6 @@ class AdminiUi {
       // A simple fix in case we resized the window and the menu was hidden by offcanvas
       this.sidebar.style.visibility = "visible";
     }
-  }
-
-  /**
-   * Some elements are collapsed down to tooltips (eg: badges) if the screen size is too small
-   * @param {int} w
-   */
-  toggleMobileTooltips(w) {
-    document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
-      let tooltip = bootstrap.Tooltip.getOrCreateInstance(el);
-      // On large screen, display the badge
-      if (w > MOBILE_SIZE && el.offsetWidth > 12) {
-        tooltip.disable();
-        el.removeAttribute("title");
-      } else {
-        // Enable tooltip for small screen or small items based on its content
-        tooltip.enable();
-      }
-    });
   }
 
   /**
@@ -140,7 +139,12 @@ class AdminiUi {
       parts.forEach((part) => {
         let activeTab = document.querySelector("[data-bs-target='" + part + "']");
         if (activeTab) {
-          bootstrap.Tab.getOrCreateInstance(activeTab).show();
+          if (!activeTab.classList.contains("active")) {
+            activeTab.classList.add("active");
+            document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
+          }
+          let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
+          inst.show();
         }
       });
     }
@@ -149,10 +153,14 @@ class AdminiUi {
       // They don't have a default tab active to avoid fouc
       let activeTab = el.querySelector(".active");
       if (!activeTab) {
-        let firstTab = el.querySelector("a:not([disabled])");
-        bootstrap.Tab.getOrCreateInstance(firstTab).show();
+        activeTab = el.querySelector("a:not([disabled])");
+        if (!activeTab) {
+          return;
+        }
+        activeTab.classList.add("active");
+        document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
+        let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
       }
-
       el.style.visibility = "visible";
 
       // Track tabs clicks

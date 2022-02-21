@@ -146,6 +146,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .dropdown {
+    display: inline-block;
+  }
 }
 
 /* Main form */

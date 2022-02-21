@@ -46,12 +46,11 @@
 		document.querySelectorAll("#otherAction").forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
 				ev.preventDefault();
-				const toast = new bs5Toast({
+				const toast = toaster({
 					body: 'Action done',
 					className: 'border-0 bg-info text-white',
 					btnCloseWhite: true,
 				})
-				toast.show()
 			})
 		});
 	</script>
@@ -301,7 +300,8 @@
 								<div class="accordion-item">
 									<h2 class="accordion-header" id="headingOne">
 										<!-- it needs the collapsed class to start hidden -->
-										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+										<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+											aria-controls="collapseOne">
 											Hidden field element
 										</button>
 									</h2>
