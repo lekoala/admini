@@ -141,6 +141,18 @@
   border-bottom: 1px solid $sidebar-cta-bg;
   padding: ($sidebar-cta-padding * 0.5) $sidebar-cta-padding;
 
+  &.sidebar-profile-mini {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      text-decoration: none;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
   > button {
     display: block;
     padding: 0;
@@ -191,7 +203,7 @@
     border-radius: 0;
 
     l-i {
-      --size: 20px;
+      --icon-size: 20px;
     }
 
     &:hover {
@@ -264,7 +276,7 @@
   .sidebar-link {
     padding: $sidebar-link-compact-padding;
     l-i {
-      --size: 24px;
+      --icon-size: 24px;
       display: flex;
       margin: 0 auto;
     }
@@ -305,6 +317,17 @@
 
   .sidebar-profile {
     padding: ($sidebar-cta-padding * 0.5);
+
+    &.sidebar-profile-mini {
+      justify-content: center;
+      .sidebar-profile-name {
+        display: none;
+      }
+      .sidebar-profile-icon l-i {
+        --icon-size: 24px;
+      }
+    }
+
     > button {
       text-align: center;
       width: auto;

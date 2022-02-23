@@ -1,0 +1,26 @@
+// Same as .bg util but with automatic text contrast and a:hover
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+    background: $value !important;
+    color: color-contrast($value) !important;
+  }
+  a.bg-#{$color} {
+    &:hover {
+      background-color: if($color == $color-contrast-light, shade-color($value, $btn-hover-bg-shade-amount), tint-color($value, $btn-hover-bg-tint-amount)) !important;
+    }
+  }
+}
+
+// Softer contrast and a:hover
+@each $color, $value in $theme-colors {
+  .bg-soft-#{$color} {
+    background-color: rgba($value, 0.08) !important;
+    color: $value !important;
+  }
+  a.bg-soft-#{$color} {
+    &:hover {
+      background-color: $value !important;
+      color: $white !important;
+    }
+  }
+}

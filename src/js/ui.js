@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 
 const MOBILE_SIZE = 768;
+const MINIMENU = "minimenu";
 
 class AdminiUi {
   constructor() {
@@ -16,22 +17,19 @@ class AdminiUi {
     el.addEventListener("click", (ev) => {
       ev.preventDefault();
 
-      this.triggerMinimenu();
-      if (document.body.classList.contains("minimenu")) {
-        Cookies.set("minimenu", 1);
+      document.body.classList.toggle(MINIMENU);
+      if (document.body.classList.contains(MINIMENU)) {
+        Cookies.set(MINIMENU, 1);
       } else {
-        Cookies.remove("minimenu");
+        Cookies.remove(MINIMENU);
       }
       document.activeElement.blur();
       this.toggleMobileTooltips(window.innerWidth);
     });
-    if (Cookies.get("minimenu")) {
-      this.triggerMinimenu();
+    // This should be done by the serverside to avoid layout shift on load
+    if (Cookies.get(MINIMENU) && !document.body.classList.contains(MINIMENU)) {
+      document.body.classList.add(MINIMENU);
     }
-  }
-
-  triggerMinimenu() {
-    document.body.classList.toggle("minimenu");
   }
 
   /**

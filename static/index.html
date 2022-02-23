@@ -45,6 +45,7 @@
 	<script type="module" src="js/admini.min.js"></script>
 </head>
 
+<!-- minimenu class should be applied on render -->
 <body>
 	<div class="wrapper">
 		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
@@ -73,6 +74,7 @@
 				</button>
 
 				<div class="dropdown-menu">
+					<a class="dropdown-item" href="profile.html">Profile</a>
 					<a class="dropdown-item" href="#">Log out</a>
 				</div>
 			</div>
@@ -104,6 +106,12 @@
 
 					<li class="sidebar-nav-header">
 						Components
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="avatars.html">
+							<l-i name="person"></l-i> <span>Avatars</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
@@ -254,7 +262,7 @@
 					<div class="row">
 						<div class="col-lg-3">
 							<div class="card card-default">
-								<div class="card-badge bgrd-danger">
+								<div class="card-badge bg-danger">
 									<l-i name="star"></l-i>
 								</div>
 								<div class="card-body">
@@ -271,7 +279,7 @@
 								</div>
 							</div>
 							<div class="card card-default">
-								<div class="card-badge bgrd-success">
+								<div class="card-badge bg-success">
 									<l-i name="attach_money"></l-i>
 								</div>
 								<div class="card-body">

@@ -18,6 +18,13 @@
  * @returns {bootstrap.Toast}
  */
 function toaster(attr) {
+  // Shortcut
+  if (typeof attr === "string") {
+    attr = {
+      body: attr,
+    };
+  }
+
   // Set defaults
   attr.gap = attr.gap ?? "m-3";
   attr.className = attr.className ?? "";

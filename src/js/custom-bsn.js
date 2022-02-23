@@ -1,10 +1,10 @@
-import Data from 'shorter-js/src/misc/data';
-import ObjectKeys from 'shorter-js/src/misc/ObjectKeys';
-import parentNodes from 'shorter-js/src/selectors/parentNodes';
-import getElementsByTagName from 'shorter-js/src/selectors/getElementsByTagName';
-import matches from 'shorter-js/src/selectors/matches';
+import Data from "shorter-js/src/misc/data";
+import ObjectKeys from "shorter-js/src/misc/ObjectKeys";
+import parentNodes from "shorter-js/src/selectors/parentNodes";
+import getElementsByTagName from "shorter-js/src/selectors/getElementsByTagName";
+import matches from "shorter-js/src/selectors/matches";
 
-import { addListener } from 'event-listener.js';
+import { addListener } from "event-listener.js";
 
 import EventListener from "../../node_modules/event-listener.js/src/event-listener";
 
@@ -40,6 +40,9 @@ const componentsList = {
   Tooltip,
 };
 
+// We initialize ourselves
+const ignoreList = ["Tooltip"];
+
 /**
  * Initialize all matched `Element`s for one component.
  * @param {BSN.InitCallback<any>} callback
@@ -70,6 +73,9 @@ function initCallback(context) {
   const elemCollection = [...getElementsByTagName("*", lookUp)];
 
   ObjectKeys(componentsList).forEach((comp) => {
+    if (ignoreList.includes(comp)) {
+      return;
+    }
     const { init, selector } = componentsList[comp];
     initComponentDataAPI(
       init,

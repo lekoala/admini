@@ -1,8 +1,8 @@
 l-i {
-  --size: 1em;
+  --icon-size: 1em;
   display: inline-flex;
-  width: var(--size);
-  height: var(--size);
+  width: var(--icon-size);
+  height: var(--icon-size);
   vertical-align: middle;
 
   svg {
@@ -11,7 +11,7 @@ l-i {
     height: 100%;
   }
   i {
-    font-size: var(--size) !important;
+    font-size: var(--icon-size) !important;
     color: currentColor;
   }
 }

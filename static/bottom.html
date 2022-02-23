@@ -49,7 +49,6 @@
 				const toast = toaster({
 					body: 'Form submitted',
 					className: 'border-0 bg-success text-white',
-					btnCloseWhite: true,
 				})
 			})
 		});
@@ -66,6 +65,20 @@
 				</span>
 				<span class="sidebar-brand-title">Admini</span>
 			</a>
+
+
+			<!-- mini profile -->
+			<div class="sidebar-profile sidebar-profile-mini">
+				<div class="sidebar-profile-name">
+					<a href="profile.html">
+						<l-i name="person"></l-i> <span>John Nemo</span>
+					</a>
+				</div>
+
+				<a href="#" class="sidebar-profile-icon" title="Log Out" data-bs-toggle="tooltip">
+					<l-i name="exit_to_app"></l-i>
+				</a>
+			</div>
 
 			<!-- sidebar-content -->
 			<div class="sidebar-content scroller">
@@ -94,6 +107,12 @@
 
 					<li class="sidebar-nav-header">
 						Components
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="avatars.html">
+							<l-i name="person"></l-i> <span>Avatars</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">

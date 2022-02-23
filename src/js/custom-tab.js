@@ -1,4 +1,5 @@
 /* Native JavaScript for Bootstrap 5 | Tab
+   This version disable height animation
 ------------------------------------------ */
 import ariaSelected from "shorter-js/src/strings/ariaSelected";
 import mouseclickEvent from "shorter-js/src/strings/mouseclickEvent";

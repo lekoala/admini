@@ -62,6 +62,8 @@ $container-max-widths: (
 $container-padding-x: 12px !default;
 
 // Options
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio: 3 !default;
 $enable-validation-icons: false !default;
 $enable-rfs: false !default;
@@ -71,11 +73,12 @@ $enable-negative-margins: true !default;
 $transition-base: all 0.35s ease-in-out !default;
 
 // Theme colors, based on https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+// It's better that it goes against a white color, check with https://contrastchecker.com/
 $blue: #007bc2 !default;
 $red: #e32b24 !default;
-$orange: #ff6d00 !default;
-$green: #2e7d32 !default;
-$cyan: #00b8d4 !default;
+$orange: #CD4D00 !default;
+$green: #128818 !default;
+$cyan: #008489 !default;
 // Other colors
 $yellow: #ffd600 !default;
 $teal: #00bfa5 !default;
