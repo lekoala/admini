@@ -22,7 +22,7 @@ $dropdown-fast-transition: background 0.1s ease-in-out, color 0.1s ease-in-out !
   }
 }
 
-// Always enable shadow
+// Always enable shadow in header
 header .dropdown-menu {
   box-shadow: $dropdown-box-shadow;
 }

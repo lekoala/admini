@@ -22,6 +22,10 @@ class AdminiUi {
         Cookies.set(MINIMENU, 1);
       } else {
         Cookies.remove(MINIMENU);
+        const cta = document.querySelector(".sidebar-cta-content");
+        if (cta) {
+          cta.style.cssText = "";
+        }
       }
       document.activeElement.blur();
       this.toggleMobileTooltips(window.innerWidth);
