@@ -46,9 +46,25 @@
 		document.querySelectorAll("button[type='submit']").forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
 				ev.preventDefault();
+				// Infer from button
+				let btnClasses = btn.className.split(" ");
+				let btnClass = "success";
+				btnClasses.forEach((cl) => {
+					if (cl.includes("btn-")) {
+						btnClass = cl.replace("btn-", "");
+					}
+				})
 				const toast = toaster({
-					body: 'Form submitted',
-					className: 'border-0 bg-success text-white',
+					body: btn.innerText,
+					className: 'border-0 text-white bg-' + btnClass,
+				})
+			})
+		});
+		document.querySelectorAll(".main-footer .dropdown-item").forEach((btn) => {
+			btn.addEventListener("click", (ev) => {
+				ev.preventDefault();
+				const toast = toaster({
+					body: btn.innerText,
 				})
 			})
 		});
@@ -255,14 +271,24 @@
 							<l-i name="done"></l-i>
 							Save
 						</button>
-						<button type="submit" class="btn btn-primary">Other action</button>
+						<button type="submit" class="btn btn-primary me-2">Other action
+							<span class="btn-indicator btn-indicator-mini bg-danger">
+								99999+
+								<span class="visually-hidden">unread messages</span>
+							</span>
+						</button>
+						<button type="submit" class="btn btn-primary me-2">That action
+							<span class="badge bg-light">!</span>
+						</button>
 					</div>
-					<div class="dropdown">
+					<div class="dropdown me-2">
 						<button id="secondary-actions" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Dropdown
+							<span class="btn-indicator btn-indicator-mini bg-danger" data-bs-toggle="tooltip" title="Unread messages">
+							</span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="secondary-actions">
-							<li><a class="dropdown-item" href="#">Do this</a></li>
+							<li><a class="dropdown-item" href="#">Do this <span class="badge bg-info">54+</span></a></li>
 							<li><a class="dropdown-item" href="#">Do that</a></li>
 						</ul>
 					</div>

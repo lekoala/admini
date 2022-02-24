@@ -38,6 +38,10 @@ header .dropdown-menu {
 
 .dropdown-item {
   transition: $dropdown-fast-transition;
+
+  .badge {
+    vertical-align: text-top;
+  }
 }
 
 // Allow large dropdown menus

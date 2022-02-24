@@ -20,18 +20,33 @@
   }
 }
 
+// Align badges
+.btn .badge {
+  vertical-align: text-top;
+}
+
+// Badge indicator
 .btn-indicator {
+  --size: 16px;
+
   box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 5%);
   color: #fff;
   display: block;
-  font-size: .675rem;
-  height: 18px;
-  min-width: 18px;
-  padding: 1px 4px;
+  font-size: 12px;
+  height: var(--size);
+  min-width: var(--size);
+  line-height: var(--size);
+  padding: 0px 4px;
   position: absolute;
-  right: -8px;
+  right: calc(var(--size) / -2);
+  top: calc(var(--size) / -2);
   text-align: center;
-  top: -8px;
-  transition: top .1s ease-out;
-  border-radius: 18px;
+  transition: top 0.1s ease-out;
+  border-radius: var(--size);
+
+  // Use with tooltip
+  &.btn-indicator-mini {
+    --size: 12px;
+    font-size: 8px;
+  }
 }

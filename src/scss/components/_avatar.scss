@@ -3,6 +3,8 @@
 
   width: var(--avatar-size);
   height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  min-height: var(--avatar-size);
   line-height: var(--avatar-size);
   border-radius: var(--avatar-size);
   font-size: calc(var(--avatar-size) / 2.5);
