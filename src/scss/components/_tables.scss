@@ -11,8 +11,8 @@
 
   th,
   td {
-    padding-left: $grid-gutter-width * 0.5;
-    padding-right: $grid-gutter-width * 0.5;
+    padding-left: $container-padding-x;
+    padding-right: $container-padding-x;
   }
 
   > tbody {
@@ -26,5 +26,5 @@
 
 // Fixes tooltip
 table > :not(caption) .tooltip {
-  padding: $tooltip-arrow-height ;
+  padding: $tooltip-arrow-height;
 }

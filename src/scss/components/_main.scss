@@ -2,6 +2,7 @@
   align-items: stretch;
   display: flex;
   width: 100%;
+  height: 100%;
   background: $sidebar-bg;
 }
 
@@ -10,15 +11,15 @@
 .main {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  // min-height: 100vh;
+  height: 100%;
   background: $body-bg;
   flex-direction: column;
-  overflow: hidden;
-
   section {
-    flex: 1 1 auto;
+    flex: 1 1 0%;
 
     &.scroller {
+      height: 100%;
       overflow: auto;
     }
   }
@@ -45,13 +46,18 @@
 }
 
 .main-header-sidebar {
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: $spacer * 0.5;
+  top: 0;
   z-index: 1040;
 
   button {
     border-radius: 0;
+    height: $sidebar-brand-height;
+    
+    l-i {
+      --size: 24px;
+    }
   }
 
   @include media-breakpoint-up(md) {
@@ -64,11 +70,11 @@
   flex-grow: 0;
 
   // Make space for fixed menu icon
-  padding-left: 44px + ($grid-gutter-width * 0.5);
+  padding-left: calc(44px + ($spacer * 0.5));
   padding-top: $spacer * 0.5;
   padding-bottom: $spacer * 0.5;
   @include media-breakpoint-up(md) {
-    padding-left: $grid-gutter-width * 0.5;
+    padding-left: $container-padding-x;
   }
 
   .main-header-info-back {

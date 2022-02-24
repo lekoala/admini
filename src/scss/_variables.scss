@@ -49,7 +49,7 @@ $grid-breakpoints: (
 ) !default;
 
 // Grid gutter (allows consistent spacing with cards inside grid)
-$grid-gutter-width: 24px;
+$grid-gutter-width: 1rem !default;
 
 // Grid containers
 $container-max-widths: (
@@ -59,7 +59,7 @@ $container-max-widths: (
   xl: 1200px,
 ) !default;
 
-$container-padding-x: 12px !default;
+$container-padding-x: $grid-gutter-width !default;
 
 // Options
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
@@ -76,9 +76,9 @@ $transition-base: all 0.35s ease-in-out !default;
 // It's better that it goes against a white color, check with https://contrastchecker.com/
 $blue: #007bc2 !default;
 $red: #e32b24 !default;
-$orange: #CD4D00 !default;
+$orange: #cd4d00 !default;
 $green: #128818 !default;
-$cyan: #12808B !default;
+$cyan: #12808b !default;
 // Other colors
 $yellow: #ffd600 !default;
 $teal: #00bfa5 !default;

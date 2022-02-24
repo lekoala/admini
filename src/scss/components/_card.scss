@@ -3,17 +3,21 @@
   box-shadow: $card-shadow;
 
   // Make tiles from standard sizes
-  &.card-full {
-    min-height: 308px;
-    height: calc(100% - $grid-gutter-width);
-  }
   &.card-default {
     min-height: 154px;
-  }
 
-  // Used in conjunction with a 154px card-img-top
-  .card-body-expand {
-    min-height: 154px + $grid-gutter-width;
+    .card-img-top {
+      width: 100%;
+      height: calc(154px + $grid-gutter-width);
+      object-fit: cover;
+    }
+    .card-img-top + .card-body {
+      min-height: 154px;
+    }
+  }
+  &.card-full {
+    min-height: 154px;
+    height: calc(100% - ($grid-gutter-width * 2));
   }
 
   .card-img-svg {
