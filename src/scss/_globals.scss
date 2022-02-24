@@ -15,3 +15,18 @@ img:not([src]) {
   margin-left: $grid-gutter-width * -0.5;
   margin-right: $grid-gutter-width * -0.5;
 }
+
+.flex {
+  --min: min(10ch, 50%);
+  --gap: #{$grid-gutter-width};
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: space-between;
+
+  > * {
+    flex: 1 1 var(--min);
+  }
+}

@@ -72,14 +72,33 @@ header .dropdown-menu {
   }
 }
 
-// Bottom action of dropdown
-.dropdown-footer {
+.dropdown-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $dropdown-header-padding;
+  margin-bottom: 0; // for headers
+  color: $dropdown-header-color;
+  white-space: nowrap;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0; // for headers
+  }
+}
+.dropdown-menu-footer {
   display: block;
   padding: $dropdown-header-padding;
   @include font-size($font-size-sm);
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
   text-align: center;
+  font-weight: $font-weight-bold;
 
   &:hover {
     background-color: $list-group-hover-bg;

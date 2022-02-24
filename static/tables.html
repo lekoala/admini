@@ -23,7 +23,6 @@
 	<!-- styles -->
 	<link href="css/admini.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 	<!-- icons -->
 	<script>
 		window.LastIcon = {
@@ -31,40 +30,18 @@
 				material: "twotone",
 			},
 			defaultSet: "material",
+			replaceName: {
+				trash: "delete",
+			},
 			fonts: ["material"],
 		};
 	</script>
 	<script src="js/last-icon.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
-	<style type="text/css">
-		.grid l-i {
-			--size: 36px;
-			margin-bottom: 1rem;
-		}
-
-		.icon-wrapper>div {
-			background: #fff;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			padding: 1rem;
-		}
-
-		.icon-wrapper>div:after {
-			content: attr(data-name);
-			display: block;
-			font-size: 12px;
-			max-width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	</style>
 
 	<!-- scripts -->
 	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script type="module" src="js/admini.min.js"></script>
 </head>
 
@@ -120,12 +97,12 @@
 						</a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="tables.html">
 							<l-i name="view_list"></l-i> <span>Tables</span>
 						</a>
 					</li>
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="datatable.html">
 							<l-i name="view_agenda"></l-i> <span>Datatable</span>
 						</a>
@@ -182,16 +159,151 @@
 				<div class="main-header-info">
 					<nav aria-label="breadcrumb">
 						<div class="breadcrumb">
-							<li class="breadcrumb-item active" aria-current="page">Help</li>
+							<li class="breadcrumb-item active" aria-current="page">Tables</li>
 						</div>
 					</nav>
 				</div>
 			</header>
 			<section class="scroller">
 				<div class="container-fluid py-3">
-					<p>Need help ? Have a question ? <a href="https://github.com/lekoala/admini/issues">Head towards the repository</a>.</p>
+
+					<p>Tables can expand outside of container</p>
+					<div class="container-expand">
+						<table class="table table-striped mb-0">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">First</th>
+									<th scope="col">Last</th>
+									<th scope="col">Handle</th>
+									<th scope="col" width="40" class="text-center">Count</th>
+									<th scope="col" width="200" class="text-end">Amount
+										<span title="Total amount per year" data-bs-toggle="tooltip">
+											<l-i name="help"></l-i>
+										</span>
+									</th>
+									<th width="200"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td class="text-center">1</td>
+									<td class="text-end">2.000 $</td>
+									<td><a href="#" class="btn btn-primary">
+											<l-i name="edit"></l-i> edit
+										</a></td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Jacob</td>
+									<td>Thornton</td>
+									<td class="table-danger">@fat</td>
+									<td class="text-center">25</td>
+									<td class="text-end">0 $</td>
+									<td><a href="#" class="btn btn-primary">
+											<l-i name="edit"></l-i> edit
+										</a></td>
+								</tr>
+								<tr class="table-primary">
+									<th scope="row">3</th>
+									<td colspan="2">Larry the Bird</td>
+									<td>@twitter</td>
+									<td class="text-center">17</td>
+									<td class="text-end">24.000 $</td>
+									<td><a href="#" class="btn btn-primary">
+											<l-i name="edit"></l-i> edit
+										</a></td>
+								</tr>
+								<tr>
+									<th scope="row">4</th>
+									<td>Jake</td>
+									<td>Thornton</td>
+									<td></td>
+									<td class="text-center">42</td>
+									<td class="text-end">17.000 $</td>
+									<td><a href="#" class="btn btn-primary">
+											<l-i name="edit"></l-i> edit
+										</a></td>
+								</tr>
+								<tr>
+									<th scope="row">5</th>
+									<td>John</td>
+									<td>Thornton</td>
+									<td></td>
+									<td class="text-center">0</td>
+									<td class="text-end">2.125 $</td>
+									<td><a href="#" class="btn btn-primary">
+											<l-i name="edit"></l-i> edit
+										</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<ul class="pagination justify-content-center mt-3">
+						<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous">
+								<span aria-hidden="true">
+									<l-i name="navigate_before"></l-i>
+								</span>
+							</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">1</a>
+						</li>
+						<li class="page-item active" aria-current="page"><a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">3</a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#" aria-label="Next">
+								<span aria-hidden="true">
+									<l-i name="navigate_next"></l-i>
+								</span>
+							</a>
+						</li>
+					</ul>
+
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="card card-default">
+								<div class="card-header card-title">Table</div>
+								<table class="table card-table">
+									<tr>
+										<th width="20">Pos</th>
+										<th>Name</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>John Nemo</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>John Nemo</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>John Nemo</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>John Nemo</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="card card-default">
+								<div class="card-body">
+									<p>They will also work just fine in a card</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
+
 		</main>
 	</div>
 </body>

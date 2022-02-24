@@ -117,7 +117,7 @@ function triggerTabHide(self) {
   const { tab, content } = nav && tabPrivate.get(nav);
   let currentHeight = 0;
 
-  if (tabContent) {
+  if (tabContent && tabContent.dataset.bsAnimate) {
     [content, nextContent].forEach((c) => addClass(c, "overflow-hidden"));
     currentHeight = content.scrollHeight;
   }

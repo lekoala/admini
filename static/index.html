@@ -46,6 +46,7 @@
 </head>
 
 <!-- minimenu class should be applied on render -->
+
 <body>
 	<div class="wrapper">
 		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
@@ -121,6 +122,11 @@
 					</li>
 
 					<li class="sidebar-item">
+						<a class="sidebar-link" href="tables.html">
+							<l-i name="view_list"></l-i> <span>Tables</span>
+						</a>
+					</li>
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="datatable.html">
 							<l-i name="view_agenda"></l-i> <span>Datatable</span>
 						</a>
@@ -214,7 +220,10 @@
 									</span>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg py-0" aria-labelledby="notificationMenuLink">
-									<h6 class="dropdown-header">Notifications</h6>
+									<div class="dropdown-menu-header">
+										<h6>Notifications</h6>
+										<a href="">Mark as read</a>
+									</div>
 									<div class="list-group">
 										<a href="#" class="list-group-item list-group-item-action">
 											<div class="row g-0 align-items-center">
@@ -248,7 +257,7 @@
 											<small class="text-muted">And some muted small print.</small>
 										</a>
 									</div>
-									<a href="#" class="dropdown-footer">See all notifications</a>
+									<a href="#" class="dropdown-menu-footer">See all notifications</a>
 								</ul>
 							</div>
 						</div>
@@ -296,17 +305,7 @@
 								</div>
 							</div>
 							<div class="card card-default">
-								<div class="card-header card-title">Table</div>
-								<table class="table card-table">
-									<tr>
-										<th>Pos</th>
-										<th>Name</th>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>John Nemo</td>
-									</tr>
-								</table>
+								
 							</div>
 						</div>
 						<div class="col-lg-3">
@@ -332,7 +331,7 @@
 								<div class="card-body">
 									<div class="card-title">Item</div>
 									<div class="card-text">
-										<div class="fs-1 mt-1 mb-3">2.000</div>
+										<div class="fs-1 mt-1 mb-3">2.000 $</div>
 									</div>
 								</div>
 							</div>
