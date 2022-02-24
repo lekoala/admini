@@ -141,13 +141,28 @@
   background: $header-bg;
   border-top: 1px solid $nav-tabs-border-color;
   min-height: $sidebar-footer-height;
-  padding: ($spacer * 0.5) $spacer;
+  padding: 0 $spacer;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  .main-footer-start,
+  .main-footer-end {
+    margin-top: $spacer * 0.125;
+    margin-bottom: $spacer * 0.125;
+    
+    > * {
+      margin-top: $spacer * 0.125;
+      margin-bottom: $spacer * 0.125;
+    }
+  }
+  // should be the same as btn-group
   .dropdown {
-    display: inline-block;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .main-footer-end {
+    text-align: right;
   }
 }
 
