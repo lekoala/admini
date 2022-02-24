@@ -203,7 +203,7 @@
     border-radius: 0;
 
     l-i {
-      --icon-size: 20px;
+      --size: 20px;
     }
 
     &:hover {
@@ -276,7 +276,7 @@
   .sidebar-link {
     padding: $sidebar-link-compact-padding;
     l-i {
-      --icon-size: 24px;
+      --size: 24px;
       display: flex;
       margin: 0 auto;
     }
@@ -325,7 +325,7 @@
         display: none;
       }
       .sidebar-profile-icon l-i {
-        --icon-size: 24px;
+        --size: 24px;
       }
     }
 

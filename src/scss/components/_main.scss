@@ -73,7 +73,7 @@
 
   .main-header-info-back {
     l-i {
-      --icon-size: 24px;
+      --size: 24px;
     }
   }
 
@@ -150,7 +150,7 @@
   .main-footer-end {
     margin-top: $spacer * 0.125;
     margin-bottom: $spacer * 0.125;
-    
+
     > * {
       margin-top: $spacer * 0.125;
       margin-bottom: $spacer * 0.125;

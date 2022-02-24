@@ -13,7 +13,7 @@
   align-items: center;
 
   l-i {
-    --icon-size: calc(var(--avatar-size) / 2);
+    --size: calc(var(--avatar-size) / 2);
   }
 
   &:hover {
