@@ -5,6 +5,7 @@
     color: color-contrast($value) !important;
   }
   a.bg-#{$color} {
+    transition: background 0.35s ease-in-out;
     &:hover {
       background-color: if($color == $color-contrast-light, shade-color($value, $btn-hover-bg-shade-amount), tint-color($value, $btn-hover-bg-tint-amount)) !important;
     }
@@ -18,9 +19,14 @@
     color: $value !important;
   }
   a.bg-soft-#{$color} {
+    transition: background 0.35s ease-in-out;
     &:hover {
       background-color: $value !important;
       color: $white !important;
     }
   }
+}
+
+.card-bg {
+  background: $card-bg;
 }
