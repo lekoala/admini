@@ -1,46 +1,52 @@
 $label-width: $spacer * 12 !default;
 
-// Using these classes allow automatic responsive layout
-.form-holder {
-  margin-bottom: $spacer;
+form {
+  // Using these classes allow automatic responsive layout
+  .form-holder {
+    margin-bottom: $spacer;
 
-  // No need for form-label
-  > label {
-    margin-bottom: $spacer * 0.5;
+    // No need for form-label
+    > label {
+      margin-bottom: $spacer * 0.5;
+    }
+
+    // We need at least lg breakpoint because md has a sidebar
+    @include media-breakpoint-up(lg) {
+      display: flex;
+
+      > label,
+      > .form-label {
+        padding-top: add($input-padding-y, $input-border-width);
+        flex: 0 0 0%;
+        max-width: $label-width;
+        min-width: $label-width;
+        @include text-truncate();
+        padding-right: 1em;
+
+        &.form-check-label {
+          width: 100%;
+          max-width: none;
+          margin-left: 1em;
+          padding-top: 0;
+        }
+      }
+
+      > .form-check {
+        margin-left: $label-width;
+      }
+
+      > .form-field {
+        flex: 0 0 70%;
+        max-width: 768px; // avoid super large inputs
+
+        .form-check:first-child {
+          margin-top: $input-padding-y;
+        }
+      }
+    }
   }
 
-  // We need at least lg breakpoint because md has a sidebar
-  @include media-breakpoint-up(lg) {
-    display: flex;
-
-    > label,
-    > .form-label {
-      padding-top: add($input-padding-y, $input-border-width);
-      flex: 0 0 0%;
-      max-width: $label-width;
-      min-width: $label-width;
-      @include text-truncate();
-      padding-right: 1em;
-
-      &.form-check-label {
-        width: 100%;
-        max-width: none;
-        margin-left: 1em;
-        padding-top: 0;
-      }
-    }
-
-    > .form-check {
-      margin-left: $label-width;
-    }
-
-    > .form-field {
-      flex: 0 0 70%;
-      max-width: 768px; // avoid super large inputs
-
-      .form-check:first-child {
-        margin-top: $input-padding-y;
-      }
-    }
+  .accordion {
+    max-width: calc($label-width + 768px);
   }
 }

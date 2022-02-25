@@ -136,11 +136,13 @@ $social-colors: (
 ) !default;
 
 // Body
-$body-bg: #fafbfc !default;
+// $body-bg: #fafbfc !default;
+$body-bg: tint-color($primary, 98%) !default;
 $body-color: $gray-700 !default;
 
 // Header
-$header-bg: #f4f6f8 !default;
+// $header-bg: #faf6f8 !default;
+$header-bg: tint-color($primary, 94%) !default;
 
 // Links
 $link-decoration: none !default;
@@ -228,8 +230,8 @@ $card-shadow: 0 0 0.875rem 0 rgba($dark, 0.05) !default;
 $card-title-font-size: $font-size-lg !default;
 $card-title-font-weight: $font-weight-bold !default;
 $card-title-color: lighten($gray-600, 15%) !default;
-$card-spacer-y: 1.25rem !default;
-$card-spacer-x: 1.25rem !default;
+$card-spacer-y: 1rem !default;
+$card-spacer-x: 1rem !default;
 $card-cap-padding-y: 1rem !default;
 $card-cap-padding-x: $card-spacer-x !default;
 
@@ -253,7 +255,7 @@ $sidebar-compact-width: 80px !default;
 $sidebar-bg: desaturate(mix(black, $primary, 90%), 20%) !default;
 
 // Sidebar brand
-$sidebar-brand-height: 60px;
+$sidebar-brand-height: 52px;
 $sidebar-brand-padding: 1.15rem !default;
 $sidebar-brand-font-weight: $font-weight-bold !default;
 $sidebar-brand-font-size: 1.15rem !default;

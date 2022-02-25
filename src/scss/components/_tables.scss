@@ -17,14 +17,41 @@
 
   > tbody {
     background: #fff;
+  }
 
-    > tr > td {
-      vertical-align: middle;
+  td,
+  th {
+    vertical-align: middle;
+  }
+
+  // Fit column to actions width in last column
+  &.table-actions {
+    tr td:last-child,
+    tr th:last-child {
+      width: 1%;
+      white-space: nowrap;
+      padding-top: 0;
+      padding-bottom: 0;
     }
+  }
+
+  // Fixes tooltip
+  > :not(caption) .tooltip {
+    padding: $tooltip-arrow-height;
   }
 }
 
-// Fixes tooltip
-table > :not(caption) .tooltip {
-  padding: $tooltip-arrow-height;
+.table-responsive-auto {
+  td,
+  th {
+    white-space: nowrap;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+  }
+
+  @include media-breakpoint-down(md) {
+    .btn span {
+      display: none;
+    }
+  }
 }

@@ -6,12 +6,14 @@ import BSN from "./custom-bsn.js";
 import AdminiUi from "./ui.js";
 import AdminiForms from "./forms.js";
 import toaster from "./toaster.js";
+import openModal from "./open-modal.js";
 
 // Make globally available
 // window.bootstrap = bootstrap;
 window.bootstrap = BSN;
 window.Cookies = Cookies;
 window.toaster = toaster;
+window.openModal = openModal;
 
 // Start
 let ui = new AdminiUi();

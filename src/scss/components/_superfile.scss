@@ -10,6 +10,8 @@
 
 // Avatar compat
 .avatar {
+  font-size: 12px;
+
   .superfile-clear {
     position: absolute;
     top: 0px;
@@ -32,9 +34,10 @@
     width: 100%;
     display: inline-flex;
     align-items: center;
-    text-align: center;
+    justify-content: center;
     max-width: 75%;
     left: 12.5%;
+    margin: 0;
   }
   .superfile-preview {
     z-index: 0;

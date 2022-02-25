@@ -23,7 +23,6 @@
 	<!-- styles -->
 	<link href="css/admini.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 	<!-- icons -->
 	<script>
 		window.LastIcon = {
@@ -31,41 +30,50 @@
 				material: "twotone",
 			},
 			defaultSet: "material",
+			replaceName: {
+				trash: "delete",
+			},
 			fonts: ["material"],
 		};
 	</script>
 	<script src="js/last-icon.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
-	<style type="text/css">
-		.grid l-i {
-			--size: 36px;
-			margin-bottom: 1rem;
-		}
-
-		.icon-wrapper>div {
-			background: #fff;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			padding: 1rem;
-		}
-
-		.icon-wrapper>div:after {
-			content: attr(data-name);
-			display: block;
-			font-size: 12px;
-			max-width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-	</style>
 
 	<!-- scripts -->
 	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script type="module" src="js/admini.min.js"></script>
+	<script type="module">
+		let btn = document.getElementById("open-modal");
+		btn.addEventListener("click", (ev) => {
+			const modal = openModal({
+				body: "Hello!",
+				title: "This is a modal",
+				footer: "<a href='#'>Why do I have this issue?</a>",
+				static: true,
+				showDenyButton: true,
+				showCancelButton: true,
+			});
+			modal.element.addEventListener("modal.deny", (ev) => {
+				console.log("denied");
+			})
+			modal.element.addEventListener("modal.close", (ev) => {
+				console.log("closed");
+			})
+			modal.element.addEventListener("modal.cancel", (ev) => {
+				console.log("canceled");
+			})
+		});
+		document.querySelectorAll('.show-example-btn').forEach((btn) => {
+			btn.addEventListener("click", (ev) => {
+				openModal({
+					body: "Hello!",
+					title: "This is a modal",
+					icon: btn.dataset.icon,
+				});
+			});
+		})
+	</script>
 </head>
 
 <body>
@@ -125,14 +133,14 @@
 							<l-i name="view_list"></l-i> <span>Tables</span>
 						</a>
 					</li>
-					
+
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="modals.html">
 							<l-i name="panorama_wide_angle"></l-i> <span>Modals</span>
 						</a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="datatable.html">
 							<l-i name="view_agenda"></l-i> <span>Datatable</span>
 						</a>
@@ -189,16 +197,66 @@
 				<div class="main-header-info">
 					<nav aria-label="breadcrumb">
 						<div class="breadcrumb">
-							<li class="breadcrumb-item active" aria-current="page">Help</li>
+							<li class="breadcrumb-item active" aria-current="page">Modals</li>
 						</div>
 					</nav>
 				</div>
 			</header>
 			<section class="scroller">
 				<div class="container-fluid py-3">
-					<p>Need help ? Have a question ? <a href="https://github.com/lekoala/admini/issues">Head towards the repository</a>.</p>
+					<p>Here is a static modal that cannot be dismissed.</p>
+					<button class="btn btn-primary" id="open-modal">Open modal</button>
+
+					<hr>
+					<h2>Model icons</h2>
+
+					<table class="table" style="width:400px">
+						<tbody>
+							<tr>
+								<td><strong>success</strong></td>
+								<td>
+									<div class="modal-icon modal-success">
+									</div>
+								</td>
+								<td><button class="show-example-btn" data-icon="success" aria-label="Try me! Example: success modal">Try me!</button></td>
+							</tr>
+							<tr>
+								<td><strong>error</strong></td>
+								<td>
+									<div class="modal-icon modal-error">
+									</div>
+								</td>
+								<td><button class="show-example-btn" data-icon="error" aria-label="Try me! Example: error modal">Try me!</button></td>
+							</tr>
+							<tr>
+								<td><strong>warning</strong></td>
+								<td>
+									<div class="modal-icon modal-warning">
+									</div>
+								</td>
+								<td><button class="show-example-btn" data-icon="warning" aria-label="Try me! Example: warning modal">Try me!</button></td>
+							</tr>
+							<tr>
+								<td><strong>info</strong></td>
+								<td>
+									<div class="modal-icon modal-info">
+									</div>
+								</td>
+								<td><button class="show-example-btn" data-icon="info" aria-label="Try me! Example: info modal">Try me!</button></td>
+							</tr>
+							<tr>
+								<td><strong>question</strong></td>
+								<td>
+									<div class="modal-icon modal-question">
+									</div>
+								</td>
+								<td><button class="show-example-btn" data-icon="question" aria-label="Try me! Example: question modal">Try me!</button></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</section>
+
 		</main>
 	</div>
 </body>

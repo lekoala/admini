@@ -1,12 +1,40 @@
+// @link https://smolcss.dev/#smol-css-grid
+// @link https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
 .grid {
-  --min: 15ch;
+  --min-width: 15ch;
+  --cols: 1;
   --gap: #{$grid-gutter-width};
+
+  --gap-count: calc(var(--cols) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--gap));
+  --max-width: calc((100% - var(--total-gap-width)) / var(--cols));
 
   display: grid;
   grid-gap: var(--gap);
-  // min() with 100% prevents overflow in extra narrow spaces
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  // @link https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min-width)), 1fr));
 
+  // Preset grids
+  &.grid-2,
+  &.grid-3,
+  &.grid-4 {
+    grid-template-columns: repeat(auto-fill, minmax(max(var(--min-width), var(--max-width)), 1fr));
+  }
+  &.grid-2 {
+    --cols: 2;
+  }
+  &.grid-3 {
+    --cols: 2;
+  }
+  &.grid-4 {
+    --cols: 2;
+  }
+  // Display full 4 columns only from md up
+  @include media-breakpoint-up(md) {
+    &.grid-4 {
+      --cols: 4;
+    }
+  }
   &.grid-same-height {
     grid-auto-rows: 1fr;
 

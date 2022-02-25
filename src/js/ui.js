@@ -81,7 +81,7 @@ class AdminiUi {
       this.sidebar.style.visibility = "visible";
       this.sidebar.classList.remove("offcanvas");
     }
-    // BSN Native does not init offcanvas like BS5
+    // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
       this.sidebar.classList.add("offcanvas");
       const sidebarOffcanvas = bootstrap.Offcanvas.getInstance(this.sidebar) || new bootstrap.Offcanvas(this.sidebar);
@@ -191,6 +191,75 @@ class AdminiUi {
     });
   }
 
+  /**
+   * Automatically hide row as needed
+   * Add a .table-responsive-hide class to th for columns that are optional
+   */
+  responsiveTables() {
+    // Make sure we have colindex to allowing mixing th and td on a row
+    document.querySelectorAll(".table-responsive-auto").forEach((el) => {
+      el.querySelectorAll("tr").forEach((row) => {
+        // Ensure we have an index (starts at 1)
+        let idx = 0;
+        row.querySelectorAll("th,td").forEach((col) => {
+          idx++;
+          if (!col.ariaColIndex) {
+            col.ariaColIndex = idx;
+          }
+        });
+      });
+
+      // Register observer to trigger responsive layout
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          const container = entry.target;
+          const table = container.querySelector("table");
+          // check inlineSize (width) or blockSize (height)
+          const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
+          const diff = table.offsetWidth - contentBoxSize.inlineSize;
+          let remaining = diff;
+          if (!table.dataset.baseWidth) {
+            table.dataset.baseWidth = table.offsetWidth;
+          }
+
+          // The table is too big
+          if (table.offsetWidth > contentBoxSize.inlineSize) {
+            table.querySelectorAll(".table-responsive-hide").forEach((col) => {
+              const colWidth = col.offsetWidth;
+              const colIdx = col.ariaColIndex;
+
+              if (remaining < 0) {
+                return;
+              }
+              col.dataset.originalWidth = colWidth;
+              // Hide all columns with this index
+              table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
+                idxCol.setAttribute("hidden", "hidden");
+              });
+              remaining -= colWidth;
+            });
+          } else {
+            // Do we have any hidden column that we can restore ?
+            table.querySelectorAll(".table-responsive-hide[hidden]").forEach((col) => {
+              const colWidth = parseInt(col.dataset.originalWidth);
+              const colIdx = col.ariaColIndex;
+
+              if (contentBoxSize.inlineSize < colWidth + parseInt(table.dataset.baseWidth)) {
+                return;
+              }
+              // Hide all columns with this index
+              table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
+                idxCol.removeAttribute("hidden");
+              });
+              remaining += colWidth;
+            });
+          }
+        }
+      });
+      resizeObserver.observe(el);
+    });
+  }
+
   responsiveTabs() {
     document.querySelectorAll(".nav-tabs-responsive").forEach((el) => {
       // This only works if the nav is visible on page load
@@ -208,8 +277,8 @@ class AdminiUi {
         let newChild = document.createElement("li");
         let newChildLink = document.createElement("a");
         newChild.append(newChildLink);
-        newChildLink.classList.add("dropdown-item");
-        newChildLink.innerHTML = link.innerHTML;
+        newChildLink.classList.add(...["dropdown-item", "no-br"]);
+        newChildLink.innerHTML = link.innerHTML.replace(/<br[^>]*>/, " ");
         newChildLink.setAttribute("href", link.dataset.bsTarget);
         if (link.classList.contains("disabled")) {
           newChildLink.classList.add("disabled");
@@ -277,6 +346,7 @@ class AdminiUi {
     this.responsive();
     this.trackTabs();
     this.responsiveTabs();
+    this.responsiveTables();
     this.dismissableAlerts();
     this.confirmable();
     this.toasts();

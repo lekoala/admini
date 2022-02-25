@@ -12,10 +12,12 @@ img:not([src]) {
 }
 
 .container-expand {
-  margin-left: $grid-gutter-width * -0.5;
-  margin-right: $grid-gutter-width * -0.5;
+  margin-left: $container-padding-x * -1;
+  margin-right: $container-padding-x * -1;
 }
 
+// Basic flex grid
+// @link https://smolcss.dev/#smol-flexbox-grid
 .flex {
   --min: min(10ch, 50%);
   --gap: #{$grid-gutter-width};
@@ -28,5 +30,14 @@ img:not([src]) {
 
   > * {
     flex: 1 1 var(--min);
+  }
+}
+
+// Simple animation for new elements
+// @link https://thinkdobecreate.com/articles/css-animating-newly-added-element/
+@keyframes show {
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }

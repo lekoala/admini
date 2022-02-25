@@ -79,6 +79,7 @@
 
   &:focus {
     outline: 0;
+    border-left-color: $sidebar-link-hover-color;
   }
 
   &:hover {
@@ -187,6 +188,7 @@
   > button,
   > div {
     max-width: 50%;
+    height: 100%;
   }
 
   div button {
@@ -211,8 +213,8 @@
     }
 
     &:focus {
-      background: $sidebar-brand-bg;
       box-shadow: none;
+      color: $white;
     }
   }
 }
