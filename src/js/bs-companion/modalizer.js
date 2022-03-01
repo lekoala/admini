@@ -21,7 +21,7 @@
  * @param {string} attr.size (none) Size of the modal (sm|md|lg)
  * @returns {bootstrap.Modal}
  */
-function openModal(attr, options = {}) {
+function modalizer(attr, options = {}) {
   // Shortcut
   if (typeof attr === "string") {
     attr = {
@@ -117,10 +117,12 @@ function openModal(attr, options = {}) {
 
   // Show animation
   if (attr.icon && attr.animated) {
-    el.querySelector(".modal-icon").classList.add("modal-icon-show");
+    el.addEventListener("shown.bs.modal", () => {
+      el.querySelector(".modal-icon").classList.add("modal-icon-show");
+    });
   }
 
   return modal;
 }
 
-export default openModal;
+export default modalizer;

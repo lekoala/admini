@@ -1,0 +1,4 @@
+// Prevent layout change due to js init
+.nav-tabs-linkable {
+  visibility: hidden;
+}

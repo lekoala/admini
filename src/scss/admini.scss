@@ -48,6 +48,12 @@
 @import "../../node_modules/bootstrap/scss/helpers";
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
+// BS Companion
+@import "bs-companion/linkable-tabs";
+@import "bs-companion/modalizer";
+@import "bs-companion/responsive-tables";
+@import "bs-companion/responsive-tabs";
+
 // Admini
 @import "mixins";
 @import "globals";
@@ -62,7 +68,6 @@
 @import "components/grid";
 @import "components/last-icon";
 @import "components/main";
-@import "components/modals";
 @import "components/scroller";
 @import "components/sidebar";
 @import "components/superfile";

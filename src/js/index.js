@@ -5,15 +5,15 @@ import Cookies from "../../node_modules/js-cookie/index";
 import BSN from "./custom-bsn.js";
 import AdminiUi from "./ui.js";
 import AdminiForms from "./forms.js";
-import toaster from "./toaster.js";
-import openModal from "./open-modal.js";
+import toaster from "./bs-companion/toaster.js";
+import modalizer from "./bs-companion/modalizer.js";
 
 // Make globally available
 // window.bootstrap = bootstrap;
 window.bootstrap = BSN;
 window.Cookies = Cookies;
 window.toaster = toaster;
-window.openModal = openModal;
+window.modalizer = modalizer;
 
 // Start
 let ui = new AdminiUi();

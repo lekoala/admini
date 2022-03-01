@@ -46,7 +46,7 @@
 	<script type="module">
 		let btn = document.getElementById("open-modal");
 		btn.addEventListener("click", (ev) => {
-			const modal = openModal({
+			const modal = modalizer({
 				body: "Hello!",
 				title: "This is a modal",
 				footer: "<a href='#'>Why do I have this issue?</a>",
@@ -66,7 +66,7 @@
 		});
 		document.querySelectorAll('.show-example-btn').forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
-				openModal({
+				modalizer({
 					body: "Hello!",
 					title: "This is a modal",
 					icon: btn.dataset.icon,
@@ -210,12 +210,12 @@
 					<hr>
 					<h2>Model icons</h2>
 
-					<table class="table" style="width:400px">
+					<table class="table" width="400">
 						<tbody>
 							<tr>
 								<td><strong>success</strong></td>
 								<td>
-									<div class="modal-icon modal-success">
+									<div class="modal-icon modal-success modal-icon-show">
 									</div>
 								</td>
 								<td><button class="show-example-btn btn btn-default" data-icon="success" aria-label="Try me! Example: success modal">Try me!</button></td>
@@ -223,7 +223,7 @@
 							<tr>
 								<td><strong>error</strong></td>
 								<td>
-									<div class="modal-icon modal-error">
+									<div class="modal-icon modal-error modal-icon-show">
 									</div>
 								</td>
 								<td><button class="show-example-btn btn btn-default" data-icon="error" aria-label="Try me! Example: error modal">Try me!</button></td>
@@ -231,7 +231,7 @@
 							<tr>
 								<td><strong>warning</strong></td>
 								<td>
-									<div class="modal-icon modal-warning">
+									<div class="modal-icon modal-warning modal-icon-show">
 									</div>
 								</td>
 								<td><button class="show-example-btn btn btn-default" data-icon="warning" aria-label="Try me! Example: warning modal">Try me!</button></td>
@@ -239,7 +239,7 @@
 							<tr>
 								<td><strong>info</strong></td>
 								<td>
-									<div class="modal-icon modal-info">
+									<div class="modal-icon modal-info modal-icon-show">
 									</div>
 								</td>
 								<td><button class="show-example-btn btn btn-default" data-icon="info" aria-label="Try me! Example: info modal">Try me!</button></td>
@@ -247,7 +247,7 @@
 							<tr>
 								<td><strong>question</strong></td>
 								<td>
-									<div class="modal-icon modal-question">
+									<div class="modal-icon modal-question modal-icon-show">
 									</div>
 								</td>
 								<td><button class="show-example-btn btn btn-default" data-icon="question" aria-label="Try me! Example: question modal">Try me!</button></td>

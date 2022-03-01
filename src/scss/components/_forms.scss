@@ -8,6 +8,9 @@ form {
     // No need for form-label
     > label {
       margin-bottom: $spacer * 0.5;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
     }
 
     // We need at least lg breakpoint because md has a sidebar

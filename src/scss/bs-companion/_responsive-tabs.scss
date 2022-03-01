@@ -1,10 +1,4 @@
-// Without this, multi line tabs look very ugly
-.nav-tabs li a {
-  height: calc(100% + 1px);
-}
-
 // Prevent layout change due to js init
-.nav-tabs-linkable,
 .nav-tabs-responsive {
   visibility: hidden;
 }
@@ -17,9 +11,4 @@
   a:not(.active) {
     display: none;
   }
-}
-
-// Invalid tabs
-.nav-link.is-invalid {
-  @include validation-error-icon();
 }

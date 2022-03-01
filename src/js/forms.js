@@ -2,7 +2,8 @@ import Superfile from "superfile";
 import Tags from "bootstrap5-tags";
 import flatpickr from "flatpickr";
 import Cleave from "cleave.js";
-import toaster from "./toaster.js";
+import toaster from "./bs-companion/toaster.js";
+import normalizeData from "./bs-companion/normalize-data.js";
 
 class AdminiForms {
   constructor() {}
@@ -25,41 +26,13 @@ class AdminiForms {
   }
 
   /**
-   *
-   * @param {string} val
-   */
-  static normalizeData(val) {
-    if (val === "true") {
-      return true;
-    }
-    if (val === "false") {
-      return false;
-    }
-    if (val === Number(val).toString()) {
-      return Number(val);
-    }
-    if (val === "" || val === "null") {
-      return null;
-    }
-    if (val.indexOf("[") === 0 || val.indexOf("{") === 0) {
-      try {
-        return JSON.parse(val.replaceAll("'", '"'));
-      } catch {
-        console.log("Failed to parse " + val);
-        return {};
-      }
-    }
-    return val;
-  }
-
-  /**
    * @param {object} object
    * @returns {object}
    */
   static parseDataset(object) {
     const attributes = {};
     Object.keys(object).forEach((key) => {
-      attributes[key] = AdminiForms.normalizeData(object[key]);
+      attributes[key] = normalizeData(object[key]);
     });
     return attributes;
   }

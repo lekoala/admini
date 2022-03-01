@@ -1,4 +1,7 @@
 import Cookies from "js-cookie";
+import responsiveTables from "./bs-companion/responsive-tables";
+import responsiveTabs from "./bs-companion/responsive-tabs";
+import linkableTabs from "./bs-companion/linkable-tabs";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -95,6 +98,7 @@ class AdminiUi {
     window.addEventListener("resize", () => {
       this.toggleMobileTooltips(window.innerWidth);
       this.toggleSidebar(window.innerWidth);
+      this.setMobileSize();
     });
   }
 
@@ -132,7 +136,7 @@ class AdminiUi {
   }
 
   /**
-   * Create test from html. To create toast from js, use bs5.toast
+   * Create test from html. To create toast from js, use toaster
    */
   toasts() {
     let list = document.querySelectorAll(".toast");
@@ -143,214 +147,27 @@ class AdminiUi {
   }
 
   /**
-   * Deep link for nav tabs
+   * @link https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
    */
-  trackTabs() {
-    // Restore state
-    let hash = document.location.hash;
-    if (hash) {
-      let parts = hash.split("__").slice(0, -1);
-      parts.push(hash);
-      parts.forEach((part) => {
-        let activeTab = document.querySelector("[data-bs-target='" + part + "']");
-        if (activeTab) {
-          if (!activeTab.classList.contains("active")) {
-            activeTab.classList.add("active");
-            document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
-          }
-          let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
-          inst.show();
-        }
-      });
-    }
-
-    document.querySelectorAll(".nav-tabs-deep").forEach((el) => {
-      // They don't have a default tab active to avoid fouc
-      let activeTab = el.querySelector(".active");
-      if (!activeTab) {
-        activeTab = el.querySelector("a:not([disabled])");
-        if (!activeTab) {
-          return;
-        }
-        activeTab.classList.add("active");
-        document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
-        let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
-      }
-      el.style.visibility = "visible";
-
-      // Track tabs clicks
-      el.addEventListener("show.bs.tab", (e) => {
-        let hash = e.target.dataset.bsTarget;
-        if (!hash) {
-          return;
-        }
-        const url = new URL(window.location);
-        url.hash = hash;
-        window.history.pushState({}, "", url);
-      });
-    });
-  }
-
-  /**
-   * Automatically hide row as needed
-   * Add a .table-responsive-hide class to th for columns that are optional
-   */
-  responsiveTables() {
-    // Make sure we have colindex to allowing mixing th and td on a row
-    document.querySelectorAll(".table-responsive-auto").forEach((el) => {
-      el.querySelectorAll("tr").forEach((row) => {
-        // Ensure we have an index (starts at 1)
-        let idx = 0;
-        row.querySelectorAll("th,td").forEach((col) => {
-          idx++;
-          if (!col.ariaColIndex) {
-            col.ariaColIndex = idx;
-          }
-        });
-      });
-
-      // Register observer to trigger responsive layout
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          const container = entry.target;
-          const table = container.querySelector("table");
-          // check inlineSize (width) or blockSize (height)
-          const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
-          const diff = table.offsetWidth - contentBoxSize.inlineSize;
-          let remaining = diff;
-          if (!table.dataset.baseWidth) {
-            table.dataset.baseWidth = table.offsetWidth;
-          }
-
-          // The table is too big
-          if (table.offsetWidth > contentBoxSize.inlineSize) {
-            table.querySelectorAll(".table-responsive-hide").forEach((col) => {
-              const colWidth = col.offsetWidth;
-              const colIdx = col.ariaColIndex;
-
-              if (remaining < 0) {
-                return;
-              }
-              col.dataset.originalWidth = colWidth;
-              // Hide all columns with this index
-              table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
-                idxCol.setAttribute("hidden", "hidden");
-              });
-              remaining -= colWidth;
-            });
-          } else {
-            // Do we have any hidden column that we can restore ?
-            table.querySelectorAll(".table-responsive-hide[hidden]").forEach((col) => {
-              const colWidth = parseInt(col.dataset.originalWidth);
-              const colIdx = col.ariaColIndex;
-
-              if (contentBoxSize.inlineSize < colWidth + parseInt(table.dataset.baseWidth)) {
-                return;
-              }
-              // Hide all columns with this index
-              table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
-                idxCol.removeAttribute("hidden");
-              });
-              remaining += colWidth;
-            });
-          }
-        }
-      });
-      resizeObserver.observe(el);
-    });
-  }
-
-  responsiveTabs() {
-    document.querySelectorAll(".nav-tabs-responsive").forEach((el) => {
-      // This only works if the nav is visible on page load
-      let totalWidth = 0;
-      el.querySelectorAll("li").forEach((tab) => {
-        totalWidth += tab.offsetWidth;
-      });
-      el.style.visibility = "visible";
-      el.dataset.tabsWidth = totalWidth;
-
-      // Create mobile menu
-      let menu = document.createElement("ul");
-      menu.classList.add("dropdown-menu");
-      el.querySelectorAll("a").forEach((link) => {
-        let newChild = document.createElement("li");
-        let newChildLink = document.createElement("a");
-        newChild.append(newChildLink);
-        newChildLink.classList.add(...["dropdown-item", "no-br"]);
-        newChildLink.innerHTML = link.innerHTML.replace(/<br[^>]*>/, " ");
-        newChildLink.setAttribute("href", link.dataset.bsTarget);
-        if (link.classList.contains("disabled")) {
-          newChildLink.classList.add("disabled");
-        }
-        // Forwards clicks to avoid binding stuff twice
-        newChildLink.addEventListener("click", (ev) => {
-          ev.preventDefault();
-          link.dispatchEvent(new Event("click"));
-        });
-        menu.append(newChild);
-      });
-      el.parentElement.append(menu);
-
-      // Register observer to trigger responsive layout
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-          const tabs = entry.target.querySelector(".nav-tabs-responsive");
-          // check inlineSize (width) or blockSize (height)
-          const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
-          const size = contentBoxSize.inlineSize - 30;
-          if (size < tabs.dataset.tabsWidth) {
-            tabs.classList.add("nav-tabs-dropdown");
-          } else if (size >= tabs.dataset.tabsWidth) {
-            tabs.classList.remove("nav-tabs-dropdown");
-            menu.style.display = "none";
-          }
-        }
-      });
-      resizeObserver.observe(el.parentElement);
-
-      // Handle responsive clicks
-      el.querySelectorAll("a.nav-link").forEach((a) => {
-        a.addEventListener("click", (ev) => {
-          if (!a.classList.contains("active")) {
-            return;
-          }
-          if (!a.parentElement.parentElement.classList.contains("nav-tabs-dropdown")) {
-            return;
-          }
-          // Hide current element
-          let hidden = menu.querySelector("a.d-none");
-          if (hidden) {
-            hidden.classList.remove("d-none");
-          }
-          let active = menu.querySelector("a[href='" + a.dataset.bsTarget + "']");
-          if (active) {
-            active.classList.add("d-none");
-          }
-
-          // Toggle menu
-          if (menu.style.display == "block") {
-            menu.style.display = "none";
-          } else {
-            menu.style.display = "block";
-            menu.style.top = a.parentElement.offsetHeight + "px";
-          }
-        });
-      });
-    });
+  setMobileSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
   init() {
+    this.setMobileSize();
     this.minimenu();
     this.tooltips();
     this.responsive();
-    this.trackTabs();
-    this.responsiveTabs();
-    this.responsiveTables();
     this.dismissableAlerts();
     this.confirmable();
     this.toasts();
     this.toggleSidebar();
+
+    // BS Companion
+    responsiveTables();
+    responsiveTabs();
+    linkableTabs();
   }
 }
 

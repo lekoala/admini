@@ -1,4 +1,9 @@
 .table {
+  &[width] {
+    width: auto;
+    max-width: 100%;
+  }
+
   tr,
   td,
   th {
@@ -38,20 +43,5 @@
   // Fixes tooltip
   > :not(caption) .tooltip {
     padding: $tooltip-arrow-height;
-  }
-}
-
-.table-responsive-auto {
-  td,
-  th {
-    white-space: nowrap;
-    vertical-align: middle;
-    text-overflow: ellipsis;
-  }
-
-  @include media-breakpoint-down(md) {
-    .btn span {
-      display: none;
-    }
   }
 }

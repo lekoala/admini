@@ -23,7 +23,7 @@
   "dependencies": {
     "bootstrap": "^5.1.3",
     "bootstrap.native": "^4.1.0",
-    "bootstrap5-tags": "^1.4.24",
+    "bootstrap5-tags": "^1.4.25",
     "cleave.js": "^1.6.0",
     "flatpickr": "^4.6.9",
     "js-cookie": "^3.0.1",

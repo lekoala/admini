@@ -1,5 +1,3 @@
-$dropdown-fast-transition: background 0.1s ease-in-out, color 0.1s ease-in-out !default;
-
 @keyframes dropdownAnimation {
   from {
     opacity: 0;
@@ -37,8 +35,6 @@ header .dropdown-menu {
 }
 
 .dropdown-item {
-  transition: $dropdown-fast-transition;
-
   .badge {
     vertical-align: text-top;
   }
