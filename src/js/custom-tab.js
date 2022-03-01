@@ -86,24 +86,21 @@ function triggerTabEnd(self) {
  * @param {Tab} self the `Tab` instance
  */
 function triggerTabShow(self) {
-  const { element, tabContent, nav } = self;
-  const { currentHeight, nextHeight } = tabPrivate.get(element);
+  const { element, nav } = self;
   const { tab } = nav && tabPrivate.get(nav);
 
-  if (tabContent && tabContent.dataset.bsAnimate) {
-    // height animation
-    if (currentHeight === nextHeight) {
-      triggerTabEnd(self);
-    } else {
-      setTimeout(() => {
-        // enables height animation
-        // @ts-ignore
-        tabContent.style.height = `${nextHeight}px`; // height animation
-        reflow(tabContent);
-        emulateTransitionEnd(tabContent, () => triggerTabEnd(self));
-      }, 50);
-    }
-  } else if (nav) Timer.clear(nav);
+  // if (tabContent && tabContent.dataset.bsAnimate) {
+  //   if (currentHeight === nextHeight) {
+  //     triggerTabEnd(self);
+  //   } else {
+  //     setTimeout(() => {
+  //       tabContent.style.height = `${nextHeight}px`; // height animation
+  //       reflow(tabContent);
+  //       emulateTransitionEnd(tabContent, () => triggerTabEnd(self));
+  //     }, 50);
+  //   }
+  // }
+  if (nav) Timer.clear(nav);
   shownTabEvent.relatedTarget = tab;
   dispatchEvent(element, shownTabEvent);
 }
@@ -115,12 +112,12 @@ function triggerTabShow(self) {
 function triggerTabHide(self) {
   const { element, content: nextContent, tabContent, nav } = self;
   const { tab, content } = nav && tabPrivate.get(nav);
-  let currentHeight = 0;
+  // let currentHeight = 0;
 
-  if (tabContent && tabContent.dataset.bsAnimate) {
-    [content, nextContent].forEach((c) => addClass(c, "overflow-hidden"));
-    currentHeight = content.scrollHeight;
-  }
+  // if (tabContent && tabContent.dataset.bsAnimate) {
+  //   [content, nextContent].forEach((c) => addClass(c, "overflow-hidden"));
+  //   currentHeight = content.scrollHeight;
+  // }
 
   // update relatedTarget and dispatch event
   showTabEvent.relatedTarget = tab;
@@ -132,16 +129,15 @@ function triggerTabHide(self) {
   removeClass(content, activeClass);
 
   if (tabContent) {
-    const nextHeight = nextContent.scrollHeight;
-    tabPrivate.set(element, { currentHeight, nextHeight });
+    // const nextHeight = nextContent.scrollHeight;
+    // tabPrivate.set(element, { currentHeight, nextHeight });
 
-    if (tabContent.dataset.bsAnimate) {
-      addClass(tabContent, collapsingClass);
-      // @ts-ignore -- height animation
-      tabContent.style.height = `${currentHeight}px`;
-      reflow(tabContent);
-      [content, nextContent].forEach((c) => removeClass(c, "overflow-hidden"));
-    }
+    // if (tabContent.dataset.bsAnimate) {
+    //   addClass(tabContent, collapsingClass);
+    //   tabContent.style.height = `${currentHeight}px`;
+    //   reflow(tabContent);
+    //   [content, nextContent].forEach((c) => removeClass(c, "overflow-hidden"));
+    // }
   }
 
   if (nextContent && hasClass(nextContent, fadeClass)) {
