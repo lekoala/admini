@@ -6,7 +6,7 @@
  * @param {string} holderSelector Selector for table holder (typically used with .table-responsive as well)
  * @param {string} hideSelector Selector for table headers that can be hidden
  */
-function responsiveTables(holderSelector = ".table-responsive-auto", hideSelector = ".table-responsive-hide") {
+export default function responsiveTables(holderSelector = ".table-responsive-auto", hideSelector = ".table-responsive-hide") {
   // Make sure we have colindex to allow mixing th and td on a row
   document.querySelectorAll(holderSelector).forEach((el) => {
     el.querySelectorAll("tr").forEach((row) => {
@@ -70,5 +70,3 @@ function responsiveTables(holderSelector = ".table-responsive-auto", hideSelecto
     resizeObserver.observe(el);
   });
 }
-
-export default responsiveTables;

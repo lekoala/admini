@@ -4,7 +4,7 @@
  * Make tab fully linkable by using hash
  * Make sure you don't set a default active tab in your html
  */
-function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
+export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
   // Restore state
   let hash = document.location.hash;
   if (hash) {
@@ -49,5 +49,3 @@ function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
     });
   });
 }
-
-export default linkableTabs;

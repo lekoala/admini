@@ -49,20 +49,49 @@
 			const modal = modalizer({
 				body: "Hello!",
 				title: "This is a modal",
-				footer: "<a href='#'>Why do I have this issue?</a>",
 				static: true,
-				showDenyButton: true,
-				showCancelButton: true,
+				showDeny: true,
+				showCancel: true,
+				showConfirm: true,
 			});
 			modal.element.addEventListener("modal.deny", (ev) => {
 				console.log("denied");
 			})
-			modal.element.addEventListener("modal.close", (ev) => {
-				console.log("closed");
+			modal.element.addEventListener("modal.confirm", (ev) => {
+				console.log("confirm");
 			})
 			modal.element.addEventListener("modal.cancel", (ev) => {
 				console.log("canceled");
 			})
+		});
+		let btn2 = document.getElementById("open-confirm");
+		btn2.addEventListener("click", (ev) => {
+			modalizerConfirm("Do you confirm this ?").then((res) => {
+				console.log("confirm", res);
+			}).catch((res) => {
+				console.log("denied", res);
+			});
+		});
+		let btn3 = document.getElementById("open-prompt");
+		btn3.addEventListener("click", (ev) => {
+			let body = "What is your name ?";
+			body += "<input type='text' class='form-control mt-2' name='your_name' placeholder='Please enter your name' />";
+			modalizerConfirm({
+				body: body,
+				icon: "question"
+			}).then((res) => {
+				// form elements are exposed as FormData inside detail
+				let name = res.detail.get("your_name");
+				setTimeout(() => {
+					modalizer({
+						body: "Hi " + escapeHTML(name) + "!",
+						icon: "success"
+					});
+				}, 200)
+				// document.querySelector('.modal-backdrop').classList.add("show");
+			}).catch((res) => {
+				console.log("denied", res);
+			});
 		});
 		document.querySelectorAll('.show-example-btn').forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
@@ -204,11 +233,19 @@
 			</header>
 			<section class="scroller">
 				<div class="container-fluid py-3">
-					<p>Here is a static modal that cannot be dismissed.</p>
+					<p>Here is a static modal that cannot be dismissed. It has a tri-state button set.</p>
 					<button class="btn btn-primary" id="open-modal">Open modal</button>
 
+					<p class="mt-3">Here is a confirm modal. It is thenable as it returns a promise.</p>
+					<button class="btn btn-primary" id="open-confirm">Open confirm</button>
+
+					<p class="mt-3">Here is a prompt modal. Its form elements are returned in the event details.</p>
+					<button class="btn btn-primary" id="open-prompt">Open prompt</button>
+
 					<hr>
-					<h2>Model icons</h2>
+					<h2>Modal icons</h2>
+
+					<p>You can disable the icon with showIcon: false</p>
 
 					<table class="table" width="400">
 						<tbody>
@@ -229,7 +266,7 @@
 								<td><button class="show-example-btn btn btn-default" data-icon="error" aria-label="Try me! Example: error modal">Try me!</button></td>
 							</tr>
 							<tr>
-								<td><strong>warning</strong></td>
+								<td><strong>warning</strong><br />(default)</td>
 								<td>
 									<div class="modal-icon modal-warning modal-icon-show">
 									</div>

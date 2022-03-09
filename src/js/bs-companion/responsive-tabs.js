@@ -4,7 +4,7 @@
  * Collapses tabs to a dropdown menu if there is not enough space on one line
  * @param {string} tabsSelector Selector for the tabs element that need to be responsive
  */
-function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
+export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
   document.querySelectorAll(tabsSelector).forEach((el) => {
     // This only works if the nav is visible on page load
     let totalWidth = 0;
@@ -83,5 +83,3 @@ function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
     });
   });
 }
-
-export default responsiveTabs;

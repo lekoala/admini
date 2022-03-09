@@ -17,7 +17,7 @@
  * @param {string} attr.buttonClassName (none) Additional classes for close button
  * @returns {bootstrap.Toast}
  */
-function toaster(attr) {
+export default function toaster(attr) {
   // Shortcut
   if (typeof attr === "string") {
     attr = {
@@ -126,5 +126,3 @@ function toaster(attr) {
   inst.show();
   return inst;
 }
-
-export default toaster;

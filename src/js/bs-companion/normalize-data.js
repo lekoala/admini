@@ -4,7 +4,7 @@
  * Similar to bootstrap 5 but also parse JSON
  * @param {string} val
  */
-function normalizeData(val) {
+export default function normalizeData(val) {
   if (val === "true") {
     return true;
   }
@@ -27,5 +27,3 @@ function normalizeData(val) {
   }
   return val;
 }
-
-export default normalizeData;

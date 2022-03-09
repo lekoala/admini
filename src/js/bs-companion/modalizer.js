@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Create a modal object. The api follows sweetalert for the most part.
+ * Create a modal object.
  *
  * @param {string} attr.body Body content. Can also be filled with html tags (eg: Hello <b>World</b>)
  * @param {string} attr.title (none) Title content. Can also be filled with html tags (eg : <h6 class="mb-0">Success</h6>)
@@ -11,17 +11,23 @@
  * @param {boolean} attr.centered (true) Centered modal
  * @param {boolean} attr.animated (true) Animated modal
  * @param {boolean} attr.fullscreen (false) Fullscreen modal
- * @param {boolean} attr.showCloseButton (false)
- * @param {boolean} attr.showCancelButton (false)
- * @param {boolean} attr.showDenyButton (false)
- * @param {string} attr.closeButtonLabel (Close)
- * @param {string} attr.confirmButtonText (Ok)
- * @param {string} attr.cancelButtonText (Cancel)
- * @param {string} attr.denyButtonText (Deny)
+ * @param {boolean} attr.showClose (true)
+ * @param {boolean} attr.showConfirm (false)
+ * @param {boolean} attr.showCancel (false)
+ * @param {boolean} attr.showDeny (false)
+ * @param {string} attr.closeLabel (Close)
+ * @param {string} attr.confirmText (v)
+ * @param {string} attr.confirmClass (success)
+ * @param {string} attr.cancelText (x)
+ * @param {string} attr.cancelClass (light)
+ * @param {string} attr.denyText (/)
+ * @param {string} attr.denyClass (danger)
  * @param {string} attr.size (none) Size of the modal (sm|md|lg)
+ * @param {string} attr.showIcon (true)
+ * @param {string} attr.icon (alert)
  * @returns {bootstrap.Modal}
  */
-function modalizer(attr, options = {}) {
+export default function modalizer(attr = {}) {
   // Shortcut
   if (typeof attr === "string") {
     attr = {
@@ -33,17 +39,23 @@ function modalizer(attr, options = {}) {
   const defaults = {
     id: "modal-" + Date.now(),
     size: "",
+    static: false,
     animated: true,
     scrollable: true,
     centered: true,
     fullscreen: false,
-    showCloseButton: false,
-    showCancelButton: false,
-    showDenyButton: false,
-    confirmButtonText: "Ok",
-    cancelButtonText: "Cancel",
-    denyButtonText: "Deny",
-    closeButtonLabel: "Close",
+    showClose: true,
+    closeLabel: "Close",
+    showConfirm: false,
+    confirmText: '<l-i name="check" size="18"></l-i>',
+    confirmClass: "success",
+    showCancel: false,
+    cancelText: '<l-i name="close" size="18"></l-i>',
+    cancelClass: "light",
+    showDeny: false,
+    denyText: '<l-i name="block" size="18"></l-i>',
+    denyClass: "danger",
+    showIcon: true,
     icon: "warning",
   };
   attr = Object.assign(defaults, attr);
@@ -54,21 +66,20 @@ function modalizer(attr, options = {}) {
   template.innerHTML = `<div class="modal${attr.scrollable ? " fade" : ""}${attr.size ? " modal-" + attr.size : ""}" id="${attr.id}"${attr.static ? staticAttr : ""} tabindex="-1" aria-hidden="true">
   <div class="modal-dialog${attr.scrollable ? " modal-dialog-scrollable" : ""}${attr.scrollable ? " modal-dialog-centered " : ""}${attr.fullscreen ? " modal-fullscreen" : ""}">
     <div class="modal-content text-center">
-      <div class="p-3 pt-4 pb-0"><div class="modal-icon modal-${attr.icon}"></div></div>
+     <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="${attr.closeLabel}"></button>
+      <div class="modal-icon-holder p-3 pt-4 pb-0"><div class="modal-icon modal-${attr.icon}"></div></div>
       <div class="modal-title d-flex p-3 pt-4 pb-0 align-items-center justify-content-center">
-        <h5 class="modal-title fs-2">${attr.title}</h4>
-        <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="${attr.closeButtonLabel}"></button>
+        <h5 class="fs-2">${attr.title}</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"><form>
         ${attr.body}
-      </div>
-      <div class="modal-actions d-flex p-3 pt-0 pb-4 align-items-center justify-content-center">
-        <button type="button" data-event="close" class="btn btn-primary mx-2">${attr.confirmButtonText}</button>
-        <button type="button" data-event="deny" class="btn btn-danger mx-2">${attr.denyButtonText}</button>
-        <button type="button" data-event="cancel" class="btn btn-secondary mx-2">${attr.cancelButtonText}</button>
-      </div>
-      <div class="modal-footer justify-content-center">
-         ${attr.footer}
+      </form></div>
+      <div class="modal-actions d-flex mt-2 justify-content-center">
+        <div class="btn-group flex-fill" style="min-height:44px">
+          <button type="button" data-event="cancel" class="btn btn-${attr.cancelClass} rounded-0">${attr.cancelText}</button>
+          <button type="button" data-event="deny" class="btn btn-${attr.denyClass} rounded-0">${attr.denyText}</button>
+          <button type="button" data-event="confirm" class="btn btn-${attr.confirmClass} rounded-0">${attr.confirmText}</button>
+        </div>
       </div>
     </div>
     </div>
@@ -79,24 +90,31 @@ function modalizer(attr, options = {}) {
   if (!attr.title) {
     el.querySelector(".modal-title").remove();
   }
-  if (!attr.showCloseButton) {
+  if (!attr.showIcon) {
+    el.querySelector(".modal-icon-holder").remove();
+  }
+  if (!attr.showClose) {
     el.querySelector(".btn-close").remove();
   }
-  if (!attr.showCancelButton) {
-    el.querySelector(".btn-secondary").remove();
+  if (!attr.showCancel) {
+    el.querySelector('[data-event="cancel"]').remove();
   }
-  if (!attr.showDenyButton) {
-    el.querySelector(".btn-danger").remove();
+  if (!attr.showDeny) {
+    el.querySelector('[data-event="deny"]').remove();
   }
-  if (!attr.footer) {
-    el.querySelector(".modal-footer").remove();
+  if (!attr.showConfirm) {
+    el.querySelector('[data-event="confirm"]').remove();
+  }
+  if (!attr.showCancel && !attr.showDeny && !attr.showConfirm) {
+    el.querySelector(".modal-actions").remove();
   }
   document.body.insertAdjacentElement("afterbegin", el);
-  let modal = new bootstrap.Modal(el, options);
+  let modal = new bootstrap.Modal(el);
   // Cleanup instead of just hiding
   el.addEventListener("hidden.bs.modal", () => {
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => bootstrap.Tooltip.getInstance(el).dispose());
-    document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => bootstrap.Popover.getInstance(el).dispose());
+    el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n).dispose());
+    el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n).dispose());
+    // @link https://github.com/thednp/bootstrap.native/issues/442
     // modal.dispose();
     el.remove();
   });
@@ -105,18 +123,23 @@ function modalizer(attr, options = {}) {
   el.querySelectorAll(".modal-actions button").forEach((btn) => {
     btn.addEventListener("click", (ev) => {
       modal.hide();
-      el.dispatchEvent(new Event("modal." + btn.dataset.event, { bubbles: true }));
+      el.dispatchEvent(
+        new CustomEvent("modal." + btn.dataset.event, {
+          detail: new FormData(el.querySelector("form")),
+          bubbles: true,
+        })
+      );
     });
   });
 
   // BSN needs explicit init
-  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el));
-  document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => bootstrap.Popover.getInstance(el) || new bootstrap.Popover(el));
+  el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n) || new bootstrap.Tooltip(n));
+  el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n) || new bootstrap.Popover(n));
 
   modal.show();
 
   // Show animation
-  if (attr.icon && attr.animated) {
+  if (attr.icon && attr.animated && attr.showIcon) {
     el.addEventListener("shown.bs.modal", () => {
       el.querySelector(".modal-icon").classList.add("modal-icon-show");
     });
@@ -124,5 +147,37 @@ function modalizer(attr, options = {}) {
 
   return modal;
 }
-
-export default modalizer;
+/**
+ * @param {object} attr
+ * @returns {Promise}
+ */
+export function modalizerConfirm(attr = {}) {
+  if (typeof attr === "string") {
+    attr = {
+      body: attr,
+    };
+  }
+  attr = Object.assign(
+    {
+      static: true,
+      showClose: false,
+      showCancel: true,
+      showConfirm: true,
+    },
+    attr
+  );
+  const modal = modalizer(attr);
+  let _resolve = null;
+  let _reject = null;
+  const promise = new Promise((resolve, reject) => {
+    _resolve = resolve;
+    _reject = reject;
+  });
+  modal.element.addEventListener("modal.confirm", (ev) => {
+    _resolve(ev);
+  });
+  modal.element.addEventListener("modal.cancel", (ev) => {
+    _reject(ev);
+  });
+  return promise;
+}
