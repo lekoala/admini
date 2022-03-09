@@ -43,6 +43,18 @@
 	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
 	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script type="module" src="js/admini.min.js"></script>
+	<script type="module">
+		let sel = document.getElementById("sidebar-selector");
+		sel.addEventListener("change", (ev) => {
+			let color = sel.selectedOptions[0].style.backgroundColor
+			if (color) {
+				document.querySelector('.sidebar-brand').style.backgroundColor = color;
+			}
+			else {
+				document.querySelector('.sidebar-brand').style.backgroundColor = "inherit";
+			}
+		});
+	</script>
 </head>
 
 <!-- minimenu class should be applied on render -->
@@ -126,7 +138,7 @@
 							<l-i name="view_list"></l-i> <span>Tables</span>
 						</a>
 					</li>
-					
+
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="modals.html">
 							<l-i name="panorama_wide_angle"></l-i> <span>Modals</span>
@@ -311,7 +323,7 @@
 								</div>
 							</div>
 							<div class="card card-default">
-								
+
 							</div>
 						</div>
 						<div class="col-lg-3">
