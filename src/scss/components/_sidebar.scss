@@ -142,18 +142,6 @@
   border-bottom: 1px solid $sidebar-cta-bg;
   padding: ($sidebar-cta-padding * 0.5) $sidebar-cta-padding;
 
-  &.sidebar-profile-mini {
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      text-decoration: none;
-      &:hover {
-        color: $white;
-      }
-    }
-  }
-
   > button {
     display: block;
     padding: 0;
@@ -178,35 +166,35 @@
   }
 }
 
-.sidebar-footer {
-  border-top: 1px solid $sidebar-cta-bg;
+.sidebar-footer,
+.sidebar-profile-mini {
   display: flex;
   flex: 0 0 $sidebar-footer-height;
   align-items: center;
   justify-content: space-between;
 
-  > button,
-  > div {
-    max-width: 50%;
-    height: 100%;
+  l-i {
+    --size: 20px;
   }
 
-  div button {
+  l-i + span {
+    margin-left: $spacer * 0.5;
+  }
+
+  > .btn,
+  > div {
+    height: 100%;
+  }
+  div .btn {
     max-width: 100%;
   }
 
-  button {
+  .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-
     height: 100%;
     border-radius: 0;
-
-    l-i {
-      --size: 20px;
-    }
 
     &:hover {
       color: $primary;
@@ -217,6 +205,19 @@
       color: $white;
     }
   }
+}
+
+.sidebar-profile-mini {
+  .btn {
+    color: $primary;
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.sidebar-footer {
+  border-top: 1px solid $sidebar-cta-bg;
 }
 
 // Sidebar nav header
@@ -321,14 +322,9 @@
   .sidebar-profile {
     padding: ($sidebar-cta-padding * 0.5);
 
-    &.sidebar-profile-mini {
-      justify-content: center;
-      .sidebar-profile-name {
-        display: none;
-      }
-      .sidebar-profile-icon l-i {
-        --size: 24px;
-      }
+    .sidebar-profile-name,
+    .sidebar-profile-subtitle {
+      display: none;
     }
 
     > button {
@@ -344,9 +340,14 @@
     .dropdown-menu {
       margin-top: $spacer * -3.5;
     }
+  }
 
-    .sidebar-profile-name,
-    .sidebar-profile-subtitle {
+  .sidebar-footer,
+  .sidebar-profile-mini {
+    .btn {
+      max-width: 50%;
+    }
+    .btn span {
       display: none;
     }
   }
