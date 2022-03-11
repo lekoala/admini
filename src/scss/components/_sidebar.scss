@@ -160,7 +160,7 @@
   .dropdown-menu {
     // Align with actual trigger, not with the icon
     left: calc($sidebar-cta-padding + ($spacer * 0.5) + 44px);
-    margin-top: $spacer * -2;
+    top: ($sidebar-cta-padding * 0.5) + 1.5rem;
   }
 
   .sidebar-profile-name {
@@ -301,7 +301,8 @@
   .sidebar-cta {
     padding: 0.5rem;
 
-    &.dropdown {
+    &.dropdown,
+    &.dropup {
       position: inherit;
     }
 
@@ -340,7 +341,7 @@
     }
 
     .dropdown-menu {
-      margin-top: $spacer * -3.5;
+      top: ($sidebar-cta-padding * 0.5);
     }
   }
 

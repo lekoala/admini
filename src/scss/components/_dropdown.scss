@@ -9,14 +9,18 @@
   }
 }
 
+// @link https://github.com/twbs/bootstrap/issues/33185
 @media (prefers-reduced-motion: no-preference) {
   // Animate drop appearance
-  .dropdown .dropdown-menu.show {
-    animation-name: dropdownAnimation;
-    animation-duration: 0.25s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
+  .dropdown,
+  .dropup {
+    .dropdown-menu.show {
+      animation-name: dropdownAnimation;
+      animation-duration: 0.25s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
   }
 }
 
@@ -26,12 +30,21 @@ header .dropdown-menu {
 }
 
 // Restyle the caret icon
-.dropdown-toggle:after {
-  border: solid;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 2px;
-  transform: rotate(45deg);
+.dropdown,
+.dropup {
+  .dropdown-toggle:after {
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+    transform: rotate(45deg);
+  }
+}
+.dropup {
+  .dropdown-toggle:after {
+    vertical-align: middle;
+    transform: rotate(225deg);
+  }
 }
 
 .dropdown-item {

@@ -111,25 +111,33 @@ export default function modalizer(attr = {}) {
   document.body.insertAdjacentElement("afterbegin", el);
   let modal = new bootstrap.Modal(el);
   // Cleanup instead of just hiding
-  el.addEventListener("hidden.bs.modal", () => {
-    el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n).dispose());
-    el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n).dispose());
-    // @link https://github.com/thednp/bootstrap.native/issues/442
-    // modal.dispose();
-    el.remove();
-  });
+  el.addEventListener(
+    "hidden.bs.modal",
+    () => {
+      el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n).dispose());
+      el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n).dispose());
+      modal.dispose();
+      el.remove();
+    },
+    { once: true }
+  );
 
   // Trigger hide
   el.querySelectorAll(".modal-actions button").forEach((btn) => {
-    btn.addEventListener("click", (ev) => {
-      modal.hide();
-      el.dispatchEvent(
-        new CustomEvent("modal." + btn.dataset.event, {
-          detail: new FormData(el.querySelector("form")),
-          bubbles: true,
-        })
-      );
-    });
+    btn.addEventListener(
+      "click",
+      (ev) => {
+        modal.hide();
+        // Attach form data to the event
+        el.dispatchEvent(
+          new CustomEvent("modal." + btn.dataset.event, {
+            detail: new FormData(el.querySelector("form")),
+            bubbles: true,
+          })
+        );
+      },
+      { once: true }
+    );
   });
 
   // BSN needs explicit init
@@ -140,9 +148,7 @@ export default function modalizer(attr = {}) {
 
   // Show animation
   if (attr.icon && attr.animated && attr.showIcon) {
-    el.addEventListener("shown.bs.modal", () => {
-      el.querySelector(".modal-icon").classList.add("modal-icon-show");
-    });
+    el.addEventListener("shown.bs.modal", () => el.querySelector(".modal-icon").classList.add("modal-icon-show"), { once: true });
   }
 
   return modal;
@@ -173,11 +179,9 @@ export function modalizerConfirm(attr = {}) {
     _resolve = resolve;
     _reject = reject;
   });
-  modal.element.addEventListener("modal.confirm", (ev) => {
-    _resolve(ev);
-  });
-  modal.element.addEventListener("modal.cancel", (ev) => {
-    _reject(ev);
-  });
+  // Bootstrap 5 use _element and BSN use element
+  const element = modal.element || modal._element;
+  element.addEventListener("modal.confirm", (ev) => _resolve(ev), { once: true });
+  element.addEventListener("modal.cancel", (ev) => _reject(ev), { once: true });
   return promise;
 }

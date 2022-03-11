@@ -72,19 +72,21 @@ $enable-negative-margins: true !default;
 // Transitions
 $transition-base: all 0.35s ease-in-out !default;
 
-// Theme colors, based on https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+// Theme colors, based on 
+// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+// https://www.opensourcecolorsystem.design/palettes
 // It's better that it goes against a white color, check with https://contrastchecker.com/
 $blue: #007bc2 !default;
-$red: #e32b24 !default;
-$orange: #cd4d00 !default;
-$green: #128818 !default;
-$cyan: #12808b !default;
+$red: #e8142a !default;
+$orange: #fa5c00 !default;
+$green: #0c823c !default;
+$cyan: #019ad8 !default;
 // Other colors
-$yellow: #ffd600 !default;
-$teal: #00bfa5 !default;
-$indigo: #1c1d1f !default;
-$purple: #6200ea !default;
-$pink: #c51162 !default;
+$yellow: #FFD600 !default;
+$teal: #059183 !default;
+$indigo: #2a1770 !default;
+$purple: #9f1ff3 !default;
+$pink: #bd0a78 !default;
 
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
@@ -313,4 +315,4 @@ $modal-xl: 1140px !default;
 $modal-lg: 900px !default;
 $modal-md: 600px !default;
 $modal-sm: 400px !default;
-$modal-transition: transform 0.25s ease-out !default;
+$modal-transition: transform 0.3s ease-out !default;

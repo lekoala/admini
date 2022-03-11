@@ -30,7 +30,7 @@ const componentsList = {
   Button,
   //   Carousel,
   Collapse,
-  Dropdown,
+  // Dropdown,
   Modal,
   Offcanvas,
   Popover,
@@ -41,7 +41,7 @@ const componentsList = {
 };
 
 // We initialize ourselves
-const ignoreList = ["Tooltip"];
+const ignoreList = ["Tooltip", "Dropdown"];
 
 /**
  * Initialize all matched `Element`s for one component.

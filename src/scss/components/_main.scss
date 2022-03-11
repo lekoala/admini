@@ -162,7 +162,8 @@
     }
   }
   // should be the same as btn-group
-  .dropdown {
+  .dropdown,
+  .dropup {
     display: inline-flex;
     vertical-align: middle;
   }

@@ -85,7 +85,7 @@
 				setTimeout(() => {
 					modalizer({
 						body: "Hi " + escapeHTML(name) + "!",
-						icon: "success"
+						icon: "success",
 					});
 				}, 200)
 				// document.querySelector('.modal-backdrop').classList.add("show");
@@ -241,6 +241,9 @@
 
 					<p class="mt-3">Here is a prompt modal. Its form elements are returned in the event details.</p>
 					<button class="btn btn-primary" id="open-prompt">Open prompt</button>
+
+					<p class="mt-3">A built in data confirm thing</p>
+					<a href="https://www.google.com" data-confirm="Do you confirm you want to go to google ?" class="btn btn-primary">Confirm btn</a>
 
 					<hr>
 					<h2>Modal icons</h2>

@@ -1,0 +1,73 @@
+@keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes dropupAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.dropdown-menu {
+  --dropdown-offset: -2px;
+  position: absolute;
+  opacity: 0;
+  transition: 0.35s ease-out;
+
+  &.dropdown-menu-end {
+    right: 0;
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-start {
+      right: auto;
+      left: 0;
+    }
+    .dropdown-menu#{$infix}-end {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+.dropdown .dropdown-menu:not(.show) {
+  top: calc(100% + var(--dropdown-offset));
+}
+.dropup .dropdown-menu:not(.show) {
+  bottom: calc(100% + var(--dropdown-offset));
+}
+
+// Show on focus
+[data-bs-toggle="dropdown"] {
+  &:focus + .dropdown-menu {
+    outline: none;
+    opacity: 1;
+    display: block;
+
+    animation-name: dropdownAnimation;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
+}
+.dropup [data-bs-toggle="dropdown"] {
+  &:focus + .dropdown-menu {
+    animation-name: dropupAnimation;
+  }
+}

@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import responsiveTables from "./bs-companion/responsive-tables";
 import responsiveTabs from "./bs-companion/responsive-tabs";
 import linkableTabs from "./bs-companion/linkable-tabs";
+import { modalizerConfirm } from "./bs-companion/modalizer";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -43,6 +44,9 @@ class AdminiUi {
    * Enable all tooltips by default
    */
   tooltips() {
+    if (!bootstrap.Tooltip) {
+      return;
+    }
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
       if (!el.hasAttribute("title")) {
         el.setAttribute("title", el.innerHTML);
@@ -57,6 +61,9 @@ class AdminiUi {
    * @param {int} w
    */
   toggleMobileTooltips(w) {
+    if (!bootstrap.Tooltip) {
+      return;
+    }
     document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
       let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
       // On large screen, display the badge
@@ -115,23 +122,14 @@ class AdminiUi {
       if (dismissed.includes(el.getAttribute("id"))) {
         el.style.display = "none";
       }
-      el.addEventListener("closed.bs.alert", () => {
-        dismissed.push(el.getAttribute("id"));
-        Cookies.set("dismissed_alerts", dismissed);
-      });
-    });
-  }
-
-  /**
-   * Dead simple confirm
-   */
-  confirmable() {
-    document.querySelectorAll("button[data-confirm]").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        if (!confirm(el.dataset.confirm)) {
-          e.preventDefault();
-        }
-      });
+      el.addEventListener(
+        "closed.bs.alert",
+        () => {
+          dismissed.push(el.getAttribute("id"));
+          Cookies.set("dismissed_alerts", dismissed);
+        },
+        { once: true }
+      );
     });
   }
 
@@ -154,15 +152,32 @@ class AdminiUi {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
+  /**
+   * Blur if already focused
+   */
+  cssDropdowns() {
+    document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach((el) => {
+      el.addEventListener("click", (e) => {
+        el.classList.toggle("dropdown-focus");
+        if (!el.classList.contains("dropdown-focus")) {
+          document.activeElement.blur();
+        }
+      });
+      el.addEventListener("blur", (e) => {
+        el.classList.remove("dropdown-focus");
+      });
+    });
+  }
+
   init() {
     this.setMobileSize();
     this.minimenu();
     this.tooltips();
     this.responsive();
     this.dismissableAlerts();
-    this.confirmable();
     this.toasts();
     this.toggleSidebar();
+    this.cssDropdowns();
 
     // BS Companion
     responsiveTables();
