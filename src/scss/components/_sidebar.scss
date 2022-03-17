@@ -240,11 +240,13 @@
 
 // Sidebar bottom (thanks to sidebar-content being flexed)
 .sidebar-cta {
+  // Hide dropdown toggle if not on minimenu
   .dropdown-toggle {
     display: none;
     background: $sidebar-cta-bg;
     color: $sidebar-cta-color;
   }
+  // Show the content of the dropdown element
   .dropdown-menu {
     display: block;
     position: inherit;
@@ -309,16 +311,20 @@
     .dropdown-toggle {
       display: block;
     }
+    // The element is absolutely positioned on the page because we removed the position relative
+    // This is required to make the element go out of the parent overflow:scroll
     .dropdown-menu {
       display: none;
-      top: auto !important;
-      left: $sidebar-compact-width + 2px !important;
-      bottom: $sidebar-cta-padding !important;
-
-      &.show {
-        display: block;
-        position: absolute;
-      }
+      left: $sidebar-compact-width + 2px;
+      bottom: $sidebar-footer-height;
+    }
+    .dropdown-toggle:focus + .dropdown-menu,
+    .dropdown-menu.show {
+      display: block;
+      position: absolute;
+    }
+    .sidebar-cta-content {
+      margin: 0;
     }
   }
 

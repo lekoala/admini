@@ -44,6 +44,9 @@
   touch-action: manipulation;
   -webkit-box-shadow: 0 3px 13px rgba(0, 0, 0, 0.08);
   box-shadow: 0 3px 13px rgba(0, 0, 0, 0.08);
+  svg {
+    vertical-align: baseline;
+  }
   .hasWeeks {
     .dayContainer {
       border-bottom: 0;

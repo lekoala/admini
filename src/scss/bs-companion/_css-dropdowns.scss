@@ -20,10 +20,7 @@
 }
 
 .dropdown-menu {
-  --dropdown-offset: -2px;
-  position: absolute;
-  opacity: 0;
-  transition: 0.35s ease-out;
+  --dropdown-offset: 2px;
 
   &.dropdown-menu-end {
     right: 0;
@@ -45,9 +42,10 @@
   }
 }
 
-.dropdown .dropdown-menu:not(.show) {
-  top: calc(100% + var(--dropdown-offset));
-}
+// This is not really necessary
+// .dropdown .dropdown-menu:not(.show) {
+//   top: calc(100% + var(--dropdown-offset));
+// }
 .dropup .dropdown-menu:not(.show) {
   bottom: calc(100% + var(--dropdown-offset));
 }

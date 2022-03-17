@@ -44,14 +44,17 @@ class AdminiUi {
    * Enable all tooltips by default
    */
   tooltips() {
-    if (!bootstrap.Tooltip) {
-      return;
-    }
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
       if (!el.hasAttribute("title")) {
         el.setAttribute("title", el.innerHTML);
       }
-      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+      if (bootstrap.Tooltip) {
+        let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+      } else {
+        // rely on css tooltips
+        el.dataset.title = el.getAttribute("title");
+        el.removeAttribute("title");
+      }
     });
     this.toggleMobileTooltips(window.innerWidth);
   }
@@ -152,23 +155,6 @@ class AdminiUi {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
-  /**
-   * Blur if already focused
-   */
-  cssDropdowns() {
-    document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach((el) => {
-      el.addEventListener("click", (e) => {
-        el.classList.toggle("dropdown-focus");
-        if (!el.classList.contains("dropdown-focus")) {
-          document.activeElement.blur();
-        }
-      });
-      el.addEventListener("blur", (e) => {
-        el.classList.remove("dropdown-focus");
-      });
-    });
-  }
-
   init() {
     this.setMobileSize();
     this.minimenu();
@@ -177,7 +163,6 @@ class AdminiUi {
     this.dismissableAlerts();
     this.toasts();
     this.toggleSidebar();
-    this.cssDropdowns();
 
     // BS Companion
     responsiveTables();

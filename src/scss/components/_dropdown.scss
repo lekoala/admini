@@ -8,6 +8,16 @@
     transform: translate(0);
   }
 }
+@keyframes dropupAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
 
 // @link https://github.com/twbs/bootstrap/issues/33185
 @media (prefers-reduced-motion: no-preference) {
@@ -20,6 +30,11 @@
       animation-iteration-count: 1;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
+    }
+  }
+  .dropup {
+    .dropdown-menu.show {
+      animation-name: dropupAnimation;
     }
   }
 }

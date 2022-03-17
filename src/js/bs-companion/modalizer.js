@@ -63,10 +63,16 @@ export default function modalizer(attr = {}) {
   // Build template
   let staticAttr = ` data-bs-backdrop="static" data-bs-keyboard="false"`;
   let template = document.createElement("template");
-  template.innerHTML = `<div class="modal${attr.scrollable ? " fade" : ""}${attr.size ? " modal-" + attr.size : ""}" id="${attr.id}"${attr.static ? staticAttr : ""} tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog${attr.scrollable ? " modal-dialog-scrollable" : ""}${attr.scrollable ? " modal-dialog-centered " : ""}${attr.fullscreen ? " modal-fullscreen" : ""}">
+  template.innerHTML = `<div class="modal${attr.scrollable ? " fade" : ""}${attr.size ? " modal-" + attr.size : ""}" id="${attr.id}"${
+    attr.static ? staticAttr : ""
+  } tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog${attr.scrollable ? " modal-dialog-scrollable" : ""}${attr.scrollable ? " modal-dialog-centered " : ""}${
+    attr.fullscreen ? " modal-fullscreen" : ""
+  }">
     <div class="modal-content text-center">
-     <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="${attr.closeLabel}"></button>
+     <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="${
+       attr.closeLabel
+     }"></button>
       <div class="modal-icon-holder p-3 pt-4 pb-0"><div class="modal-icon modal-${attr.icon}"></div></div>
       <div class="modal-title d-flex p-3 pt-4 pb-0 align-items-center justify-content-center">
         <h5 class="fs-2">${attr.title}</h4>
@@ -155,9 +161,11 @@ export default function modalizer(attr = {}) {
 }
 /**
  * @param {object} attr
- * @returns {Promise}
+ * @param {function(ev)} onResolve
+ * @param {function(ev)} onReject
+ * @returns {bootstrap.Modal}
  */
-export function modalizerConfirm(attr = {}) {
+export function modalizerConfirm(attr = {}, onResolve = null, onReject = null) {
   if (typeof attr === "string") {
     attr = {
       body: attr,
@@ -173,15 +181,13 @@ export function modalizerConfirm(attr = {}) {
     attr
   );
   const modal = modalizer(attr);
-  let _resolve = null;
-  let _reject = null;
-  const promise = new Promise((resolve, reject) => {
-    _resolve = resolve;
-    _reject = reject;
-  });
   // Bootstrap 5 use _element and BSN use element
   const element = modal.element || modal._element;
-  element.addEventListener("modal.confirm", (ev) => _resolve(ev), { once: true });
-  element.addEventListener("modal.cancel", (ev) => _reject(ev), { once: true });
-  return promise;
+  if (onResolve) {
+    element.addEventListener("modal.confirm", (ev) => onResolve(ev), { once: true });
+  }
+  if (onReject) {
+    element.addEventListener("modal.cancel", (ev) => onReject(ev), { once: true });
+  }
+  return modal;
 }
