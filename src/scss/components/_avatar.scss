@@ -7,15 +7,22 @@
   min-height: var(--avatar-size);
   line-height: var(--avatar-size);
   border-radius: var(--avatar-size);
-  font-size: calc(var(--avatar-size) / 2.5);
+  font-size: calc(var(--avatar-size) / 2.8);
   background: $gray-200;
   position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  letter-spacing: -1px;
 
   l-i {
     --size: calc(var(--avatar-size) / 2);
+  }
+  > svg {
+    width: calc(var(--avatar-size) / 2);
+    height: calc(var(--avatar-size) / 2);
+    fill: currentColor;
   }
 
   &:hover {
