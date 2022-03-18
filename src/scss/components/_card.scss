@@ -15,9 +15,13 @@
       min-height: 154px;
     }
   }
+  &.card-double {
+    min-height: 154px;
+    height: calc((154px * 2) + $grid-gutter-width);
+  }
   &.card-full {
     min-height: 154px;
-    height: calc(100% - ($grid-gutter-width * 2));
+    height: calc(100% - ($grid-gutter-width));
   }
 
   .card-img-svg {
@@ -41,6 +45,26 @@
 
     l-i {
       --size: 18px;
+    }
+  }
+
+  // Top right actions
+  .cards-actions {
+    position: absolute;
+    right: $spacer;
+    top: 0;
+
+    .btn {
+      border-radius: 0;
+    }
+    .btn-group > *:first-child {
+      border-bottom-left-radius: $card-border-radius;
+    }
+    .btn-group > .btn:last-child {
+      border-bottom-right-radius: $card-border-radius;
+    }
+    .btn-group > .dropdown:last-child .btn {
+      border-bottom-right-radius: $card-border-radius;
     }
   }
 

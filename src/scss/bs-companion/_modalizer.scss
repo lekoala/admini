@@ -5,16 +5,16 @@ $modal-icon-font-family: inherit !default;
 $modal-icon-font-size: $modal-icon-size * 0.6 !default;
 $modal-icon-border-size: $modal-icon-size * 0.075 !default;
 $modal-icon-border-color: #000 !default;
-$modal-success: #a5dc86 !default;
-$modal-success-border: rgba($modal-success, 0.3) !default;
-$modal-error: #f27474 !default;
-$modal-error-border: rgba($modal-error, 0.3) !default;
-$modal-warning: #f8bb86 !default;
-$modal-warning-border: rgba($modal-warning, 0.3) !default;
-$modal-info: #3fc3ee !default;
-$modal-info-border: rgba($modal-info, 0.3) !default;
-$modal-question: #87adbd !default;
-$modal-question-border: rgba($modal-question, 0.3) !default;
+$modal-success: $green-500 !default;
+$modal-success-border: $green-100 !default;
+$modal-error: $red-500 !default;
+$modal-error-border: $red-100 !default;
+$modal-warning: $orange-500 !default;
+$modal-warning-border: $orange-100 !default;
+$modal-info: $cyan-500 !default;
+$modal-info-border: $cyan-100 !default;
+$modal-question: $teal-500 !default;
+$modal-question-border: $teal-100 !default;
 $modal-animation-delay: 0.5s !default;
 
 // @link https://www.potlabicons.com/

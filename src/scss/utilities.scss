@@ -39,6 +39,13 @@ $utilities: map-merge(
         100: 100vh,
       ),
     ),
+    "max-width-px": (
+      property: max-width,
+      class: mwp,
+      values: (
+        480: 480px,
+      ),
+    ),
     // We use our own classes
     "background": null,
   )

@@ -318,7 +318,7 @@
       left: $sidebar-compact-width + 2px;
       bottom: $sidebar-footer-height;
     }
-    .dropdown-toggle:focus + .dropdown-menu,
+    // .dropdown-toggle:focus + .dropdown-menu,
     .dropdown-menu.show {
       display: block;
       position: absolute;

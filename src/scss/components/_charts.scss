@@ -1,0 +1,20 @@
+// Don't forget to set maintainAspectRatio to false
+// @link https://www.chartjs.org/docs/latest/configuration/responsive.html
+
+// One row
+.chart-sm {
+  height: 90px;
+  max-height: 90px;
+}
+
+// Two rows
+.chart-md {
+  height: 270px;
+  max-height: 270px;
+}
+
+// Three rows
+.chart-lg {
+  height: 430px;
+  max-height: 430px;
+}

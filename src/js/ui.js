@@ -155,6 +155,21 @@ class AdminiUi {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
+  simpleDropdowns() {
+    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach((el) => {
+      const menu = el.parentElement.querySelector(".dropdown-menu");
+      el.addEventListener("click", (e) => {
+        menu.classList.toggle("show");
+        if (!menu.classList.contains("show")) {
+          document.activeElement.blur();
+        }
+      });
+      el.addEventListener("blur", (e) => {
+        menu.classList.remove("show");
+      });
+    });
+  }
+
   init() {
     this.setMobileSize();
     this.minimenu();
@@ -163,6 +178,7 @@ class AdminiUi {
     this.dismissableAlerts();
     this.toasts();
     this.toggleSidebar();
+    this.simpleDropdowns();
 
     // BS Companion
     responsiveTables();

@@ -10,8 +10,6 @@
 
 // Avatar compat
 .avatar {
-  font-size: 12px;
-
   .superfile-clear {
     position: absolute;
     top: 0px;
@@ -21,6 +19,7 @@
     border-radius: 24px;
     z-index: 2;
     background-color: $light;
+    font-size: 12px;
   }
   input {
     display: none;

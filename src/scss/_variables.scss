@@ -1,7 +1,8 @@
 @use "sass:color";
 
 // Fonts
-$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-bold: 600 !default;
@@ -72,44 +73,156 @@ $enable-negative-margins: true !default;
 // Transitions
 $transition-base: all 0.35s ease-in-out !default;
 
-// Theme colors, based on 
-// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-// https://www.opensourcecolorsystem.design/palettes
-// It's better that it goes against a white color, check with https://contrastchecker.com/
-$blue: #007bc2 !default;
-$red: #e8142a !default;
-$orange: #fa5c00 !default;
-$green: #0c823c !default;
-$cyan: #019ad8 !default;
-// Other colors
-$yellow: #FFD600 !default;
-$teal: #059183 !default;
-$indigo: #2a1770 !default;
-$purple: #9f1ff3 !default;
-$pink: #bd0a78 !default;
+// Theme colors, based on
+// Color palette: https://accessiblepalette.com/?lightness=98.2,93.9,85,76.2,67.4,59,48,40.2,31.8,24.9&e11629=1,0&f65b01=1,0&f9d103=1,0&218246=1,0&00c2c2=1,0&669999=1,0&0077bc=0,0&bed0ed=1,0&2A1770=1,0&AF34FE=1,0&DF2F9B=1,0&e0e0e0=1,0
+// Gray palette: https://accessiblepalette.com/?lightness=98.2,97.8,92.9,89,83.8,72.4,50,33,23,13.5&e11629=1,0&f65b01=1,0&f9d103=1,0&218246=1,0&00c2c2=1,0&669999=1,0&0077bc=0,0&bed0ed=1,0&2A1770=1,0&AF34FE=1,0&DF2F9B=1,0&6c757d=1,0
+$blue: #0077bc !default;
+$red: #e21e2b !default;
+$orange: #f65b01 !default;
+$green: #228246 !default;
+$teal: #527979 !default;
+$cyan: #1d7e7e !default;
+
+// Other colors, not used in admini
+$yellow: #f9d10c !default;
+$indigo: #695297 !default;
+$purple: #a633f1 !default;
+$pink: #cc2e8e !default;
 
 $white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
+$gray-100: #f8f9f9 !default;
+$gray-200: #e9ebec !default;
+$gray-300: #dee0e2 !default;
+$gray-400: #ced1d4 !default;
+$gray-500: #6f7880 !default;
 $gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
+$gray-700: #494e53 !default;
+$gray-800: #34373b !default;
+$gray-900: #212325 !default;
 $black: #000 !default;
 
 $primary: $blue !default;
 $primary-hs: color.hue($blue), color.saturation($blue) !default;
 $primary-l: color.lightness($blue) !default;
-$secondary: #5a6169 !default;
+$secondary: #6a7380 !default;
 $success: $green !default;
 $info: $cyan !default;
 $warning: $orange !default;
 $danger: $red !default;
 $light: #e9ecef !default;
 $dark: #212529 !default;
+
+$blue-50: #f7fafd !default;
+$blue-100: #e2f0f7 !default;
+$blue-200: #b6d9ee !default;
+$blue-300: #8bc3e3 !default;
+$blue-400: #60add9 !default;
+$blue-500: #3496ce !default;
+$blue-600: $blue !default;
+$blue-700: #00639c !default;
+$blue-800: #004f7c !default;
+$blue-900: #003e62 !default;
+
+$red-50: #fff8f7 !default;
+$red-100: #ffe9e5 !default;
+$red-200: #ffc7be !default;
+$red-300: #ffa497 !default;
+$red-400: #fd7e71 !default;
+$red-500: #f5584f !default;
+$red-600: $red !default;
+$red-700: #ba1c24 !default;
+$red-800: #911d1e !default;
+$red-900: #711b19 !default;
+
+$orange-50: #fff9f5 !default;
+$orange-100: #ffe9dd !default;
+$orange-200: #ffc9ab !default;
+$orange-300: #ffa779 !default;
+$orange-400: #ff8042 !default;
+$orange-500: $orange !default;
+$orange-600: #c44b0b !default;
+$orange-700: #a2400e !default;
+$orange-800: #7f340f !default;
+$orange-900: #632a0f !default;
+
+$green-50: #f8fbf8 !default;
+$green-100: #e6f0e8 !default;
+$green-200: #c2dbc7 !default;
+$green-300: #9ec5a7 !default;
+$green-400: #7bb087 !default;
+$green-500: #589c6b !default;
+$green-600: $green !default;
+$green-700: #206c3b !default;
+$green-800: #1e5530 !default;
+$green-900: #1b4327 !default;
+
+$teal-50: #f8fafa !default;
+$teal-100: #e7efef !default;
+$teal-200: #c5d8d8 !default;
+$teal-300: #a4c2c1 !default;
+$teal-400: #83acac !default;
+$teal-500: #659797 !default;
+$teal-600: $teal !default;
+$teal-700: #456464 !default;
+$teal-800: #374f4f !default;
+$teal-900: #2d3e3e !default;
+
+$cyan-50: #f4fbfb !default;
+$cyan-100: #d9f3f2 !default;
+$cyan-200: #a0e0df !default;
+$cyan-300: #5acdcc !default;
+$cyan-400: #0bb7b7 !default;
+$cyan-500: $cyan !default;
+$cyan-600: #1d7e7e !default;
+$cyan-700: #1e6969 !default;
+$cyan-800: #1d5352 !default;
+$cyan-900: #1a4141 !default;
+
+// not used
+
+$yellow-50: #fffae9 !default;
+$yellow-100: #ffedb2 !default;
+$yellow-200: $yellow !default;
+$yellow-300: #ddb90f !default;
+$yellow-400: #c1a214 !default;
+$yellow-500: #a78c17 !default;
+$yellow-600: #867018 !default;
+$yellow-700: #6f5d17 !default;
+$yellow-800: #584a16 !default;
+$yellow-900: #453a14 !default;
+
+$indigo-50: #faf9fc !default;
+$indigo-100: #efecf4 !default;
+$indigo-200: #d9d1e5 !default;
+$indigo-300: #c3b7d5 !default;
+$indigo-400: #ad9dc6 !default;
+$indigo-500: #9885b7 !default;
+$indigo-600: #7d67a5 !default;
+$indigo-700: $indigo !default;
+$indigo-800: #543d89 !default;
+$indigo-900: #422b7d !default;
+
+$purple-50: #fdf8ff !default;
+$purple-100: #f8e8ff !default;
+$purple-200: #edc7ff !default;
+$purple-300: #e0a6ff !default;
+$purple-400: #d283ff !default;
+$purple-500: #c260ff !default;
+$purple-600: $purple !default;
+$purple-700: #8a2ec5 !default;
+$purple-800: #6c2899 !default;
+$purple-900: #552275 !default;
+
+$pink-50: #fff8fb !default;
+$pink-100: #fee8f2 !default;
+$pink-200: #fbc6df !default;
+$pink-300: #f6a3cd !default;
+$pink-400: #ef7fba !default;
+$pink-500: #e759a9 !default;
+$pink-600: $pink !default;
+$pink-700: #a82b76 !default;
+$pink-800: #83265c !default;
+$pink-900: #662148 !default;
 
 $theme-colors: (
   "primary": $primary,
