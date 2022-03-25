@@ -17,27 +17,29 @@ class AdminiUi {
    * We store the state in a cookie so that user preference is preserved
    */
   minimenu() {
-    const el = document.querySelector("#js-sidebar-toggle");
-    el.addEventListener("click", (ev) => {
-      ev.preventDefault();
-
-      document.body.classList.toggle(MINIMENU);
-      if (document.body.classList.contains(MINIMENU)) {
-        Cookies.set(MINIMENU, 1);
-      } else {
-        Cookies.remove(MINIMENU);
-        const cta = document.querySelector(".sidebar-cta-content");
-        if (cta) {
-          cta.style.cssText = "";
-        }
-      }
-      document.activeElement.blur();
-      this.toggleMobileTooltips(window.innerWidth);
-    });
     // This should be done by the serverside to avoid layout shift on load
     if (Cookies.get(MINIMENU) && !document.body.classList.contains(MINIMENU)) {
       document.body.classList.add(MINIMENU);
     }
+
+    document.querySelectorAll(".js-sidebar-toggle").forEach((el) => {
+      el.addEventListener("click", (ev) => {
+        ev.preventDefault();
+
+        document.body.classList.toggle(MINIMENU);
+        if (document.body.classList.contains(MINIMENU)) {
+          Cookies.set(MINIMENU, 1);
+        } else {
+          Cookies.remove(MINIMENU);
+          const cta = document.querySelector(".sidebar-cta-content");
+          if (cta) {
+            cta.style.cssText = "";
+          }
+        }
+        document.activeElement.blur();
+        this.toggleMobileTooltips(window.innerWidth);
+      });
+    });
   }
 
   /**
