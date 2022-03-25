@@ -178,25 +178,27 @@
   l-i {
     --size: 20px;
   }
-
   l-i + span {
     margin-left: $spacer * 0.5;
   }
 
+  // Make btns and drops use full height
   > .btn,
   > div {
     height: 100%;
   }
-  div .btn {
-    max-width: 100%;
-  }
 
-  .btn {
+  .btn,
+  div > .btn {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     border-radius: 0;
+
+    // Reduce spacing to avoid icons moving around
+    padding-left: $spacer * 0.5;
+    padding-right: $spacer * 0.5;
 
     &:hover {
       color: $primary;
@@ -210,10 +212,18 @@
 }
 
 .sidebar-profile-mini {
-  .btn {
+  .sidebar-profile-mininame {
+    max-width: calc(100% - $sidebar-footer-height);
+  }
+  > .btn {
     color: $primary;
     &:hover {
       color: $white;
+    }
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
@@ -353,7 +363,8 @@
 
   .sidebar-footer,
   .sidebar-profile-mini {
-    .btn {
+    > .btn,
+    > div {
       max-width: 50%;
     }
     .btn span {
