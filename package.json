@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "bootstrap": "^5.1.3",
-    "bootstrap.native": "https://github.com/thednp/bootstrap.native#f627a06d85578e619482bb3d736a3c207309b0b9",
+    "bootstrap.native": " ^4.1.2",
     "bootstrap5-tags": "^1.4.29",
     "cleave.js": "^1.6.0",
     "flatpickr": "^4.6.11",
