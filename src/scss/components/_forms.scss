@@ -2,7 +2,7 @@ $label-width: $spacer * 12 !default;
 
 form {
   // Using these classes allow automatic responsive layout
-  .form-holder {
+  .form-group {
     margin-bottom: $spacer;
 
     // No need for form-label
