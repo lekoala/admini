@@ -172,8 +172,10 @@
   }
 }
 
-/* Main form */
-.wrapper > form {
+// Main form (it can wrap main or be the first child)
+.wrapper > form,
+.main > form {
   display: flex;
   width: 100%;
+  flex-direction: column;
 }
