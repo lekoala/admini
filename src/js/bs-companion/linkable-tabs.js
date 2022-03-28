@@ -15,7 +15,10 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
       if (activeTab) {
         if (!activeTab.classList.contains("active")) {
           activeTab.classList.add("active");
-          document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
+          let target = document.querySelector(activeTab.dataset.bsTarget);
+          if (target) {
+            target.classList.add(...["active", "show"]);
+          }
         }
         let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
         inst.show();
@@ -32,7 +35,10 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
         return;
       }
       activeTab.classList.add("active");
-      document.querySelector(activeTab.dataset.bsTarget).classList.add(...["active", "show"]);
+      let target = document.querySelector(activeTab.dataset.bsTarget);
+      if (target) {
+        target.classList.add(...["active", "show"]);
+      }
       let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
     }
     el.style.visibility = "visible";
