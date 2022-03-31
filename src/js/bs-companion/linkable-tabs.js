@@ -14,6 +14,16 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
       let activeTab = document.querySelector("[data-bs-target='" + part + "']");
       if (activeTab) {
         if (!activeTab.classList.contains("active")) {
+          // Remove previous active
+          var prevActive = activeTab.parentElement.querySelector(".active");
+          if (prevActiveTab) {
+            prevActiveTab.classList.remove("active");
+            let prevTarget = document.querySelector(prevActiveTab.dataset.bsTarget);
+            if (prevTarget) {
+              prevTarget.classList.remove(...["active", "show"]);
+            }
+          }
+          // Set current
           activeTab.classList.add("active");
           let target = document.querySelector(activeTab.dataset.bsTarget);
           if (target) {
