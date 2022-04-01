@@ -27,7 +27,7 @@
     "cleave.js": "^1.6.0",
     "flatpickr": "^4.6.11",
     "js-cookie": "^3.0.1",
-    "last-icon": "^1.3.1",
+    "last-icon": "^1.3.3",
     "superfile": "^1.2.1"
   },
   "scripts": {
@@ -40,7 +40,7 @@
     "prefix-css": "postcss static/css/admini.min.css --replace --use autoprefixer",
     "rtl-css": "rtlcss static/css/admini.min.css static/css/admini.rtl.min.css",
     "build-css": "npm run compile-css && npm run prefix-css && npm run rtl-css",
-    "copy-assets": "copyfiles -f ./node_modules/last-icon/last-icon.min.js* ./static/js/",
+    "copy-assets": "shx cp -r ./node_modules/last-icon/last-icon.min.js* ./static/js/",
     "build-all": "npm run build && npm run build-css && git add -A && git commit -m \"build files\"",
     "update-deps": "npx npm-check-updates -u",
     "bump": "npm run build-all && npm version patch"
