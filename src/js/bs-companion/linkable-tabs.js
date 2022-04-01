@@ -15,19 +15,20 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
       if (activeTab) {
         if (!activeTab.classList.contains("active")) {
           // Remove previous active
-          var prevActive = activeTab.parentElement.querySelector(".active");
+          var prevActiveTab = activeTab.parentElement.parentElement.querySelector(".active");
           if (prevActiveTab) {
             prevActiveTab.classList.remove("active");
-            let prevTarget = document.querySelector(prevActiveTab.dataset.bsTarget);
-            if (prevTarget) {
-              prevTarget.classList.remove(...["active", "show"]);
-            }
           }
           // Set current
           activeTab.classList.add("active");
           let target = document.querySelector(activeTab.dataset.bsTarget);
           if (target) {
             target.classList.add(...["active", "show"]);
+            // Remove previous active
+            let prevTarget = target.parentElement.parentElement.querySelector(".active");
+            if (prevTarget) {
+              prevTarget.classList.remove(...["active", "show"]);
+            }
           }
         }
         let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);

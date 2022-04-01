@@ -6,23 +6,23 @@ import matches from "shorter-js/src/selectors/matches";
 
 import { addListener } from "event-listener.js";
 
-import EventListener from "../../node_modules/event-listener.js/src/event-listener";
+import EventListener from "event-listener.js/src/event-listener";
 
-import Alert from "../../node_modules/bootstrap.native/src/components/alert-native";
-import Button from "../../node_modules/bootstrap.native/src/components/button-native";
-// import Carousel from "../../node_modules/bootstrap.native/src/components/carousel-native";
-import Collapse from "../../node_modules/bootstrap.native/src/components/collapse-native";
-import Dropdown from "../../node_modules/bootstrap.native/src/components/dropdown-native";
-import Modal from "../../node_modules/bootstrap.native/src/components/modal-native";
-import Offcanvas from "../../node_modules/bootstrap.native/src/components/offcanvas-native";
-import Popover from "../../node_modules/bootstrap.native/src/components/popover-native";
-import ScrollSpy from "../../node_modules/bootstrap.native/src/components/scrollspy-native";
-// import Tab from "../../node_modules/bootstrap.native/src/components/tab-native";
+import Alert from "bootstrap.native/src/components/alert-native";
+import Button from "bootstrap.native/src/components/button-native";
+// import Carousel from "bootstrap.native/src/components/carousel-native";
+import Collapse from "bootstrap.native/src/components/collapse-native";
+import Dropdown from "bootstrap.native/src/components/dropdown-native";
+import Modal from "bootstrap.native/src/components/modal-native";
+import Offcanvas from "bootstrap.native/src/components/offcanvas-native";
+import Popover from "bootstrap.native/src/components/popover-native";
+import ScrollSpy from "bootstrap.native/src/components/scrollspy-native";
+// import Tab from "bootstrap.native/src/components/tab-native";
 import Tab from "./custom-tab";
-import Toast from "../../node_modules/bootstrap.native/src/components/toast-native";
-import Tooltip from "../../node_modules/bootstrap.native/src/components/tooltip-native";
+import Toast from "bootstrap.native/src/components/toast-native";
+import Tooltip from "bootstrap.native/src/components/tooltip-native";
 
-import Version from "../../node_modules/bootstrap.native/src/version";
+import Version from "bootstrap.native/src/version";
 
 // build the componentsList object
 const componentsList = {

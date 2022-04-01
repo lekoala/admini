@@ -20,18 +20,18 @@ import OriginalEvent from "shorter-js/src/misc/OriginalEvent";
 
 import { addListener, removeListener } from "event-listener.js";
 
-import collapsingClass from "../../node_modules/bootstrap.native/src/strings/collapsingClass";
-import activeClass from "../../node_modules/bootstrap.native/src/strings/activeClass";
-import fadeClass from "../../node_modules/bootstrap.native/src/strings/fadeClass";
-import showClass from "../../node_modules/bootstrap.native/src/strings/showClass";
-import dropdownClasses from "../../node_modules/bootstrap.native/src/strings/dropdownClasses";
-import dropdownMenuClass from "../../node_modules/bootstrap.native/src/strings/dropdownMenuClass";
-import dataBsToggle from "../../node_modules/bootstrap.native/src/strings/dataBsToggle";
-import tabString from "../../node_modules/bootstrap.native/src/strings/tabString";
-import tabComponent from "../../node_modules/bootstrap.native/src/strings/tabComponent";
+import collapsingClass from "bootstrap.native/src/strings/collapsingClass";
+import activeClass from "bootstrap.native/src/strings/activeClass";
+import fadeClass from "bootstrap.native/src/strings/fadeClass";
+import showClass from "bootstrap.native/src/strings/showClass";
+import dropdownClasses from "bootstrap.native/src/strings/dropdownClasses";
+import dropdownMenuClass from "bootstrap.native/src/strings/dropdownMenuClass";
+import dataBsToggle from "bootstrap.native/src/strings/dataBsToggle";
+import tabString from "bootstrap.native/src/strings/tabString";
+import tabComponent from "bootstrap.native/src/strings/tabComponent";
 
-import getTargetElement from "../../node_modules/bootstrap.native/src/util/getTargetElement";
-import BaseComponent from "../../node_modules/bootstrap.native/src/components/base-component";
+import getTargetElement from "bootstrap.native/src/util/getTargetElement";
+import BaseComponent from "bootstrap.native/src/components/base-component";
 
 // TAB PRIVATE GC
 // ================

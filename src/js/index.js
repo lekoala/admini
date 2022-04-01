@@ -1,6 +1,6 @@
 "use strict";
 
-import Cookies from "../../node_modules/js-cookie/index";
+import Cookies from "js-cookie";
 // import * as bootstrap from "bootstrap";
 // import * as bootstrap from "./custom-bootstrap.js";
 import BSN from "./custom-bsn.js";
