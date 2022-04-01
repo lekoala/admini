@@ -3,6 +3,8 @@
 /**
  * Make tab fully linkable by using hash
  * Make sure you don't set a default active tab in your html
+ * This only works for tabs with bs-target attribute, since there will be no navigation
+ * @param {string} tabsSelector Selector for the tabs element that need to be deep linked
  */
 export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
   // Restore state

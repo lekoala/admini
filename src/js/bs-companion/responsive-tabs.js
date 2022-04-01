@@ -20,10 +20,11 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
     el.querySelectorAll("a").forEach((link) => {
       let newChild = document.createElement("li");
       let newChildLink = document.createElement("a");
+      let href = link.dataset.bsTarget || link.getAttribute("href");
       newChild.append(newChildLink);
       newChildLink.classList.add(...["dropdown-item", "no-br"]);
       newChildLink.innerHTML = link.innerHTML.replace(/<br[^>]*>/, " ");
-      newChildLink.setAttribute("href", link.dataset.bsTarget);
+      newChildLink.setAttribute("href", href);
       if (link.classList.contains("disabled")) {
         newChildLink.classList.add("disabled");
       }
@@ -67,7 +68,8 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
         if (hidden) {
           hidden.classList.remove("d-none");
         }
-        let active = menu.querySelector("a[href='" + a.dataset.bsTarget + "']");
+        let href = a.dataset.bsTarget || a.getAttribute("href");
+        let active = menu.querySelector("a[href='" + href + "']");
         if (active) {
           active.classList.add("d-none");
         }
