@@ -21,8 +21,6 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
           if (prevActiveTab) {
             prevActiveTab.classList.remove("active");
           }
-          // Set current
-          activeTab.classList.add("active");
           let target = document.querySelector(activeTab.dataset.bsTarget);
           if (target) {
             target.classList.add(...["active", "show"]);
@@ -32,6 +30,8 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
               prevTarget.classList.remove(...["active", "show"]);
             }
           }
+          // Set current
+          activeTab.classList.add("active");
         }
         let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
         inst.show();
