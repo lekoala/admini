@@ -1,7 +1,6 @@
 .sidebar {
-  $width: $sidebar-width;
-  // min-width: $sidebar-width;
-  // max-width: $sidebar-width;
+  min-width: $sidebar-width;
+  max-width: $sidebar-width;
   direction: ltr;
   background: $sidebar-bg;
   display: none;
@@ -283,9 +282,8 @@
 
 // Compact sidebar
 .minimenu .sidebar {
-  // min-width: $sidebar-compact-width;
-  // max-width: $sidebar-compact-width;
-  $width: $sidebar-compact-width;
+  min-width: $sidebar-compact-width;
+  max-width: $sidebar-compact-width;
 
   .sidebar-nav-header {
     display: none;

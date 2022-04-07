@@ -1,8 +1,35 @@
 @mixin validation-error-icon() {
-    color: $danger;
-    padding-right: $input-height-inner;
-    background-image: escape-svg($form-feedback-icon-invalid);
-    background-repeat: no-repeat;
-    background-position: right $input-height-inner-quarter center;
-    background-size: $input-height-inner-half $input-height-inner-half;
+  color: $danger;
+  padding-right: $input-height-inner;
+  background-image: escape-svg($form-feedback-icon-invalid);
+  background-repeat: no-repeat;
+  background-position: right $input-height-inner-quarter center;
+  background-size: $input-height-inner-half $input-height-inner-half;
+}
+
+@mixin scroller($selector) {
+  #{$selector} {
+    --scroller-color: 0, 0%;
+    --scroller-color-lightness: 80%;
+    --scroller-hover-factor: 0.8;
+    --scroller-thumb: hsl(var(--scroller-color), var(--scroller-color-lightness));
+    /* Replicate hover for webkit */
+    --scroller-thumb-hover: hsl(var(--scroller-color), calc(var(--scroller-color-lightness) * var(--scroller-hover-factor)));
+    --scroller-background: transparent;
+    scrollbar-color: var(--scroller-thumb) var(--scroller-background);
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--scroller-thumb);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--scroller-thumb-hover);
+    }
   }
+}

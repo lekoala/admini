@@ -59,6 +59,9 @@
 // Admini
 @import "mixins";
 @import "globals";
+@include scroller($scrollable-selector);
+
+// Admini components
 @import "components/accordions";
 @import "components/avatar";
 @import "components/background";
@@ -75,7 +78,3 @@
 @import "components/superfile";
 @import "components/tables";
 @import "components/tabs";
-
-//
-@import "components/scroller";
-@include scroller($scrollable-selector);
