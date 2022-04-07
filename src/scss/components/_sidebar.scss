@@ -1,6 +1,7 @@
 .sidebar {
-  min-width: $sidebar-width;
-  max-width: $sidebar-width;
+  $width: $sidebar-width;
+  // min-width: $sidebar-width;
+  // max-width: $sidebar-width;
   direction: ltr;
   background: $sidebar-bg;
   display: none;
@@ -23,6 +24,14 @@
       transform: none;
     }
   }
+}
+
+// Adjust main width so that 100% width works as expected
+.main {
+  width: calc(100% - $sidebar-width);
+}
+.minimenu .main {
+  width: calc(100% - $sidebar-compact-width);
 }
 
 // It should have a .scroller class as well
@@ -274,8 +283,9 @@
 
 // Compact sidebar
 .minimenu .sidebar {
-  min-width: $sidebar-compact-width;
-  max-width: $sidebar-compact-width;
+  // min-width: $sidebar-compact-width;
+  // max-width: $sidebar-compact-width;
+  $width: $sidebar-compact-width;
 
   .sidebar-nav-header {
     display: none;
