@@ -68,7 +68,7 @@
       iconWrapper.addEventListener("click", (ev) => {
         if (ev.target.dataset.name) {
           navigator.clipboard.writeText(ev.target.dataset.name);
-          toaster("Icon name copied to clipboard");
+          admini.toaster("Icon name copied to clipboard");
         }
       });
     </script>
@@ -113,6 +113,7 @@
     ></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="js/admini.min.js"></script>
+    <script type="module">window.admini.init(); // this should go last</script>
   </head>
 
   <body>

@@ -14,14 +14,20 @@ import modalizer, { modalizerConfirm } from "./bs-companion/modalizer.js";
 // window.bootstrap = bootstrap;
 window.bootstrap = BSN;
 window.Cookies = Cookies;
-window.toaster = toaster;
-window.modalizer = modalizer;
-window.modalizerConfirm = modalizerConfirm;
-window.escapeHTML = escapeHTML;
 
-// Start
-let ui = new AdminiUi();
-ui.init();
+window.admini = window.admini || {};
 
-let forms = new AdminiForms();
-forms.init();
+window.admini = {
+  // Third party
+  toaster: toaster,
+  modalizer: modalizer,
+  modalizerConfirm: modalizerConfirm,
+  escapeHTML: escapeHTML,
+  // Our libs
+  ui: new AdminiUi(),
+  forms: new AdminiForms(),
+  init: () => {
+    window.admini.ui.init();
+    window.admini.forms.init();
+  },
+};

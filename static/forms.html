@@ -53,7 +53,7 @@
       document.querySelectorAll("#otherAction").forEach((btn) => {
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
-          const toast = toaster({
+          const toast = admini.toaster({
             body: "Action done",
             className: "border-0 bg-info text-white",
             btnCloseWhite: true,
@@ -61,6 +61,7 @@
         });
       });
     </script>
+    <script type="module">window.admini.init(); // this should go last</script>
   </head>
 
   <body>

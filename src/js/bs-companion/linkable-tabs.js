@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * @param {HTMLElement} activeTab the link item
+ */
 function setActiveTab(activeTab) {
   if (!activeTab.classList.contains("active")) {
     // Remove previous active if any
@@ -21,6 +24,24 @@ function setActiveTab(activeTab) {
   }
   let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
   inst.show();
+}
+
+/**
+ * @param {HTMLElement} activeTab the link item
+ */
+function triggerLazyElements(activeTab) {
+  if (!activeTab.offsetWidth) {
+    return; // not visible
+  }
+  let target = document.querySelector(activeTab.dataset.bsTarget);
+  if (!target) {
+    return; // no valid target
+  }
+  let lazySelector = target.dataset.lazySelector ?? ".lazy-loadable";
+  let lazyEvent = target.dataset.lazyEvent ?? "lazyloaded";
+  target.querySelectorAll(lazySelector).forEach((el) => {
+    el.dispatchEvent(new Event(lazyEvent, { bubbles: true }));
+  });
 }
 
 /**
@@ -54,16 +75,19 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
       setActiveTab(activeTab);
     }
     el.style.visibility = "visible";
+    triggerLazyElements(activeTab);
 
-    // Track tabs clicks
+    // e.target is the a.nav-link element
     el.addEventListener("show.bs.tab", (e) => {
-      let hash = e.target.dataset.bsTarget;
-      if (!hash) {
-        return;
+      triggerLazyElements(e.target);
+
+      // Track tabs clicks
+      const hash = e.target.dataset.bsTarget;
+      if (hash) {
+        const url = new URL(window.location);
+        url.hash = hash;
+        window.history.pushState({}, "", url);
       }
-      const url = new URL(window.location);
-      url.hash = hash;
-      window.history.pushState({}, "", url);
     });
   });
 }

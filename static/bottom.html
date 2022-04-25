@@ -54,7 +54,7 @@
 						btnClass = cl.replace("btn-", "");
 					}
 				})
-				const toast = toaster({
+				const toast = admini.toaster({
 					body: btn.innerText,
 					className: 'border-0 text-white bg-' + btnClass,
 				})
@@ -63,12 +63,13 @@
 		document.querySelectorAll(".main-footer .dropdown-item").forEach((btn) => {
 			btn.addEventListener("click", (ev) => {
 				ev.preventDefault();
-				const toast = toaster({
+				const toast = admini.toaster({
 					body: btn.innerText,
 				})
 			})
 		});
 	</script>
+	<script type="module">window.admini.init(); // this should go last</script>
 </head>
 
 <body>

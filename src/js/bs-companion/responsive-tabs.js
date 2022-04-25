@@ -31,7 +31,7 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
       // Forwards clicks to avoid binding stuff twice
       newChildLink.addEventListener("click", (ev) => {
         ev.preventDefault();
-        link.dispatchEvent(new Event("click"));
+        link.dispatchEvent(new Event("click", { bubbles: true }));
       });
       menu.append(newChild);
     });

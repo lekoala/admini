@@ -42,6 +42,17 @@
 	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
 	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script type="module" src="js/admini.min.js"></script>
+	<script type="module">
+		let el = document.querySelector('#panel-3-lazy');
+		el.addEventListener("lazyloaded", (e) => {
+			let t = e.target;
+			t.innerHTML = t.innerHTML + ' (this will be replaced in 2s)';
+			setTimeout(() => {
+				t.innerHTML = "finished loading!";
+			}, 2000);
+		})
+	</script>
+	<script type="module">window.admini.init(); // this should go last</script>
 </head>
 
 <body>
@@ -189,7 +200,7 @@
 						</li>
 						<li class="nav-item" role="tablist">
 							<a class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#panel-3" type="button" role="tab" aria-controls="panel-3"
-								aria-selected="false">Panel 3</a>
+								aria-selected="false">Lazy init</a>
 						</li>
 						<li class="nav-item" role="tablist">
 							<a class="nav-link disabled py-0 small">Disabled<br>On two lines</a>
@@ -247,6 +258,7 @@
 					</div>
 					<div class="tab-pane fade" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
 						Panel 3
+						<div class="lazy-loadable" id="panel-3-lazy"><l-i name="three_dots_loading" set="eo" type="animated" size="36"></l-i></div>
 					</div>
 					<div class="tab-pane fade" id="panel-6" role="tabpanel" aria-labelledby="tab-6">
 						Panel 6
