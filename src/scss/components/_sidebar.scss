@@ -26,12 +26,14 @@
 }
 
 // Adjust main width so that 100% width works as expected
-.main {
-  width: calc(100% - $sidebar-width);
-}
-.minimenu .main {
-  width: calc(100% - $sidebar-compact-width);
-}
+// @include media-breakpoint-up(md) {
+//   .main {
+//     width: calc(100% - $sidebar-width);
+//   }
+//   .minimenu .main {
+//     width: calc(100% - $sidebar-compact-width);
+//   }
+// }
 
 // It should have a .scroller class as well
 .sidebar-content {

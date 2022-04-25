@@ -53,6 +53,9 @@ form {
     background-color: $input-disabled-bg;
     border-color: $input-disabled-border-color;
   }
+  p.readonly {
+    margin-bottom: 0;
+  }
 
   .accordion {
     max-width: calc($label-width + 768px);
