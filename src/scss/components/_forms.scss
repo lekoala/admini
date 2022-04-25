@@ -1,4 +1,6 @@
-$label-width: $spacer * 12 !default;
+$form-label-min-width: $spacer * 8 !default;
+$form-label-width: $spacer * 12 !default;
+$form-max-width: 768px;
 
 form {
   // Using these classes allow automatic responsive layout
@@ -20,9 +22,8 @@ form {
       > label,
       > .form-label {
         padding-top: add($input-padding-y, $input-border-width);
-        flex: 0 0 0%;
-        max-width: $label-width;
-        min-width: $label-width;
+        flex: 0 0 100%;
+        max-width: $form-label-width;
         @include text-truncate();
         padding-right: 1em;
 
@@ -35,12 +36,12 @@ form {
       }
 
       > .form-check {
-        margin-left: $label-width;
+        margin-left: $form-label-width;
       }
 
       > .form-field {
-        flex: 0 0 70%;
-        max-width: 768px; // avoid super large inputs
+        flex: 0 0 calc(100% - $form-label-width);
+        max-width: $form-max-width; // avoid super large inputs
 
         .form-check:first-child {
           margin-top: $input-padding-y;
@@ -49,15 +50,23 @@ form {
     }
   }
 
-  .readonly {
-    background-color: $input-disabled-bg;
-    border-color: $input-disabled-border-color;
-  }
-  p.readonly {
-    margin-bottom: 0;
+  .form-field {
+    .readonly {
+      background-color: $input-disabled-bg;
+      border-color: $input-disabled-border-color;
+    }
+
+    p.readonly {
+      margin-bottom: 0;
+    }
+
+    .restore-form-control {
+      background-color: $input-bg;
+      border-color: $input-border-color;
+    }
   }
 
   .accordion {
-    max-width: calc($label-width + 768px);
+    max-width: calc($form-label-width + 768px);
   }
 }

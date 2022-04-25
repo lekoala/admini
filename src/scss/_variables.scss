@@ -318,6 +318,9 @@ $input-height-sm: calc(#{$input-height-inner-sm} + #{$input-height-border}) !def
 $input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) !default;
 $input-height-lg: calc(#{$input-height-inner-lg} + #{$input-height-border}) !default;
 
+$input-disabled-bg: $gray-100;
+$input-disabled-border-color: $gray-200;
+
 // Do not show valid state
 $form-feedback-invalid-color: $danger !default;
 $form-feedback-icon-invalid-color: $danger !default;

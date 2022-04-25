@@ -266,13 +266,13 @@
                 <div class="form-group">
                   <label for="disabledTextInput" class="form-label">Disabled input</label>
                   <div class="form-field">
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" />
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" disabled />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayout</label>
+                  <label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayoutevenwhenitoverflows</label>
                   <div class="form-field">
-                    <input type="text" id="disabledTextInput2" class="form-control" placeholder="Disabled input" />
+                    <input type="text" id="disabledTextInput2" class="form-control" placeholder="Type the value" value="Some kind of input that is very very long and should not break the layouteitherevenifitsoneline" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -334,7 +334,7 @@
                     />
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group readonly">
                   <label for="readOnlyField" class="form-label">Readonly (paragraph)</label>
                   <div class="form-field">
                     <p class="form-control readonly">This is readonly</p>

@@ -266,6 +266,7 @@ export default class Tab extends BaseComponent {
 
       // update relatedTarget and dispatch
       hideTabEvent.relatedTarget = element;
+      if (!tab) return;
       dispatchEvent(tab, hideTabEvent);
       if (hideTabEvent.defaultPrevented) return;
 

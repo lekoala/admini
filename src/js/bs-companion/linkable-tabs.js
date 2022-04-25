@@ -1,5 +1,28 @@
 "use strict";
 
+function setActiveTab(activeTab) {
+  if (!activeTab.classList.contains("active")) {
+    // Remove previous active if any
+    var prevActiveTab = activeTab.parentElement.parentElement.querySelector(".active");
+    if (prevActiveTab) {
+      prevActiveTab.classList.remove("active");
+    }
+    // Set current
+    activeTab.classList.add("active");
+  }
+  let target = document.querySelector(activeTab.dataset.bsTarget);
+  if (target) {
+    // Remove previous active if any
+    let prevTarget = target.parentElement.querySelector(".active");
+    if (prevTarget && prevTarget != target) {
+      prevTarget.classList.remove(...["active", "show"]);
+    }
+    target.classList.add(...["active", "show"]);
+  }
+  let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
+  inst.show();
+}
+
 /**
  * Make tab fully linkable by using hash
  * Make sure you don't set a default active tab in your html
@@ -13,28 +36,10 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
     let parts = hash.split("__").slice(0, -1);
     parts.push(hash);
     parts.forEach((part) => {
+      console.log(part);
       let activeTab = document.querySelector("[data-bs-target='" + part + "']");
       if (activeTab) {
-        if (!activeTab.classList.contains("active")) {
-          // Remove previous active
-          var prevActiveTab = activeTab.parentElement.parentElement.querySelector(".active");
-          if (prevActiveTab) {
-            prevActiveTab.classList.remove("active");
-          }
-          let target = document.querySelector(activeTab.dataset.bsTarget);
-          if (target) {
-            target.classList.add(...["active", "show"]);
-            // Remove previous active
-            let prevTarget = target.parentElement.parentElement.querySelector(".active");
-            if (prevTarget) {
-              prevTarget.classList.remove(...["active", "show"]);
-            }
-          }
-          // Set current
-          activeTab.classList.add("active");
-        }
-        let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
-        inst.show();
+        setActiveTab(activeTab);
       }
     });
   }
@@ -47,12 +52,7 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
       if (!activeTab) {
         return;
       }
-      activeTab.classList.add("active");
-      let target = document.querySelector(activeTab.dataset.bsTarget);
-      if (target) {
-        target.classList.add(...["active", "show"]);
-      }
-      let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
+      setActiveTab(activeTab);
     }
     el.style.visibility = "visible";
 
