@@ -36,7 +36,6 @@ export default function linkableTabs(tabsSelector = ".nav-tabs-linkable") {
     let parts = hash.split("__").slice(0, -1);
     parts.push(hash);
     parts.forEach((part) => {
-      console.log(part);
       let activeTab = document.querySelector("[data-bs-target='" + part + "']");
       if (activeTab) {
         setActiveTab(activeTab);
