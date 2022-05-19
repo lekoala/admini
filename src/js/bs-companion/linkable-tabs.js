@@ -38,7 +38,7 @@ function triggerLazyElements(activeTab) {
     return; // no valid target
   }
   let lazySelector = target.dataset.lazySelector ?? ".lazy-loadable";
-  let lazyEvent = target.dataset.lazyEvent ?? "lazyloaded";
+  let lazyEvent = target.dataset.lazyEvent ?? "lazyload";
   target.querySelectorAll(lazySelector).forEach((el) => {
     el.dispatchEvent(new Event(lazyEvent, { bubbles: true }));
   });

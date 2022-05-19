@@ -14,51 +14,8 @@ $small-font-size: 80% !default;
 // Spacer
 $spacer: 1rem !default;
 
-$spacers: (
-  0: 0,
-  1: (
-    $spacer * 0.25,
-  ),
-  2: (
-    $spacer * 0.5,
-  ),
-  3: $spacer,
-  // This needs to stay
-  4:
-    (
-      $spacer * 1.5,
-    ),
-  5: (
-    $spacer * 3,
-  ),
-  6: (
-    $spacer * 4.5,
-  ),
-  7: (
-    $spacer * 6,
-  ),
-) !default;
-
-// Grid breakpoints
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
-) !default;
-
 // Grid gutter (allows consistent spacing with cards inside grid)
 $grid-gutter-width: 1rem !default;
-
-// Grid containers
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1200px,
-) !default;
 
 $container-padding-x: $grid-gutter-width !default;
 
@@ -223,32 +180,6 @@ $pink-600: $pink !default;
 $pink-700: #a82b76 !default;
 $pink-800: #83265c !default;
 $pink-900: #662148 !default;
-
-$theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark,
-) !default;
-
-// Social colors
-$social-colors: (
-  "facebook": #3b5998,
-  "twitter": #1da1f2,
-  "google": #dc4e41,
-  "youtube": #f00,
-  "vimeo": #1ab7ea,
-  "dribbble": #ea4c89,
-  "github": #181717,
-  "instagram": #e4405f,
-  "pinterest": #bd081c,
-  "flickr": #0063dc,
-  "bitbucket": #0052cc,
-) !default;
 
 // Body
 // $body-bg: #fafbfc !default;
