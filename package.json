@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "bootstrap": "5.2.0-beta1",
-    "bootstrap.native": " ^4.1.2",
+    "bootstrap.native": " ^4.2",
     "bootstrap5-tags": "^1.4.34",
     "cleave.js": "^1.6.0",
     "flatpickr": "^4.6.13",

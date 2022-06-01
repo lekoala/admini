@@ -1,12 +1,10 @@
-import Data from "shorter-js/src/misc/data";
-import ObjectKeys from "shorter-js/src/misc/ObjectKeys";
-import parentNodes from "shorter-js/src/selectors/parentNodes";
-import getElementsByTagName from "shorter-js/src/selectors/getElementsByTagName";
-import matches from "shorter-js/src/selectors/matches";
+import Data from "@thednp/shorty/src/misc/data";
+import ObjectKeys from "@thednp/shorty/src/misc/ObjectKeys";
+import getElementsByTagName from "@thednp/shorty/src/selectors/getElementsByTagName";
+import matches from "@thednp/shorty/src/selectors/matches";
 
-import { addListener } from "event-listener.js";
-
-import EventListener from "event-listener.js/src/event-listener";
+import { addListener } from '@thednp/event-listener/src/event-listener';
+import Listener from '@thednp/event-listener/src/event-listener';
 
 import Alert from "bootstrap.native/src/components/alert-native";
 import Button from "bootstrap.native/src/components/button-native";
@@ -24,11 +22,11 @@ import Tooltip from "bootstrap.native/src/components/tooltip-native";
 
 import Version from "bootstrap.native/src/version";
 
-// build the componentsList object
+/** @type {Record<string, any>} */
 const componentsList = {
   Alert,
   Button,
-  //   Carousel,
+  // Carousel,
   Collapse,
   Dropdown,
   Modal,
@@ -68,8 +66,12 @@ function removeComponentDataAPI(component, context) {
   }
 }
 
+/**
+ * Initialize all BSN components for a target container.
+ * @param {ParentNode=} context parent `Node`
+ */
 function initCallback(context) {
-  const lookUp = context && parentNodes.some((x) => context instanceof x) ? context : undefined;
+  const lookUp = context && context.nodeName ? context : document;
   const elemCollection = [...getElementsByTagName("*", lookUp)];
 
   ObjectKeys(componentsList).forEach((comp) => {
@@ -84,8 +86,12 @@ function initCallback(context) {
   });
 }
 
+/**
+ * Remove all BSN components for a target container.
+ * @param {ParentNode=} context parent `Node`
+ */
 function removeDataAPI(context) {
-  const lookUp = context && parentNodes.some((x) => context instanceof x) ? context : undefined;
+  const lookUp = context && context.nodeName ? context : document;
 
   ObjectKeys(componentsList).forEach((comp) => {
     removeComponentDataAPI(comp, lookUp);
@@ -102,7 +108,7 @@ const BSN = Object.assign(componentsList, {
   initCallback,
   removeDataAPI,
   Version,
-  EventListener,
+  Listener,
 });
 
 export default BSN;
