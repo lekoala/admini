@@ -12,13 +12,23 @@
   display: grid;
   grid-gap: var(--gap);
   // @link https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min-width)), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--min-width)), 1fr)
+  );
 
   // Preset grids
+  &.grid-large {
+    --min-width: 30ch;
+  }
+  
   &.grid-2,
   &.grid-3,
   &.grid-4 {
-    grid-template-columns: repeat(auto-fill, minmax(max(var(--min-width), var(--max-width)), 1fr));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max(var(--min-width), var(--max-width)), 1fr)
+    );
   }
   &.grid-2 {
     --cols: 2;
