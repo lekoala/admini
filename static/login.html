@@ -237,8 +237,8 @@
                 </div>
                 <div class="card-body pt-0">
                   <form class="my-4" action="index.html">
-                    <div class="form-group mb-2">
-                      <label class="form-label" for="username">Username</label>
+                    <!-- labels must be placed AFTER the input -->
+                    <div class="form-floating mb-2">
                       <input
                         type="text"
                         class="form-control"
@@ -247,24 +247,23 @@
                         placeholder="Enter username"
                         spellcheck="false"
                         data-ms-editor="true" />
+                      <label class="form-label" for="username">Username</label>
                     </div>
-                    <!--end form-group-->
 
-                    <div class="form-group">
-                      <label class="form-label" for="userpassword">
-                        Password
-                      </label>
+                    <div class="form-floating">
                       <input
                         type="password"
                         class="form-control"
                         name="password"
                         id="userpassword"
                         placeholder="Enter password" />
+                      <label class="form-label" for="userpassword">
+                        Password
+                      </label>
                     </div>
-                    <!--end form-group-->
 
-                    <div class="form-group row mt-3">
-                      <div class="col-sm-6">
+                    <div class="flex mt-3">
+                      <div class="">
                         <div class="form-check form-switch form-switch-success">
                           <input
                             class="form-check-input"
@@ -275,14 +274,13 @@
                           </label>
                         </div>
                       </div>
-                      <div class="col-sm-6 text-end">
-                        <a href="#" class="text-muted font-13">
+                      <div class="text-end">
+                        <a href="#" class="text-muted btn btn-default">
                           <l-i name="lock_open"></l-i>
                           Forgot password?
                         </a>
                       </div>
                     </div>
-                    <!--end form-group-->
 
                     <div class="form-group mb-0 row">
                       <div class="col-12">
