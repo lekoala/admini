@@ -1,7 +1,8 @@
 @use "sass:color";
 
 // Fonts
-$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif,
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system,
+  BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
@@ -242,12 +243,19 @@ $input-btn-padding-y-lg: 0.4rem !default;
 $input-btn-padding-x: 0.85rem !default;
 $input-border-width: $input-btn-border-width !default;
 $input-height-border: $input-border-width * 2 !default;
-$input-height-inner: ($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2) !default;
+$input-height-inner: ($font-size-base * $input-btn-line-height) +
+  ($input-btn-padding-y * 2) !default;
 $input-height: calc(#{$input-height-inner} + #{$input-height-border}) !default;
-$input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2) !default;
-$input-height-sm: calc(#{$input-height-inner-sm} + #{$input-height-border}) !default;
-$input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) !default;
-$input-height-lg: calc(#{$input-height-inner-lg} + #{$input-height-border}) !default;
+$input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) +
+  ($input-btn-padding-y-sm * 2) !default;
+$input-height-sm: calc(
+  #{$input-height-inner-sm} + #{$input-height-border}
+) !default;
+$input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) +
+  ($input-btn-padding-y-lg * 2) !default;
+$input-height-lg: calc(
+  #{$input-height-inner-lg} + #{$input-height-border}
+) !default;
 
 $input-disabled-bg: $gray-100;
 $input-disabled-border-color: $gray-200;
@@ -312,7 +320,8 @@ $sidebar-brand-color: $gray-100 !default;
 $sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
 
 // Sidebar scroller
-$sidebar-scroller-color: color.hue($sidebar-brand-bg), color.saturation($sidebar-brand-bg) * 0.5 !default;
+$sidebar-scroller-color: color.hue($sidebar-brand-bg),
+  color.saturation($sidebar-brand-bg) * 0.5 !default;
 $sidebar-scroller-lightness: 30% !default;
 
 // Sidebar nav header
@@ -337,7 +346,12 @@ $sidebar-link-hover-color: #{rgba($gray-200, 1)} !default;
 $sidebar-link-hover-border-left-color: transparent !default;
 
 $sidebar-link-active-font-weight: $font-weight-normal !default;
-$sidebar-link-active-bg: #{linear-gradient(90deg, rgba($primary, 0.1) 0%, rgba($primary, 0.0875) 50%, rgba($black, 0) 100%)} !default;
+$sidebar-link-active-bg: #{linear-gradient(
+    90deg,
+    rgba($primary, 0.1) 0%,
+    rgba($primary, 0.0875) 50%,
+    rgba($black, 0) 100%
+  )} !default;
 $sidebar-link-active-color: $gray-200 !default;
 $sidebar-link-active-border-left-color: $primary !default;
 
@@ -364,4 +378,4 @@ $modal-md: 600px !default;
 $modal-sm: 400px !default;
 $modal-transition: transform 0.3s ease-out !default;
 
-$scrollable-selector: 'html, .scroller' !default;
+$scrollable-selector: "html, .scroller" !default;

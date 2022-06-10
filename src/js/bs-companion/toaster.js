@@ -84,9 +84,13 @@ export default function toaster(attr) {
   toast.append(toastBody);
 
   // Check if we have a container in place for the given placement or create one
-  let toastContainer = document.querySelector(`.toast-container.${attr.placement}`);
+  let toastContainer = document.querySelector(
+    `.toast-container.${attr.placement}`
+  );
   if (!toastContainer) {
-    const styles = `${pos[0]}:0;${pos[1]}:${posUnit};${posUnit ? "transform: translateX(-50%)" : ""};z-index:1081`;
+    const styles = `${pos[0]}:0;${pos[1]}:${posUnit};${
+      posUnit ? "transform: translateX(-50%)" : ""
+    };z-index:1081`;
 
     toastContainer = document.createElement("div");
     toastContainer.className = `toast-container position-fixed ${attr.placement}`;
@@ -110,8 +114,11 @@ export default function toaster(attr) {
         // When visible
         if (toast.offsetHeight > 0) {
           clearInterval(timer);
-          const transition = parseFloat(getComputedStyle(toast).transitionDuration) * 1e3;
-          toast.style.transition = `all ${transition * 4}ms cubic-bezier(0.165, 0.840, 0.440, 1.000), opacity ${transition}ms linear`;
+          const transition =
+            parseFloat(getComputedStyle(toast).transitionDuration) * 1e3;
+          toast.style.transition = `all ${
+            transition * 4
+          }ms cubic-bezier(0.165, 0.840, 0.440, 1.000), opacity ${transition}ms linear`;
           toast.style[animateFrom] = 0;
         }
       }, 0);

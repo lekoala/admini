@@ -1,289 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- page meta -->
+    <meta
+      name="description"
+      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="author" content="LeKoala" />
+    <meta
+      name="keywords"
+      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
-	<!-- page meta -->
-	<meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5">
-	<meta name="author" content="LeKoala">
-	<meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic">
+    <!-- performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-	<!-- performance -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- page title & icon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+    <title>Admini</title>
 
-	<!-- page title & icon -->
-	<link rel="icon" type="image/svg+xml"
-		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
-	<title>Admini</title>
+    <!-- styles -->
+    <link href="css/admini.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet" />
 
-	<!-- styles -->
-	<link href="css/admini.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <script>
+      window.LastIcon = {
+        types: {
+          material: "twotone",
+        },
+        defaultSet: "material",
+        fonts: ["material"],
+      };
+    </script>
+    <script src="js/last-icon.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
+      rel="stylesheet" />
 
-	<!-- icons -->
-	<script>
-		window.LastIcon = {
-			types: {
-				material: "twotone",
-			},
-			defaultSet: "material",
-			fonts: ["material"],
-		};
-	</script>
-	<script src="js/last-icon.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js"
+      nomodule
+      defer
+      id="nomodule-browser-warning"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/admini.min.js"></script>
+    <script type="module">
+      let el = document.querySelector("#panel-3-lazy");
+      el.addEventListener(
+        "lazyload",
+        (e) => {
+          let t = e.target;
+          t.innerHTML = t.innerHTML + " (this will be replaced in 2s)";
+          setTimeout(() => {
+            t.innerHTML = "finished loading!";
+          }, 2000);
+        },
+        { once: true }
+      );
+    </script>
+    <script type="module">
+      window.admini.init(); // this should go last
+    </script>
+  </head>
 
-	<!-- scripts -->
-	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script type="module" src="js/admini.min.js"></script>
-	<script type="module">
-		let el = document.querySelector('#panel-3-lazy');
-		el.addEventListener("lazyload", (e) => {
-			let t = e.target;
-			t.innerHTML = t.innerHTML + ' (this will be replaced in 2s)';
-			setTimeout(() => {
-				t.innerHTML = "finished loading!";
-			}, 2000);
-		}, { once: true })
-	</script>
-	<script type="module">window.admini.init(); // this should go last</script>
-</head>
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar" class="sidebar" data-bs-scroll="true">
+        <a class="sidebar-brand" href="index.html">
+          <span class="sidebar-brand-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="256"
+              height="256"
+              viewBox="0 0 100 100">
+              <text
+                x="50%"
+                y="52%"
+                dominant-baseline="central"
+                text-anchor="middle"
+                font-size="120">
+                💠
+              </text>
+            </svg>
+          </span>
+          <span class="sidebar-brand-title">Admini</span>
+        </a>
 
-<body>
-	<div class="wrapper">
-		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
-			<a class="sidebar-brand" href="index.html">
-				<span class="sidebar-brand-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
-							font-size="120">💠</text></svg>
-				</span>
-				<span class="sidebar-brand-title">Admini</span>
-			</a>
+        <!-- sidebar-content -->
+        <div class="sidebar-content scroller">
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-header">UI</li>
 
-			<!-- sidebar-content -->
-			<div class="sidebar-content scroller">
-				<ul class="sidebar-nav">
-					<li class="sidebar-nav-header">
-						UI
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="index.html">
+                <l-i name="dashboard"></l-i>
+                <span>Dashboard</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
-							<l-i name="dashboard"></l-i> <span>Dashboard</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="bottom.html">
+                <l-i name="vertical_align_bottom"></l-i>
+                <span>Bottom actions</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="bottom.html">
-							<l-i name="vertical_align_bottom"></l-i> <span>Bottom actions</span>
-						</a>
-					</li>
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="tabs.html">
+                <l-i name="tab"></l-i>
+                <span>Tabbed navigation</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="tabs.html">
-							<l-i name="tab"></l-i> <span>Tabbed navigation</span>
-						</a>
-					</li>
+            <li class="sidebar-nav-header">Components</li>
 
-					<li class="sidebar-nav-header">
-						Components
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="avatars.html">
+                <l-i name="person"></l-i>
+                <span>Avatars</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="avatars.html">
-							<l-i name="person"></l-i> <span>Avatars</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="forms.html">
+                <l-i name="feed"></l-i>
+                <span>Forms</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="forms.html">
-							<l-i name="feed"></l-i> <span>Forms</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tables.html">
+                <l-i name="view_list"></l-i>
+                <span>Tables</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="tables.html">
-							<l-i name="view_list"></l-i> <span>Tables</span>
-						</a>
-					</li>
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="modals.html">
-							<l-i name="panorama_wide_angle"></l-i> <span>Modals</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="modals.html">
+                <l-i name="panorama_wide_angle"></l-i>
+                <span>Modals</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="datatable.html">
-							<l-i name="view_agenda"></l-i> <span>Datatable</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="datatable.html">
+                <l-i name="view_agenda"></l-i>
+                <span>Datatable</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons.html">
-							<l-i name="star"></l-i> <span>Icons</span> <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">2.191</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="icons.html">
+                <l-i name="star"></l-i>
+                <span>Icons</span>
+                <span
+                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
+                  data-bs-toggle="tooltip">
+                  2.191
+                </span>
+              </a>
+            </li>
 
-					<li class="sidebar-nav-header">
-						Useful links
-					</li>
+            <li class="sidebar-nav-header">Useful links</li>
 
-					<li class="sidebar-item"><a class="sidebar-link" href="https://github.com/lekoala/admini">
-							<l-i name="star"></l-i> <span>Repository</span>
-						</a></li>
-				</ul>
-			</div>
-			<!-- /sidebar-content -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="https://github.com/lekoala/admini">
+                <l-i name="star"></l-i>
+                <span>Repository</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- /sidebar-content -->
 
-			<!-- sidebar-footer -->
-			<div class="sidebar-footer">
-				<button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-					<l-i name="menu_open"></l-i>
-				</button>
-				<div class="dropup">
-					<button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
-						<l-i name="help_outline"></l-i>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
-						<li><a class="dropdown-item" href="help.html">Help</a></li>
-						<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<p class="m-3 mb-0">
-							<small>Built with Admini</small>
-						</p>
-					</ul>
-				</div>
-			</div>
-			<!-- /sidebar-footer -->
-		</aside>
+        <!-- sidebar-footer -->
+        <div class="sidebar-footer">
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
+          <div class="dropup">
+            <button
+              class="btn btn-default"
+              id="help-dropdown-btn"
+              data-bs-toggle="dropdown">
+              <l-i name="help_outline"></l-i>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="help-dropdown-btn">
+              <li><a class="dropdown-item" href="help.html">Help</a></li>
+              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <p class="m-3 mb-0">
+                <small>Built with Admini</small>
+              </p>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar-footer -->
+      </aside>
 
-		<main class="main">
-			<header class="main-header">
-				<div class="main-header-sidebar">
-					<button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-						<l-i name="menu"></l-i>
-					</button>
-				</div>
-				<div class="main-header-info">
-					<a class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back" href="#">
-						<l-i name="navigate_before"></l-i>
-						<span class="visually-hidden">Navigate up a folder</span>
-					</a>
-					<nav aria-label="breadcrumb">
-						<div class="breadcrumb">
-							<!-- <li class="breadcrumb-item"><a href="#">Some</a></li>
+      <main class="main">
+        <header class="main-header">
+          <div class="main-header-sidebar">
+            <button
+              type="button"
+              class="btn btn-primary btn-flex btn-square rounded-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebar"
+              aria-controls="sidebar">
+              <l-i name="menu"></l-i>
+            </button>
+          </div>
+          <div class="main-header-info">
+            <a
+              class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back"
+              href="#">
+              <l-i name="navigate_before"></l-i>
+              <span class="visually-hidden">Navigate up a folder</span>
+            </a>
+            <nav aria-label="breadcrumb">
+              <div class="breadcrumb">
+                <!-- <li class="breadcrumb-item"><a href="#">Some</a></li>
 							<li class="breadcrumb-item"><a href="#">Path</a></li>
 							<li class="breadcrumb-break"></li> -->
-							<li class="breadcrumb-item active" aria-current="page">Tabs (let's have a very long name to see how it fits)</li>
-						</div>
-					</nav>
-				</div>
-				<div class="main-header-nav main-header-tabs">
-					<ul class="nav nav-tabs nav-tabs-linkable nav-tabs-responsive" role="tablist">
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-1" data-bs-toggle="tab" data-bs-target="#panel-1" type="button" role="tab" aria-controls="panel-1" aria-selected="false">
-								<l-i name="home"></l-i> Panel 1
-							</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#panel-2" type="button" role="tab" aria-controls="panel-2"
-								aria-selected="false">Panel 2</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#panel-3" type="button" role="tab" aria-controls="panel-3"
-								aria-selected="false">Lazy init</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link disabled py-0 small">Disabled<br>On two lines</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link disabled">A very long disabled tabs to see how it fits</a>
-						</li>
-						<li class="nav-item" role="tablist">
-							<a class="nav-link" id="tab-6" data-bs-toggle="tab" data-bs-target="#panel-6" type="button" role="tab" aria-controls="panel-6">
-								<l-i name="star"></l-i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</header>
-			<section class="scroller">
-				<div class="tab-content container-fluid  py-3">
-					<div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
-						<h1>Panel 1</h1>
-						<p>Tabs are fully responsive and take into account available width in the container.</p>
-						<div class="alert alert-primary" role="alert">
-							<l-i name="warning" size="24" class="me-2"></l-i>
-							Check the tab 2 with nested panel!
-						</div>
-						<!-- dismissable alerts -->
-						<div class="alert alert-warning alert-dismissible fade show" id="dismissable-alert" role="alert">
-							<strong>Holy guacamole!</strong> You can dismiss this alert and it won't show again!
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						</div>
-
-					</div>
-					<div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
-						<h1>Panel 2 has nested panels</h1>
-						<div class="container-expand">
-							<ul class="nav nav-tabs nav-tabs-linkable px-3" role="tablist">
-								<li class="nav-item" role="tablist">
-									<a class="nav-link" id="nested-tab-1" data-bs-toggle="tab" data-bs-target="#panel-2__nested-panel-1" type="button" role="tab"
-										aria-controls="panel-2__nested-panel-1" aria-selected="false">
-										Nested Panel 1</a>
-								</li>
-								<li class="nav-item" role="tablist">
-									<a class="nav-link" id="nested-tab-2" data-bs-toggle="tab" data-bs-target="#panel-2__nested-panel-2" type="button" role="tab"
-										aria-controls="panel-2__nested-panel-2" aria-selected="false">Nested Panel 2</a>
-								</li>
-							</ul>
-							<div class="tab-content p-4 bg-white">
-								<div class="tab-pane fade" id="panel-2__nested-panel-1" role="tabpanel" aria-labelledby="nested-tab-1">
-									Nested tab 1. Refresh the page and I will be selected.
-								</div>
-								<div class="tab-pane fade" id="panel-2__nested-panel-2" role="tabpanel" aria-labelledby="nested-tab-2">
-									Nested tab 2. Refresh the page and I will be selected.
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
-						Panel 3
-						<div class="lazy-loadable" id="panel-3-lazy"><l-i name="three_dots_loading" set="eo" type="animated" size="36"></l-i></div>
-					</div>
-					<div class="tab-pane fade" id="panel-6" role="tabpanel" aria-labelledby="tab-6">
-						Panel 6
-					</div>
-				</div>
-			</section>
-			<footer class="main-footer">
-				<div class="btn-group" role="group" aria-label="Actions">
-					<button type="button" class="btn btn-success">
-						<l-i name="done"></l-i>
-						Save
-					</button>
-					<button type="button" class="btn btn-primary">Other action</button>
-				</div>
-				<div class="btn-group" aria-label="Navigation">
-					<button type="button" class="btn btn-light">
-						<l-i name="navigate_before"></l-i>
-					</button>
-					<button type="button" class="btn btn-light">
-						<l-i name="navigate_next"></l-i>
-					</button>
-				</div>
-			</footer>
-		</main>
-	</div>
-</body>
-
+                <li class="breadcrumb-item active" aria-current="page">
+                  Tabs (let's have a very long name to see how it fits)
+                </li>
+              </div>
+            </nav>
+          </div>
+          <div class="main-header-nav main-header-tabs">
+            <ul
+              class="nav nav-tabs nav-tabs-linkable nav-tabs-responsive"
+              role="tablist">
+              <li class="nav-item" role="tablist">
+                <a
+                  class="nav-link"
+                  id="tab-1"
+                  data-bs-toggle="tab"
+                  data-bs-target="#panel-1"
+                  type="button"
+                  role="tab"
+                  aria-controls="panel-1"
+                  aria-selected="false">
+                  <l-i name="home"></l-i>
+                  Panel 1
+                </a>
+              </li>
+              <li class="nav-item" role="tablist">
+                <a
+                  class="nav-link"
+                  id="tab-2"
+                  data-bs-toggle="tab"
+                  data-bs-target="#panel-2"
+                  type="button"
+                  role="tab"
+                  aria-controls="panel-2"
+                  aria-selected="false">
+                  Panel 2
+                </a>
+              </li>
+              <li class="nav-item" role="tablist">
+                <a
+                  class="nav-link"
+                  id="tab-3"
+                  data-bs-toggle="tab"
+                  data-bs-target="#panel-3"
+                  type="button"
+                  role="tab"
+                  aria-controls="panel-3"
+                  aria-selected="false">
+                  Lazy init
+                </a>
+              </li>
+              <li class="nav-item" role="tablist">
+                <a class="nav-link disabled py-0 small">
+                  Disabled
+                  <br />
+                  On two lines
+                </a>
+              </li>
+              <li class="nav-item" role="tablist">
+                <a class="nav-link disabled">
+                  A very long disabled tabs to see how it fits
+                </a>
+              </li>
+              <li class="nav-item" role="tablist">
+                <a
+                  class="nav-link"
+                  id="tab-6"
+                  data-bs-toggle="tab"
+                  data-bs-target="#panel-6"
+                  type="button"
+                  role="tab"
+                  aria-controls="panel-6">
+                  <l-i name="star"></l-i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <section class="scroller">
+          <div class="tab-content container-fluid py-3">
+            <div
+              class="tab-pane fade"
+              id="panel-1"
+              role="tabpanel"
+              aria-labelledby="tab-1">
+              <h1>Panel 1</h1>
+              <p>
+                Tabs are fully responsive and take into account available width
+                in the container.
+              </p>
+              <div class="alert alert-primary" role="alert">
+                <l-i name="warning" size="24" class="me-2"></l-i>
+                Check the tab 2 with nested panel!
+              </div>
+              <!-- dismissable alerts -->
+              <div
+                class="alert alert-warning alert-dismissible fade show"
+                id="dismissable-alert"
+                role="alert">
+                <strong>Holy guacamole!</strong>
+                You can dismiss this alert and it won't show again!
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"></button>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="panel-2"
+              role="tabpanel"
+              aria-labelledby="tab-2">
+              <h1>Panel 2 has nested panels</h1>
+              <div class="container-expand">
+                <ul class="nav nav-tabs nav-tabs-linkable px-3" role="tablist">
+                  <li class="nav-item" role="tablist">
+                    <a
+                      class="nav-link"
+                      id="nested-tab-1"
+                      data-bs-toggle="tab"
+                      data-bs-target="#panel-2__nested-panel-1"
+                      type="button"
+                      role="tab"
+                      aria-controls="panel-2__nested-panel-1"
+                      aria-selected="false">
+                      Nested Panel 1
+                    </a>
+                  </li>
+                  <li class="nav-item" role="tablist">
+                    <a
+                      class="nav-link"
+                      id="nested-tab-2"
+                      data-bs-toggle="tab"
+                      data-bs-target="#panel-2__nested-panel-2"
+                      type="button"
+                      role="tab"
+                      aria-controls="panel-2__nested-panel-2"
+                      aria-selected="false">
+                      Nested Panel 2
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content p-4 bg-white">
+                  <div
+                    class="tab-pane fade"
+                    id="panel-2__nested-panel-1"
+                    role="tabpanel"
+                    aria-labelledby="nested-tab-1">
+                    Nested tab 1. Refresh the page and I will be selected.
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="panel-2__nested-panel-2"
+                    role="tabpanel"
+                    aria-labelledby="nested-tab-2">
+                    Nested tab 2. Refresh the page and I will be selected.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="panel-3"
+              role="tabpanel"
+              aria-labelledby="tab-3">
+              Panel 3
+              <div class="lazy-loadable" id="panel-3-lazy">
+                <l-i
+                  name="three_dots_loading"
+                  set="eo"
+                  type="animated"
+                  size="36"></l-i>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="panel-6"
+              role="tabpanel"
+              aria-labelledby="tab-6">
+              Panel 6
+            </div>
+          </div>
+        </section>
+        <footer class="main-footer">
+          <div class="btn-group" role="group" aria-label="Actions">
+            <button type="button" class="btn btn-success">
+              <l-i name="done"></l-i>
+              Save
+            </button>
+            <button type="button" class="btn btn-primary">Other action</button>
+          </div>
+          <div class="btn-group" aria-label="Navigation">
+            <button type="button" class="btn btn-light">
+              <l-i name="navigate_before"></l-i>
+            </button>
+            <button type="button" class="btn btn-light">
+              <l-i name="navigate_next"></l-i>
+            </button>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
 </html>

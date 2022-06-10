@@ -3,8 +3,8 @@ import ObjectKeys from "@thednp/shorty/src/misc/ObjectKeys";
 import getElementsByTagName from "@thednp/shorty/src/selectors/getElementsByTagName";
 import matches from "@thednp/shorty/src/selectors/matches";
 
-import { addListener } from '@thednp/event-listener/src/event-listener';
-import Listener from '@thednp/event-listener/src/event-listener';
+import { addListener } from "@thednp/event-listener/src/event-listener";
+import Listener from "@thednp/event-listener/src/event-listener";
 
 import Alert from "bootstrap.native/src/components/alert-native";
 import Button from "bootstrap.native/src/components/button-native";
@@ -101,7 +101,9 @@ function removeDataAPI(context) {
 // bulk initialize all components
 if (document.body) initCallback();
 else {
-  addListener(document, "DOMContentLoaded", () => initCallback(), { once: true });
+  addListener(document, "DOMContentLoaded", () => initCallback(), {
+    once: true,
+  });
 }
 
 const BSN = Object.assign(componentsList, {

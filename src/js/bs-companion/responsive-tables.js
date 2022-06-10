@@ -6,7 +6,10 @@
  * @param {string} holderSelector Selector for table holder (typically used with .table-responsive as well)
  * @param {string} hideSelector Selector for table headers that can be hidden
  */
-export default function responsiveTables(holderSelector = ".table-responsive-auto", hideSelector = ".table-responsive-hide") {
+export default function responsiveTables(
+  holderSelector = ".table-responsive-auto",
+  hideSelector = ".table-responsive-hide"
+) {
   // Make sure we have colindex to allow mixing th and td on a row
   document.querySelectorAll(holderSelector).forEach((el) => {
     el.querySelectorAll("tr").forEach((row) => {
@@ -26,7 +29,9 @@ export default function responsiveTables(holderSelector = ".table-responsive-aut
         const container = entry.target;
         const table = container.querySelector("table");
         // check inlineSize (width) or blockSize (height)
-        const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
+        const contentBoxSize = Array.isArray(entry.contentBoxSize)
+          ? entry.contentBoxSize[0]
+          : entry.contentBoxSize;
         const diff = table.offsetWidth - contentBoxSize.inlineSize;
         let remaining = diff;
         if (!table.dataset.baseWidth) {
@@ -44,9 +49,11 @@ export default function responsiveTables(holderSelector = ".table-responsive-aut
             }
             col.dataset.originalWidth = colWidth;
             // Hide all columns with this index
-            table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
-              idxCol.setAttribute("hidden", "hidden");
-            });
+            table
+              .querySelectorAll("[aria-colindex='" + colIdx + "']")
+              .forEach((idxCol) => {
+                idxCol.setAttribute("hidden", "hidden");
+              });
             remaining -= colWidth;
           });
         } else {
@@ -55,13 +62,18 @@ export default function responsiveTables(holderSelector = ".table-responsive-aut
             const colWidth = parseInt(col.dataset.originalWidth);
             const colIdx = col.ariaColIndex;
 
-            if (contentBoxSize.inlineSize < colWidth + parseInt(table.dataset.baseWidth)) {
+            if (
+              contentBoxSize.inlineSize <
+              colWidth + parseInt(table.dataset.baseWidth)
+            ) {
               return;
             }
             // Hide all columns with this index
-            table.querySelectorAll("[aria-colindex='" + colIdx + "']").forEach((idxCol) => {
-              idxCol.removeAttribute("hidden");
-            });
+            table
+              .querySelectorAll("[aria-colindex='" + colIdx + "']")
+              .forEach((idxCol) => {
+                idxCol.removeAttribute("hidden");
+              });
             remaining += colWidth;
           });
         }

@@ -63,17 +63,21 @@ export default function modalizer(attr = {}) {
   // Build template
   let staticAttr = ` data-bs-backdrop="static" data-bs-keyboard="false"`;
   let template = document.createElement("template");
-  template.innerHTML = `<div class="modal${attr.scrollable ? " fade" : ""}${attr.size ? " modal-" + attr.size : ""}" id="${attr.id}"${
+  template.innerHTML = `<div class="modal${attr.scrollable ? " fade" : ""}${
+    attr.size ? " modal-" + attr.size : ""
+  }" id="${attr.id}"${
     attr.static ? staticAttr : ""
   } tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog${attr.scrollable ? " modal-dialog-scrollable" : ""}${attr.scrollable ? " modal-dialog-centered " : ""}${
-    attr.fullscreen ? " modal-fullscreen" : ""
-  }">
+  <div class="modal-dialog${attr.scrollable ? " modal-dialog-scrollable" : ""}${
+    attr.scrollable ? " modal-dialog-centered " : ""
+  }${attr.fullscreen ? " modal-fullscreen" : ""}">
     <div class="modal-content text-center">
      <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="${
        attr.closeLabel
      }"></button>
-      <div class="modal-icon-holder p-3 pt-4 pb-0"><div class="modal-icon modal-${attr.icon}"></div></div>
+      <div class="modal-icon-holder p-3 pt-4 pb-0"><div class="modal-icon modal-${
+        attr.icon
+      }"></div></div>
       <div class="modal-title d-flex p-3 pt-4 pb-0 align-items-center justify-content-center">
         <h5 class="fs-2">${attr.title}</h4>
       </div>
@@ -82,9 +86,15 @@ export default function modalizer(attr = {}) {
       </form></div>
       <div class="modal-actions d-flex mt-2 justify-content-center">
         <div class="btn-group flex-fill" style="min-height:44px">
-          <button type="button" data-event="cancel" class="btn btn-${attr.cancelClass} rounded-0">${attr.cancelText}</button>
-          <button type="button" data-event="deny" class="btn btn-${attr.denyClass} rounded-0">${attr.denyText}</button>
-          <button type="button" data-event="confirm" class="btn btn-${attr.confirmClass} rounded-0">${attr.confirmText}</button>
+          <button type="button" data-event="cancel" class="btn btn-${
+            attr.cancelClass
+          } rounded-0">${attr.cancelText}</button>
+          <button type="button" data-event="deny" class="btn btn-${
+            attr.denyClass
+          } rounded-0">${attr.denyText}</button>
+          <button type="button" data-event="confirm" class="btn btn-${
+            attr.confirmClass
+          } rounded-0">${attr.confirmText}</button>
         </div>
       </div>
     </div>
@@ -120,8 +130,12 @@ export default function modalizer(attr = {}) {
   el.addEventListener(
     "hidden.bs.modal",
     () => {
-      el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n).dispose());
-      el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n).dispose());
+      el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) =>
+        bootstrap.Tooltip.getInstance(n).dispose()
+      );
+      el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) =>
+        bootstrap.Popover.getInstance(n).dispose()
+      );
       modal.dispose();
       el.remove();
     },
@@ -147,14 +161,22 @@ export default function modalizer(attr = {}) {
   });
 
   // BSN needs explicit init
-  el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((n) => bootstrap.Tooltip.getInstance(n) || new bootstrap.Tooltip(n));
-  el.querySelectorAll('[data-bs-toggle="popover"]').forEach((n) => bootstrap.Popover.getInstance(n) || new bootstrap.Popover(n));
+  el.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(
+    (n) => bootstrap.Tooltip.getInstance(n) || new bootstrap.Tooltip(n)
+  );
+  el.querySelectorAll('[data-bs-toggle="popover"]').forEach(
+    (n) => bootstrap.Popover.getInstance(n) || new bootstrap.Popover(n)
+  );
 
   modal.show();
 
   // Show animation
   if (attr.icon && attr.animated && attr.showIcon) {
-    el.addEventListener("shown.bs.modal", () => el.querySelector(".modal-icon").classList.add("modal-icon-show"), { once: true });
+    el.addEventListener(
+      "shown.bs.modal",
+      () => el.querySelector(".modal-icon").classList.add("modal-icon-show"),
+      { once: true }
+    );
   }
 
   return modal;
@@ -184,10 +206,14 @@ export function modalizerConfirm(attr = {}, onResolve = null, onReject = null) {
   // Bootstrap 5 use _element and BSN use element
   const element = modal.element || modal._element;
   if (onResolve) {
-    element.addEventListener("modal.confirm", (ev) => onResolve(ev), { once: true });
+    element.addEventListener("modal.confirm", (ev) => onResolve(ev), {
+      once: true,
+    });
   }
   if (onReject) {
-    element.addEventListener("modal.cancel", (ev) => onReject(ev), { once: true });
+    element.addEventListener("modal.cancel", (ev) => onReject(ev), {
+      once: true,
+    });
   }
   return modal;
 }

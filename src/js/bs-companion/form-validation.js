@@ -12,12 +12,16 @@ export default function formValidation() {
     form.addEventListener(
       "submit",
       (event) => {
-        form.querySelectorAll(".nav-tabs .nav-link.is-invalid").forEach((link) => {
-          link.classList.remove("is-invalid");
-        });
-        form.querySelectorAll(".accordion-item.is-invalid").forEach((accordionItem) => {
-          accordionItem.classList.remove("is-invalid");
-        });
+        form
+          .querySelectorAll(".nav-tabs .nav-link.is-invalid")
+          .forEach((link) => {
+            link.classList.remove("is-invalid");
+          });
+        form
+          .querySelectorAll(".accordion-item.is-invalid")
+          .forEach((accordionItem) => {
+            accordionItem.classList.remove("is-invalid");
+          });
         Array.from(form.elements).forEach((el) => {
           if (!el.checkValidity()) {
             // Mark all tabs and accordions as invalid as well
@@ -30,7 +34,9 @@ export default function formValidation() {
               parent = parent.parentElement;
             }
             if (parent && !parent.classList.contains("active")) {
-              let link = form.querySelector("a[data-bs-target='#" + parent.getAttribute("id") + "']");
+              let link = form.querySelector(
+                "a[data-bs-target='#" + parent.getAttribute("id") + "']"
+              );
               if (link) {
                 link.classList.add("is-invalid");
               }

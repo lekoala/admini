@@ -1,399 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- page meta -->
+    <meta
+      name="description"
+      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="author" content="LeKoala" />
+    <meta
+      name="keywords"
+      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
-	<!-- page meta -->
-	<meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5">
-	<meta name="author" content="LeKoala">
-	<meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic">
+    <!-- performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-	<!-- performance -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- page title & icon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+    <title>Admini</title>
 
-	<!-- page title & icon -->
-	<link rel="icon" type="image/svg+xml"
-		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
-	<title>Admini</title>
+    <!-- styles -->
+    <link href="css/admini.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet" />
+    <!-- icons -->
+    <script>
+      window.LastIcon = {
+        types: {
+          material: "twotone",
+        },
+        defaultSet: "material",
+        replaceName: {
+          trash: "delete",
+        },
+        fonts: ["material"],
+      };
+    </script>
+    <script src="js/last-icon.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
+      rel="stylesheet" />
 
-	<!-- styles -->
-	<link href="css/admini.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<!-- icons -->
-	<script>
-		window.LastIcon = {
-			types: {
-				material: "twotone",
-			},
-			defaultSet: "material",
-			replaceName: {
-				trash: "delete",
-			},
-			fonts: ["material"],
-		};
-	</script>
-	<script src="js/last-icon.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js"
+      nomodule
+      defer
+      id="nomodule-browser-warning"></script>
+    <script type="module" src="js/admini.min.js"></script>
+    <style type="text/css">
+      .row-filters th {
+        padding: 0;
+      }
 
-	<!-- scripts -->
-	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
-	<script type="module" src="js/admini.min.js"></script>
-	<style type="text/css">
-		.row-filters th {
-			padding: 0;
-		}
+      .row-filters th input {
+        width: 100%;
+        border: 0;
+        border-right: 1px solid #dee2e6;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
 
-		.row-filters th input {
-			width: 100%;
-			border: 0;
-			border-right: 1px solid #dee2e6;
-			padding-left: 16px;
-			padding-right: 16px;
-		}
+      .row-filters th input:focus {
+        background: palegoldenrod;
+        outline: 0;
+      }
+    </style>
+    <script type="module">
+      // Ideally this should call the server instead
+      const table = document.getElementById("demo-table");
+      const tr = table.querySelector("tbody").getElementsByTagName("tr");
+      document
+        .querySelector("#table-search")
+        .addEventListener("input", (ev) => {
+          let filter, table, td, txtValue;
+          filter = ev.target.value.toUpperCase();
+          // Loop through all table rows, and hide those who don't match the search query
+          for (let i = 0; i < tr.length; i++) {
+            let displayValue = "none";
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                displayValue = "";
+              }
+            }
+            tr[i].style.display = displayValue;
+          }
+        });
+      document.querySelectorAll(".row-filters th").forEach((col) => {
+        const colIdx = col.ariaColIndex;
+        const input = col.querySelector("input");
+        if (!input) {
+          return;
+        }
+        input.addEventListener("input", (ev) => {
+          let filter, table, td, txtValue;
+          filter = ev.target.value.toUpperCase();
+          // Loop through all table rows, and hide those who don't match the search query
+          for (let i = 0; i < tr.length; i++) {
+            let displayValue = "none";
+            td = tr[i].querySelector("[aria-colindex='" + colIdx + "']");
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                displayValue = "";
+              }
+            }
+            tr[i].style.display = displayValue;
+          }
+        });
+      });
+    </script>
+    <script type="module">
+      window.admini.init(); // this should go last
+    </script>
+  </head>
 
-		.row-filters th input:focus {
-			background: palegoldenrod;
-			outline: 0;
-		}
-	</style>
-	<script type="module">
-		// Ideally this should call the server instead
-		const table = document.getElementById("demo-table");
-		const tr = table.querySelector("tbody").getElementsByTagName("tr");
-		document.querySelector("#table-search").addEventListener("input", (ev) => {
-			let filter, table, td, txtValue;
-			filter = ev.target.value.toUpperCase();
-			// Loop through all table rows, and hide those who don't match the search query
-			for (let i = 0; i < tr.length; i++) {
-				let displayValue = "none";
-				td = tr[i].getElementsByTagName("td")[0];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						displayValue = "";
-					}
-				}
-				tr[i].style.display = displayValue;
-			}
-		});
-		document.querySelectorAll(".row-filters th").forEach((col) => {
-			const colIdx = col.ariaColIndex;
-			const input = col.querySelector("input");
-			if (!input) {
-				return;
-			}
-			input.addEventListener("input", (ev) => {
-				let filter, table, td, txtValue;
-				filter = ev.target.value.toUpperCase();
-				// Loop through all table rows, and hide those who don't match the search query
-				for (let i = 0; i < tr.length; i++) {
-					let displayValue = "none";
-					td = tr[i].querySelector("[aria-colindex='" + colIdx + "']");
-					if (td) {
-						txtValue = td.textContent || td.innerText;
-						if (txtValue.toUpperCase().indexOf(filter) > -1) {
-							displayValue = "";
-						}
-					}
-					tr[i].style.display = displayValue;
-				}
-			});
-		});
-	</script>
-	<script type="module">window.admini.init(); // this should go last</script>
-</head>
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar" class="sidebar" data-bs-scroll="true">
+        <a class="sidebar-brand" href="index.html">
+          <span class="sidebar-brand-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="256"
+              height="256"
+              viewBox="0 0 100 100">
+              <text
+                x="50%"
+                y="52%"
+                dominant-baseline="central"
+                text-anchor="middle"
+                font-size="120">
+                💠
+              </text>
+            </svg>
+          </span>
+          <span class="sidebar-brand-title">Admini</span>
+        </a>
 
-<body>
-	<div class="wrapper">
-		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
-			<a class="sidebar-brand" href="index.html">
-				<span class="sidebar-brand-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
-							font-size="120">💠</text></svg>
-				</span>
-				<span class="sidebar-brand-title">Admini</span>
-			</a>
+        <!-- sidebar-content -->
+        <div class="sidebar-content scroller">
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-header">UI</li>
 
-			<!-- sidebar-content -->
-			<div class="sidebar-content scroller">
-				<ul class="sidebar-nav">
-					<li class="sidebar-nav-header">
-						UI
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="index.html">
+                <l-i name="dashboard"></l-i>
+                <span>Dashboard</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
-							<l-i name="dashboard"></l-i> <span>Dashboard</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="bottom.html">
+                <l-i name="vertical_align_bottom"></l-i>
+                <span>Bottom actions</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="bottom.html">
-							<l-i name="vertical_align_bottom"></l-i> <span>Bottom actions</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tabs.html">
+                <l-i name="tab"></l-i>
+                <span>Tabbed navigation</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="tabs.html">
-							<l-i name="tab"></l-i> <span>Tabbed navigation</span>
-						</a>
-					</li>
+            <li class="sidebar-nav-header">Components</li>
 
-					<li class="sidebar-nav-header">
-						Components
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="avatars.html">
+                <l-i name="person"></l-i>
+                <span>Avatars</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="avatars.html">
-							<l-i name="person"></l-i> <span>Avatars</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="forms.html">
+                <l-i name="feed"></l-i>
+                <span>Forms</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="forms.html">
-							<l-i name="feed"></l-i> <span>Forms</span>
-						</a>
-					</li>
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="tables.html">
+                <l-i name="view_list"></l-i>
+                <span>Tables</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="tables.html">
-							<l-i name="view_list"></l-i> <span>Tables</span>
-						</a>
-					</li>
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="modals.html">
-							<l-i name="panorama_wide_angle"></l-i> <span>Modals</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="modals.html">
+                <l-i name="panorama_wide_angle"></l-i>
+                <span>Modals</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="datatable.html">
-							<l-i name="view_agenda"></l-i> <span>Datatable</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="datatable.html">
+                <l-i name="view_agenda"></l-i>
+                <span>Datatable</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons.html">
-							<l-i name="star"></l-i> <span>Icons</span> <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">2.191</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="icons.html">
+                <l-i name="star"></l-i>
+                <span>Icons</span>
+                <span
+                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
+                  data-bs-toggle="tooltip">
+                  2.191
+                </span>
+              </a>
+            </li>
 
-					<li class="sidebar-nav-header">
-						Useful links
-					</li>
+            <li class="sidebar-nav-header">Useful links</li>
 
-					<li class="sidebar-item"><a class="sidebar-link" href="https://github.com/lekoala/admini">
-							<l-i name="star"></l-i> <span>Repository</span>
-						</a></li>
-				</ul>
-			</div>
-			<!-- /sidebar-content -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="https://github.com/lekoala/admini">
+                <l-i name="star"></l-i>
+                <span>Repository</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- /sidebar-content -->
 
-			<!-- sidebar-footer -->
-			<div class="sidebar-footer">
-				<button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-					<l-i name="menu_open"></l-i>
-				</button>
-				<div class="dropup">
-					<button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
-						<l-i name="help_outline"></l-i>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
-						<li><a class="dropdown-item" href="help.html">Help</a></li>
-						<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<p class="m-3 mb-0">
-							<small>Built with Admini</small>
-						</p>
-					</ul>
-				</div>
-			</div>
-			<!-- /sidebar-footer -->
-		</aside>
+        <!-- sidebar-footer -->
+        <div class="sidebar-footer">
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
+          <div class="dropup">
+            <button
+              class="btn btn-default"
+              id="help-dropdown-btn"
+              data-bs-toggle="dropdown">
+              <l-i name="help_outline"></l-i>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="help-dropdown-btn">
+              <li><a class="dropdown-item" href="help.html">Help</a></li>
+              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <p class="m-3 mb-0">
+                <small>Built with Admini</small>
+              </p>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar-footer -->
+      </aside>
 
-		<main class="main">
-			<header class="main-header">
-				<div class="main-header-sidebar">
-					<button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-						<l-i name="menu"></l-i>
-					</button>
-				</div>
-				<div class="main-header-info">
-					<nav aria-label="breadcrumb">
-						<div class="breadcrumb">
-							<li class="breadcrumb-item active" aria-current="page">Tables</li>
-						</div>
-					</nav>
-				</div>
-			</header>
-			<section class="scroller">
-				<div class="container-fluid py-3">
+      <main class="main">
+        <header class="main-header">
+          <div class="main-header-sidebar">
+            <button
+              type="button"
+              class="btn btn-primary btn-flex btn-square rounded-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebar"
+              aria-controls="sidebar">
+              <l-i name="menu"></l-i>
+            </button>
+          </div>
+          <div class="main-header-info">
+            <nav aria-label="breadcrumb">
+              <div class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                  Tables
+                </li>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <section class="scroller">
+          <div class="container-fluid py-3">
+            <p>
+              Tables can expand outside of container. Resize this page to see
+              the columns collapse automatically based on real content size.
+            </p>
 
-					<p>Tables can expand outside of container. Resize this page to see the columns collapse automatically based on real content size.</p>
+            <input
+              type="search"
+              class="form-control mb-3"
+              placeholder="filter table"
+              id="table-search" />
 
-					<input type="search" class="form-control mb-3" placeholder="filter table" id="table-search">
+            <div
+              class="container-expand table-responsive table-responsive-auto scroller">
+              <table
+                class="table table-striped table-actions table-hover mb-0"
+                id="demo-table">
+                <thead>
+                  <tr>
+                    <th scope="col" width="40">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th
+                      scope="col"
+                      width="40"
+                      class="text-center table-responsive-hide">
+                      Count
+                    </th>
+                    <th
+                      scope="col"
+                      width="200"
+                      class="text-end table-responsive-hide">
+                      Amount
+                      <span
+                        title="Total amount per year"
+                        data-bs-toggle="tooltip">
+                        <l-i name="help"></l-i>
+                      </span>
+                    </th>
+                    <th width="10"></th>
+                  </tr>
+                  <tr class="row-filters">
+                    <th><input type="text" name="filters[id]" /></th>
+                    <th><input type="text" name="filters[firstname]" /></th>
+                    <th><input type="text" name="filters[lastname]" /></th>
+                    <th><input type="text" name="filters[handle]" /></th>
+                    <th><input type="text" name="filters[count]" /></th>
+                    <th><input type="text" name="filters[amount]" /></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">2.000 $</td>
+                    <td>
+                      <a href="#" class="btn btn-primary">
+                        <l-i name="edit"></l-i>
+                        <span>edit</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td class="table-danger">@fat</td>
+                    <td class="text-center">25</td>
+                    <td class="text-end">0 $</td>
+                    <td>
+                      <a href="#" class="btn btn-primary">
+                        <l-i name="edit"></l-i>
+                        <span>edit</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td class="text-center">17</td>
+                    <td class="text-end">24.000 $</td>
+                    <td>
+                      <a href="#" class="btn btn-primary">
+                        <l-i name="edit"></l-i>
+                        <span>edit</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Jake</td>
+                    <td>Thornton</td>
+                    <td></td>
+                    <td class="text-center">42</td>
+                    <td class="text-end">17.000 $</td>
+                    <td>
+                      <a href="#" class="btn btn-primary">
+                        <l-i name="edit"></l-i>
+                        <span>edit</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>John</td>
+                    <td>Thornton</td>
+                    <td></td>
+                    <td class="text-center">0</td>
+                    <td class="text-end">2.125 $</td>
+                    <td>
+                      <a href="#" class="btn btn-primary">
+                        <l-i name="edit"></l-i>
+                        <span>edit</span>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-					<div class="container-expand table-responsive table-responsive-auto scroller">
-						<table class="table table-striped table-actions table-hover mb-0" id="demo-table">
-							<thead>
-								<tr>
-									<th scope="col" width="40">#</th>
-									<th scope="col">First</th>
-									<th scope="col">Last</th>
-									<th scope="col">Handle</th>
-									<th scope="col" width="40" class="text-center table-responsive-hide">Count</th>
-									<th scope="col" width="200" class="text-end table-responsive-hide">Amount
-										<span title="Total amount per year" data-bs-toggle="tooltip">
-											<l-i name="help"></l-i>
-										</span>
-									</th>
-									<th width="10"></th>
-								</tr>
-								<tr class="row-filters">
-									<th><input type="text" name="filters[id]"></th>
-									<th><input type="text" name="filters[firstname]"></th>
-									<th><input type="text" name="filters[lastname]"></th>
-									<th><input type="text" name="filters[handle]"></th>
-									<th><input type="text" name="filters[count]"></th>
-									<th><input type="text" name="filters[amount]"></th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">1</th>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td>@mdo</td>
-									<td class="text-center">1</td>
-									<td class="text-end">2.000 $</td>
-									<td><a href="#" class="btn btn-primary">
-											<l-i name="edit"></l-i> <span>edit</span>
-										</a></td>
-								</tr>
-								<tr>
-									<th scope="row">2</th>
-									<td>Jacob</td>
-									<td>Thornton</td>
-									<td class="table-danger">@fat</td>
-									<td class="text-center">25</td>
-									<td class="text-end">0 $</td>
-									<td><a href="#" class="btn btn-primary">
-											<l-i name="edit"></l-i> <span>edit</span>
-										</a></td>
-								</tr>
-								<tr class="table-primary">
-									<th scope="row">3</th>
-									<td>Larry</td>
-									<td>the Bird</td>
-									<td>@twitter</td>
-									<td class="text-center">17</td>
-									<td class="text-end">24.000 $</td>
-									<td><a href="#" class="btn btn-primary">
-											<l-i name="edit"></l-i> <span>edit</span>
-										</a></td>
-								</tr>
-								<tr>
-									<th scope="row">4</th>
-									<td>Jake</td>
-									<td>Thornton</td>
-									<td></td>
-									<td class="text-center">42</td>
-									<td class="text-end">17.000 $</td>
-									<td><a href="#" class="btn btn-primary">
-											<l-i name="edit"></l-i> <span>edit</span>
-										</a></td>
-								</tr>
-								<tr>
-									<th scope="row">5</th>
-									<td>John</td>
-									<td>Thornton</td>
-									<td></td>
-									<td class="text-center">0</td>
-									<td class="text-end">2.125 $</td>
-									<td><a href="#" class="btn btn-primary">
-											<l-i name="edit"></l-i> <span>edit</span>
-										</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+            <ul class="pagination justify-content-center mt-3">
+              <li class="page-item disabled">
+                <a
+                  class="page-link"
+                  href="#"
+                  tabindex="-1"
+                  aria-disabled="true"
+                  aria-label="Previous">
+                  <span aria-hidden="true">
+                    <l-i name="navigate_before"></l-i>
+                  </span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">
+                  2
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">
+                    <l-i name="navigate_next"></l-i>
+                  </span>
+                </a>
+              </li>
+            </ul>
 
-					<ul class="pagination justify-content-center mt-3">
-						<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous">
-								<span aria-hidden="true">
-									<l-i name="navigate_before"></l-i>
-								</span>
-							</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item active" aria-current="page"><a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#" aria-label="Next">
-								<span aria-hidden="true">
-									<l-i name="navigate_next"></l-i>
-								</span>
-							</a>
-						</li>
-					</ul>
-
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="card card-default">
-								<div class="card-header card-title">Table</div>
-								<!-- card-table is needed to properly align with content of card -->
-								<table class="table card-table table-striped">
-									<thead>
-										<tr>
-											<th width="20">Pos</th>
-											<th>Name</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>John Nemo</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>John Nemo</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>John Nemo</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>John Nemo</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="card card-default">
-								<div class="card-body">
-									<p>They will also work just fine in a card</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		</main>
-	</div>
-</body>
-
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card card-default">
+                  <div class="card-header card-title">Table</div>
+                  <!-- card-table is needed to properly align with content of card -->
+                  <table class="table card-table table-striped">
+                    <thead>
+                      <tr>
+                        <th width="20">Pos</th>
+                        <th>Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>John Nemo</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>John Nemo</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>John Nemo</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>John Nemo</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card card-default">
+                  <div class="card-body">
+                    <p>They will also work just fine in a card</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

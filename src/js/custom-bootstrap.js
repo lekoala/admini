@@ -11,4 +11,16 @@ import Tab from "bootstrap/js/src/tab.js";
 import Toast from "bootstrap/js/src/toast.js";
 import Tooltip from "bootstrap/js/src/tooltip.js";
 
-export { Alert, Button, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip };
+export {
+  Alert,
+  Button,
+  Collapse,
+  Dropdown,
+  Modal,
+  Offcanvas,
+  Popover,
+  ScrollSpy,
+  Tab,
+  Toast,
+  Tooltip,
+};

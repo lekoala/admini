@@ -42,7 +42,9 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
       for (let entry of entries) {
         const tabs = entry.target.querySelector(tabsSelector);
         // check inlineSize (width) or blockSize (height)
-        const contentBoxSize = Array.isArray(entry.contentBoxSize) ? entry.contentBoxSize[0] : entry.contentBoxSize;
+        const contentBoxSize = Array.isArray(entry.contentBoxSize)
+          ? entry.contentBoxSize[0]
+          : entry.contentBoxSize;
         const size = contentBoxSize.inlineSize - 30;
         if (size < tabs.dataset.tabsWidth) {
           tabs.classList.add("nav-tabs-dropdown");
@@ -60,7 +62,9 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
         if (!a.classList.contains("active")) {
           return;
         }
-        if (!a.parentElement.parentElement.classList.contains("nav-tabs-dropdown")) {
+        if (
+          !a.parentElement.parentElement.classList.contains("nav-tabs-dropdown")
+        ) {
           return;
         }
         // Hide current element

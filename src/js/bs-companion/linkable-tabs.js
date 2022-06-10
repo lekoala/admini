@@ -6,7 +6,8 @@
 function setActiveTab(activeTab) {
   if (!activeTab.classList.contains("active")) {
     // Remove previous active if any
-    var prevActiveTab = activeTab.parentElement.parentElement.querySelector(".active");
+    var prevActiveTab =
+      activeTab.parentElement.parentElement.querySelector(".active");
     if (prevActiveTab) {
       prevActiveTab.classList.remove("active");
     }
@@ -22,7 +23,8 @@ function setActiveTab(activeTab) {
     }
     target.classList.add(...["active", "show"]);
   }
-  let inst = bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
+  let inst =
+    bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
   inst.show();
 }
 

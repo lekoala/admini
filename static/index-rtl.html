@@ -1,442 +1,562 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- page meta -->
+    <meta
+      name="description"
+      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="author" content="LeKoala" />
+    <meta
+      name="keywords"
+      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
-	<!-- page meta -->
-	<meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5">
-	<meta name="author" content="LeKoala">
-	<meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic">
+    <!-- performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-	<!-- performance -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- page title & icon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+    <title>Admini</title>
 
-	<!-- page title & icon -->
-	<link rel="icon" type="image/svg+xml"
-		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
-	<title>Admini</title>
+    <!-- styles -->
+    <link href="css/admini.rtl.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet" />
 
-	<!-- styles -->
-	<link href="css/admini.rtl.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <script>
+      window.LastIcon = {
+        types: {
+          material: "twotone",
+        },
+        defaultSet: "material",
+        fonts: ["material"],
+      };
+    </script>
+    <script src="js/last-icon.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
+      rel="stylesheet" />
 
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js"
+      nomodule
+      defer
+      id="nomodule-browser-warning"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/admini.min.js"></script>
+    <script type="module">
+      window.admini.init(); // this should go last
+    </script>
+  </head>
 
-	<!-- icons -->
-	<script>
-		window.LastIcon = {
-			types: {
-				material: "twotone",
-			},
-			defaultSet: "material",
-			fonts: ["material"],
-		};
-	</script>
-	<script src="js/last-icon.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+  <!-- minimenu class should be applied on render -->
 
-	<!-- scripts -->
-	<script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer id="nomodule-browser-warning"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script type="module" src="js/admini.min.js"></script>
-	<script type="module">window.admini.init(); // this should go last</script>
-</head>
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar" class="sidebar" data-bs-scroll="true">
+        <a class="sidebar-brand" href="index.html">
+          <span class="sidebar-brand-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="256"
+              height="256"
+              viewBox="0 0 100 100">
+              <text
+                x="50%"
+                y="52%"
+                dominant-baseline="central"
+                text-anchor="middle"
+                font-size="120">
+                💠
+              </text>
+            </svg>
+          </span>
+          <span class="sidebar-brand-title">Admini</span>
+        </a>
 
-<!-- minimenu class should be applied on render -->
+        <!-- optional selector -->
+        <select name="" id="sidebar-selector" class="form-select">
+          <option value="">Main site</option>
+          <option value="" style="background: crimson; color: #fff">
+            This site
+          </option>
+          <option value="">That site</option>
+          <option value="">Other site with a long name&nbsp;&nbsp;</option>
+          <!-- cheap trick to add space after -->
+        </select>
 
-<body>
-	<div class="wrapper">
-		<aside id="sidebar" class="sidebar" data-bs-scroll="true">
-			<a class="sidebar-brand" href="index.html">
-				<span class="sidebar-brand-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100"><text x="50%" y="52%" dominant-baseline="central" text-anchor="middle"
-							font-size="120">💠</text></svg>
-				</span>
-				<span class="sidebar-brand-title">Admini</span>
-			</a>
+        <!-- optional dropdown or profile -->
+        <div class="sidebar-profile dropdown">
+          <button
+            class="btn btn-default"
+            id="profile-trigger"
+            data-bs-toggle="dropdown"
+            data-bs-display="static"
+            data-bs-offset="-32"
+            aria-expanded="false">
+            <img
+              src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
+              class="avatar avatar-thumb rounded cursor-pointer"
+              alt="John Nemo" />
+            <div class="sidebar-profile-name dropdown-toggle">John Nemo</div>
+            <div class="sidebar-profile-subtitle">Administrator</div>
+          </button>
 
-			<!-- optional selector -->
-			<select name="" id="sidebar-selector" class="form-select">
-				<option value="">Main site</option>
-				<option value="" style="background:crimson;color:#fff">This site</option>
-				<option value="">That site</option>
-				<option value="">Other site with a long name&nbsp;&nbsp;</option><!-- cheap trick to add space after -->
-			</select>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="profile.html">Profile</a>
+            <a class="dropdown-item" href="#">Log out</a>
+          </div>
+        </div>
 
-			<!-- optional dropdown or profile -->
-			<div class="sidebar-profile dropdown">
-				<button class="btn btn-default" id="profile-trigger" data-bs-toggle="dropdown" data-bs-display="static" data-bs-offset="-32" aria-expanded="false">
-					<img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" class="avatar avatar-thumb rounded cursor-pointer" alt="John Nemo">
-					<div class="sidebar-profile-name dropdown-toggle">John Nemo</div>
-					<div class="sidebar-profile-subtitle">Administrator</div>
-				</button>
+        <!-- sidebar-content -->
+        <div class="sidebar-content scroller">
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-header">UI</li>
 
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="profile.html">Profile</a>
-					<a class="dropdown-item" href="#">Log out</a>
-				</div>
-			</div>
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="index.html">
+                <l-i name="dashboard"></l-i>
+                <span>Dashboard</span>
+              </a>
+            </li>
 
-			<!-- sidebar-content -->
-			<div class="sidebar-content scroller">
-				<ul class="sidebar-nav">
-					<li class="sidebar-nav-header">
-						UI
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="bottom.html">
+                <l-i name="vertical_align_bottom"></l-i>
+                <span>Bottom actions</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
-							<l-i name="dashboard"></l-i> <span>Dashboard</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tabs.html">
+                <l-i name="tab"></l-i>
+                <span>Tabbed navigation</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="bottom.html">
-							<l-i name="vertical_align_bottom"></l-i> <span>Bottom actions</span>
-						</a>
-					</li>
+            <li class="sidebar-nav-header">Components</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="tabs.html">
-							<l-i name="tab"></l-i> <span>Tabbed navigation</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="avatars.html">
+                <l-i name="person"></l-i>
+                <span>Avatars</span>
+              </a>
+            </li>
 
-					<li class="sidebar-nav-header">
-						Components
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="forms.html">
+                <l-i name="feed"></l-i>
+                <span>Forms</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="avatars.html">
-							<l-i name="person"></l-i> <span>Avatars</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tables.html">
+                <l-i name="view_list"></l-i>
+                <span>Tables</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="forms.html">
-							<l-i name="feed"></l-i> <span>Forms</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="modals.html">
+                <l-i name="panorama_wide_angle"></l-i>
+                <span>Modals</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="tables.html">
-							<l-i name="view_list"></l-i> <span>Tables</span>
-						</a>
-					</li>
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="modals.html">
-							<l-i name="panorama_wide_angle"></l-i> <span>Modals</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="datatable.html">
+                <l-i name="view_agenda"></l-i>
+                <span>Datatable</span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="datatable.html">
-							<l-i name="view_agenda"></l-i> <span>Datatable</span>
-						</a>
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="icons.html">
+                <l-i name="star"></l-i>
+                <span>Icons</span>
+                <span
+                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
+                  data-bs-toggle="tooltip">
+                  2.191
+                </span>
+              </a>
+            </li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons.html">
-							<l-i name="star"></l-i> <span>Icons</span> <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">2.191</span>
-						</a>
-					</li>
+            <li class="sidebar-nav-header">Useful links</li>
 
-					<li class="sidebar-nav-header">
-						Useful links
-					</li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="https://github.com/lekoala/admini">
+                <l-i name="star"></l-i>
+                <span>Repository</span>
+              </a>
+            </li>
+            <li class="sidebar-item" style="margin-bottom: 500px">
+              <a class="sidebar-link" href="#">
+                <l-i name="star"></l-i>
+                <span>
+                  Link with lots of space below, scroll to see the CTA
+                </span>
+              </a>
+            </li>
+          </ul>
 
-					<li class="sidebar-item"><a class="sidebar-link" href="https://github.com/lekoala/admini">
-							<l-i name="star"></l-i> <span>Repository</span>
-						</a></li>
-					<li class="sidebar-item" style="margin-bottom: 500px;"><a class="sidebar-link" href="#">
-							<l-i name="star"></l-i> <span>Link with lots of space below, scroll to see the CTA</span>
-						</a></li>
+          <!-- this will collapse to a button when sidebar is collapsed -->
+          <div class="sidebar-cta dropdown">
+            <button
+              class="btn dropdown-toggle"
+              id="sidebar-cta-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <l-i name="star"></l-i>
+            </button>
+            <div class="sidebar-cta-content dropdown-menu">
+              <strong class="d-inline-block mb-2">Heads up!</strong>
+              <div class="mb-3 text-sm">This is a warning message</div>
+              <div class="d-grid">
+                <a href="#" class="btn btn-primary">Do something</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /sidebar-content -->
 
-				</ul>
+        <!-- sidebar-footer -->
+        <div class="sidebar-footer">
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
+          <div class="dropup">
+            <button
+              class="btn btn-default"
+              id="help-dropdown-btn"
+              data-bs-toggle="dropdown">
+              <l-i name="help_outline"></l-i>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-dark"
+              aria-labelledby="help-dropdown-btn">
+              <li><a class="dropdown-item" href="help.html">Help</a></li>
+              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <p class="m-3 mb-0">
+                <small>Built with Admini</small>
+              </p>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar-footer -->
+      </aside>
 
-				<!-- this will collapse to a button when sidebar is collapsed -->
-				<div class="sidebar-cta dropdown">
-					<button class="btn dropdown-toggle" id="sidebar-cta-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						<l-i name="star"></l-i>
-					</button>
-					<div class="sidebar-cta-content dropdown-menu">
-						<strong class="d-inline-block mb-2">Heads up!</strong>
-						<div class="mb-3 text-sm">
-							This is a warning message
-						</div>
-						<div class="d-grid">
-							<a href="#" class="btn btn-primary">Do something</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /sidebar-content -->
+      <main class="main">
+        <header class="main-header">
+          <div class="main-header-sidebar">
+            <button
+              type="button"
+              class="btn btn-primary btn-flex btn-square rounded-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebar"
+              aria-controls="sidebar">
+              <l-i name="menu"></l-i>
+            </button>
+          </div>
+          <div class="main-header-info">
+            <nav aria-label="breadcrumb">
+              <div class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                  Dashboard
+                </li>
+              </div>
+            </nav>
+          </div>
+          <div class="main-header-nav">
+            <nav class="nav">
+              <div class="nav-item">
+                <div class="dropdown dropleft me-1">
+                  <button
+                    class="btn"
+                    id="notificationMenuLink"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    aria-expanded="false">
+                    <l-i name="notifications" size="24"></l-i>
+                    <span class="btn-indicator bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-lg py-0"
+                    aria-labelledby="notificationMenuLink">
+                    <div class="dropdown-menu-header">
+                      <h6>Notifications</h6>
+                      <a href="">Mark as read</a>
+                    </div>
+                    <div class="list-group">
+                      <a
+                        href="#"
+                        class="list-group-item list-group-item-action">
+                        <div class="row g-0 align-items-center">
+                          <div class="col-2">
+                            <l-i name="info" class="text-danger"></l-i>
+                          </div>
+                          <div class="col-10">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">Something bad happened</h5>
+                              <small>3 days ago</small>
+                            </div>
+                            <p class="mb-1">
+                              Some placeholder content in a paragraph.
+                            </p>
+                            <small>And some small print.</small>
+                          </div>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">List group item heading</h5>
+                          <small class="text-muted">3 days ago</small>
+                        </div>
+                        <p class="mb-1">
+                          Some placeholder content in a paragraph.
+                        </p>
+                        <small class="text-muted">
+                          And some muted small print.
+                        </small>
+                      </a>
+                      <a
+                        href="#"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">List group item heading</h5>
+                          <small class="text-muted">3 days ago</small>
+                        </div>
+                        <p class="mb-1">
+                          Some placeholder content in a paragraph.
+                        </p>
+                        <small class="text-muted">
+                          And some muted small print.
+                        </small>
+                      </a>
+                    </div>
+                    <a href="#" class="dropdown-menu-footer">
+                      See all notifications
+                    </a>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+        <section class="scroller">
+          <div class="container-fluid">
+            <h1 class="my-4">
+              <strong>Welcome</strong>
+              to admini
+            </h1>
 
-			<!-- sidebar-footer -->
-			<div class="sidebar-footer">
-				<button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-					<l-i name="menu_open"></l-i>
-				</button>
-				<div class="dropup">
-					<button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
-						<l-i name="help_outline"></l-i>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
-						<li><a class="dropdown-item" href="help.html">Help</a></li>
-						<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<p class="m-3 mb-0">
-							<small>Built with Admini</small>
-						</p>
-					</ul>
-				</div>
-			</div>
-			<!-- /sidebar-footer -->
-		</aside>
-
-		<main class="main">
-			<header class="main-header">
-				<div class="main-header-sidebar">
-					<button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-						<l-i name="menu"></l-i>
-					</button>
-				</div>
-				<div class="main-header-info">
-					<nav aria-label="breadcrumb">
-						<div class="breadcrumb">
-							<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-						</div>
-					</nav>
-				</div>
-				<div class="main-header-nav">
-					<nav class="nav">
-						<div class="nav-item">
-							<div class="dropdown dropleft me-1">
-								<button class="btn" id="notificationMenuLink" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-									<l-i name="notifications" size="24"></l-i>
-									<span class="btn-indicator bg-danger">
-										99+
-										<span class="visually-hidden">unread messages</span>
-									</span>
-								</button>
-								<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg py-0" aria-labelledby="notificationMenuLink">
-									<div class="dropdown-menu-header">
-										<h6>Notifications</h6>
-										<a href="">Mark as read</a>
-									</div>
-									<div class="list-group">
-										<a href="#" class="list-group-item list-group-item-action">
-											<div class="row g-0 align-items-center">
-												<div class="col-2">
-													<l-i name="info" class="text-danger"></l-i>
-												</div>
-												<div class="col-10">
-													<div class="d-flex w-100 justify-content-between">
-														<h5 class="mb-1">Something bad happened</h5>
-														<small>3 days ago</small>
-													</div>
-													<p class="mb-1">Some placeholder content in a paragraph.</p>
-													<small>And some small print.</small>
-												</div>
-											</div>
-										</a>
-										<a href="#" class="list-group-item list-group-item-action">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mb-1">List group item heading</h5>
-												<small class="text-muted">3 days ago</small>
-											</div>
-											<p class="mb-1">Some placeholder content in a paragraph.</p>
-											<small class="text-muted">And some muted small print.</small>
-										</a>
-										<a href="#" class="list-group-item list-group-item-action">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mb-1">List group item heading</h5>
-												<small class="text-muted">3 days ago</small>
-											</div>
-											<p class="mb-1">Some placeholder content in a paragraph.</p>
-											<small class="text-muted">And some muted small print.</small>
-										</a>
-									</div>
-									<a href="#" class="dropdown-menu-footer">See all notifications</a>
-								</ul>
-							</div>
-						</div>
-					</nav>
-				</div>
-			</header>
-			<section class="scroller">
-				<div class="container-fluid">
-					<h1 class="my-4"><strong>Welcome</strong> to admini</h1>
-
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="card card-default">
-								<div class="card-badge bg-danger">
-									<l-i name="star"></l-i>
-								</div>
-								<div class="card-body">
-									<div class="card-title">Item</div>
-									<div class="card-text">
-										<div class="fs-1 mt-1 mb-3">1.000</div>
-										<div class="mb-0">
-											<span class="text-danger">
-												<l-i name="trending_down"></l-i> -3.75%
-											</span>
-											<span class="text-muted">Since last week</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-badge bg-success">
-									<l-i name="attach_money"></l-i>
-								</div>
-								<div class="card-body">
-									<div class="card-title">Item</div>
-									<div class="card-text">
-										<div class="fs-1 mt-1 mb-3">100.000,00 $</div>
-										<div class="mb-0">
-											<span class="text-success">
-												<l-i name="trending_up"></l-i> +10.00%
-											</span>
-											<span class="text-muted">Since last week</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="card card-default">
-								<div class="card-badge text-primary">
-									<l-i name="star"></l-i>
-								</div>
-								<svg class="card-img-svg card-img-top" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-									preserveAspectRatio="xMidYMid slice" focusable="false">
-									<rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-								</svg>
-								<!-- <img src="https://plchldr.co/i/500x250" alt="" class="card-img-top"> -->
-								<div class="card-body">
-									<div class="card-title">Item</div>
-									<div class="card-text">
-										<div class="fs-1 mt-1 mb-3">2.382</div>
-									</div>
-								</div>
-							</div>
-							<div class="card card-default">
-								<div class="card-badge text-primary">
-									<l-i name="star"></l-i>
-								</div>
-								<div class="card-body">
-									<div class="card-title">Item</div>
-									<div class="card-text">
-										<div class="fs-1 mt-1 mb-3">2.000 $</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="card card-full">
-								<div class="card-body">
-									<div class="row">
-										<div class="col mt-0">
-											<h5 class="card-title">Chart</h5>
-										</div>
-										<div class="col-auto">
-											<div class="card-badge text-primary">
-												<l-i name="star"></l-i>
-											</div>
-										</div>
-									</div>
-									<!-- pick size according to number of tiles on the side in desktop layout -->
-									<canvas id="myChart" height="440" style="max-height: 440px;"></canvas>
-									<script type="module">
-										const ctx = document.getElementById('myChart').getContext('2d');
-										const myChart = new Chart(ctx, {
-											type: 'bar',
-											data: {
-												labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-												datasets: [{
-													label: '# of Votes',
-													data: [12, 19, 3, 5, 2, 3],
-													backgroundColor: [
-														'rgba(255, 99, 132, 0.2)',
-														'rgba(54, 162, 235, 0.2)',
-														'rgba(255, 206, 86, 0.2)',
-														'rgba(75, 192, 192, 0.2)',
-														'rgba(153, 102, 255, 0.2)',
-														'rgba(255, 159, 64, 0.2)'
-													],
-													borderColor: [
-														'rgba(255, 99, 132, 1)',
-														'rgba(54, 162, 235, 1)',
-														'rgba(255, 206, 86, 1)',
-														'rgba(75, 192, 192, 1)',
-														'rgba(153, 102, 255, 1)',
-														'rgba(255, 159, 64, 1)'
-													],
-													borderWidth: 1
-												}]
-											},
-											options: {
-												scales: {
-													y: {
-														beginAtZero: true
-													}
-												}
-											}
-										});
-									</script>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-fluid">
-					<h2>Users</h2>
-				</div>
-				<!-- table default padding aligns to container if border to border-->
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">First</th>
-							<th scope="col">Last</th>
-							<th scope="col">Handle</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
-		</main>
-	</div>
-</body>
-
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="card card-default">
+                  <div class="card-badge bg-danger">
+                    <l-i name="star"></l-i>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-title">Item</div>
+                    <div class="card-text">
+                      <div class="fs-1 mt-1 mb-3">1.000</div>
+                      <div class="mb-0">
+                        <span class="text-danger">
+                          <l-i name="trending_down"></l-i>
+                          -3.75%
+                        </span>
+                        <span class="text-muted">Since last week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-default">
+                  <div class="card-badge bg-success">
+                    <l-i name="attach_money"></l-i>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-title">Item</div>
+                    <div class="card-text">
+                      <div class="fs-1 mt-1 mb-3">100.000,00 $</div>
+                      <div class="mb-0">
+                        <span class="text-success">
+                          <l-i name="trending_up"></l-i>
+                          +10.00%
+                        </span>
+                        <span class="text-muted">Since last week</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-default"></div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card card-default">
+                  <div class="card-badge text-primary">
+                    <l-i name="star"></l-i>
+                  </div>
+                  <svg
+                    class="card-img-svg card-img-top"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Placeholder: Image cap"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false">
+                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
+                      Image cap
+                    </text>
+                  </svg>
+                  <!-- <img src="https://plchldr.co/i/500x250" alt="" class="card-img-top"> -->
+                  <div class="card-body">
+                    <div class="card-title">Item</div>
+                    <div class="card-text">
+                      <div class="fs-1 mt-1 mb-3">2.382</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-default">
+                  <div class="card-badge text-primary">
+                    <l-i name="star"></l-i>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-title">Item</div>
+                    <div class="card-text">
+                      <div class="fs-1 mt-1 mb-3">2.000 $</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card card-full">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col mt-0">
+                        <h5 class="card-title">Chart</h5>
+                      </div>
+                      <div class="col-auto">
+                        <div class="card-badge text-primary">
+                          <l-i name="star"></l-i>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- pick size according to number of tiles on the side in desktop layout -->
+                    <canvas
+                      id="myChart"
+                      height="440"
+                      style="max-height: 440px"></canvas>
+                    <script type="module">
+                      const ctx = document
+                        .getElementById("myChart")
+                        .getContext("2d");
+                      const myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                          labels: [
+                            "Red",
+                            "Blue",
+                            "Yellow",
+                            "Green",
+                            "Purple",
+                            "Orange",
+                          ],
+                          datasets: [
+                            {
+                              label: "# of Votes",
+                              data: [12, 19, 3, 5, 2, 3],
+                              backgroundColor: [
+                                "rgba(255, 99, 132, 0.2)",
+                                "rgba(54, 162, 235, 0.2)",
+                                "rgba(255, 206, 86, 0.2)",
+                                "rgba(75, 192, 192, 0.2)",
+                                "rgba(153, 102, 255, 0.2)",
+                                "rgba(255, 159, 64, 0.2)",
+                              ],
+                              borderColor: [
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 159, 64, 1)",
+                              ],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <h2>Users</h2>
+          </div>
+          <!-- table default padding aligns to container if border to border-->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

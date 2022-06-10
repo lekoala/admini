@@ -51,7 +51,8 @@ class AdminiUi {
         el.setAttribute("title", el.innerHTML);
       }
       if (bootstrap.Tooltip) {
-        let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+        let tooltip =
+          bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
       } else {
         // rely on css tooltips
         el.dataset.title = el.getAttribute("title");
@@ -69,17 +70,20 @@ class AdminiUi {
     if (!bootstrap.Tooltip) {
       return;
     }
-    document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
-      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
-      // On large screen, display the badge
-      if (w > MOBILE_SIZE && el.offsetWidth > 12) {
-        tooltip.disable();
-        el.removeAttribute("title");
-      } else {
-        // Enable tooltip for small screen or small items based on its content
-        tooltip.enable();
-      }
-    });
+    document
+      .querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip')
+      .forEach((el) => {
+        let tooltip =
+          bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+        // On large screen, display the badge
+        if (w > MOBILE_SIZE && el.offsetWidth > 12) {
+          tooltip.disable();
+          el.removeAttribute("title");
+        } else {
+          // Enable tooltip for small screen or small items based on its content
+          tooltip.enable();
+        }
+      });
   }
 
   /**
@@ -99,7 +103,9 @@ class AdminiUi {
     // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
       this.sidebar.classList.add("offcanvas");
-      const sidebarOffcanvas = bootstrap.Offcanvas.getInstance(this.sidebar) || new bootstrap.Offcanvas(this.sidebar);
+      const sidebarOffcanvas =
+        bootstrap.Offcanvas.getInstance(this.sidebar) ||
+        new bootstrap.Offcanvas(this.sidebar);
     }
   }
 
@@ -158,18 +164,20 @@ class AdminiUi {
   }
 
   simpleDropdowns() {
-    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach((el) => {
-      const menu = el.parentElement.querySelector(".dropdown-menu");
-      el.addEventListener("click", (e) => {
-        menu.classList.toggle("show");
-        if (!menu.classList.contains("show")) {
-          document.activeElement.blur();
-        }
+    document
+      .querySelectorAll(".dropdown-toggle:not([data-bs-toggle])")
+      .forEach((el) => {
+        const menu = el.parentElement.querySelector(".dropdown-menu");
+        el.addEventListener("click", (e) => {
+          menu.classList.toggle("show");
+          if (!menu.classList.contains("show")) {
+            document.activeElement.blur();
+          }
+        });
+        el.addEventListener("blur", (e) => {
+          menu.classList.remove("show");
+        });
       });
-      el.addEventListener("blur", (e) => {
-        menu.classList.remove("show");
-      });
-    });
   }
 
   init() {
