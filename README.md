@@ -15,11 +15,13 @@
 - Carefully selected form components (cleave, flatpickr, bootstrap 5 tags, superfile)
 - Super cool modals inspired by Sweetalert, but using Bootstrap Modals
 
-## Icons
+## Icons and images
 
 Icons are powered by [Last Icon](https://github.com/lekoala/last-icon)
 
 Default set is [material icons](https://fonts.google.com/icons)
+
+Images are from [undraw](https://undraw.co/)
 
 ## Demo
 
