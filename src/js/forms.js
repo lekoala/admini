@@ -3,10 +3,13 @@ import Tags from "bootstrap5-tags";
 import flatpickr from "flatpickr";
 import Cleave from "cleave.js";
 import normalizeData from "./bs-companion/normalize-data.js";
-import formValidation from "./bs-companion/form-validation.js";
+import FormValidator from "./bs-companion/form-validator.js";
 
 class AdminiForms {
-  constructor() {}
+  constructor() {
+    // Expose as public properties
+    this.FormValidator = FormValidator;
+  }
 
   init() {
     // https://github.com/lekoala/bootstrap5-tags
@@ -22,7 +25,7 @@ class AdminiForms {
     this.flatpickr();
 
     // https://getbootstrap.com/docs/5.0/forms/validation/
-    formValidation();
+    FormValidator.init();
   }
 
   /**

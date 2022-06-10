@@ -99,15 +99,18 @@ function removeDataAPI(context) {
 }
 
 // bulk initialize all components
-if (document.body) initCallback();
-else {
-  addListener(document, "DOMContentLoaded", () => initCallback(), {
-    once: true,
-  });
+function init() {
+  if (document.body) initCallback();
+  else {
+    addListener(document, "DOMContentLoaded", () => initCallback(), {
+      once: true,
+    });
+  }
 }
 
 const BSN = Object.assign(componentsList, {
   initCallback,
+  init,
   removeDataAPI,
   Version,
   Listener,

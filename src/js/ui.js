@@ -1,8 +1,7 @@
 import Cookies from "js-cookie";
-import responsiveTables from "./bs-companion/responsive-tables";
-import responsiveTabs from "./bs-companion/responsive-tabs";
-import linkableTabs from "./bs-companion/linkable-tabs";
-import { modalizerConfirm } from "./bs-companion/modalizer";
+import ResponsiveTabs from "./bs-companion/responsive-tabs";
+import LinkableTabs from "./bs-companion/linkable-tabs";
+import ResponsiveTable from "./bs-companion/responsive-table";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -10,6 +9,11 @@ const MINIMENU = "minimenu";
 class AdminiUi {
   constructor() {
     this.sidebar = document.querySelector("#sidebar");
+
+    // Expose as public properties
+    this.ResponsiveTabs = ResponsiveTabs;
+    this.LinkableTabs = LinkableTabs;
+    this.ResponsiveTable = ResponsiveTable;
   }
 
   /**
@@ -191,9 +195,9 @@ class AdminiUi {
     this.simpleDropdowns();
 
     // BS Companion
-    responsiveTables();
-    responsiveTabs();
-    linkableTabs();
+    ResponsiveTable.init();
+    ResponsiveTabs.init();
+    LinkableTabs.init();
   }
 }
 

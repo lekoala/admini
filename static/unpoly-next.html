@@ -50,30 +50,14 @@
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
       rel="stylesheet" />
-    <style type="text/css">
-      .grid l-i {
-        --size: 36px;
-        margin-bottom: 1rem;
-      }
 
-      .icon-wrapper > div {
-        background: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 1rem;
-      }
-
-      .icon-wrapper > div:after {
-        content: attr(data-name);
-        display: block;
-        font-size: 12px;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    </style>
+    <script defer src="https://unpkg.com/unpoly@2.6.1/unpoly.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/unpoly@2.6.1/unpoly.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/unpoly@2.6.1/unpoly-bootstrap5.min.css" />
 
     <!-- scripts -->
     <script
@@ -81,14 +65,24 @@
       nomodule
       defer
       id="nomodule-browser-warning"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
+      console.log("init!");
       window.admini.init(); // this should go last
     </script>
+
+    <link href="css/demo.css" rel="stylesheet" />
+    <style>
+      .custom-style {
+        color:pink;
+      }
+    </style>
   </head>
 
   <body>
+    <script type="module">
+      console.log("body!");
+    </script>
     <div class="wrapper">
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
@@ -138,7 +132,7 @@
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="unpoly.html">
+              <a class="sidebar-link active" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
               </a>
@@ -202,8 +196,6 @@
               </a>
             </li>
           </ul>
-        </div>
-        <!-- /sidebar-content -->
 
         <!-- sidebar-footer -->
         <div class="sidebar-footer">
@@ -235,6 +227,10 @@
       </aside>
 
       <main class="main">
+        <script type="module">
+          console.log("main!");
+        </script>
+
         <header class="main-header">
           <div class="main-header-sidebar">
             <button
@@ -249,98 +245,18 @@
           <div class="main-header-info">
             <nav aria-label="breadcrumb">
               <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Faq</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Unpoly next section
+                </li>
               </div>
             </nav>
           </div>
+          <div class="main-header-nav"></div>
         </header>
         <section class="scroller">
-          <div class="container-fluid py-3">
-            <div class="accordion" id="faqAccordion">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne">
-                    Is Admini free ?
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  class="accordion-collapse collapse show"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      <strong>Yes.</strong>
-                      It is open-source and MIT licenced. However, nothing is
-                      free in life and funding is welcome :-).
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo">
-                    Why use this admin panel ?
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingTwo"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      Most admin panel are bloated. Admini gives you a
-                      minimalistic approach but with a lot of powerful features.
-                      It's built using simple build processes (es6 classes,
-                      scss) and you can easily fit it within your own build
-                      processes (or use the one provided).
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree">
-                    What are the best features of Admini ?
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingThree"
-                  data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <ul>
-                      <li>Lightweight JS stack (< 200kb)</li>
-                      <li>Careful selection of scripts</li>
-                      <li>
-                        Smart tabs (fully responsive with deep linking support)
-                      </li>
-                      <li>A clean and simple user interface</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="container-fluid p-3">
+            <p>This <span class="other-style">is the</span> <span class="custom-style">next section</span></p>
+            <a href="unpoly.html" up-follow>Go back</a>
           </div>
         </section>
       </main>

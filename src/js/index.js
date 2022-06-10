@@ -12,22 +12,27 @@ import modalizer, { modalizerConfirm } from "./bs-companion/modalizer.js";
 
 // Make globally available
 // window.bootstrap = bootstrap;
-window.bootstrap = BSN;
+window.bootstrap = BSN; // Alias for scripts sharing the same api as Bootstrap 5
+window.BSN = BSN;
 window.Cookies = Cookies;
 
-window.admini = window.admini || {};
-
-window.admini = {
-  // Third party
-  toaster: toaster,
-  modalizer: modalizer,
-  modalizerConfirm: modalizerConfirm,
-  escapeHTML: escapeHTML,
-  // Our libs
-  ui: new AdminiUi(),
-  forms: new AdminiForms(),
-  init: () => {
-    window.admini.ui.init();
-    window.admini.forms.init();
-  },
+let forms = new AdminiForms();
+let ui = new AdminiUi();
+let init = () => {
+  BSN.init();
+  window.admini.ui.init();
+  window.admini.forms.init();
 };
+
+window.admini = window.admini || {};
+window.admini = Object.assign(window.admini, {
+  // Third party
+  toaster,
+  modalizer,
+  modalizerConfirm,
+  escapeHTML,
+  // Our libs
+  ui,
+  forms,
+  init,
+});

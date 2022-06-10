@@ -3,15 +3,18 @@ import toaster from "./toaster";
 /**
  * @link https://getbootstrap.com/docs/5.1/forms/validation/
  */
-export default function formValidation() {
-  // Loop over them and prevent submission
-  document.querySelectorAll(".needs-validation").forEach((form) => {
+class FormValidator {
+  /**
+   * @param {HTMLFormElement} form
+   */
+  constructor(form) {
     if (!form.hasAttribute("novalidate")) {
       form.setAttribute("novalidate", "");
     }
     form.addEventListener(
       "submit",
       (event) => {
+        // Remove errors in tabs and accordion
         form
           .querySelectorAll(".nav-tabs .nav-link.is-invalid")
           .forEach((link) => {
@@ -22,6 +25,8 @@ export default function formValidation() {
           .forEach((accordionItem) => {
             accordionItem.classList.remove("is-invalid");
           });
+
+        // Show all invalid fields
         Array.from(form.elements).forEach((el) => {
           if (!el.checkValidity()) {
             // Mark all tabs and accordions as invalid as well
@@ -63,5 +68,12 @@ export default function formValidation() {
       },
       false
     );
-  });
+  }
+  static init(selector = ".needs-validation") {
+    document.querySelectorAll(selector).forEach((form) => {
+      new FormValidator(form);
+    });
+  }
 }
+
+export default FormValidator;

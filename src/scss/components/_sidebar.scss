@@ -104,9 +104,9 @@
   }
 }
 
-// Active items
-.sidebar-item.active > .sidebar-link,
-.sidebar-item.active .sidebar-link:hover {
+// Active items (on A)
+.sidebar-item .sidebar-link.active,
+.sidebar-item .sidebar-link.active:hover {
   color: $sidebar-link-active-color;
   background: $sidebar-link-active-bg;
   border-left-color: $sidebar-link-active-border-left-color;

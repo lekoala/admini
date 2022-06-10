@@ -1,17 +1,11 @@
 "use strict";
 
-/**
- * Automatically hide row as needed
- * Add a .table-responsive-hide class to th for columns that are optional
- * @param {string} holderSelector Selector for table holder (typically used with .table-responsive as well)
- * @param {string} hideSelector Selector for table headers that can be hidden
- */
-export default function responsiveTables(
-  holderSelector = ".table-responsive-auto",
-  hideSelector = ".table-responsive-hide"
-) {
-  // Make sure we have colindex to allow mixing th and td on a row
-  document.querySelectorAll(holderSelector).forEach((el) => {
+class ResponsiveTable {
+  /**
+   * @param {HTMLTableElement} el
+   * @param {string} hideSelector
+   */
+  constructor(el, hideSelector) {
     el.querySelectorAll("tr").forEach((row) => {
       // Ensure we have an index (starts at 1)
       let idx = 0;
@@ -80,5 +74,22 @@ export default function responsiveTables(
       }
     });
     resizeObserver.observe(el);
-  });
+  }
+
+  /**
+   * Automatically hide row as needed
+   * Add a .table-responsive-hide class to th for columns that are optional
+   * @param {string} holderSelector Selector for table holder (typically used with .table-responsive as well)
+   * @param {string} hideSelector Selector for table headers that can be hidden
+   */
+  static init(
+    holderSelector = ".table-responsive-auto",
+    hideSelector = ".table-responsive-hide"
+  ) {
+    document.querySelectorAll(holderSelector).forEach((el) => {
+      new ResponsiveTable(el, hideSelector);
+    });
+  }
 }
+
+export default ResponsiveTable;

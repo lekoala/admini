@@ -1,11 +1,13 @@
 "use strict";
 
 /**
- * Collapses tabs to a dropdown menu if there is not enough space on one line
- * @param {string} tabsSelector Selector for the tabs element that need to be responsive
+ * <ul class="nav nav-tabs-responsive" ...>
  */
-export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
-  document.querySelectorAll(tabsSelector).forEach((el) => {
+class ResponsiveTabs {
+  /**
+   * @param {HTMLElement} el
+   */
+  constructor(el) {
     // This only works if the nav is visible on page load
     let totalWidth = 0;
     el.querySelectorAll("li").forEach((tab) => {
@@ -37,7 +39,8 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
     });
     el.parentElement.append(menu);
 
-    // Register observer to trigger responsive layout
+    // Register observer on parent element to trigger responsive layout
+    const tabsSelector = ".nav";
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         const tabs = entry.target.querySelector(tabsSelector);
@@ -87,5 +90,17 @@ export default function responsiveTabs(tabsSelector = ".nav-tabs-responsive") {
         }
       });
     });
-  });
+  }
+
+  /**
+   * Collapses tabs to a dropdown menu if there is not enough space on one line
+   * @param {string} selector Selector for the tabs element that need to be responsive
+   */
+  static init(selector = ".nav-tabs-responsive") {
+    document.querySelectorAll(selector).forEach((el) => {
+      new ResponsiveTabs(el);
+    });
+  }
 }
+
+export default ResponsiveTabs;
