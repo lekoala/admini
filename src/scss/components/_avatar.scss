@@ -1,5 +1,6 @@
 .avatar {
-  --avatar-size: 128px;
+  --avatar-size: 96px;
+  --avatar-badge-size: calc(var(--avatar-size) / 5);
 
   width: var(--avatar-size);
   height: var(--avatar-size);
@@ -35,24 +36,43 @@
     border-radius: var(--avatar-size);
   }
 
-  .online {
-    background: $success;
-  }
-  .offline {
-    background: $gray-400;
-  }
-
   .avatar-badge {
-    --avatar-badge-size: 8px;
-
     position: absolute;
-    top: calc(var(--avatar-badge-size) / 3);
-    right: calc(var(--avatar-badge-size) / 3);
-    width: var(--avatar-badge-size);
+    background: $white;
+    top: calc(var(--avatar-badge-size) / 3.5);
+    right: calc(var(--avatar-badge-size) / 3.5);
+    min-width: var(--avatar-badge-size);
     height: var(--avatar-badge-size);
     border-radius: var(--avatar-badge-size);
     box-shadow: 0 0 0 1px $card-bg;
     z-index: 3;
+    font-size: 0.8rem;
+    line-height: var(--avatar-badge-size);
+    text-align: center;
+
+    &.avatar-badge-text {
+      padding: 0 0.25rem;
+    }
+    &.avatar-badge-bottom {
+      top: auto;
+      bottom: calc(var(--avatar-badge-size) / 3.5);
+    }
+    &.avatar-badge-start {
+      right: auto;
+      left: calc(var(--avatar-badge-size) / 3.5);
+    }
+
+    &.online {
+      background: $success;
+    }
+    &.offline {
+      background: $gray-400;
+    }
+
+    l-i {
+      vertical-align: auto;
+      --size: calc(var(--avatar-badge-size) * 0.75);
+    }
   }
 
   .avatar-title {

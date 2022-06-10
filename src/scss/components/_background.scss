@@ -6,7 +6,11 @@
   }
   a.bg-#{$color} {
     &:hover {
-      background-color: if($color == $color-contrast-light, shade-color($value, $btn-hover-bg-shade-amount), tint-color($value, $btn-hover-bg-tint-amount)) !important;
+      background-color: if(
+        $color == $color-contrast-light,
+        shade-color($value, $btn-hover-bg-shade-amount),
+        tint-color($value, $btn-hover-bg-tint-amount)
+      ) !important;
     }
   }
 }
@@ -21,6 +25,22 @@
     &:hover {
       background-color: $value !important;
       color: $white !important;
+    }
+  }
+  // Avoid transparency issues
+  .bg-softy-#{$color} {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    color: $value !important;
+    &::before {
+      background-color: rgba($value, 0.08) !important;
+      color: $value !important;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
     }
   }
 }

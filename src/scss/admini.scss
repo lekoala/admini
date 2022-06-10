@@ -73,12 +73,14 @@
 @import "components/card";
 @import "components/charts";
 @import "components/dropdown";
-@import "components/flatpickr";
 @import "components/forms";
 @import "components/grid";
 @import "components/last-icon";
 @import "components/main";
 @import "components/sidebar";
-@import "components/superfile";
 @import "components/tables";
 @import "components/tabs";
+
+// Optional vendor components
+@import "components/flatpickr";
+@import "components/superfile";
