@@ -173,8 +173,13 @@ html {
   }
 
   // Automate spacing
+  > * {
+    margin-top: $spacer * 0.25;
+    margin-bottom: $spacer * 0.25;
+  }
   > *:not(:first-child) {
     margin-left: $spacer * 0.25;
+    margin-right: $spacer * 0.25;
   }
 
   // should be the same as btn-group
