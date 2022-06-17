@@ -14,7 +14,7 @@ class ResponsiveTabs {
     let totalWidth = 0;
     el.querySelectorAll("li").forEach((tab) => {
       tab.dataset.width = tab.offsetWidth;
-      totalWidth += tab.dataset.width;
+      totalWidth += parseInt(tab.dataset.width);
     });
     el.style.visibility = "visible";
     el.dataset.tabsWidth = totalWidth;
