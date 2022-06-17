@@ -8,8 +8,6 @@ class ResponsiveTabs {
    * @param {HTMLElement} el
    */
   constructor(el) {
-    const caretSize = 20;
-    
     // This only works if the nav is visible on page load
     let totalWidth = 0;
     el.querySelectorAll("li").forEach((tab) => {
@@ -29,7 +27,7 @@ class ResponsiveTabs {
       let href = link.dataset.bsTarget || link.getAttribute("href");
 
       // Avoid menu to be crunched on small screens
-      link.style.minWidth = (parseInt(tab.dataset.width) + caretSize) + "px";
+      link.style.setProperty("--min-width", `${tab.dataset.width}px`);
 
       newChild.append(newChildLink);
       newChildLink.classList.add(...["dropdown-item", "no-br"]);

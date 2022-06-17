@@ -22,6 +22,7 @@ bs-tabs {
 .nav-tabs-dropdown {
   a.active {
     @include caret();
+    min-width: calc(var(--min-width) + 20px);
   }
   a:not(.active) {
     display: none;
