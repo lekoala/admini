@@ -10,7 +10,7 @@ html {
   height: 100vh; // This is needed to make section.scroller work as intended
   height: -moz-available;
   height: -webkit-fill-available;
-  height: fill-available;
+  height: stretch;
 }
 .wrapper-fixed {
   align-items: stretch;
