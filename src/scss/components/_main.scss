@@ -13,6 +13,8 @@ html {
   height: fill-available;
 }
 .wrapper-fixed {
+  align-items: stretch;
+  display: flex;
   position: fixed;
   left: 0;
   right: 0;
@@ -165,24 +167,11 @@ html {
   align-items: center;
   justify-content: space-between;
 
-  .main-footer-start,
-  .main-footer-end {
-    margin-top: $spacer * 0.125;
-    margin-bottom: $spacer * 0.125;
-
-    > * {
-      margin-top: $spacer * 0.125;
-      margin-bottom: $spacer * 0.125;
-    }
-  }
   // should be the same as btn-group
   .dropdown,
   .dropup {
     display: inline-flex;
     vertical-align: middle;
-  }
-  .main-footer-end {
-    text-align: right;
   }
 }
 
