@@ -164,8 +164,18 @@ html {
   min-height: $sidebar-footer-height;
   padding: 0 $spacer;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
+
+  .input-group {
+    width: auto;
+  }
+
+  // Automate spacing
+  > *:not(:first-child) {
+    margin-left: $spacer * 0.25;
+  }
 
   // should be the same as btn-group
   .dropdown,

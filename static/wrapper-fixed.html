@@ -66,23 +66,15 @@
       }
       main {
         padding: 1em;
-        flex: 1;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
       }
     </style>
   </head>
 
   <body>
-    <header>HEADER GOES HERE</header>
-    <main>MAIN GOES HERE</main>
-    <footer>FOOTER GOES HERE</footer>
+    <div class="wrapper-fixed flex-column">
+      <header>HEADER GOES HERE</header>
+      <main class="flex-fill">MAIN GOES HERE</main>
+      <footer>FOOTER GOES HERE</footer>
+    </div>
   </body>
 </html>
