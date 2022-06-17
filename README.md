@@ -14,6 +14,7 @@
 - A nice default set of colors that are more accessible
 - Carefully selected form components (cleave, flatpickr, bootstrap 5 tags, superfile)
 - Super cool modals inspired by Sweetalert, but using Bootstrap Modals
+- Super lightweight (140kb with form components, 40kb just for the UI)
 
 ## Icons and images
 
