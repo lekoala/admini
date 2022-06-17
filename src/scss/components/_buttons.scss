@@ -12,6 +12,15 @@
   > * {
     margin-right: 0.5ch;
   }
+
+  // This class helps to move the icon visually even when placed first in html
+  &.btn-icon-end {
+    l-i {
+      order: 1;
+      margin-left: 0.5ch;
+      margin-right: 0;
+    }
+  }
 }
 
 // https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
@@ -47,19 +56,6 @@
   transition: top 0.1s ease-out;
   border-radius: var(--size);
   z-index: 2;
-
-  // &::after {
-  //   content: "";
-  //   display: block;
-  //   width: 4px;
-  //   height: 4px;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-
-  //   position: absolute;
-  //   background-color: red;
-  // }
 
   // Use with tooltip
   &.btn-indicator-mini {

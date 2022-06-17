@@ -182,6 +182,13 @@ html {
     margin-right: $spacer * 0.25;
   }
 
+  // Nicer outlines in groups
+  .btn-group {
+    .btn:not(.first-child) {
+      margin-left: -1px;
+    }
+  }
+
   // should be the same as btn-group
   .dropdown,
   .dropup {

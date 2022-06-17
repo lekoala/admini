@@ -63,14 +63,7 @@
       document.querySelectorAll("button[type='submit']").forEach((btn) => {
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
-          // Infer from button
-          let btnClasses = btn.className.split(" ");
           let btnClass = "success";
-          btnClasses.forEach((cl) => {
-            if (cl.includes("btn-")) {
-              btnClass = cl.replace("btn-", "");
-            }
-          });
           const toast = admini.toaster({
             body: btn.innerText,
             className: "border-0 text-white bg-" + btnClass,
@@ -328,7 +321,14 @@
               </li>
               <li>Press save and see a nice toast notification!</li>
               <li>Aligning some buttons to the end of the toolbar is nice!</li>
-              <li>On a small screen, buttons wrap on multiple lines. If you don't like that, stick them inside a dropup!</li>
+              <li>
+                On a small screen, buttons wrap on multiple lines. If you don't
+                like that, stick them inside a dropup!
+              </li>
+              <li>
+                It is better to use outline variants in button groups to
+                distinguish better the actions
+              </li>
             </ul>
           </div>
           <div class="modal" id="delete-modal" tabindex="-1">
@@ -381,18 +381,24 @@
         </section>
         <footer class="main-footer btn-toolbar" role="toolbar">
           <div class="btn-group" role="group" aria-label="Actions">
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-outline-success btn-flex">
               <l-i name="done"></l-i>
               Save
             </button>
-            <button type="submit" class="btn btn-primary">
+            <button
+              type="submit"
+              class="btn btn-outline-success btn-flex btn-icon-end">
+              <l-i name="navigate_next"></l-i>
+              Save & next
+            </button>
+            <button type="submit" class="btn btn-outline-primary">
               Other action
               <span class="btn-indicator btn-indicator-mini bg-danger">
                 99999+
                 <span class="visually-hidden">unread messages</span>
               </span>
             </button>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-outline-primary">
               That action
               <span class="badge bg-light">!</span>
             </button>
