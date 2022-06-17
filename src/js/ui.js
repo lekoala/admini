@@ -120,7 +120,7 @@ class AdminiUi {
     window.addEventListener("resize", () => {
       this.toggleMobileTooltips(window.innerWidth);
       this.toggleSidebar(window.innerWidth);
-      this.setMobileSize();
+      // this.setMobileSize();
     });
   }
 
@@ -162,10 +162,10 @@ class AdminiUi {
   /**
    * @link https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
    */
-  setMobileSize() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
+  // setMobileSize() {
+  //   let vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+  // }
 
   simpleDropdowns() {
     document
@@ -185,7 +185,7 @@ class AdminiUi {
   }
 
   init() {
-    this.setMobileSize();
+    // this.setMobileSize();
     this.minimenu();
     this.tooltips();
     this.responsive();

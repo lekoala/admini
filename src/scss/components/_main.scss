@@ -1,11 +1,17 @@
+// Two methods of wrapping your app
+// @link https://ilxanlar.medium.com/you-shouldnt-rely-on-css-100vh-and-here-s-why-1b4721e74487
+html {
+  height: -webkit-fill-available;
+}
 .wrapper {
   align-items: stretch;
   display: flex;
   width: 100%;
   height: 100vh; // This is needed to make section.scroller work as intended
-  height: calc(var(--vh, 1vh) * 100);
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: fill-available;
 }
-
 .wrapper-fixed {
   position: fixed;
   left: 0;
