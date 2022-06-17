@@ -25,7 +25,7 @@ $container-padding-x: $grid-gutter-width !default;
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
 $min-contrast-ratio: 3 !default;
 $enable-validation-icons: false !default;
-$enable-rfs: false !default;
+$enable-rfs: true !default;
 $enable-negative-margins: true !default;
 
 // Transitions
