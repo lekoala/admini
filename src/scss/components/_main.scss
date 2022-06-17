@@ -50,11 +50,11 @@ html {
 
 .main-header {
   background: $header-bg;
-  min-height: $sidebar-brand-height;
+  height: $sidebar-brand-height;
   border-bottom: 1px solid $nav-tabs-border-color;
 
-  // We try to fit as much things on one line, then wrap
-  flex-wrap: wrap;
+  // We always keep everything on one line. We rely on our bs-tabs component to fit things as needed
+  flex-wrap: nowrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,6 +84,8 @@ html {
   display: flex;
   align-items: center;
   flex-grow: 0;
+  max-width: 70vw; // leave some space for the tabs
+  overflow: hidden;
   min-height: $sidebar-brand-height; // ensure consistent layout if tabs shift below
 
   // Make space for fixed menu icon
@@ -148,9 +150,11 @@ html {
 // Nicely tuck the tabs to the bottom
 .main-header-tabs {
   padding-bottom: 0;
+  height: $sidebar-brand-height;
   align-items: flex-end; // Align to bottom of container
   align-self: flex-end;
   position: relative;
+
   .nav-tabs {
     border-bottom: 0;
   }

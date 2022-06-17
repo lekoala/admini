@@ -4,9 +4,18 @@
 }
 
 // Prevent layout change due to js init
-.nav-tabs-linkable,
-.nav-tabs-responsive {
-  visibility: hidden;
+bs-tabs {
+  display: none;
+  flex-grow: 1;
+
+  &:defined {
+    display: block;
+  }
+
+  &:defined[end] {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 // Applied if too big for container

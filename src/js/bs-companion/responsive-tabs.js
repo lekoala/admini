@@ -8,10 +8,13 @@ class ResponsiveTabs {
    * @param {HTMLElement} el
    */
   constructor(el) {
+    const caretSize = 20;
+    
     // This only works if the nav is visible on page load
     let totalWidth = 0;
     el.querySelectorAll("li").forEach((tab) => {
-      totalWidth += tab.offsetWidth;
+      tab.dataset.width = tab.offsetWidth;
+      totalWidth += tab.dataset.width;
     });
     el.style.visibility = "visible";
     el.dataset.tabsWidth = totalWidth;
@@ -19,10 +22,15 @@ class ResponsiveTabs {
     // Create mobile menu
     let menu = document.createElement("ul");
     menu.classList.add("dropdown-menu");
-    el.querySelectorAll("a").forEach((link) => {
+    el.querySelectorAll("li").forEach((tab) => {
+      let link = tab.querySelector("a");
       let newChild = document.createElement("li");
       let newChildLink = document.createElement("a");
       let href = link.dataset.bsTarget || link.getAttribute("href");
+
+      // Avoid menu to be crunched on small screens
+      link.style.minWidth = (parseInt(tab.dataset.width) + caretSize) + "px";
+
       newChild.append(newChildLink);
       newChildLink.classList.add(...["dropdown-item", "no-br"]);
       newChildLink.innerHTML = link.innerHTML.replace(/<br[^>]*>/, " ");
@@ -34,6 +42,7 @@ class ResponsiveTabs {
       newChildLink.addEventListener("click", (ev) => {
         ev.preventDefault();
         link.dispatchEvent(new Event("click", { bubbles: true }));
+        menu.style.display = "none";
       });
       menu.append(newChild);
     });

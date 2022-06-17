@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import ResponsiveTabs from "./bs-companion/responsive-tabs";
 import LinkableTabs from "./bs-companion/linkable-tabs";
 import ResponsiveTable from "./bs-companion/responsive-table";
+import BsTabs from "./bs-companion/bs-tabs";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";

@@ -1,9 +1,8 @@
 "use strict";
 
 class LinkableTabs {
-
   /**
-   * @param {HTMLElement} el 
+   * @param {HTMLElement} el
    */
   constructor(el) {
     this.restoreState();
@@ -71,10 +70,14 @@ class LinkableTabs {
       }
       target.classList.add(...["active", "show"]);
     }
-    let inst =
-      bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
+    // If bootstrap is already defined, make sure to show the proper tab
+    // Otherwise, bootstrap will pick up the active class
+    if (typeof bootstrap !== "undefined") {
+      let inst =
+        bootstrap.Tab.getInstance(activeTab) || new bootstrap.Tab(activeTab);
 
-    inst.show();
+      inst.show();
+    }
   }
 
   /**
