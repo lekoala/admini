@@ -63,3 +63,9 @@
     font-size: 8px;
   }
 }
+
+@include media-breakpoint-down(md) {
+  .btn-mobile-collapse > span {
+    display: none;
+  }
+}
