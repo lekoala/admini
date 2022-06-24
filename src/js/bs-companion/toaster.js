@@ -89,7 +89,7 @@ export default function toaster(attr) {
   );
   if (!toastContainer) {
     const styles = `${pos[0]}:0;${pos[1]}:${posUnit};${
-      posUnit ? "transform: translateX(-50%)" : ""
+      posUnit === "50%" ? "transform: translateX(-50%)" : ""
     };z-index:1081`;
 
     toastContainer = document.createElement("div");

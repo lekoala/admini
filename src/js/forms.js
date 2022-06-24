@@ -46,7 +46,7 @@ class AdminiForms {
   cleave() {
     // Use data attributes to configure
     document.querySelectorAll("input.cleave").forEach((el) => {
-      const cleave = new Cleave(el, AdminiForms.parseDataset(el.dataset));
+      new Cleave(el, AdminiForms.parseDataset(el.dataset));
     });
   }
 

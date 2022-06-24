@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import ResponsiveTabs from "./bs-companion/responsive-tabs";
 import LinkableTabs from "./bs-companion/linkable-tabs";
 import ResponsiveTable from "./bs-companion/responsive-table";
-import BsTabs from "./bs-companion/bs-tabs";
+import "./bs-companion/bs-tabs";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -56,8 +56,7 @@ class AdminiUi {
         el.setAttribute("title", el.innerHTML);
       }
       if (bootstrap.Tooltip) {
-        let tooltip =
-          bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+        bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
       } else {
         // rely on css tooltips
         el.dataset.title = el.getAttribute("title");
@@ -95,6 +94,7 @@ class AdminiUi {
    * Sidebar layout is controlled with offcanvas but we may need to restore
    * visibility if it was hidden
    * @param {int} w
+   * @return {bootstrap.Offcanvas|null}
    */
   toggleSidebar(w = null) {
     if (w === null) {
@@ -111,7 +111,9 @@ class AdminiUi {
       const sidebarOffcanvas =
         bootstrap.Offcanvas.getInstance(this.sidebar) ||
         new bootstrap.Offcanvas(this.sidebar);
+      return sidebarOffcanvas;
     }
+    return null;
   }
 
   /**

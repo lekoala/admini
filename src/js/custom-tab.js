@@ -24,7 +24,7 @@ import activeClass from "bootstrap.native/src/strings/activeClass";
 import fadeClass from "bootstrap.native/src/strings/fadeClass";
 import showClass from "bootstrap.native/src/strings/showClass";
 import dropdownClasses from "bootstrap.native/src/strings/dropdownClasses";
-import dropdownMenuClass from "bootstrap.native/src/strings/dropdownMenuClass";
+// import dropdownMenuClass from "bootstrap.native/src/strings/dropdownMenuClass";
 import dataBsToggle from "bootstrap.native/src/strings/dataBsToggle";
 import tabString from "bootstrap.native/src/strings/tabString";
 import tabComponent from "bootstrap.native/src/strings/tabComponent";
