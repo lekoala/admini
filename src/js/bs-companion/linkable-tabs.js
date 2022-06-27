@@ -28,6 +28,11 @@ class LinkableTabs {
         const url = new URL(window.location);
         url.hash = hash;
         window.history.pushState({}, "", url);
+
+        // persist hash in forms
+        document.querySelectorAll("input[name=_hash]").forEach((input) => {
+          input.value = hash;
+        });
       }
     });
   }

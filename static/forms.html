@@ -124,7 +124,7 @@
                 <span>Tabbed navigation</span>
               </a>
             </li>
-            
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="unpoly.html">
                 <l-i name="layers"></l-i>
@@ -288,9 +288,12 @@
                 id="panel-1"
                 role="tabpanel"
                 aria-labelledby="tab-1">
+                <input type="hidden" name="_hash" />
+                <!-- this stores persistent hash if needed -->
                 <div class="form-group">
                   <label for="exampleCombineRow" class="form-label">Name</label>
                   <div class="form-field">
+                    <!-- you can also use the simpler input-group-item alternative -->
                     <div class="row" id="exampleCombineRow">
                       <div class="col-6">
                         <input
@@ -633,6 +636,64 @@
                     <label class="form-check-label" for="exampleCheckRequired">
                       This must be ticked
                     </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="groupedinput" class="form-label">
+                    Group label
+                  </label>
+                  <div class="input-group form-field" id="groupedinput">
+                    <span class="input-group-text">First and last name</span>
+                    <input
+                      type="text"
+                      aria-label="First name"
+                      class="form-control" />
+                    <input
+                      type="text"
+                      aria-label="Last name"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group fieldgroup form-group--no-label">
+                  <div class="input-group">
+                    <div class="input-group-item">
+                      <label for="PrimaryColor" class="form-label">
+                        Primary color (in a row)
+                      </label>
+
+                      <input
+                        type="color"
+                        name="PrimaryColor"
+                        class="form-control"
+                        id="PrimaryColor"
+                        style="width: 60px" />
+                    </div>
+                    <div class="input-group-item">
+                      <label for="SecondaryColor" class="form-label">
+                        Secondary color (in a row)
+                      </label>
+
+                      <input
+                        type="color"
+                        name="SecondaryColor"
+                        class="form-control"
+                        id="SecondaryColor"
+                        style="width: 60px" />
+                    </div>
+                    <div class="input-group-item">
+                      <label for="TertiaryColor" class="form-label">
+                        Tertiary color (in a row)
+                      </label>
+
+                      <input
+                        type="color"
+                        name="TertiaryColor"
+                        class="form-control"
+                        id="TertiaryColor"
+                        style="width: 60px" />
+                    </div>
                   </div>
                 </div>
               </div>

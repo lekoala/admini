@@ -15,9 +15,18 @@ form {
       overflow-x: hidden;
     }
 
+    // It contains other form-group that deal with their own margin bottom
+    &.fieldgroup {
+      margin-bottom: 0;
+    }
+
     // We need at least lg breakpoint because md has a sidebar
     @include media-breakpoint-up(lg) {
       display: flex;
+
+      &.form-group--no-label {
+        margin-left: $form-label-width;
+      }
 
       > label,
       > .form-label {
@@ -64,6 +73,12 @@ form {
       background-color: $input-bg;
       border-color: $input-border-color;
     }
+  }
+
+  // Helper class to create pseudo rows easily
+  .input-group-item {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
   }
 
   .accordion {
