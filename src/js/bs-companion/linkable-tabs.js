@@ -29,25 +29,34 @@ class LinkableTabs {
         url.hash = hash;
         window.history.pushState({}, "", url);
 
-        // persist hash in forms
-        document.querySelectorAll("input[name=_hash]").forEach((input) => {
-          input.value = hash;
-        });
+        this.persistHash(hash);
       }
     });
   }
 
+  /**
+   * Persist hash in forms
+   * @param {string} hash
+   */
+  persistHash(hash) {
+    document.querySelectorAll("input[name=_hash]").forEach((input) => {
+      input.value = hash;
+    });
+  }
+
   restoreState() {
-    let hash = document.location.hash;
+    const hash = document.location.hash;
     if (!hash) {
       return;
     }
+    // tabs can be nested, we need to activate each one of them
     let parts = hash.split("__").slice(0, -1);
     parts.push(hash);
     parts.forEach((part) => {
       let activeTab = document.querySelector("[data-bs-target='" + part + "']");
       if (activeTab) {
         this.setActiveTab(activeTab);
+        this.persistHash(hash);
       }
     });
   }
