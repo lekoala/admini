@@ -8,9 +8,12 @@ html {
   display: flex;
   width: 100%;
   height: 100vh; // This is needed to make section.scroller work as intended
-  height: -moz-available;
-  height: -webkit-fill-available;
-  height: stretch;
+  height: calc(var(--vh, 1vh) * 100);
+
+  // This doesn't seem to work as expected
+  // height: -moz-available;
+  // height: -webkit-fill-available;
+  // height: stretch;
 }
 .wrapper-fixed {
   align-items: stretch;
