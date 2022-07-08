@@ -51,7 +51,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
       rel="stylesheet" />
 
-    <script defer src="https://unpkg.com/unpoly@2.6.1/unpoly.js" up-boot="manual"></script>
+    <script
+      defer
+      src="https://unpkg.com/unpoly@2.6.1/unpoly.js"
+      up-boot="manual"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/unpoly@2.6.1/unpoly.min.css" />
@@ -67,23 +70,23 @@
       id="nomodule-browser-warning"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
-      up.log.config.banner=false; // avoid banner in console
+      up.log.config.banner = false; // avoid banner in console
       up.fragment.config.runScripts = true; // run <script>'s in target fragment
-      up.link.config.followSelectors.push('a[href]'); // follow all links
-      up.feedback.config.currentClasses.push('active'); // add active class in up-nav
+      up.link.config.followSelectors.push("a[href]"); // follow all links
+      up.feedback.config.currentClasses.push("active"); // add active class in up-nav
       up.boot(); // @link https://unpoly.com/up.boot
 
       // Bootstrap & admini integration (incomplete)
       up.compiler('[data-bs-toggle="tab"]', (element) => {
         new BSN.Tab(element);
       });
-      up.compiler('form.needs-validation', (element) => {
+      up.compiler("form.needs-validation", (element) => {
         new admini.forms.FormValidator(element);
       });
-      up.compiler('.nav-tabs-linkable', (element) => {
+      up.compiler(".nav-tabs-linkable", (element) => {
         new admini.ui.LinkableTabs(element);
       });
-      up.compiler('.nav-tabs-responsive', (element) => {
+      up.compiler(".nav-tabs-responsive", (element) => {
         new admini.ui.ResponsiveTabs(element);
       });
 
@@ -205,6 +208,8 @@
               </a>
             </li>
           </ul>
+        </div>
+        <!-- /sidebar-content -->
 
         <!-- sidebar-footer -->
         <div class="sidebar-footer">
@@ -265,25 +270,45 @@
               to admini
             </h1>
 
-            <p>Admin works great with <a href="https://github.com/unpoly/unpoly" target="_blank">unpoly</a> to provide SPA like experiences.</p>
+            <p>
+              Admin works great with
+              <a href="https://github.com/unpoly/unpoly" target="_blank">
+                unpoly
+              </a>
+              to provide SPA like experiences.
+            </p>
 
-            <p>This button leads to another section through ajax using the default target (main) with a fade anim. Note that:</p>
+            <p>
+              This button leads to another section through ajax using the
+              default target (main) with a fade anim. Note that:
+            </p>
             <ul>
               <li>It is followed automatically and history is updated</li>
-              <li>Inline scripts ("init!" in console.log) are not triggered, but inline scripts in target fragment work as usual thanks to 'runScripts'</li>
+              <li>
+                Inline scripts ("init!" in console.log) are not triggered, but
+                inline scripts in target fragment work as usual thanks to
+                'runScripts'
+              </li>
               <li>Aditionnal stylesheet are not loaded</li>
             </ul>
 
-            <a href="unpoly-next.html" class="btn btn-primary" up-transition="cross-fade">Next section</a>
+            <a
+              href="unpoly-next.html"
+              class="btn btn-primary"
+              up-transition="cross-fade">
+              Next section
+            </a>
 
-            <hr>
+            <hr />
             <p>This article will open in a modal without updating the url</p>
             <div class="card">
               <div class="card-body">
                 <p>Story summary</p>
 
                 <!-- <a href="unpoly-full.html" up-layer="new" up-mode="drawer">Read full story</a> -->
-                <a href="unpoly-full.html" up-layer="new" up-target="article">Read full story</a>
+                <a href="unpoly-full.html" up-layer="new" up-target="article">
+                  Read full story
+                </a>
               </div>
             </div>
           </div>
