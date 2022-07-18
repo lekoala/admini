@@ -63,7 +63,7 @@
       document.querySelectorAll("#otherAction").forEach((btn) => {
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
-          const toast = admini.toaster({
+          const toast = toaster({
             body: "Action done",
             className: "border-0 bg-info text-white",
             btnCloseWhite: true,

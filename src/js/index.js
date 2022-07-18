@@ -4,11 +4,10 @@ import Cookies from "js-cookie";
 // import * as bootstrap from "bootstrap";
 // import * as bootstrap from "./custom-bootstrap.js";
 import BSN from "./custom-bsn.js";
+import "bs-companion/bs-companion.js";
 import AdminiUi from "./ui.js";
 import AdminiForms from "./forms.js";
-import escapeHTML from "./bs-companion/escape-html";
-import toaster from "./bs-companion/toaster.js";
-import modalizer, { modalizerConfirm } from "./bs-companion/modalizer.js";
+import escapeHTML from "./utils/escape-html.js";
 
 // Make globally available
 // window.bootstrap = bootstrap;
@@ -27,9 +26,6 @@ let init = () => {
 window.admini = window.admini || {};
 window.admini = Object.assign(window.admini, {
   // Third party
-  toaster,
-  modalizer,
-  modalizerConfirm,
   escapeHTML,
   // Our libs
   ui,

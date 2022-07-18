@@ -1,8 +1,4 @@
 import Cookies from "js-cookie";
-import ResponsiveTabs from "./bs-companion/responsive-tabs";
-import LinkableTabs from "./bs-companion/linkable-tabs";
-import ResponsiveTable from "./bs-companion/responsive-table";
-import "./bs-companion/bs-tabs";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -10,11 +6,6 @@ const MINIMENU = "minimenu";
 class AdminiUi {
   constructor() {
     this.sidebar = document.querySelector("#sidebar");
-
-    // Expose as public properties
-    this.ResponsiveTabs = ResponsiveTabs;
-    this.LinkableTabs = LinkableTabs;
-    this.ResponsiveTable = ResponsiveTable;
   }
 
   /**
@@ -49,6 +40,7 @@ class AdminiUi {
 
   /**
    * Enable all tooltips by default
+   * You can also use the bs-toggle custom attribute
    */
   tooltips() {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
@@ -68,26 +60,24 @@ class AdminiUi {
 
   /**
    * Some elements are collapsed down to tooltips (eg: badges) if the screen size is too small
+   * TODO: refactor this into bs-toggle
    * @param {int} w
    */
   toggleMobileTooltips(w) {
     if (!bootstrap.Tooltip) {
       return;
     }
-    document
-      .querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip')
-      .forEach((el) => {
-        let tooltip =
-          bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
-        // On large screen, display the badge
-        if (w > MOBILE_SIZE && el.offsetWidth > 12) {
-          tooltip.disable();
-          el.removeAttribute("title");
-        } else {
-          // Enable tooltip for small screen or small items based on its content
-          tooltip.enable();
-        }
-      });
+    document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
+      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
+      // On large screen, display the badge
+      if (w > MOBILE_SIZE && el.offsetWidth > 12) {
+        tooltip.disable();
+        el.removeAttribute("title");
+      } else {
+        // Enable tooltip for small screen or small items based on its content
+        tooltip.enable();
+      }
+    });
   }
 
   /**
@@ -108,9 +98,7 @@ class AdminiUi {
     // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
       this.sidebar.classList.add("offcanvas");
-      const sidebarOffcanvas =
-        bootstrap.Offcanvas.getInstance(this.sidebar) ||
-        new bootstrap.Offcanvas(this.sidebar);
+      const sidebarOffcanvas = bootstrap.Offcanvas.getInstance(this.sidebar) || new bootstrap.Offcanvas(this.sidebar);
       return sidebarOffcanvas;
     }
     return null;
@@ -130,6 +118,7 @@ class AdminiUi {
   /**
    * Dismissable alerts with an id will be stored in a cookie
    * You might even skip rendering entirely by checking the cookies with the server
+   * TODO: refactor this into a custom element
    */
   dismissableAlerts() {
     document.querySelectorAll(".alert-dismissible[id]").forEach((el) => {
@@ -170,25 +159,26 @@ class AdminiUi {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
+  /**
+   * For dropdowns not using the bs-toggle
+   */
   simpleDropdowns() {
-    document
-      .querySelectorAll(".dropdown-toggle:not([data-bs-toggle])")
-      .forEach((el) => {
-        const menu = el.parentElement.querySelector(".dropdown-menu");
-        el.addEventListener("click", (e) => {
-          menu.classList.toggle("show");
-          if (!menu.classList.contains("show")) {
-            document.activeElement.blur();
-          }
-        });
-        el.addEventListener("blur", (e) => {
-          menu.classList.remove("show");
-        });
+    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach((el) => {
+      const menu = el.parentElement.querySelector(".dropdown-menu");
+      el.addEventListener("click", (e) => {
+        menu.classList.toggle("show");
+        if (!menu.classList.contains("show")) {
+          document.activeElement.blur();
+        }
       });
+      el.addEventListener("blur", (e) => {
+        menu.classList.remove("show");
+      });
+    });
   }
 
   init() {
-    // this.setMobileSize();
+    this.setMobileSize();
     this.minimenu();
     this.tooltips();
     this.responsive();
@@ -196,11 +186,6 @@ class AdminiUi {
     this.toasts();
     this.toggleSidebar();
     this.simpleDropdowns();
-
-    // BS Companion
-    ResponsiveTable.init();
-    ResponsiveTabs.init();
-    LinkableTabs.init();
   }
 }
 

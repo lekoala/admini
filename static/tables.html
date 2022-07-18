@@ -3,18 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- page meta -->
-    <meta
-      name="description"
-      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
     <meta name="author" content="LeKoala" />
-    <meta
-      name="keywords"
-      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
     <!-- performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,9 +23,7 @@
 
     <!-- styles -->
     <link href="css/admini.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <!-- icons -->
     <script>
       window.LastIcon = {
@@ -46,12 +38,8 @@
       };
     </script>
     <script src="js/last-icon.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
     <!-- scripts -->
     <script
@@ -82,24 +70,22 @@
       // Ideally this should call the server instead
       const table = document.getElementById("demo-table");
       const tr = table.querySelector("tbody").getElementsByTagName("tr");
-      document
-        .querySelector("#table-search")
-        .addEventListener("input", (ev) => {
-          let filter, table, td, txtValue;
-          filter = ev.target.value.toUpperCase();
-          // Loop through all table rows, and hide those who don't match the search query
-          for (let i = 0; i < tr.length; i++) {
-            let displayValue = "none";
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                displayValue = "";
-              }
+      document.querySelector("#table-search").addEventListener("input", (ev) => {
+        let filter, table, td, txtValue;
+        filter = ev.target.value.toUpperCase();
+        // Loop through all table rows, and hide those who don't match the search query
+        for (let i = 0; i < tr.length; i++) {
+          let displayValue = "none";
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              displayValue = "";
             }
-            tr[i].style.display = displayValue;
           }
-        });
+          tr[i].style.display = displayValue;
+        }
+      });
       document.querySelectorAll(".row-filters th").forEach((col) => {
         const colIdx = col.ariaColIndex;
         const input = col.querySelector("input");
@@ -134,19 +120,8 @@
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
           <span class="sidebar-brand-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="256"
-              height="256"
-              viewBox="0 0 100 100">
-              <text
-                x="50%"
-                y="52%"
-                dominant-baseline="central"
-                text-anchor="middle"
-                font-size="120">
-                💠
-              </text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
             </svg>
           </span>
           <span class="sidebar-brand-title">Admini</span>
@@ -184,7 +159,7 @@
                 <span>Unpoly</span>
               </a>
             </li>
-            
+
             <li class="sidebar-nav-header">Components</li>
 
             <li class="sidebar-item">
@@ -226,11 +201,7 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                <span
-                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
-                  data-bs-toggle="tooltip">
-                  2.191
-                </span>
+                <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">2.191</span>
               </a>
             </li>
 
@@ -252,15 +223,10 @@
             <l-i name="menu_open"></l-i>
           </button>
           <div class="dropup">
-            <button
-              class="btn btn-default"
-              id="help-dropdown-btn"
-              data-bs-toggle="dropdown">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              aria-labelledby="help-dropdown-btn">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
               <li><a class="dropdown-item" href="help.html">Help</a></li>
               <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
               <li>
@@ -290,149 +256,62 @@
           <div class="main-header-info">
             <nav aria-label="breadcrumb">
               <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  Tables
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Tables</li>
               </div>
             </nav>
           </div>
         </header>
         <section class="scroller">
           <div class="container-fluid py-3">
-            <p>
-              Tables can expand outside of container. Resize this page to see
-              the columns collapse automatically based on real content size.
-            </p>
+            <p>Tables can expand outside of container. Resize this page to see the columns collapse automatically based on real content size.</p>
 
-            <input
-              type="search"
-              class="form-control mb-3"
-              placeholder="filter table"
-              id="table-search" />
-
-            <div
-              class="container-expand table-responsive table-responsive-auto scroller">
-              <table
-                class="table table-striped table-actions table-hover mb-0"
-                id="demo-table">
+            <responsive-table class="container-expand">
+              <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col" width="40">#</th>
+                    <th scope="col">#</th>
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Handle</th>
-                    <th
-                      scope="col"
-                      width="40"
-                      class="text-center table-responsive-hide">
-                      Count
-                    </th>
-                    <th
-                      scope="col"
-                      width="200"
-                      class="text-end table-responsive-hide">
-                      Amount
-                      <span
-                        title="Total amount per year"
-                        data-bs-toggle="tooltip">
-                        <l-i name="help"></l-i>
-                      </span>
-                    </th>
-                    <th width="10"></th>
-                  </tr>
-                  <tr class="row-filters">
-                    <th><input type="text" name="filters[id]" /></th>
-                    <th><input type="text" name="filters[firstname]" /></th>
-                    <th><input type="text" name="filters[lastname]" /></th>
-                    <th><input type="text" name="filters[handle]" /></th>
-                    <th><input type="text" name="filters[count]" /></th>
-                    <th><input type="text" name="filters[amount]" /></th>
-                    <th></th>
+                    <th scope="col" data-priority="2">Responsive 1</th>
+                    <th scope="col" data-priority="1">Responsive 2</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td>
+                      Mark
+                      <div class="responsive-table-alt" data-index="5">Visible if responsive 1 is hidden</div>
+                      <div class="responsive-table-alt" data-index="6">Visible if responsive 2 is hidden</div>
+                    </td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                    <td class="text-center">1</td>
-                    <td class="text-end">2.000 $</td>
-                    <td>
-                      <a href="#" class="btn btn-primary">
-                        <l-i name="edit"></l-i>
-                        <span>edit</span>
-                      </a>
-                    </td>
+                    <td>This will be hidden on small screens</td>
+                    <td>This too if needed on small screen</td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
-                    <td class="table-danger">@fat</td>
-                    <td class="text-center">25</td>
-                    <td class="text-end">0 $</td>
-                    <td>
-                      <a href="#" class="btn btn-primary">
-                        <l-i name="edit"></l-i>
-                        <span>edit</span>
-                      </a>
-                    </td>
+                    <td>@fat</td>
+                    <td></td>
+                    <td></td>
                   </tr>
-                  <tr class="table-primary">
+                  <tr>
                     <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
+                    <td colspan="2">Larry the Bird</td>
                     <td>@twitter</td>
-                    <td class="text-center">17</td>
-                    <td class="text-end">24.000 $</td>
-                    <td>
-                      <a href="#" class="btn btn-primary">
-                        <l-i name="edit"></l-i>
-                        <span>edit</span>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Jake</td>
-                    <td>Thornton</td>
                     <td></td>
-                    <td class="text-center">42</td>
-                    <td class="text-end">17.000 $</td>
-                    <td>
-                      <a href="#" class="btn btn-primary">
-                        <l-i name="edit"></l-i>
-                        <span>edit</span>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>John</td>
-                    <td>Thornton</td>
                     <td></td>
-                    <td class="text-center">0</td>
-                    <td class="text-end">2.125 $</td>
-                    <td>
-                      <a href="#" class="btn btn-primary">
-                        <l-i name="edit"></l-i>
-                        <span>edit</span>
-                      </a>
-                    </td>
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </responsive-table>
 
             <ul class="pagination justify-content-center mt-3">
               <li class="page-item disabled">
-                <a
-                  class="page-link"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
-                  aria-label="Previous">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true" aria-label="Previous">
                   <span aria-hidden="true">
                     <l-i name="navigate_before"></l-i>
                   </span>

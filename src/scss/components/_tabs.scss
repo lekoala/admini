@@ -2,34 +2,3 @@
 .nav-tabs li a {
   height: calc(100% + 1px);
 }
-
-// Prevent layout change due to js init
-bs-tabs {
-  display: none;
-  flex-grow: 1;
-
-  &:defined {
-    display: block;
-  }
-
-  &:defined[end] {
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-// Applied if too big for container
-.nav-tabs-dropdown {
-  a.active {
-    @include caret();
-    min-width: calc(var(--min-width) + 20px);
-  }
-  a:not(.active) {
-    display: none;
-  }
-}
-
-// Invalid tabs
-.nav-link.is-invalid {
-  @include validation-error-icon();
-}

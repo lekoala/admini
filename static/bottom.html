@@ -64,7 +64,7 @@
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
           let btnClass = "success";
-          const toast = admini.toaster({
+          const toast = toaster({
             body: btn.innerText,
             className: "border-0 text-white bg-" + btnClass,
           });
@@ -75,7 +75,7 @@
         .forEach((btn) => {
           btn.addEventListener("click", (ev) => {
             ev.preventDefault();
-            const toast = admini.toaster({
+            const toast = toaster({
               body: btn.innerText,
             });
           });

@@ -53,12 +53,7 @@
 @import "bootstrap/scss/utilities/api";
 
 // BS Companion
-// @import "bs-companion/css-dropdowns";
-// @import "bs-companion/css-tooltips";
-@import "bs-companion/linkable-tabs";
-@import "bs-companion/modalizer";
-@import "bs-companion/responsive-tables";
-@import "bs-companion/responsive-tabs";
+@import "bs-companion/scss/bs-companion.scss";
 
 // Admini
 @import "mixins";

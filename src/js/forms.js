@@ -2,9 +2,11 @@ import Superfile from "superfile";
 import Tags from "bootstrap5-tags";
 import flatpickr from "flatpickr";
 import Cleave from "cleave.js";
-import normalizeData from "./bs-companion/normalize-data.js";
-import FormValidator from "./bs-companion/form-validator.js";
+import normalizeData from "bs-companion/src/utils/normalizeData.js";
 
+/**
+ * TODO: refactor using https://github.com/lekoala/modular-behaviour.js
+ */
 class AdminiForms {
   constructor() {
     // Expose as public properties

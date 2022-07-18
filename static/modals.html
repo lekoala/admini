@@ -63,7 +63,7 @@
     <script type="module">
       let btn = document.getElementById("open-modal");
       btn.addEventListener("click", (ev) => {
-        const modal = admini.modalizer({
+        const modal = modalizer({
           body: "Hello!",
           title: "This is a modal",
           static: true,
@@ -84,7 +84,7 @@
       let btn2 = document.getElementById("open-confirm");
       btn2.addEventListener("click", (ev) => {
         // You need both then/catch
-        admini.modalizerConfirm(
+        modalizerConfirm(
           "Do you confirm this ?",
           (res) => {
             console.log("confirm", res);
@@ -101,7 +101,7 @@
           "<input type='text' class='form-control mt-2' name='your_name' placeholder='Please enter your name' />";
 
         // You need both then/catch
-        admini.modalizerConfirm(
+        modalizerConfirm(
           {
             body: body,
             icon: "question",
@@ -109,7 +109,7 @@
           (res) => {
             // form elements are exposed as FormData inside detail
             let name = res.detail.get("your_name");
-            admini.modalizer({
+            modalizer({
               body: "Hi " + admini.escapeHTML(name) + "!",
               icon: "success",
             });
@@ -122,7 +122,7 @@
       document.querySelectorAll(".show-example-btn").forEach((btn) => {
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
-          admini.modalizer({
+          modalizer({
             body: "Hello!",
             title: "This is a modal",
             icon: btn.dataset.icon,
@@ -132,7 +132,7 @@
       document.querySelectorAll("[data-confirm]").forEach((btn) => {
         btn.addEventListener("click", (ev) => {
           ev.preventDefault();
-          admini.modalizerConfirm(
+          modalizerConfirm(
             {
               body: btn.dataset.confirm,
               icon: "question",

@@ -76,7 +76,7 @@
       document.getElementById("demo-grid").addEventListener("action", (ev) => {
         let grid = document.getElementById("demo-grid");
         let className = ev.detail.action == "delete" ? "bg-danger" : "bg-info";
-        const toast = admini.toaster({
+        const toast = toaster({
           body: ev.detail.action,
           className: "border-0 " + className + " text-white",
           btnCloseWhite: true,
@@ -84,7 +84,7 @@
       });
       document.getElementById("demo-grid").addEventListener("edit", (ev) => {
         let grid = document.getElementById("demo-grid");
-        const toast = admini.toaster({
+        const toast = toaster({
           body: "Record edited",
           className: "border-0 bg-success text-white",
           btnCloseWhite: true,

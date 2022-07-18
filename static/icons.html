@@ -75,7 +75,7 @@
       iconWrapper.addEventListener("click", (ev) => {
         if (ev.target.dataset.name) {
           navigator.clipboard.writeText(ev.target.dataset.name);
-          admini.toaster("Icon name copied to clipboard");
+          toaster("Icon name copied to clipboard");
         }
       });
     </script>
