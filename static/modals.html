@@ -71,13 +71,14 @@
           showCancel: true,
           showConfirm: true,
         });
-        modal.element.addEventListener("modal.deny", (ev) => {
+        const element = modal.element || modal._element;
+        element.addEventListener("modal.deny", (ev) => {
           console.log("denied");
         });
-        modal.element.addEventListener("modal.confirm", (ev) => {
+        element.addEventListener("modal.confirm", (ev) => {
           console.log("confirm");
         });
-        modal.element.addEventListener("modal.cancel", (ev) => {
+        element.addEventListener("modal.cancel", (ev) => {
           console.log("canceled");
         });
       });
@@ -246,11 +247,9 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                <span
-                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
-                  data-bs-toggle="tooltip">
-                  2.191
-                </span>
+                                <bs-toggle mobile>
+                  <span class="sidebar-badge badge bg-primary">2.191</span>
+                </bs-toggle>
               </a>
             </li>
 

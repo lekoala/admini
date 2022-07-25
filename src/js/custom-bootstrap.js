@@ -11,7 +11,7 @@ import Tab from "bootstrap/js/src/tab.js";
 import Toast from "bootstrap/js/src/toast.js";
 import Tooltip from "bootstrap/js/src/tooltip.js";
 
-export {
+const Bootstrap = {
   Alert,
   Button,
   Collapse,
@@ -24,3 +24,8 @@ export {
   Toast,
   Tooltip,
 };
+
+// We need this in the import otherwise other imports might get undefined global bootstrap
+window.bootstrap = Bootstrap;
+
+export default Bootstrap;

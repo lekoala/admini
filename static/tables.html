@@ -67,50 +67,6 @@
       }
     </style>
     <script type="module">
-      // Ideally this should call the server instead
-      const table = document.getElementById("demo-table");
-      const tr = table.querySelector("tbody").getElementsByTagName("tr");
-      document.querySelector("#table-search").addEventListener("input", (ev) => {
-        let filter, table, td, txtValue;
-        filter = ev.target.value.toUpperCase();
-        // Loop through all table rows, and hide those who don't match the search query
-        for (let i = 0; i < tr.length; i++) {
-          let displayValue = "none";
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              displayValue = "";
-            }
-          }
-          tr[i].style.display = displayValue;
-        }
-      });
-      document.querySelectorAll(".row-filters th").forEach((col) => {
-        const colIdx = col.ariaColIndex;
-        const input = col.querySelector("input");
-        if (!input) {
-          return;
-        }
-        input.addEventListener("input", (ev) => {
-          let filter, table, td, txtValue;
-          filter = ev.target.value.toUpperCase();
-          // Loop through all table rows, and hide those who don't match the search query
-          for (let i = 0; i < tr.length; i++) {
-            let displayValue = "none";
-            td = tr[i].querySelector("[aria-colindex='" + colIdx + "']");
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                displayValue = "";
-              }
-            }
-            tr[i].style.display = displayValue;
-          }
-        });
-      });
-    </script>
-    <script type="module">
       window.admini.init(); // this should go last
     </script>
   </head>
@@ -201,7 +157,9 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                <span class="sidebar-badge badge bg-primary js-mobile-tooltip" data-bs-toggle="tooltip">2.191</span>
+                <bs-toggle mobile>
+                  <span class="sidebar-badge badge bg-primary">2.191</span>
+                </bs-toggle>
               </a>
             </li>
 

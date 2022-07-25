@@ -116,4 +116,8 @@ const BSN = Object.assign(componentsList, {
   Listener,
 });
 
+// We need this in the import otherwise other imports might get undefined global bootstrap
+window.bootstrap = BSN; // Alias for scripts sharing the same api as Bootstrap 5
+window.BSN = BSN;
+
 export default BSN;

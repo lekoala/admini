@@ -312,13 +312,14 @@
     span {
       display: none;
     }
-    // Collapse to dot
+    // Collapse to dot and show tooltip
     span.sidebar-badge {
       text-indent: -9999px;
       display: block;
       padding: 0;
       width: 6px;
       height: 6px;
+      --tooltip-enable: true;
     }
   }
 

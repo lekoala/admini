@@ -3,18 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- page meta -->
-    <meta
-      name="description"
-      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
     <meta name="author" content="LeKoala" />
-    <meta
-      name="keywords"
-      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
     <!-- performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,9 +23,7 @@
 
     <!-- styles -->
     <link href="css/admini.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
     <!-- icons -->
     <script>
@@ -44,12 +36,13 @@
       };
     </script>
     <script src="js/last-icon.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+    <script type="module">
+      import Superfile from "https://cdn.jsdelivr.net/npm/superfile@1/superfile.min.js";
+      Superfile.init();
+    </script>
 
     <!-- scripts -->
     <script
@@ -57,7 +50,7 @@
       nomodule
       defer
       id="nomodule-browser-warning"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
       document.querySelectorAll("#otherAction").forEach((btn) => {
@@ -72,6 +65,7 @@
       });
     </script>
     <script type="module">
+      FormValidator.init();
       window.admini.init(); // this should go last
     </script>
   </head>
@@ -81,19 +75,8 @@
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
           <span class="sidebar-brand-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="256"
-              height="256"
-              viewBox="0 0 100 100">
-              <text
-                x="50%"
-                y="52%"
-                dominant-baseline="central"
-                text-anchor="middle"
-                font-size="120">
-                💠
-              </text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
             </svg>
           </span>
           <span class="sidebar-brand-title">Admini</span>
@@ -173,11 +156,9 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                <span
-                  class="sidebar-badge badge bg-primary js-mobile-tooltip"
-                  data-bs-toggle="tooltip">
-                  2.191
-                </span>
+                <bs-toggle mobile>
+                  <span class="sidebar-badge badge bg-primary">2.191</span>
+                </bs-toggle>
               </a>
             </li>
 
@@ -199,15 +180,10 @@
             <l-i name="menu_open"></l-i>
           </button>
           <div class="dropup">
-            <button
-              class="btn btn-default"
-              id="help-dropdown-btn"
-              data-bs-toggle="dropdown">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              aria-labelledby="help-dropdown-btn">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
               <li><a class="dropdown-item" href="help.html">Help</a></li>
               <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
               <li>
@@ -224,10 +200,7 @@
 
       <main class="main">
         <!-- The form can contain multiple tabs. It's easier to wrap everything -->
-        <form
-          action=""
-          class="needs-validation"
-          data-validation-message="Some fields are not valid">
+        <form action="" class="needs-validation" data-validation-message="Some fields are not valid">
           <header class="main-header">
             <div class="main-header-sidebar">
               <button
@@ -242,16 +215,12 @@
             <div class="main-header-info">
               <nav aria-label="breadcrumb">
                 <div class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Forms
-                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Forms</li>
                 </div>
               </nav>
             </div>
             <div class="main-header-nav main-header-tabs">
-              <ul
-                class="nav nav-tabs nav-tabs-linkable nav-tabs-responsive"
-                role="tablist">
+              <ul class="nav nav-tabs nav-tabs-linkable nav-tabs-responsive" role="tablist">
                 <li class="nav-item" role="tablist">
                   <a
                     class="nav-link"
@@ -283,11 +252,7 @@
           </header>
           <section class="scroller">
             <div class="tab-content container-fluid py-3">
-              <div
-                class="tab-pane fade"
-                id="panel-1"
-                role="tabpanel"
-                aria-labelledby="tab-1">
+              <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
                 <input type="hidden" name="_hash" />
                 <!-- this stores persistent hash if needed -->
                 <div class="form-group">
@@ -296,18 +261,10 @@
                     <!-- you can also use the simpler input-group-item alternative -->
                     <div class="row" id="exampleCombineRow">
                       <div class="col-6">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="First name"
-                          aria-label="First name" />
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
                       </div>
                       <div class="col-6">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Last name"
-                          aria-label="Last name" />
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
                       </div>
                     </div>
                   </div>
@@ -321,105 +278,51 @@
                     Or even three
                   </label>
                   <div class="form-field">
-                    <input
-                      type="email"
-                      required
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp" />
-                    <div id="emailHelp" class="form-text">
-                      We'll never share your email with anyone else.
-                    </div>
-                    <div class="invalid-feedback">
-                      Please enter a valid email
-                    </div>
+                    <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div class="invalid-feedback">Please enter a valid email</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1" class="form-label">
                     Password
-                    <l-i
-                      name="help"
-                      title="It should be secure!"
-                      data-bs-toggle="tooltip"></l-i>
+                    <l-i name="help" title="It should be secure!" data-bs-toggle="tooltip"></l-i>
                   </label>
                   <div class="form-field">
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="exampleInputPassword1" />
+                    <input type="password" class="form-control" id="exampleInputPassword1" />
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">
-                      Check me out
-                    </label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputRadioGroup" class="form-label">
-                    Radio group
-                  </label>
+                  <label for="inputRadioGroup" class="form-label">Radio group</label>
                   <div class="form-field" id="inputRadioGroup">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                        checked />
-                      <label class="form-check-label" for="exampleRadios1">
-                        Default radio
-                      </label>
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                      <label class="form-check-label" for="exampleRadios1">Default radio</label>
                     </div>
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios2"
-                        value="option2" />
-                      <label class="form-check-label" for="exampleRadios2">
-                        Second default radio
-                      </label>
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                      <label class="form-check-label" for="exampleRadios2">Second default radio</label>
                     </div>
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios3"
-                        value="option3"
-                        disabled />
-                      <label class="form-check-label" for="exampleRadios3">
-                        Disabled radio
-                      </label>
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled />
+                      <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="disabledTextInput" class="form-label">
-                    Disabled input
-                  </label>
+                  <label for="disabledTextInput" class="form-label">Disabled input</label>
                   <div class="form-field">
-                    <input
-                      type="text"
-                      id="disabledTextInput"
-                      class="form-control"
-                      placeholder="Disabled input"
-                      disabled />
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" disabled />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="disabledTextInput2" class="form-label">
-                    Labelwithwordwithnobreaksinbetweenthatcanbreakthelayoutevenwhenitoverflows
-                  </label>
+                  <label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayoutevenwhenitoverflows</label>
                   <div class="form-field">
                     <input
                       type="text"
@@ -431,14 +334,8 @@
                 </div>
                 <div class="form-group">
                   <div class="form-check form-switch">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id="flexSwitchCheckDefault" />
-                    <label
-                      class="form-check-label"
-                      for="flexSwitchCheckDefault">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">
                       Default switch checkbox input
                       <br />
                       On two lines
@@ -446,13 +343,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="selectInput" class="form-label">
-                    Select something
-                  </label>
+                  <label for="selectInput" class="form-label">Select something</label>
                   <div class="form-field">
-                    <select
-                      class="form-select"
-                      aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example">
                       <option selected>Open this select menu</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -461,75 +354,54 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="validationTagsClear" class="form-label">
-                    Roles
-                  </label>
+                  <label for="validationTagsClear" class="form-label">Roles</label>
                   <div class="form-field">
-                    <select
-                      class="form-select"
-                      id="validationTagsClear"
-                      multiple
-                      data-allow-clear="true">
-                      <option selected disabled hidden value="">
-                        Choose a role...
-                      </option>
-                      <option value="1" selected="selected">Admin</option>
-                      <option value="2">Editor</option>
-                      <option value="3">Subscriber</option>
-                      <option value="4">Subscriber 2</option>
-                      <option value="5">Subscriber 3</option>
-                      <option value="6">Subscriber 4</option>
-                      <option value="7">Subscriber 5</option>
-                      <option value="8">Subscriber 6</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please select a valid role.
-                    </div>
+                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1.4.38/tags.min.js">
+                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true">
+                        <option selected disabled hidden value="">Choose a role...</option>
+                        <option value="1" selected="selected">Admin</option>
+                        <option value="2">Editor</option>
+                        <option value="3">Subscriber</option>
+                        <option value="4">Subscriber 2</option>
+                        <option value="5">Subscriber 3</option>
+                        <option value="6">Subscriber 4</option>
+                        <option value="7">Subscriber 5</option>
+                        <option value="8">Subscriber 6</option>
+                      </select>
+                    </modular-behaviour>
+                    <div class="invalid-feedback">Please select a valid role.</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="dateMask" class="form-label">Date (mask)</label>
                   <div class="form-field">
-                    <input
-                      id="dateMask"
-                      class="form-control cleave"
-                      placeholder="YYYY-MM-DD"
+                    <modular-behaviour
+                      src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave-esm.js"
                       data-date="true"
                       data-delimiter="-"
-                      data-date-pattern="['Y', 'm', 'd']" />
+                      data-date-pattern="['Y', 'm', 'd']">
+                      <input id="dateMask" class="form-control" placeholder="YYYY-MM-DD" />
+                    </modular-behaviour>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="datePicker" class="form-label">
-                    Date (picker)
-                  </label>
+                  <label for="datePicker" class="form-label">Date (picker)</label>
                   <div class="form-field">
-                    <input
-                      id="datePicker"
-                      class="form-control flatpickr"
-                      data-alt-input="true"
-                      data-alt-format="F j, Y"
-                      data-date-format="Y-m-d" />
+                    <modular-behaviour src="https://cdn.skypack.dev/flatpickr" data-alt-input="true" data-alt-format="F j, Y" data-date-format="Y-m-d">
+                      <input id="datePicker" class="form-control flatpickr" />
+                    </modular-behaviour>
                   </div>
                 </div>
                 <div class="form-group readonly">
-                  <label for="readOnlyField" class="form-label">
-                    Readonly (paragraph)
-                  </label>
+                  <label for="readOnlyField" class="form-label">Readonly (paragraph)</label>
                   <div class="form-field">
                     <p class="form-control readonly">This is readonly</p>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="readOnlyFieldReal" class="form-label">
-                    Readonly (real)
-                  </label>
+                  <label for="readOnlyFieldReal" class="form-label">Readonly (real)</label>
                   <div class="form-field">
-                    <input
-                      type="text"
-                      value="This is readonly"
-                      class="form-control"
-                      readonly />
+                    <input type="text" value="This is readonly" class="form-control" readonly />
                   </div>
                 </div>
                 <div class="accordion" id="accordionExample">
@@ -545,23 +417,12 @@
                         Hidden field element
                       </button>
                     </h2>
-                    <div
-                      id="collapseOne"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingOne"
-                      data-bs-parent="#accordionExample">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <div class="form-group">
-                          <label for="messageInput" class="form-label">
-                            Type a message
-                          </label>
+                          <label for="messageInput" class="form-label">Type a message</label>
                           <div class="form-field">
-                            <textarea
-                              cols="50"
-                              rows="10"
-                              id="messageInput"
-                              class="form-control"
-                              required></textarea>
+                            <textarea cols="50" rows="10" id="messageInput" class="form-control" required></textarea>
                           </div>
                         </div>
                       </div>
@@ -569,27 +430,13 @@
                   </div>
                 </div>
               </div>
-              <div
-                class="tab-pane fade"
-                id="panel-2"
-                role="tabpanel"
-                aria-labelledby="tab-2">
+              <div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
                 <div class="form-group">
-                  <label for="formFile" class="form-label">
-                    Default file input example
-                  </label>
+                  <label for="formFile" class="form-label">Default file input example</label>
                   <div class="form-field superfile">
                     <div class="input-group">
-                      <input
-                        class="form-control"
-                        type="file"
-                        id="formFile"
-                        name="file" />
-                      <button
-                        class="btn btn-outline-secondary superfile-clear"
-                        type="button">
-                        Clear
-                      </button>
+                      <input class="form-control" type="file" id="formFile" name="file" />
+                      <button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
                     </div>
                     <img class="img-fluid superfile-preview" />
                   </div>
@@ -599,13 +446,8 @@
                   <p class="form-label">Avatar</p>
                   <div class="form-field">
                     <div class="superfile avatar">
-                      <label for="formFile5" class="form-label">
-                        Avatar upload
-                      </label>
-                      <button
-                        type="button"
-                        class="btn-close superfile-clear"
-                        aria-label="Clear avatar"></button>
+                      <label for="formFile5" class="form-label">Avatar upload</label>
+                      <button type="button" class="btn-close superfile-clear" aria-label="Clear avatar"></button>
                       <div class="input-group">
                         <!-- double width/height for retina display -->
                         <input
@@ -619,80 +461,43 @@
                           data-hide-clear="1"
                           data-ratio="1:1" />
                       </div>
-                      <img
-                        src="https://randomuser.me/api/portraits/men/36.jpg"
-                        class="img-fluid superfile-preview" />
+                      <img src="https://randomuser.me/api/portraits/men/36.jpg" class="img-fluid superfile-preview" />
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheckRequired"
-                      required />
-                    <label class="form-check-label" for="exampleCheckRequired">
-                      This must be ticked
-                    </label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheckRequired" required />
+                    <label class="form-check-label" for="exampleCheckRequired">This must be ticked</label>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="groupedinput" class="form-label">
-                    Group label
-                  </label>
+                  <label for="groupedinput" class="form-label">Group label</label>
                   <div class="input-group form-field" id="groupedinput">
                     <span class="input-group-text">First and last name</span>
-                    <input
-                      type="text"
-                      aria-label="First name"
-                      class="form-control" />
-                    <input
-                      type="text"
-                      aria-label="Last name"
-                      class="form-control" />
+                    <input type="text" aria-label="First name" class="form-control" />
+                    <input type="text" aria-label="Last name" class="form-control" />
                   </div>
                 </div>
 
                 <div class="form-group fieldgroup form-group--no-label">
                   <div class="input-group">
                     <div class="input-group-item">
-                      <label for="PrimaryColor" class="form-label">
-                        Primary color (in a row)
-                      </label>
+                      <label for="PrimaryColor" class="form-label">Primary color (in a row)</label>
 
-                      <input
-                        type="color"
-                        name="PrimaryColor"
-                        class="form-control"
-                        id="PrimaryColor"
-                        style="width: 60px" />
+                      <input type="color" name="PrimaryColor" class="form-control" id="PrimaryColor" style="width: 60px" />
                     </div>
                     <div class="input-group-item">
-                      <label for="SecondaryColor" class="form-label">
-                        Secondary color (in a row)
-                      </label>
+                      <label for="SecondaryColor" class="form-label">Secondary color (in a row)</label>
 
-                      <input
-                        type="color"
-                        name="SecondaryColor"
-                        class="form-control"
-                        id="SecondaryColor"
-                        style="width: 60px" />
+                      <input type="color" name="SecondaryColor" class="form-control" id="SecondaryColor" style="width: 60px" />
                     </div>
                     <div class="input-group-item">
-                      <label for="TertiaryColor" class="form-label">
-                        Tertiary color (in a row)
-                      </label>
+                      <label for="TertiaryColor" class="form-label">Tertiary color (in a row)</label>
 
-                      <input
-                        type="color"
-                        name="TertiaryColor"
-                        class="form-control"
-                        id="TertiaryColor"
-                        style="width: 60px" />
+                      <input type="color" name="TertiaryColor" class="form-control" id="TertiaryColor" style="width: 60px" />
                     </div>
                   </div>
                 </div>
@@ -705,9 +510,7 @@
                 <l-i name="done"></l-i>
                 Save
               </button>
-              <button type="button" class="btn btn-primary" id="otherAction">
-                Other action
-              </button>
+              <button type="button" class="btn btn-primary" id="otherAction">Other action</button>
             </div>
             <div class="btn-group" aria-label="Navigation">
               <button type="button" class="btn btn-light">

@@ -7,14 +7,31 @@
 - No bloat, only what's strictly required to get a decent admin panel
 - A nice, modern, Bootstrap 5 based interface
 - A friendly dashboard
+- Extended Avatar UI with badges, icons, pictures, groups...
 - A powerful action system that supports many use cases (multiple actions, drops, navigation, offcanvas panel...)
-- Smart tabs that are fully responsive *based on their content* and that can deep link specific parts of the UI
 - A sane default layout for forms (includes tabbed form support and responsive by default)
-- Toast notifications
 - A nice default set of colors that are more accessible
-- Carefully selected form components (cleave, flatpickr, bootstrap 5 tags, superfile)
-- Super cool modals inspired by Sweetalert, but using Bootstrap Modals
-- Super lightweight (140kb with form components, 40kb just for the UI)
+- Super lightweight (57kb with BSN, 94kb with Bootstrap 5)
+
+## BS Companion
+
+Some features of admini have been extracted to a third party module called [BS Companion](https://bs-companion.vercel.app/)
+
+- Responsive Table : Nice responsive tables without ugly scrollbars
+- BS Tabs : Improved tabs, that collapse down to a dropdown and with linkable tabs
+- BS Toggle : Self initializing popovers and tabs
+- Toaster : Generate beautiful toast message without markup
+- Modalizer : Generate beautiful modals without markup
+- Form Validator : Consistent validator that works across tabs and accordions
+
+## Form elements
+
+Admini does not provide any built in custom form elements. This is because we are often used to use specifics
+libraries based on our usage and personal preferences.
+
+One easy way to bind behaviour to your html nodes is to use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
+
+It works beautifully in combination with [skypack](https://www.skypack.dev/).
 
 ## Icons and images
 

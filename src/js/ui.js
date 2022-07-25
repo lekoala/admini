@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import debounce from "./utils/debounce.js";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
@@ -33,7 +34,6 @@ class AdminiUi {
           }
         }
         document.activeElement.blur();
-        this.toggleMobileTooltips(window.innerWidth);
       });
     });
   }
@@ -43,40 +43,14 @@ class AdminiUi {
    * You can also use the bs-toggle custom attribute
    */
   tooltips() {
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-      if (!el.hasAttribute("title")) {
-        el.setAttribute("title", el.innerHTML);
-      }
-      if (bootstrap.Tooltip) {
-        bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
-      } else {
-        // rely on css tooltips
-        el.dataset.title = el.getAttribute("title");
-        el.removeAttribute("title");
-      }
-    });
-    this.toggleMobileTooltips(window.innerWidth);
-  }
-
-  /**
-   * Some elements are collapsed down to tooltips (eg: badges) if the screen size is too small
-   * TODO: refactor this into bs-toggle
-   * @param {int} w
-   */
-  toggleMobileTooltips(w) {
     if (!bootstrap.Tooltip) {
       return;
     }
-    document.querySelectorAll('[data-bs-toggle="tooltip"].js-mobile-tooltip').forEach((el) => {
-      let tooltip = bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
-      // On large screen, display the badge
-      if (w > MOBILE_SIZE && el.offsetWidth > 12) {
-        tooltip.disable();
-        el.removeAttribute("title");
-      } else {
-        // Enable tooltip for small screen or small items based on its content
-        tooltip.enable();
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+      if (!el.hasAttribute("title")) {
+        el.setAttribute("title", el.innerText.trim());
       }
+      bootstrap.Tooltip.getInstance(el) || new bootstrap.Tooltip(el);
     });
   }
 
@@ -108,17 +82,18 @@ class AdminiUi {
    * Register js behaviour that augment response behaviour
    */
   responsive() {
-    window.addEventListener("resize", () => {
-      this.toggleMobileTooltips(window.innerWidth);
-      this.toggleSidebar(window.innerWidth);
-      this.setMobileSize();
-    });
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        this.toggleSidebar(window.innerWidth);
+        this.setMobileSize();
+      })
+    );
   }
 
   /**
    * Dismissable alerts with an id will be stored in a cookie
    * You might even skip rendering entirely by checking the cookies with the server
-   * TODO: refactor this into a custom element
    */
   dismissableAlerts() {
     document.querySelectorAll(".alert-dismissible[id]").forEach((el) => {
