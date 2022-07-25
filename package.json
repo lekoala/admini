@@ -21,7 +21,7 @@
     "minimalistic"
   ],
   "dependencies": {
-    "bootstrap": "5.2.0-beta1",
+    "bootstrap": "5.2.0",
     "bootstrap.native": " ^4.2",
     "bootstrap5-tags": "^1.4.38",
     "bs-companion": "^1.1.2",
