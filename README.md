@@ -1,6 +1,6 @@
 # Admini
 
-> Minimalistic Admin Panel built with Bootstrap 5
+> Minimalistic Admin Panel built with Bootstrap 5.2
 
 ## Features
 
