@@ -157,6 +157,11 @@ html {
   align-items: flex-end; // Align to bottom of container
   align-self: flex-end;
   position: relative;
+  bottom: -1px;
+
+  .bs-tabs-dropdown a.active {
+    white-space: nowrap;
+  }
 
   .nav-tabs {
     border-bottom: 0;
