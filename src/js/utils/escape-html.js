@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * Properly escape the html
  * @param {string} str

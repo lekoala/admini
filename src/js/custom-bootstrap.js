@@ -14,6 +14,7 @@ import Tooltip from "bootstrap/js/src/tooltip.js";
 const Bootstrap = {
   Alert,
   Button,
+  // Carousel,
   Collapse,
   Dropdown,
   Modal,

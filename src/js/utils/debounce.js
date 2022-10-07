@@ -1,5 +1,8 @@
-"use strict";
-
+/**
+ * @param {Function} func 
+ * @param {Number} timeout 
+ * @returns {Function}
+ */
 export default function debounce(func, timeout = 300) {
   let timer;
   return (...args) => {
