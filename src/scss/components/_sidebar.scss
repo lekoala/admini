@@ -140,7 +140,7 @@
   }
 
   .sidebar-brand-icon {
-    margin-right: 0.5rem;
+    margin-right: $sidebar-brand-padding;
 
     svg,
     img {
@@ -216,7 +216,7 @@
     border-radius: 0;
 
     // Reduce spacing to avoid icons moving around
-    padding-left: $spacer * 0.5;
+    padding-left: $sidebar-brand-padding;
     padding-right: $spacer * 0.5;
 
     &:hover {

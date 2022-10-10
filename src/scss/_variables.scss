@@ -313,9 +313,9 @@ $sidebar-bg: desaturate(mix(black, $primary, 90%), 20%) !default;
 
 // Sidebar brand
 $sidebar-brand-height: 52px;
-$sidebar-brand-padding: 1.15rem !default;
+$sidebar-brand-padding: 0.85rem !default;
 $sidebar-brand-font-weight: $font-weight-bold !default;
-$sidebar-brand-font-size: 1.15rem !default;
+$sidebar-brand-font-size: 1.10rem !default;
 $sidebar-brand-color: $gray-100 !default;
 $sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
 
