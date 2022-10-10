@@ -148,6 +148,13 @@
       width: auto;
     }
   }
+
+  .sidebar-brand-title {
+    white-space: nowrap;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .sidebar-profile {
