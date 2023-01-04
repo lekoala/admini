@@ -119,7 +119,7 @@ class AdminiUi {
    * Create test from html. To create toast from js, use toaster
    */
   toasts() {
-    let list = document.querySelectorAll(".toast");
+    let list = document.querySelectorAll(".toast:not(.toaster)");
     list.forEach((el) => {
       let toast = new bootstrap.Toast(el);
       toast.show();
