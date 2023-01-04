@@ -39,7 +39,9 @@ const componentsList = {
 };
 
 // We initialize ourselves
-const ignoreList = ["Tooltip"];
+const ignoreList = {
+  Tooltip,
+};
 
 /**
  * Initialize all matched `Element`s for one component.
@@ -75,12 +77,18 @@ function initCallback(context) {
   const elemCollection = [...getElementsByTagName("*", lookUp)];
 
   ObjectKeys(componentsList).forEach((comp) => {
-    if (ignoreList.includes(comp)) {
+    if (ignoreList[comp]) {
       return;
     }
-    const { init, selector } = componentsList[comp];
+    const { init, selector, getInstance } = componentsList[comp];
     initComponentDataAPI(
-      init,
+      (el) => {
+        // Fix duplicated init
+        if (getInstance(el)) {
+          return;
+        }
+        init(el);
+      },
       elemCollection.filter((item) => matches(item, selector))
     );
   });
