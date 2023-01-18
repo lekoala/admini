@@ -1,42 +1,59 @@
+// Animate drop appearance
+// @link https://github.com/twbs/bootstrap/issues/33185
 @keyframes dropdownAnimation {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    margin-top: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-factor));
   }
   to {
     opacity: 1;
-    transform: translate(0);
+    margin-top: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-end-factor));
   }
 }
 @keyframes dropupAnimation {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    margin-bottom: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-factor));
   }
   to {
     opacity: 1;
-    transform: translate(0);
+    margin-bottom: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-end-factor));
   }
 }
 
-// @link https://github.com/twbs/bootstrap/issues/33185
 @media (prefers-reduced-motion: no-preference) {
-  // Animate drop appearance
   .dropdown,
   .dropup {
     .dropdown-menu.show {
+      --dropdown-animation-factor: -2;
+      --dropdown-animation-end-factor: 1;
       animation-name: dropdownAnimation;
       animation-duration: 0.25s;
       animation-iteration-count: 1;
-      animation-timing-function: ease;
+      animation-timing-function: ease-out;
       animation-fill-mode: forwards;
+    }
+    // With popper, don't have any margin at all
+    .dropdown-menu[data-popper-placement] {
+      --dropdown-animation-end-factor: 0;
     }
   }
   .dropup {
     .dropdown-menu.show {
+      --dropdown-animation-factor: 2;
+      --dropdown-animation-end-factor: -1;
+    }
+    .dropdown-menu[data-popper-placement].show {
+      --dropdown-animation-factor: -2;
+      --dropdown-animation-end-factor: 0;
       animation-name: dropupAnimation;
     }
   }
+}
+
+// Fixed positioning for simple js
+.dropdown-fixed {
+  position: fixed;
 }
 
 // Always enable shadow in header
@@ -50,6 +67,7 @@ header .dropdown-menu {
   .dropdown-toggle:after {
     border: solid;
     border-width: 0 2px 2px 0;
+    margin-left: 8px;
     display: inline-block;
     padding: 2px;
     transform: rotate(45deg);
@@ -62,6 +80,7 @@ header .dropdown-menu {
   }
 }
 
+// Badges alignement
 .dropdown-item {
   .badge {
     vertical-align: text-top;
@@ -96,6 +115,7 @@ header .dropdown-menu {
   }
 }
 
+// Headers & footers
 .dropdown-menu-header {
   display: flex;
   align-items: center;

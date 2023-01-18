@@ -160,21 +160,18 @@
 .sidebar-profile {
   border-bottom: 1px solid $sidebar-cta-bg;
   padding: ($sidebar-cta-padding * 0.5) $sidebar-cta-padding;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
 
-  > button {
+  img {
     display: block;
-    padding: 0;
-    width: 100%;
-    text-align: left;
-    border: 0;
-
-    img {
-      display: block;
-      float: left;
-      margin-right: $spacer * 0.5;
-    }
+    float: left;
+    margin-right: $spacer * 0.5;
   }
 
+  // We use data-bs-display="static"
   .dropdown-menu {
     // Align with actual trigger, not with the icon
     left: calc($sidebar-cta-padding + ($spacer * 0.5) + 44px);
@@ -183,6 +180,7 @@
 
   .sidebar-profile-name {
     color: $primary;
+    padding: 0;
   }
 }
 
@@ -366,14 +364,9 @@
       display: none;
     }
 
-    > button {
-      text-align: center;
-      width: auto;
+    img {
+      float: none;
       margin: 0 auto;
-      img {
-        float: none;
-        margin: 0 auto;
-      }
     }
 
     .dropdown-menu {

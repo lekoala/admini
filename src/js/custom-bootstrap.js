@@ -1,6 +1,6 @@
 import Alert from "bootstrap/js/src/alert.js";
 import Button from "bootstrap/js/src/button.js";
-// import Carousel from "bootstrap/js/src/carousel.js";
+// import Carousel from "bootstrap/js/src/carousel.js"; // Because who needs a carousel in an admin ui ?
 import Collapse from "bootstrap/js/src/collapse.js";
 import Dropdown from "bootstrap/js/src/dropdown.js";
 import Modal from "bootstrap/js/src/modal.js";

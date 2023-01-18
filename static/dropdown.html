@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- page meta -->
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="author" content="LeKoala" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+    <!-- performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- page title & icon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+    <title>Admini</title>
+
+    <!-- styles -->
+    <link href="css/admini.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+    <!-- icons -->
+    <script>
+      window.LastIcon = {
+        types: {
+          material: "twotone",
+        },
+        defaultSet: "material",
+        fonts: ["material"],
+      };
+    </script>
+    <script src="js/last-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js"
+      nomodule
+      defer
+      id="nomodule-browser-warning"></script>
+    <script type="module" src="js/admini.min.js"></script>
+    <script type="module">
+      window.admini.init(); // this should go last
+    </script>
+  </head>
+
+  <body style="height: 150vw">
+    <!-- force scrollbar to test positioning -->
+    <div class="wrapper">
+      <aside id="sidebar" class="sidebar" data-bs-scroll="true">
+        <a class="sidebar-brand" href="index.html">
+          <span class="sidebar-brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
+            </svg>
+          </span>
+          <span class="sidebar-brand-title">Admini</span>
+        </a>
+
+        <!-- sidebar-content -->
+        <div class="sidebar-content scroller">
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-header">UI</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link active" href="index.html">
+                <l-i name="dashboard"></l-i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="bottom.html">
+                <l-i name="vertical_align_bottom"></l-i>
+                <span>Bottom actions</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tabs.html">
+                <l-i name="tab"></l-i>
+                <span>Tabbed navigation</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="unpoly.html">
+                <l-i name="layers"></l-i>
+                <span>Unpoly</span>
+              </a>
+            </li>
+
+            <li class="sidebar-nav-header">Components</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="avatars.html">
+                <l-i name="person"></l-i>
+                <span>Avatars</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="forms.html">
+                <l-i name="feed"></l-i>
+                <span>Forms</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="tables.html">
+                <l-i name="view_list"></l-i>
+                <span>Tables</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="modals.html">
+                <l-i name="panorama_wide_angle"></l-i>
+                <span>Modals</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="datatable.html">
+                <l-i name="view_agenda"></l-i>
+                <span>Datatable</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="icons.html">
+                <l-i name="star"></l-i>
+                <span>Icons</span>
+                <bs-toggle mobile>
+                  <span class="sidebar-badge badge bg-primary">2.191</span>
+                </bs-toggle>
+              </a>
+            </li>
+
+            <li class="sidebar-nav-header">Useful links</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="https://github.com/lekoala/admini">
+                <l-i name="star"></l-i>
+                <span>Repository</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- /sidebar-content -->
+
+        <!-- sidebar-footer -->
+        <div class="sidebar-footer">
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
+          <div class="dropup">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
+              <l-i name="help_outline"></l-i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
+              <li><a class="dropdown-item" href="help.html">Help</a></li>
+              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <p class="m-3 mb-0">
+                <small>Built with Admini</small>
+              </p>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar-footer -->
+      </aside>
+
+      <main class="main">
+        <header class="main-header">
+          <div class="main-header-sidebar">
+            <button
+              type="button"
+              class="btn btn-primary btn-flex btn-square rounded-0"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebar"
+              aria-controls="sidebar">
+              <l-i name="menu"></l-i>
+            </button>
+          </div>
+          <div class="main-header-info">
+            <nav aria-label="breadcrumb">
+              <div class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Admin section</li>
+              </div>
+            </nav>
+          </div>
+          <div class="main-header-nav"></div>
+        </header>
+        <section class="scroller" style="height:200vh;width:120vw">
+          <!-- force scrollbar to test positioning -->
+          <div class="container-fluid p-4">
+            <p>Using bootstrap js</p>
+
+            <div class="row">
+              <div class="col-auto">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                    Static Dropdown button
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+
+                <br />
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-display="dynamic" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dynamic Dropdown button
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+
+                <br />
+
+                <div class="dropup">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-display="dynamic" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dynamic Dropup button
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                      Static Dropdown button in container (fails)
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <br />
+                <div style="overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                      Static Dropdown button in container without position (fails)
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <br />
+                <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      data-bs-display="dynamic"
+                      data-bs-popper-config='{"strategy": "fixed"}'
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Dynamic Dropdown button in container
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr />
+            <p>Using simple js</p>
+
+            <div class="row">
+              <div class="col-auto">
+                <div style="margin: 10px; padding: 10px">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropdown button</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div style="margin: 10px; padding: 10px">
+                  <div class="dropup">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropup button</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div style="overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropdown" style="position: inherit">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropdown button in container without position (nested scroll fails)</button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <br />
+                <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Fixed Dropdown button in container</button>
+                    <ul class="dropdown-menu dropdown-fixed">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <br />
+                <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
+                  <div class="dropup">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Fixed Dropup button in container</button>
+                    <ul class="dropdown-menu dropdown-fixed">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 80vh; background: #ccc; width: 200px">Force page scrollbars</div>
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropup button at end of container</button>
+              <ul class="dropdown-menu dropdown-fixed">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
