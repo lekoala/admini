@@ -3,18 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- page meta -->
-    <meta
-      name="description"
-      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
     <meta name="author" content="LeKoala" />
-    <meta
-      name="keywords"
-      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
     <!-- performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,9 +23,7 @@
 
     <!-- styles -->
     <link href="css/admini.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
     <!-- icons -->
     <script>
@@ -44,12 +36,8 @@
       };
     </script>
     <script src="js/last-icon.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
     <!-- scripts -->
     <script
@@ -83,19 +71,8 @@
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
           <span class="sidebar-brand-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="256"
-              height="256"
-              viewBox="0 0 100 100">
-              <text
-                x="50%"
-                y="52%"
-                dominant-baseline="central"
-                text-anchor="middle"
-                font-size="120">
-                💠
-              </text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
             </svg>
           </span>
           <span class="sidebar-brand-title">Admini</span>
@@ -175,7 +152,7 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                                <bs-toggle mobile>
+                <bs-toggle mobile>
                   <span class="sidebar-badge badge bg-primary">2.191</span>
                 </bs-toggle>
               </a>
@@ -199,17 +176,16 @@
             <l-i name="menu_open"></l-i>
           </button>
           <div class="dropup">
-            <button
-              class="btn btn-default"
-              id="help-dropdown-btn"
-              data-bs-toggle="dropdown">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              aria-labelledby="help-dropdown-btn">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
               <li><a class="dropdown-item" href="help.html">Help</a></li>
               <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -235,9 +211,7 @@
             </button>
           </div>
           <div class="main-header-info">
-            <a
-              class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back"
-              href="#">
+            <a class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back" href="#">
               <l-i name="navigate_before"></l-i>
               <span class="visually-hidden">Navigate up a folder</span>
             </a>
@@ -246,16 +220,14 @@
                 <!-- <li class="breadcrumb-item"><a href="#">Some</a></li>
 							<li class="breadcrumb-item"><a href="#">Path</a></li>
 							<li class="breadcrumb-break"></li> -->
-                <li class="breadcrumb-item active" aria-current="page">
-                  Tabs (let's have a very long name to see how it fits)
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Tabs (let's have a very long name to see how it fits)</li>
               </div>
             </nav>
           </div>
           <div class="main-header-nav main-header-tabs">
             <bs-tabs linkable responsive end>
               <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item" role="tablist">
+                <li class="nav-item">
                   <a
                     class="nav-link"
                     id="tab-1"
@@ -269,7 +241,7 @@
                     Panel 1
                   </a>
                 </li>
-                <li class="nav-item" role="tablist">
+                <li class="nav-item">
                   <a
                     class="nav-link"
                     id="tab-2"
@@ -282,7 +254,7 @@
                     Panel 2
                   </a>
                 </li>
-                <li class="nav-item" role="tablist">
+                <li class="nav-item">
                   <a
                     class="nav-link"
                     id="tab-3"
@@ -295,27 +267,18 @@
                     Lazy init
                   </a>
                 </li>
-                <li class="nav-item" role="tablist">
+                <li class="nav-item">
                   <a class="nav-link disabled py-0 small">
                     Disabled
                     <br />
                     On two lines
                   </a>
                 </li>
-                <li class="nav-item" role="tablist">
-                  <a class="nav-link disabled">
-                    A very long disabled tabs to see how it fits
-                  </a>
+                <li class="nav-item">
+                  <a class="nav-link disabled">A very long disabled tabs to see how it fits</a>
                 </li>
-                <li class="nav-item" role="tablist">
-                  <a
-                    class="nav-link"
-                    id="tab-6"
-                    data-bs-toggle="tab"
-                    data-bs-target="#panel-6"
-                    type="button"
-                    role="tab"
-                    aria-controls="panel-6">
+                <li class="nav-item">
+                  <a class="nav-link" id="tab-6" data-bs-toggle="tab" data-bs-target="#panel-6" type="button" role="tab" aria-controls="panel-6">
                     <l-i name="star"></l-i>
                   </a>
                 </li>
@@ -325,45 +288,31 @@
         </header>
         <section class="scroller">
           <div class="tab-content container-fluid py-3">
-            <div
-              class="tab-pane fade"
-              id="panel-1"
-              role="tabpanel"
-              aria-labelledby="tab-1">
+            <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
               <h1>Panel 1</h1>
+              <p>Tabs are fully responsive and take into account available width in the container.</p>
               <p>
-                Tabs are fully responsive and take into account available width
-                in the container.
+                You can use
+                <code>bs-tabs</code>
+                custom element for faster UI interaction if using linkable or responsive tabs.
               </p>
-              <p>You can use <code>bs-tabs</code> custom element for faster UI interaction if using linkable or responsive tabs.</p>
               <div class="alert alert-primary" role="alert">
                 <l-i name="warning" size="24" class="me-2"></l-i>
                 Check the tab 2 with nested panel!
               </div>
               <!-- dismissable alerts -->
-              <div
-                class="alert alert-warning alert-dismissible fade show"
-                id="dismissable-alert"
-                role="alert">
+              <div class="alert alert-warning alert-dismissible fade show" id="dismissable-alert" role="alert">
                 <strong>Holy guacamole!</strong>
                 You can dismiss this alert and it won't show again!
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="panel-2"
-              role="tabpanel"
-              aria-labelledby="tab-2">
+            <div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
               <h1>Panel 2 has nested panels</h1>
               <div class="container-expand">
                 <bs-tabs linkable="1">
                   <ul class="nav nav-tabs px-3" role="tablist">
-                    <li class="nav-item" role="tablist">
+                    <li class="nav-item">
                       <a
                         class="nav-link"
                         id="nested-tab-1"
@@ -376,7 +325,7 @@
                         Nested Panel 1
                       </a>
                     </li>
-                    <li class="nav-item" role="tablist">
+                    <li class="nav-item">
                       <a
                         class="nav-link"
                         id="nested-tab-2"
@@ -392,44 +341,22 @@
                   </ul>
                 </bs-tabs>
                 <div class="tab-content p-4">
-                  <div
-                    class="tab-pane fade"
-                    id="panel-2__nested-panel-1"
-                    role="tabpanel"
-                    aria-labelledby="nested-tab-1">
+                  <div class="tab-pane fade" id="panel-2__nested-panel-1" role="tabpanel" aria-labelledby="nested-tab-1">
                     Nested tab 1. Refresh the page and I will be selected.
                   </div>
-                  <div
-                    class="tab-pane fade"
-                    id="panel-2__nested-panel-2"
-                    role="tabpanel"
-                    aria-labelledby="nested-tab-2">
+                  <div class="tab-pane fade" id="panel-2__nested-panel-2" role="tabpanel" aria-labelledby="nested-tab-2">
                     Nested tab 2. Refresh the page and I will be selected.
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="panel-3"
-              role="tabpanel"
-              aria-labelledby="tab-3">
+            <div class="tab-pane fade" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
               Panel 3
               <div class="lazy-loadable" id="panel-3-lazy">
-                <l-i
-                  name="three_dots_loading"
-                  set="eo"
-                  type="animated"
-                  size="36"></l-i>
+                <l-i name="three_dots_loading" set="eo" type="animated" size="36"></l-i>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="panel-6"
-              role="tabpanel"
-              aria-labelledby="tab-6">
-              Panel 6
-            </div>
+            <div class="tab-pane fade" id="panel-6" role="tabpanel" aria-labelledby="tab-6">Panel 6</div>
           </div>
         </section>
         <footer class="main-footer">

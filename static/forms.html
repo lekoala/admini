@@ -51,6 +51,7 @@
       defer
       id="nomodule-browser-warning"></script>
 
+    <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3.1.1/modular-behaviour.min.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
       document.querySelectorAll("#otherAction").forEach((btn) => {
@@ -193,6 +194,10 @@
               <li>
                 <hr class="dropdown-divider" />
               </li>
+              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
               <p class="m-3 mb-0">
                 <small>Built with Admini</small>
               </p>
@@ -226,7 +231,7 @@
             <div class="main-header-nav main-header-tabs">
               <bs-tabs linkable="1" responsive="1" end>
                 <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item" role="tablist">
+                  <li class="nav-item">
                     <a
                       class="nav-link"
                       id="tab-1"
@@ -239,7 +244,7 @@
                       Main
                     </a>
                   </li>
-                  <li class="nav-item" role="tablist">
+                  <li class="nav-item">
                     <a
                       class="nav-link"
                       id="tab-2"
@@ -362,8 +367,8 @@
                 <div class="form-group">
                   <label for="validationTagsClear" class="form-label">Roles</label>
                   <div class="form-field">
-                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1.4.38/tags.min.js">
-                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true">
+                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1.5/tags.min.js">
+                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" size="1">
                         <option selected disabled hidden value="">Choose a role...</option>
                         <option value="1" selected="selected">Admin</option>
                         <option value="2">Editor</option>

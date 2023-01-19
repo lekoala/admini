@@ -6,6 +6,9 @@ const DARKMODE = "darkmode";
 
 class AdminiUi {
   constructor() {
+    /**
+     * @type {HTMLElement}
+     */
     this.sidebar = document.querySelector("#sidebar");
   }
 
@@ -25,14 +28,16 @@ class AdminiUi {
 
         document.body.classList.toggle(MINIMENU);
         if (document.body.classList.contains(MINIMENU)) {
-          localStorage.setItem(MINIMENU, 1);
+          localStorage.setItem(MINIMENU, "1");
         } else {
           localStorage.removeItem(MINIMENU);
           const cta = document.querySelector(".sidebar-cta-content");
           if (cta) {
+            //@ts-ignore
             cta.style.cssText = "";
           }
         }
+        //@ts-ignore
         document.activeElement.blur();
       });
     });
@@ -43,21 +48,26 @@ class AdminiUi {
    * You can also use the bs-toggle custom element
    */
   tooltips() {
-    if (!bootstrap.Tooltip) {
+    if (!window.bootstrap.Tooltip) {
       return;
     }
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-      if (!el.hasAttribute("title")) {
-        el.setAttribute("title", el.innerText.trim());
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(
+      /**
+       * @param {HTMLElement} el
+       */
+      (el) => {
+        if (!el.hasAttribute("title")) {
+          el.setAttribute("title", el.innerText.trim());
+        }
+        window.bootstrap.Tooltip.getOrCreateInstance(el);
       }
-      bootstrap.Tooltip.getOrCreateInstance(el);
-    });
+    );
   }
 
   /**
    * Sidebar layout is controlled with offcanvas but we may need to restore
    * visibility if it was hidden
-   * @param {int} w
+   * @param {Number} w
    * @return {bootstrap.Offcanvas|null}
    */
   toggleSidebar(w = null) {
@@ -72,7 +82,7 @@ class AdminiUi {
     // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
       this.sidebar.classList.add("offcanvas");
-      const sidebarOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
+      const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
       return sidebarOffcanvas;
     }
     return null;
@@ -82,13 +92,12 @@ class AdminiUi {
    * Register js behaviour that augment response behaviour
    */
   responsive() {
-    window.addEventListener(
-      "resize",
-      debounce(() => {
-        this.toggleSidebar(window.innerWidth);
-        this.setMobileSize();
-      })
-    );
+    const fn = debounce(() => {
+      this.toggleSidebar(window.innerWidth);
+      this.setMobileSize();
+    });
+    //@ts-ignore
+    window.addEventListener("resize", fn);
   }
 
   /**
@@ -97,15 +106,16 @@ class AdminiUi {
   dismissableAlerts() {
     document.querySelectorAll(".alert-dismissible[id]").forEach((el) => {
       let dismissed = localStorage.getItem("dismissed_alerts");
-      dismissed = dismissed ? JSON.parse(dismissed) : [];
-      if (dismissed.includes(el.getAttribute("id"))) {
+      let arr = dismissed ? JSON.parse(dismissed) : [];
+      if (arr.includes(el.getAttribute("id"))) {
+        //@ts-ignore
         el.style.display = "none";
       }
       el.addEventListener(
         "closed.bs.alert",
         () => {
-          dismissed.push(el.getAttribute("id"));
-          localStorage.setItem("dismissed_alerts", JSON.stringify(dismissed));
+          arr.push(el.getAttribute("id"));
+          localStorage.setItem("dismissed_alerts", JSON.stringify(arr));
         },
         { once: true }
       );
@@ -118,7 +128,7 @@ class AdminiUi {
   toasts() {
     let list = document.querySelectorAll(".toast:not(.toaster)");
     list.forEach((el) => {
-      let toast = bootstrap.Toast.getOrCreateInstance(el);
+      let toast = window.bootstrap.Toast.getOrCreateInstance(el);
       toast.show();
     });
   }
@@ -140,39 +150,48 @@ class AdminiUi {
     const fixedClass = "dropdown-fixed";
 
     // Dropdowns not using the bs-toggle
-    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach((el) => {
-      const menu = el.parentElement.querySelector(menuClass);
-      const isDropup = el.parentElement.classList.contains("dropup");
-      el.ariaExpanded = menu.classList.contains(showClass);
-      el.addEventListener("click", (e) => {
-        menu.classList.toggle(showClass);
-        el.ariaExpanded = menu.classList.contains(showClass);
-        // Dropup need some love
-        if (isDropup) {
-          menu.style.transform = "translateY(calc(-100% - " + el.offsetHeight + "px))";
-        }
-        // Another click should trigger blur
-        if (!menu.classList.contains(showClass)) {
-          document.activeElement.blur();
-        }
-        // Trigger positioning
-        if (menu.classList.contains(fixedClass)) {
-          menu.dispatchEvent(new CustomEvent("show.bs.dropdown"));
-        }
-      });
-      el.addEventListener("blur", (e) => {
-        menu.classList.remove(showClass);
-      });
-
-      // Fixed strategy
-      if (menu.classList.contains(fixedClass)) {
-        this.attachPosition(menu, (scroll) => {
-          const x = `-${scroll[0]}px`;
-          const y = isDropup ? `calc(-100% - ${el.offsetHeight + scroll[1]}px` : `-${scroll[1]}px`;
-          menu.style.transform = `translate(${x},${y})`;
+    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach(
+      /**
+       * @param {HTMLElement} el
+       */
+      (el) => {
+        /**
+         * @type {HTMLElement}
+         */
+        const menu = el.parentElement.querySelector(menuClass);
+        const isDropup = el.parentElement.classList.contains("dropup");
+        el.ariaExpanded = menu.classList.contains(showClass) ? "true" : "false";
+        el.addEventListener("click", (e) => {
+          menu.classList.toggle(showClass);
+          el.ariaExpanded = menu.classList.contains(showClass) ? "true" : "false";
+          // Dropup need some love
+          if (isDropup) {
+            menu.style.transform = "translateY(calc(-100% - " + el.offsetHeight + "px))";
+          }
+          // Another click should trigger blur
+          if (!menu.classList.contains(showClass)) {
+            //@ts-ignore
+            document.activeElement.blur();
+          }
+          // Trigger positioning
+          if (menu.classList.contains(fixedClass)) {
+            menu.dispatchEvent(new CustomEvent("show.bs.dropdown"));
+          }
         });
+        el.addEventListener("blur", (e) => {
+          menu.classList.remove(showClass);
+        });
+
+        // Fixed strategy
+        if (menu.classList.contains(fixedClass)) {
+          this.attachPosition(menu, (scroll) => {
+            const x = `-${scroll[0]}px`;
+            const y = isDropup ? `calc(-100% - ${el.offsetHeight + scroll[1]}px` : `-${scroll[1]}px`;
+            menu.style.transform = `translate(${x},${y})`;
+          });
+        }
       }
-    });
+    );
 
     // Alternative triggers for dropdowns
     document.querySelectorAll(".dropdown-alias").forEach((el) => {
@@ -197,8 +216,11 @@ class AdminiUi {
     }, 0);
     const scroll = this.getScrollPosition(el);
     callback(scroll);
+    //@ts-ignore
     el.addEventListener("show.bs.dropdown", fn);
+    //@ts-ignore
     document.addEventListener("resize", fn);
+    //@ts-ignore
     document.addEventListener("scroll", fn);
     scroll[2].forEach((parent) => {
       parent.addEventListener("scroll", fn);
@@ -212,7 +234,7 @@ class AdminiUi {
   getScrollPosition(el) {
     let scrollableParents = [];
     let parent = el.parentElement;
-    let scroll = [0, 0, scrollableParents];
+    let scroll = [0, 0];
     while (parent && parent instanceof HTMLElement) {
       const styles = getComputedStyle(parent);
       let s = false;
@@ -229,6 +251,7 @@ class AdminiUi {
       }
       parent = parent.parentElement;
     }
+    scroll.push(scrollableParents);
     return scroll;
   }
 

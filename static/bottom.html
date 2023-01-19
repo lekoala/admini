@@ -3,18 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- page meta -->
-    <meta
-      name="description"
-      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
     <meta name="author" content="LeKoala" />
-    <meta
-      name="keywords"
-      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
     <!-- performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,9 +23,7 @@
 
     <!-- styles -->
     <link href="css/admini.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
     <!-- icons -->
     <script>
@@ -44,12 +36,8 @@
       };
     </script>
     <script src="js/last-icon.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
     <!-- scripts -->
     <script
@@ -70,16 +58,14 @@
           });
         });
       });
-      document
-        .querySelectorAll(".main-footer .dropdown-item")
-        .forEach((btn) => {
-          btn.addEventListener("click", (ev) => {
-            ev.preventDefault();
-            const toast = toaster({
-              body: btn.innerText,
-            });
+      document.querySelectorAll(".main-footer .dropdown-item").forEach((btn) => {
+        btn.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          const toast = toaster({
+            body: btn.innerText,
           });
         });
+      });
     </script>
     <script type="module">
       window.admini.init(); // this should go last
@@ -91,19 +77,8 @@
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
           <span class="sidebar-brand-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="256"
-              height="256"
-              viewBox="0 0 100 100">
-              <text
-                x="50%"
-                y="52%"
-                dominant-baseline="central"
-                text-anchor="middle"
-                font-size="120">
-                💠
-              </text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
             </svg>
           </span>
           <span class="sidebar-brand-title">Admini</span>
@@ -195,7 +170,7 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                                <bs-toggle mobile>
+                <bs-toggle mobile>
                   <span class="sidebar-badge badge bg-primary">2.191</span>
                 </bs-toggle>
               </a>
@@ -219,17 +194,16 @@
             <l-i name="menu_open"></l-i>
           </button>
           <div class="dropup">
-            <button
-              class="btn btn-default"
-              id="help-dropdown-btn"
-              data-bs-toggle="dropdown">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              aria-labelledby="help-dropdown-btn">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
               <li><a class="dropdown-item" href="help.html">Help</a></li>
               <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -245,18 +219,12 @@
       <main class="main">
         <header class="main-header">
           <div class="main-header-sidebar">
-            <button
-              type="button"
-              class="btn btn-primary btn-flex btn-square rounded-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar">
+            <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
               <l-i name="menu"></l-i>
             </button>
           </div>
           <div class="main-header-info">
-            <a
-              class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back"
-              href="index.html">
+            <a class="btn btn-default btn-square btn-flex rounded-0 main-header-info-back" href="index.html">
               <l-i name="navigate_before"></l-i>
               <span class="visually-hidden">Navigate up a folder</span>
             </a>
@@ -265,36 +233,20 @@
                 <li class="breadcrumb-item"><a href="#">Some</a></li>
                 <li class="breadcrumb-item"><a href="#">Path</a></li>
                 <li class="breadcrumb-break"></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Bottom actions
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Bottom actions</li>
               </div>
             </nav>
           </div>
           <div class="main-header-nav">
             <div class="btn-group" aria-label="Navigation">
-              <button
-                type="button"
-                class="btn btn-light"
-                title="Go prev"
-                data-bs-toggle="tooltip"
-                disabled>
+              <button type="button" class="btn btn-light" title="Go prev" data-bs-toggle="tooltip" disabled>
                 <l-i name="navigate_before"></l-i>
               </button>
-              <button
-                type="button"
-                class="btn btn-light"
-                title="Go next"
-                data-bs-toggle="tooltip">
+              <button type="button" class="btn btn-light" title="Go next" data-bs-toggle="tooltip">
                 <l-i name="navigate_next"></l-i>
               </button>
             </div>
-            <button
-              id="show-panel-actions-top"
-              type="button"
-              class="btn btn-default ms-2"
-              data-bs-toggle="offcanvas"
-              href="#panel-actions">
+            <button id="show-panel-actions-top" type="button" class="btn btn-default ms-2" data-bs-toggle="offcanvas" href="#panel-actions">
               <l-i name="menu_open" size="24"></l-i>
             </button>
           </div>
@@ -313,20 +265,11 @@
               <li>Use subgroups for related actions</li>
               <li>Lose the dropdown caret and use icons</li>
               <li>Show modals on action (click delete for example)</li>
-              <li>
-                If you are not using tabs, you can also set your actions in the
-                top right corner
-              </li>
+              <li>If you are not using tabs, you can also set your actions in the top right corner</li>
               <li>Press save and see a nice toast notification!</li>
               <li>Aligning some buttons to the end of the toolbar is nice!</li>
-              <li>
-                On a small screen, buttons wrap on multiple lines. If you don't
-                like that, stick them inside a dropup!
-              </li>
-              <li>
-                It is better to use outline variants in button groups to
-                distinguish better the actions
-              </li>
+              <li>On a small screen, buttons wrap on multiple lines. If you don't like that, stick them inside a dropup!</li>
+              <li>It is better to use outline variants in button groups to distinguish better the actions</li>
               <li>Check how save & next collapse on mobile</li>
             </ul>
           </div>
@@ -335,47 +278,25 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Confirm deletion</h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <p>Are you sure you want to delete this ?</p>
                 </div>
                 <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-default"
-                    data-bs-dismiss="modal">
-                    Cancel
-                  </button>
+                  <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="panel-actions"
-            aria-labelledby="panel-actions-label">
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="panel-actions" aria-labelledby="panel-actions-label">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="panel-actions-label">
-                Offcanvas
-              </h5>
-              <button
-                type="button"
-                class="btn-close text-reset"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+              <h5 class="offcanvas-title" id="panel-actions-label">Offcanvas</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-              Content for the offcanvas goes here. You can place just about any
-              Bootstrap component or custom elements here.
-            </div>
+            <div class="offcanvas-body">Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.</div>
           </div>
         </section>
         <footer class="main-footer btn-toolbar" role="toolbar">
@@ -384,9 +305,7 @@
               <l-i name="done"></l-i>
               Save
             </button>
-            <button
-              type="submit"
-              class="btn btn-outline-success btn-mobile-collapse btn-flex btn-icon-end">
+            <button type="submit" class="btn btn-outline-success btn-mobile-collapse btn-flex btn-icon-end">
               <l-i name="navigate_next"></l-i>
               <span>Save & next</span>
             </button>
@@ -403,17 +322,9 @@
             </button>
           </div>
           <div class="dropup">
-            <button
-              id="secondary-actions"
-              type="button"
-              class="btn btn-primary dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <button id="secondary-actions" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
-              <span
-                class="btn-indicator btn-indicator-mini bg-danger"
-                data-bs-toggle="tooltip"
-                title="Unread messages"></span>
+              <span class="btn-indicator btn-indicator-mini bg-danger" data-bs-toggle="tooltip" title="Unread messages"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="secondary-actions">
               <li>
@@ -426,12 +337,7 @@
             </ul>
           </div>
           <div class="dropup">
-            <button
-              id="more-actions"
-              type="button"
-              class="btn btn-default"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
+            <button id="more-actions" type="button" class="btn btn-default" data-bs-toggle="dropdown" aria-expanded="false">
               <l-i name="more_vert" size="24"></l-i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="more-actions">
@@ -442,28 +348,14 @@
 
           <div class="ms-auto">
             <div class="btn-group" aria-label="Navigation">
-              <button
-                type="button"
-                class="btn btn-light"
-                title="Go prev"
-                data-bs-toggle="tooltip"
-                disabled>
+              <button type="button" class="btn btn-light" title="Go prev" data-bs-toggle="tooltip" disabled>
                 <l-i name="navigate_before"></l-i>
               </button>
-              <button
-                type="button"
-                class="btn btn-light"
-                title="Go next"
-                data-bs-toggle="tooltip">
+              <button type="button" class="btn btn-light" title="Go next" data-bs-toggle="tooltip">
                 <l-i name="navigate_next"></l-i>
               </button>
             </div>
-            <button
-              class="btn btn-danger"
-              data-bs-toggle="modal"
-              data-bs-target="#delete-modal">
-              Delete
-            </button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">Delete</button>
           </div>
         </footer>
       </main>

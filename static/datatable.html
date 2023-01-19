@@ -3,18 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- page meta -->
-    <meta
-      name="description"
-      content="Minimalistic Admin Panel built with Bootstrap 5" />
+    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
     <meta name="author" content="LeKoala" />
-    <meta
-      name="keywords"
-      content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
     <!-- performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,12 +23,8 @@
 
     <!-- styles -->
     <link href="css/admini.min.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/data-grid-component@2/data-grid.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/data-grid-component@2/data-grid.min.css" />
     <style type="text/css">
       button.is-danger {
         background: crimson;
@@ -55,12 +45,8 @@
       };
     </script>
     <script src="js/last-icon.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
     <!-- scripts -->
     <script
@@ -68,9 +54,7 @@
       nomodule
       defer
       id="nomodule-browser-warning"></script>
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/data-grid-component@2/data-grid.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/data-grid-component@2/data-grid.min.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
       document.getElementById("demo-grid").addEventListener("action", (ev) => {
@@ -101,19 +85,8 @@
       <aside id="sidebar" class="sidebar" data-bs-scroll="true">
         <a class="sidebar-brand" href="index.html">
           <span class="sidebar-brand-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="256"
-              height="256"
-              viewBox="0 0 100 100">
-              <text
-                x="50%"
-                y="52%"
-                dominant-baseline="central"
-                text-anchor="middle"
-                font-size="120">
-                💠
-              </text>
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
             </svg>
           </span>
           <span class="sidebar-brand-title">Admini</span>
@@ -193,7 +166,7 @@
               <a class="sidebar-link" href="icons.html">
                 <l-i name="star"></l-i>
                 <span>Icons</span>
-                                <bs-toggle mobile>
+                <bs-toggle mobile>
                   <span class="sidebar-badge badge bg-primary">2.191</span>
                 </bs-toggle>
               </a>
@@ -217,17 +190,16 @@
             <l-i name="menu_open"></l-i>
           </button>
           <div class="dropup">
-            <button
-              class="btn btn-default"
-              id="help-dropdown-btn"
-              data-bs-toggle="dropdown">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
-            <ul
-              class="dropdown-menu dropdown-menu-dark"
-              aria-labelledby="help-dropdown-btn">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
               <li><a class="dropdown-item" href="help.html">Help</a></li>
               <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -255,9 +227,7 @@
           <div class="main-header-info">
             <nav aria-label="breadcrumb">
               <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  Datatables
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Datatables</li>
               </div>
             </nav>
           </div>
@@ -266,8 +236,7 @@
           <div class="container-fluid py-3">
             <h1>Datatable</h1>
             <p>
-              Admini doesn't come with a specific Datatable support in mind, but
-              you can use for example
+              Admini doesn't come with a specific Datatable support in mind, but you can use for example
               <a href="https://github.com/lekoala/data-grid">data-grid</a>
               or
               <a href="http://www.tabulator.info/">tabulator</a>
