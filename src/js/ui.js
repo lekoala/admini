@@ -1,3 +1,4 @@
+import attach from "./utils/attach.js";
 import debounce from "./utils/debounce.js";
 
 const MOBILE_SIZE = 768;
@@ -165,7 +166,7 @@ class AdminiUi {
           menu.classList.toggle(showClass);
           el.ariaExpanded = menu.classList.contains(showClass) ? "true" : "false";
           // Dropup need some love
-          if (isDropup) {
+          if (isDropup && !menu.classList.contains(fixedClass)) {
             menu.style.transform = "translateY(calc(-100% - " + el.offsetHeight + "px))";
           }
           // Another click should trigger blur
@@ -175,7 +176,7 @@ class AdminiUi {
           }
           // Trigger positioning
           if (menu.classList.contains(fixedClass)) {
-            menu.dispatchEvent(new CustomEvent("show.bs.dropdown"));
+            menu.dispatchEvent(new CustomEvent("update_position"));
           }
         });
         el.addEventListener("blur", (e) => {
@@ -184,10 +185,10 @@ class AdminiUi {
 
         // Fixed strategy
         if (menu.classList.contains(fixedClass)) {
-          this.attachPosition(menu, (scroll) => {
-            const x = `-${scroll[0]}px`;
-            const y = isDropup ? `calc(-100% - ${el.offsetHeight + scroll[1]}px` : `-${scroll[1]}px`;
-            menu.style.transform = `translate(${x},${y})`;
+          attach(menu, {
+            offsetY: (y) => {
+              return isDropup ? `calc(-100% - ${el.offsetHeight + y}px` : `-${y}px`
+            },
           });
         }
       }
@@ -200,59 +201,6 @@ class AdminiUi {
         menu.classList.toggle(showClass);
       });
     });
-  }
-
-  /**
-   * @param {HTMLElement} el
-   * @param {Function} callback
-   */
-  attachPosition(el, callback) {
-    const fn = debounce((e) => {
-      if (!el.offsetHeight) {
-        return;
-      }
-      const scroll = this.getScrollPosition(el);
-      callback(scroll);
-    }, 0);
-    const scroll = this.getScrollPosition(el);
-    callback(scroll);
-    //@ts-ignore
-    el.addEventListener("show.bs.dropdown", fn);
-    //@ts-ignore
-    document.addEventListener("resize", fn);
-    //@ts-ignore
-    document.addEventListener("scroll", fn);
-    scroll[2].forEach((parent) => {
-      parent.addEventListener("scroll", fn);
-    });
-  }
-
-  /**
-   * @param {HTMLElement} el
-   * @returns {Array} x,y,parents
-   */
-  getScrollPosition(el) {
-    let scrollableParents = [];
-    let parent = el.parentElement;
-    let scroll = [0, 0];
-    while (parent && parent instanceof HTMLElement) {
-      const styles = getComputedStyle(parent);
-      let s = false;
-      if (styles.overflowX == "auto" || styles.overflowX == "scroll") {
-        scroll[0] += parent.scrollLeft;
-        s = true;
-      }
-      if (styles.overflowY == "auto" || styles.overflowY == "scroll") {
-        scroll[1] += parent.scrollTop;
-        s = true;
-      }
-      if (s && !["BODY", "HTML"].includes(parent.tagName)) {
-        scrollableParents.push(parent);
-      }
-      parent = parent.parentElement;
-    }
-    scroll.push(scrollableParents);
-    return scroll;
   }
 
   darkMode() {
