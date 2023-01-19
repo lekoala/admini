@@ -360,28 +360,48 @@
                     </ul>
                   </div>
                 </div>
+                <br />
+                <div style="position: relative; overflow: hidden; overflow-x: scroll; height: 80px; width:400px; background: #ccc">
+                  <div class="dropdown" style="margin-left:500px">
+                    <button class="btn btn-secondary dropdown-toggle" type="button">Simple Fixed Dropdown button in x container</button>
+                    <ul class="dropdown-menu dropdown-fixed dropdown-end" id="dd-simple-fixed-x">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div style="height: 80vh; background: #ccc; width: 200px">Force page scrollbars</div>
+            <div style="position: fixed; bottom: 0; right: 0; display: flex">
+              <div class="dropdown me-4">
+                <button class="btn btn-secondary dropdown-toggle" type="button">Simple Fixed Dropdown button at the end of viewport</button>
+                <ul class="dropdown-menu dropdown-fixed" id="dd-simple-end-fixed" style="width: 800px">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
 
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropup button at end of container</button>
-              <ul class="dropdown-menu dropdown-fixed" id="dd-simple-end">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle" type="button">Simple Dropup button at end of viewport</button>
+                <ul class="dropdown-menu" id="dd-simple-end" style="right: 0">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

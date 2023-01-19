@@ -1,15 +1,15 @@
 /**
- * @param {Function} func
+ * @param {Function} handler
  * @param {Number} timeout
  * @returns {Function}
  */
-export default function debounce(func, timeout = 300) {
-  let timer;
+export default function debounce(handler, timeout = 300) {
+  let timer = null;
   return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      // "noImplicitThis": false
-      func.apply(this, args);
+      timer = null;
+      handler(...args);
     }, timeout);
   };
 }

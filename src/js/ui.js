@@ -186,8 +186,10 @@ class AdminiUi {
         // Fixed strategy
         if (menu.classList.contains(fixedClass)) {
           attach(menu, {
+            parent: el,
+            end: menu.classList.contains("dropdown-end"),
             offsetY: (y) => {
-              return isDropup ? `calc(-100% - ${el.offsetHeight + y}px` : `-${y}px`
+              return isDropup ? `calc(-100% - ${el.offsetHeight + y}px)` : `-${y}px`;
             },
           });
         }

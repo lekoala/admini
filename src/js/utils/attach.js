@@ -2,7 +2,25 @@ import debounce from "./debounce.js";
 
 // A lightweight alternative to popper.js or floating ui
 
+/**
+ * @typedef Config
+ * @property {Function} [offsetX]
+ * @property {Function} [offsetY]
+ * @property {HTMLElement} [parent]
+ * @property {Boolean} [end]
+ */
+
+/**
+ * @typedef Coords
+ * @property {Number} x
+ * @property {Number} y
+ */
+
 let initComplete = false;
+
+/**
+ * @type {Map<HTMLElement, Config>}
+ */
 let map = new Map();
 
 // This mutation observer helps clearing the map from deleted nodes
@@ -25,18 +43,24 @@ const observer = new MutationObserver(function (mutations) {
 /**
  * Get scroll offset from all scrollable parents
  * @param {HTMLElement} el
- * @returns {Array}
+ * @returns {Coords}
  */
 function getScrollPosition(el) {
   let parent = el.parentElement;
-  let scroll = [0, 0];
+  const scroll = {
+    x: 0,
+    y: 0,
+  };
   while (parent && parent instanceof HTMLElement) {
     const styles = getComputedStyle(parent);
+    if (parent.style.position === "fixed") {
+      return scroll;
+    }
     if (styles.overflowX == "auto" || styles.overflowX == "scroll") {
-      scroll[0] += parent.scrollLeft;
+      scroll.x += parent.scrollLeft;
     }
     if (styles.overflowY == "auto" || styles.overflowY == "scroll") {
-      scroll[1] += parent.scrollTop;
+      scroll.y += parent.scrollTop;
     }
     parent = parent.parentElement;
   }
@@ -56,10 +80,32 @@ function init() {
       }
 
       const scroll = getScrollPosition(el);
-      const x = opts.offsetX ? opts.offsetX(scroll[0]) : `-${scroll[0]}px`;
-      const y = opts.offsetY ? opts.offsetY(scroll[1]) : `-${scroll[1]}px`;
-      
+      let x = opts.offsetX ? opts.offsetX(scroll.x) : `${scroll.x * -1}px`;
+      let y = opts.offsetY ? opts.offsetY(scroll.y) : `${scroll.y * -1}px`;
+
+      if (opts.end) {
+        x = `${(scroll.x - opts.parent.offsetWidth + el.offsetWidth) * -1}px`;
+      }
+
       el.style.transform = `translate(${x},${y})`;
+
+      // overflow check, only for elements with fixed parents
+      if (scroll.x === 0 && scroll.y === 0) {
+        const bounds = el.getBoundingClientRect();
+        const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+
+        // avoid drop menu going over its container
+        if (bounds.x + bounds.width > window.innerWidth) {
+          x = scroll.x - scrollbarWidth - (bounds.x + bounds.width - window.innerWidth) + "px";
+        }
+        if (bounds.y + bounds.height > window.innerHeight) {
+          const styles = window.getComputedStyle(el);
+          const margin = parseInt(styles.marginTop) + parseInt(styles.marginBottom);
+          y = `calc(-100% - ${opts.parent.offsetHeight - margin + scroll.y}px)`;
+        }
+
+        el.style.transform = `translate(${x},${y})`;
+      }
     }
   }, 0);
   //@ts-ignore
@@ -75,7 +121,7 @@ function init() {
  * Attach behaviour when scroll or resize event happen
  * Ideal for setting fixed element position either through css transform
  * @param {HTMLElement} el
- * @param {Object} opts
+ * @param {Config} opts
  */
 export default function attach(el, opts) {
   if (!initComplete) {

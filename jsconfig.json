@@ -8,7 +8,7 @@
     "checkJs": true,
     "noEmit": true,
     "strict": false,
-    "noImplicitThis": false,
+    "noImplicitThis": true,
     "alwaysStrict": true,
     "esModuleInterop": true
   },
