@@ -44,7 +44,6 @@
   flex: 1 1 auto;
   // This allow cta to be at the bottom
   justify-content: space-between;
-  background: $sidebar-bg;
   overscroll-behavior: contain;
   overflow-y: auto;
 }
@@ -79,7 +78,6 @@
   border-left-style: solid;
   border-left-width: 3px;
   color: $sidebar-link-color;
-  background: $sidebar-link-bg;
   border-left-color: $sidebar-link-border-left-color;
 
   l-i {
@@ -94,12 +92,12 @@
 
   &:hover {
     color: $sidebar-link-hover-color;
-    background: $sidebar-link-hover-bg;
+    background: unset;
     border-left-color: $sidebar-link-hover-border-left-color;
     text-decoration: none;
 
     l-i {
-      color: $sidebar-link-icon-hover-color;
+      color: currentColor;
     }
   }
 }
@@ -112,7 +110,7 @@
   border-left-color: $sidebar-link-active-border-left-color;
 
   l-i {
-    color: $sidebar-link-icon-active-color;
+    color: currentColor;
   }
 }
 
@@ -127,6 +125,7 @@
   color: $sidebar-brand-color;
   flex: 0 0 $sidebar-brand-height;
   background: $sidebar-brand-bg;
+  border-bottom: 1px solid $sidebar-brand-border-color;
   // Bottom shadow
   box-shadow: inset 0 -7px 9px -7px rgba(0, 0, 0, 0.4);
 
@@ -198,10 +197,11 @@
     margin-left: $spacer * 0.5;
   }
 
-  // Make btns and drops use full height
+  // Make btns and drops use full height and max-width
   > .btn,
   > div {
     height: 100%;
+    max-width: $sidebar-compact-width * 0.5;
   }
 
   .btn,
@@ -214,8 +214,7 @@
     border-radius: 0;
 
     // Reduce spacing to avoid icons moving around
-    padding-left: $sidebar-brand-padding;
-    padding-right: $spacer * 0.5;
+    padding: 0 $spacer * 0.5;
 
     &:hover {
       color: $primary;
@@ -376,10 +375,6 @@
 
   .sidebar-footer,
   .sidebar-profile-mini {
-    > .btn,
-    > div {
-      max-width: 50%;
-    }
     .btn span {
       display: none;
     }
@@ -398,4 +393,19 @@
 .sidebar.show {
   display: flex;
   position: fixed;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .sidebar {
+      background: $sidebar-bg-dark;
+    }
+    .sidebar-brand {
+      border-color: $sidebar-cta-bg;
+      background: $sidebar-brand-bg;
+    }
+    .sidebar-footer {
+      border-color: $nav-tabs-border-color;
+    }
+  }
 }

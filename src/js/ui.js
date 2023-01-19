@@ -2,6 +2,7 @@ import debounce from "./utils/debounce.js";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
+const DARKMODE = "darkmode";
 
 class AdminiUi {
   constructor() {
@@ -131,54 +132,61 @@ class AdminiUi {
   }
 
   /**
-   * For dropdowns not using the bs-toggle
+   * Simple utilities for dropdowns
    */
   simpleDropdowns() {
+    const showClass = "show";
+    const menuClass = ".dropdown-menu";
+    const fixedClass = "dropdown-fixed";
+
+    // Dropdowns not using the bs-toggle
     document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach((el) => {
-      const menu = el.parentElement.querySelector(".dropdown-menu");
+      const menu = el.parentElement.querySelector(menuClass);
       const isDropup = el.parentElement.classList.contains("dropup");
-      el.ariaExpanded = menu.classList.contains("show");
+      el.ariaExpanded = menu.classList.contains(showClass);
       el.addEventListener("click", (e) => {
-        menu.classList.toggle("show");
-        el.ariaExpanded = menu.classList.contains("show");
+        menu.classList.toggle(showClass);
+        el.ariaExpanded = menu.classList.contains(showClass);
         // Dropup need some love
         if (isDropup) {
           menu.style.transform = "translateY(calc(-100% - " + el.offsetHeight + "px))";
         }
         // Another click should trigger blur
-        if (!menu.classList.contains("show")) {
+        if (!menu.classList.contains(showClass)) {
           document.activeElement.blur();
         }
         // Trigger positioning
-        if (menu.classList.contains("dropdown-fixed")) {
+        if (menu.classList.contains(fixedClass)) {
           menu.dispatchEvent(new CustomEvent("show.bs.dropdown"));
         }
       });
       el.addEventListener("blur", (e) => {
-        menu.classList.remove("show");
+        menu.classList.remove(showClass);
       });
 
       // Fixed strategy
-      if (menu.classList.contains("dropdown-fixed")) {
+      if (menu.classList.contains(fixedClass)) {
         this.attachPosition(menu, (scroll) => {
-          if (isDropup) {
-            menu.style.transform = "translate(-" + scroll[0] + "px, calc(-100% - " + (el.offsetHeight + scroll[1]) + "px))";
-          } else {
-            menu.style.transform = "translate(-" + scroll[0] + "px, -" + scroll[1] + "px)";
-          }
+          const x = `-${scroll[0]}px`;
+          const y = isDropup ? `calc(-100% - ${el.offsetHeight + scroll[1]}px` : `-${scroll[1]}px`;
+          menu.style.transform = `translate(${x},${y})`;
         });
       }
     });
 
     // Alternative triggers for dropdowns
     document.querySelectorAll(".dropdown-alias").forEach((el) => {
-      const menu = el.parentElement.querySelector(".dropdown-menu");
+      const menu = el.parentElement.querySelector(menuClass);
       el.addEventListener("click", (e) => {
-        menu.classList.toggle("show");
+        menu.classList.toggle(showClass);
       });
     });
   }
 
+  /**
+   * @param {HTMLElement} el
+   * @param {Function} callback
+   */
   attachPosition(el, callback) {
     const fn = debounce((e) => {
       if (!el.offsetHeight) {
@@ -224,6 +232,22 @@ class AdminiUi {
     return scroll;
   }
 
+  darkMode() {
+    const selector = document.querySelector("#toggle-dark-mode");
+    if (selector) {
+      selector.addEventListener("click", (e) => {
+        e.preventDefault();
+        let mode = "dark";
+        if (document.documentElement.dataset.bsTheme == "dark") {
+          mode = "light";
+        }
+        localStorage.setItem(DARKMODE, mode);
+        document.documentElement.dataset.bsTheme = mode;
+      });
+    }
+    document.documentElement.dataset.bsTheme = localStorage.getItem(DARKMODE) ?? "";
+  }
+
   init() {
     this.setMobileSize();
     this.minimenu();
@@ -233,6 +257,7 @@ class AdminiUi {
     this.toasts();
     this.toggleSidebar();
     this.simpleDropdowns();
+    this.darkMode();
   }
 }
 

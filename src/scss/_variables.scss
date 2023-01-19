@@ -1,9 +1,8 @@
 @use "sass:color";
 
 // Fonts
-$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system,
-  BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-bold: 600 !default;
@@ -183,13 +182,16 @@ $pink-800: #83265c !default;
 $pink-900: #662148 !default;
 
 // Body
-// $body-bg: #fafbfc !default;
-$body-bg: tint-color($primary, 98%) !default;
+$body-bg: $white !default;
 $body-color: $gray-700 !default;
 
+// Main
+$main-bg: tint-color($primary, 98%) !default;
+$main-bg-dark: desaturate(mix(black, $primary, 90%), 60%) !default;
+
 // Header
-// $header-bg: #faf6f8 !default;
 $header-bg: tint-color($primary, 94%) !default;
+$header-bg-dark: desaturate(mix(black, $primary, 90%), 20%) !default;
 
 // Links
 $link-decoration: none !default;
@@ -227,38 +229,6 @@ $display-font-sizes: (
 $border-radius-sm: 0.1rem !default;
 $border-radius: 0.2rem !default;
 $border-radius-lg: 0.3rem !default;
-
-// Forms
-$input-bg: $white !default;
-$input-disabled-bg: $gray-200 !default;
-$input-color: $gray-700 !default;
-$input-btn-border-width: $border-width !default;
-$input-btn-line-height: $line-height-base !default;
-$input-btn-line-height-sm: $line-height-sm !default;
-$input-btn-line-height-lg: $line-height-lg !default;
-$input-btn-focus-width: 0.2rem !default;
-$input-btn-padding-y: 0.3rem !default;
-$input-btn-padding-y-sm: 0.2rem !default;
-$input-btn-padding-y-lg: 0.4rem !default;
-$input-btn-padding-x: 0.85rem !default;
-$input-border-width: $input-btn-border-width !default;
-$input-height-border: $input-border-width * 2 !default;
-$input-height-inner: ($font-size-base * $input-btn-line-height) +
-  ($input-btn-padding-y * 2) !default;
-$input-height: calc(#{$input-height-inner} + #{$input-height-border}) !default;
-$input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) +
-  ($input-btn-padding-y-sm * 2) !default;
-$input-height-sm: calc(
-  #{$input-height-inner-sm} + #{$input-height-border}
-) !default;
-$input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) +
-  ($input-btn-padding-y-lg * 2) !default;
-$input-height-lg: calc(
-  #{$input-height-inner-lg} + #{$input-height-border}
-) !default;
-
-$input-disabled-bg: $gray-100;
-$input-disabled-border-color: $gray-200;
 
 // Do not show valid state
 $form-feedback-invalid-color: $danger !default;
@@ -310,18 +280,19 @@ $table-hover-bg: rgba($black, 0.0375) !default;
 $sidebar-width: 260px !default;
 $sidebar-compact-width: 80px !default;
 $sidebar-bg: desaturate(mix(black, $primary, 90%), 20%) !default;
+$sidebar-bg-dark: desaturate(mix(black, $primary, 70%), 50%) !default;
 
 // Sidebar brand
 $sidebar-brand-height: 52px;
 $sidebar-brand-padding: 0.85rem !default;
 $sidebar-brand-font-weight: $font-weight-bold !default;
-$sidebar-brand-font-size: 1.10rem !default;
+$sidebar-brand-font-size: 1.1rem !default;
 $sidebar-brand-color: $gray-100 !default;
 $sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
+$sidebar-brand-border-color: mix(black, $sidebar-bg, 80%) !default;
 
 // Sidebar scroller
-$sidebar-scroller-color: color.hue($sidebar-brand-bg),
-  color.saturation($sidebar-brand-bg) * 0.5 !default;
+$sidebar-scroller-color: color.hue($sidebar-brand-bg), color.saturation($sidebar-brand-bg) * 0.5 !default;
 $sidebar-scroller-lightness: 30% !default;
 
 // Sidebar nav header
@@ -336,7 +307,6 @@ $sidebar-footer-height: 52px;
 $sidebar-link-padding: 0.625rem 1.625rem !default;
 $sidebar-link-compact-padding: 0.625rem 0.625rem !default;
 $sidebar-link-font-weight: 400 !default;
-$sidebar-link-bg: $sidebar-bg !default;
 $sidebar-link-color: rgba($gray-200, 0.7) !default;
 $sidebar-link-border-left-color: transparent !default;
 
@@ -346,12 +316,7 @@ $sidebar-link-hover-color: #{rgba($gray-200, 1)} !default;
 $sidebar-link-hover-border-left-color: transparent !default;
 
 $sidebar-link-active-font-weight: $font-weight-normal !default;
-$sidebar-link-active-bg: #{linear-gradient(
-    90deg,
-    rgba($primary, 0.1) 0%,
-    rgba($primary, 0.0875) 50%,
-    rgba($black, 0) 100%
-  )} !default;
+$sidebar-link-active-bg: #{linear-gradient(90deg, rgba($primary, 0.1) 0%, rgba($primary, 0.0875) 50%, rgba($black, 0) 100%)} !default;
 $sidebar-link-active-color: $gray-200 !default;
 $sidebar-link-active-border-left-color: $primary !default;
 

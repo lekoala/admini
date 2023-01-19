@@ -12,15 +12,9 @@
     --scroller-color: 0, 0%;
     --scroller-color-lightness: 80%;
     --scroller-hover-factor: 0.8;
-    --scroller-thumb: hsl(
-      var(--scroller-color),
-      var(--scroller-color-lightness)
-    );
+    --scroller-thumb: hsl(var(--scroller-color), var(--scroller-color-lightness));
     /* Replicate hover for webkit */
-    --scroller-thumb-hover: hsl(
-      var(--scroller-color),
-      calc(var(--scroller-color-lightness) * var(--scroller-hover-factor))
-    );
+    --scroller-thumb-hover: hsl(var(--scroller-color), calc(var(--scroller-color-lightness) * var(--scroller-hover-factor)));
     --scroller-background: transparent;
     scrollbar-color: var(--scroller-thumb) var(--scroller-background);
     scrollbar-width: thin;
@@ -36,6 +30,14 @@
     }
     &::-webkit-scrollbar-thumb:hover {
       background: var(--scroller-thumb-hover);
+    }
+  }
+
+  @if $enable-dark-mode {
+    @include color-mode(dark) {
+      #{$selector} {
+        --scroller-color-lightness: 20%;
+      }
     }
   }
 }

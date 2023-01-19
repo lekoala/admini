@@ -83,5 +83,6 @@ form {
 
   .accordion {
     max-width: calc($form-label-width + 768px);
+    margin-bottom: $spacer;
   }
 }

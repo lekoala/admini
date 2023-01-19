@@ -189,6 +189,10 @@
               <li>
                 <hr class="dropdown-divider" />
               </li>
+              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
               <p class="m-3 mb-0">
                 <small>Built with Admini</small>
               </p>
@@ -220,34 +224,36 @@
               </nav>
             </div>
             <div class="main-header-nav main-header-tabs">
-              <ul class="nav nav-tabs nav-tabs-linkable nav-tabs-responsive" role="tablist">
-                <li class="nav-item" role="tablist">
-                  <a
-                    class="nav-link"
-                    id="tab-1"
-                    data-bs-toggle="tab"
-                    data-bs-target="#panel-1"
-                    type="button"
-                    role="tab"
-                    aria-controls="panel-1"
-                    aria-selected="false">
-                    Main
-                  </a>
-                </li>
-                <li class="nav-item" role="tablist">
-                  <a
-                    class="nav-link"
-                    id="tab-2"
-                    data-bs-toggle="tab"
-                    data-bs-target="#panel-2"
-                    type="button"
-                    role="tab"
-                    aria-controls="panel-2"
-                    aria-selected="false">
-                    Details
-                  </a>
-                </li>
-              </ul>
+              <bs-tabs linkable="1" responsive="1" end>
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item" role="tablist">
+                    <a
+                      class="nav-link"
+                      id="tab-1"
+                      data-bs-toggle="tab"
+                      data-bs-target="#panel-1"
+                      type="button"
+                      role="tab"
+                      aria-controls="panel-1"
+                      aria-selected="false">
+                      Main
+                    </a>
+                  </li>
+                  <li class="nav-item" role="tablist">
+                    <a
+                      class="nav-link"
+                      id="tab-2"
+                      data-bs-toggle="tab"
+                      data-bs-target="#panel-2"
+                      type="button"
+                      role="tab"
+                      aria-controls="panel-2"
+                      aria-selected="false">
+                      Details
+                    </a>
+                  </li>
+                </ul>
+              </bs-tabs>
             </div>
           </header>
           <section class="scroller">
@@ -278,7 +284,7 @@
                     Or even three
                   </label>
                   <div class="form-field">
-                    <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"/>
+                    <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" />
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     <div class="invalid-feedback">Please enter a valid email</div>
                   </div>
