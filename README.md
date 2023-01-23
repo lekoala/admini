@@ -1,6 +1,6 @@
 # Admini
 
-> Minimalistic Admin Panel built with Bootstrap 5.2
+> Minimalistic Admin Panel built with Bootstrap 5.3
 
 ## Features
 
@@ -11,7 +11,8 @@
 - A powerful action system that supports many use cases (multiple actions, drops, navigation, offcanvas panel...)
 - A sane default layout for forms (includes tabbed form support and responsive by default)
 - A nice default set of colors that are more accessible
-- Super lightweight (57kb with BSN, 94kb with Bootstrap 5)
+- Super lightweight (94kb)
+- Dark mode support
 
 ## BS Companion
 
