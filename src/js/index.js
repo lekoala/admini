@@ -7,12 +7,12 @@ import escapeHTML from "./utils/escape-html.js";
 
 const ui = new AdminiUi();
 const init = () => {
-  window.admini.ui.init();
+  window["admini"].ui.init();
 };
 
 // admini is reserved in global namespace
-window.admini = window.admini || {};
-window.admini = Object.assign(window.admini, {
+window["admini"] = window["admini"] || {};
+window["admini"] = Object.assign(window["admini"], {
   // Third party
   escapeHTML,
   // Our libs

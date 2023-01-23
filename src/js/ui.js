@@ -207,18 +207,35 @@ class AdminiUi {
 
   darkMode() {
     const selector = document.querySelector("#toggle-dark-mode");
+    let mode = localStorage.getItem(DARKMODE) ?? "";
+    document.documentElement.dataset.bsTheme = mode;
+
     if (selector) {
+      selector.querySelectorAll("[value]").forEach((node) => {
+        if (node.getAttribute("value") == mode) {
+          node.removeAttribute("hidden");
+        } else {
+          node.setAttribute("hidden", "");
+        }
+      });
       selector.addEventListener("click", (e) => {
         e.preventDefault();
-        let mode = "dark";
         if (document.documentElement.dataset.bsTheme == "dark") {
           mode = "light";
+        } else {
+          mode = "dark";
         }
+        selector.querySelectorAll("[value]").forEach((node) => {
+          if (node.getAttribute("value") == mode) {
+            node.removeAttribute("hidden");
+          } else {
+            node.setAttribute("hidden", "");
+          }
+        });
         localStorage.setItem(DARKMODE, mode);
         document.documentElement.dataset.bsTheme = mode;
       });
     }
-    document.documentElement.dataset.bsTheme = localStorage.getItem(DARKMODE) ?? "";
   }
 
   init() {

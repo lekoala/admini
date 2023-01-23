@@ -46,17 +46,17 @@ $indigo: #695297 !default;
 $purple: #a633f1 !default;
 $pink: #cc2e8e !default;
 
-$white: #fff !default;
-$gray-100: #f8f9f9 !default;
-$gray-200: #e9ebec !default;
-$gray-300: #dee0e2 !default;
-$gray-400: #ced1d4 !default;
-$gray-500: #6f7880 !default;
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;
-$gray-700: #494e53 !default;
-$gray-800: #34373b !default;
-$gray-900: #212325 !default;
-$black: #000 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
 
 $primary: $blue !default;
 $primary-hs: color.hue($blue), color.saturation($blue) !default;
@@ -252,7 +252,6 @@ $card-border-radius: 0.25rem !default;
 $card-inner-border-radius: $card-border-radius !default;
 $card-border-width: 0 !default;
 $card-border-color: transparent !default;
-$card-cap-bg: $white !default;
 $card-shadow: 0 0 0.875rem 0 rgba($dark, 0.05) !default;
 $card-title-font-size: $font-size-lg !default;
 $card-title-font-weight: $font-weight-bold !default;
@@ -272,8 +271,6 @@ $table-cell-padding-y: 0.75rem !default;
 $table-cell-padding-x: 0.75rem !default;
 $table-cell-padding-y-sm: 0.3rem !default;
 $table-cell-padding-x-sm: 0.3rem !default;
-$table-striped-bg: $gray-100 !default;
-$table-hover-bg: rgba($black, 0.0375) !default;
 
 // Sidebar //
 // Sidebar general
@@ -289,6 +286,7 @@ $sidebar-brand-font-weight: $font-weight-bold !default;
 $sidebar-brand-font-size: 1.1rem !default;
 $sidebar-brand-color: $gray-100 !default;
 $sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
+$sidebar-brand-bg-dark: mix(black, $sidebar-bg-dark, 20%) !default;
 $sidebar-brand-border-color: mix(black, $sidebar-bg, 80%) !default;
 
 // Sidebar scroller

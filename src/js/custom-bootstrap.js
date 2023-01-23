@@ -27,6 +27,7 @@ const Bootstrap = {
 };
 
 // We need this in the import otherwise other imports might get undefined global bootstrap
-window.bootstrap = Bootstrap;
+//@ts-ignore
+window["bootstrap"] = Bootstrap;
 
 export default Bootstrap;

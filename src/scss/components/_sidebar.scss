@@ -197,10 +197,8 @@
     margin-left: $spacer * 0.5;
   }
 
-  // Make btns and drops use full height and max-width
   > .btn,
   > div {
-    height: 100%;
     max-width: $sidebar-compact-width * 0.5;
   }
 
@@ -209,7 +207,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     border: 0;
     border-radius: 0;
 
@@ -402,7 +399,7 @@
     }
     .sidebar-brand {
       border-color: $sidebar-cta-bg;
-      background: $sidebar-brand-bg;
+      background: $sidebar-brand-bg-dark;
     }
     .sidebar-footer {
       border-color: $nav-tabs-border-color;

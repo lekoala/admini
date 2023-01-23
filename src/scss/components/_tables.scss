@@ -4,24 +4,10 @@
     max-width: 100%;
   }
 
-  tr,
-  td,
-  th {
-    border-color: $table-border-color;
-  }
-
-  & > :not(:first-child) {
-    border-color: $table-border-color;
-  }
-
   th,
   td {
     padding-left: $grid-gutter-width;
     padding-right: $grid-gutter-width;
-  }
-
-  > tbody {
-    background: #fff;
   }
 
   td,
