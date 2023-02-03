@@ -17,11 +17,6 @@
   &.offcanvas {
     position: absolute;
     display: flex;
-    transform: translateX(-100%);
-
-    &.show {
-      transform: none;
-    }
   }
 }
 

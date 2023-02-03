@@ -1,14 +1,11 @@
 // Two methods of wrapping your app
 // @link https://ilxanlar.medium.com/you-shouldnt-rely-on-css-100vh-and-here-s-why-1b4721e74487
-html {
-  height: -webkit-fill-available;
-}
 .wrapper {
   align-items: stretch;
   display: flex;
   width: 100%;
-  height: 100vh; // This is needed to make section.scroller work as intended
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
+  overflow: hidden;
 
   // This doesn't seem to work as expected
   // height: -moz-available;
@@ -32,22 +29,14 @@ html {
 .main {
   display: flex;
   width: 100%;
-  height: 100%;
   background: $main-bg;
   flex-direction: column;
   section {
     flex: 1 1 0%;
 
     &.scroller {
-      height: 100%;
       overflow: auto;
     }
-  }
-}
-
-@include media-breakpoint-up(md) {
-  .main {
-    max-height: 100vh;
   }
 }
 

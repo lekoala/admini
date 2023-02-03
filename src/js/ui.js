@@ -80,17 +80,24 @@ class AdminiUi {
    * @return {bootstrap.Offcanvas|null}
    */
   toggleSidebar(w = null) {
+    const classes = ["offcanvas", "offcanvas-start"];
     if (w === null) {
       w = window.innerWidth;
     }
     if (w > MOBILE_SIZE) {
       // A simple fix in case we resized the window and the menu was hidden by offcanvas
       this.sidebar.style.visibility = "visible";
-      this.sidebar.classList.remove("offcanvas");
+      this.sidebar.classList.remove("show");
+      // Kill offcanvas if created
+      if (this.sidebar.classList.contains("offcanvas")) {
+        const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
+        sidebarOffcanvas.dispose();
+        this.sidebar.classList.remove(...classes);
+      }
     }
     // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
-      this.sidebar.classList.add("offcanvas");
+      this.sidebar.classList.add(...classes);
       const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
       return sidebarOffcanvas;
     }
