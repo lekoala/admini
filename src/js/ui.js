@@ -15,11 +15,11 @@ class AdminiUi {
 
   /**
    * The minimenu behaviour of the sidebar is controlled by a toggle
-   * We store the state in the localStorage so that user preference is preserved
+   * We store the state in a cookie so that user preference is preserved and can be read by the server for rendering
    */
   minimenu() {
-    // Class can be added serverside to avoid layout shift on load
-    if (localStorage.getItem(MINIMENU) && !document.body.classList.contains(MINIMENU)) {
+    // Class should be added serverside to avoid layout shift on load
+    if (document.cookie.includes(`${MINIMENU}=1`) && !document.body.classList.contains(MINIMENU)) {
       document.body.classList.add(MINIMENU);
     }
 
@@ -28,10 +28,11 @@ class AdminiUi {
         ev.preventDefault();
 
         document.body.classList.toggle(MINIMENU);
-        if (document.body.classList.contains(MINIMENU)) {
-          localStorage.setItem(MINIMENU, "1");
+        const enabled = document.body.classList.contains(MINIMENU);
+        if (enabled) {
+          document.cookie = `${MINIMENU}=1`;
         } else {
-          localStorage.removeItem(MINIMENU);
+          document.cookie = `${MINIMENU}=0`;
           const cta = document.querySelector(".sidebar-cta-content");
           if (cta) {
             //@ts-ignore
@@ -40,6 +41,13 @@ class AdminiUi {
         }
         //@ts-ignore
         document.activeElement.blur();
+        document.dispatchEvent(
+          new CustomEvent("admini.minimenu", {
+            detail: {
+              state: enabled,
+            },
+          })
+        );
       });
     });
   }
