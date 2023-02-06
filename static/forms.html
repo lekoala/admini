@@ -280,9 +280,9 @@
                   <label for="exampleInputEmail1" class="form-label">
                     Email address
                     <br />
-                    On two lines
+                    (br) On two lines
                     <br />
-                    Or even three
+                    (br) Or even three
                   </label>
                   <div class="form-field">
                     <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" />
@@ -323,7 +323,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="disabledTextInput" class="form-label">Disabled input</label>
+                  <label for="disabledTextInput" class="form-label">Disabled input that should flow on multiple lines</label>
                   <div class="form-field">
                     <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" disabled />
                   </div>
@@ -512,14 +512,13 @@
             </div>
           </section>
           <footer class="main-footer">
-            <div>
-              <button type="submit" class="btn btn-success">
-                <l-i name="done"></l-i>
-                Save
-              </button>
-              <button type="button" class="btn btn-primary" id="otherAction">Other action</button>
-            </div>
-            <div class="btn-group" aria-label="Navigation">
+            <button type="submit" class="btn btn-success">
+              <l-i name="done"></l-i>
+              Save
+            </button>
+            <button type="button" class="btn btn-primary" id="otherAction">Other action</button>
+            <!-- align end with ms auto -->
+            <div class="btn-group ms-auto" aria-label="Navigation">
               <button type="button" class="btn btn-light">
                 <l-i name="navigate_before"></l-i>
               </button>

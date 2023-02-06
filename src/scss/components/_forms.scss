@@ -33,7 +33,9 @@ form {
         padding-top: add($input-padding-y, $input-border-width);
         flex: 0 0 100%;
         max-width: $form-label-width;
-        @include text-truncate();
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // do not set nowrap to keep long labels readable
         padding-right: 1em;
 
         &.form-check-label {
