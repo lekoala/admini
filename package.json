@@ -1,6 +1,6 @@
 {
   "name": "admini",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Minimalistic Admin Panel built with Bootstrap 5",
   "main": "src/js/index.js",
   "keywords": [
