@@ -367,6 +367,10 @@
 
   .sidebar-footer,
   .sidebar-profile-mini {
+    a {
+      width: 50%;
+      display: block;
+    }
     .btn span {
       display: none;
     }
