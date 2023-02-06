@@ -91,6 +91,13 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="sidemenu.html">
+                <l-i name="view_sidebar"></l-i>
+                <span>Sidemenu</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
@@ -156,12 +163,9 @@
         </div>
         <!-- /sidebar-content -->
 
-        <!-- sidebar-footer -->
+       <!-- sidebar-footer -->
         <div class="sidebar-footer">
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-          <div class="dropup">
+          <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
@@ -180,85 +184,65 @@
               </p>
             </ul>
           </div>
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
         </div>
         <!-- /sidebar-footer -->
       </aside>
 
       <main class="main">
-        <header class="main-header">
-          <div class="main-header-sidebar">
-            <button
-              type="button"
-              class="btn btn-primary btn-flex btn-square rounded-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar"
-              aria-controls="sidebar">
-              <l-i name="menu"></l-i>
-            </button>
-          </div>
-          <div class="main-header-info">
-            <nav aria-label="breadcrumb">
-              <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Avatars</li>
-              </div>
-            </nav>
-          </div>
-        </header>
-        <section class="scroller">
-          <div class="container-fluid py-3">
-            <p>
-              A group of avatar with
-              <code>avatar-group</code>
-              . They can be hovered/focused.
-            </p>
-            <div class="d-flex">
-              <div class="avatar-group">
-                <a class="avatar avatar-thumb" href="#">
-                  <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="user" />
-                </a>
-                <a class="avatar avatar-thumb ms-n3" href="#">
-                  <img src="https://randomuser.me/api/portraits/thumb/men/74.jpg" alt="user" />
-                </a>
-                <a class="avatar avatar-thumb ms-n3" href="#">
-                  <img src="https://randomuser.me/api/portraits/thumb/men/73.jpg" alt="user" />
-                </a>
-              </div>
-              <a class="avatar avatar-thumb ms-2 bg-soft-info" href="#">
-                <span class="avatar-title">
-                  <l-i name="add"></l-i>
-                </span>
-              </a>
+        <div class="main-container">
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button
+                type="button"
+                class="btn btn-primary btn-flex btn-square rounded-0"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
             </div>
-            <hr />
-            <p>
-              Add
-              <code>avatar-badge</code>
-              with optional colors.
-            </p>
-            <div class="d-flex">
-              <div class="avatar-group">
-                <a class="avatar avatar-thumb" href="#">
-                  <span class="avatar-badge online"></span>
-                  <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="user" />
-                </a>
-                <a class="avatar avatar-thumb me-1" href="#">
-                  <span class="avatar-badge offline"></span>
-                  <img src="https://randomuser.me/api/portraits/thumb/men/74.jpg" alt="user" />
-                </a>
-                <a class="avatar avatar-thumb me-1" href="#">
-                  <span class="avatar-badge online"></span>
-                  <img src="https://randomuser.me/api/portraits/thumb/men/73.jpg" alt="user" />
+            <div class="main-header-info">
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Avatars</li>
+                </div>
+              </nav>
+            </div>
+          </header>
+          <section class="scroller">
+            <div class="container-fluid py-3">
+              <p>
+                A group of avatar with
+                <code>avatar-group</code>
+                . They can be hovered/focused.
+              </p>
+              <div class="d-flex">
+                <div class="avatar-group">
+                  <a class="avatar avatar-thumb" href="#">
+                    <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="user" />
+                  </a>
+                  <a class="avatar avatar-thumb ms-n3" href="#">
+                    <img src="https://randomuser.me/api/portraits/thumb/men/74.jpg" alt="user" />
+                  </a>
+                  <a class="avatar avatar-thumb ms-n3" href="#">
+                    <img src="https://randomuser.me/api/portraits/thumb/men/73.jpg" alt="user" />
+                  </a>
+                </div>
+                <a class="avatar avatar-thumb ms-2 bg-soft-info" href="#">
+                  <span class="avatar-title">
+                    <l-i name="add"></l-i>
+                  </span>
                 </a>
               </div>
-              <a class="avatar avatar-thumb ms-2 bg-soft-info" href="#">
-                <span class="avatar-title">
-                  <l-i name="add"></l-i>
-                </span>
-              </a>
-            </div>
-            <hr />
-            <div class="bg-dark p-3">
-              <p>What about a dark background ?</p>
+              <hr />
+              <p>
+                Add
+                <code>avatar-badge</code>
+                with optional colors.
+              </p>
               <div class="d-flex">
                 <div class="avatar-group">
                   <a class="avatar avatar-thumb" href="#">
@@ -280,204 +264,229 @@
                   </span>
                 </a>
               </div>
-            </div>
-            <hr />
-            <p>Soft colors allow same style colors</p>
-            <ul>
-              <li>
-                Use
-                <code>bg-softy-*</code>
-                to avoid transparency issues
-              </li>
-              <li>
-                Position badges with
-                <code>avatar-badge-*</code>
-              </li>
-              <li>
-                Pad text properly in badges with
-                <code>avatar-badge-text</code>
-              </li>
-            </ul>
-            <div class="d-flex align-items-center flex-wrap">
-              <a class="avatar bg-soft-warning m-1" href="#">
-                <svg viewBox="0 0 32 32" fill="none" width="16">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M18.608 12.0758L23.8965 6.78739C24.26 6.42397 24.8491 6.42397 25.2126 6.78739C25.576 7.15083 25.576 7.74006 25.2126 8.10349L19.9242 13.3919C21.1178 13.1237 22.5114 12.9697 24 12.9697C28.4182 12.9697 32 14.3264 32 16C32 17.6736 28.4182 19.0302 24 19.0302C22.5114 19.0302 21.1178 18.8763 19.9242 18.608L25.2126 23.8965C25.576 24.26 25.576 24.8491 25.2126 25.2126C24.8491 25.576 24.26 25.576 23.8965 25.2126L18.608 19.9242C18.8763 21.1178 19.0302 22.5115 19.0302 24C19.0302 28.4182 17.6736 32 16 32C14.3264 32 12.9697 28.4182 12.9697 24C12.9697 22.5114 13.1237 21.1178 13.3919 19.9242L8.10349 25.2126C7.74006 25.576 7.15083 25.576 6.78741 25.2126C6.42398 24.8491 6.42398 24.26 6.78741 23.8965L12.0758 18.608C10.8822 18.8763 9.48856 19.0302 8 19.0302C3.58173 19.0302 0 17.6736 0 16C0 14.3264 3.58173 12.9697 8 12.9697C9.48856 12.9697 10.8822 13.1237 12.0758 13.3919L6.78741 8.1035C6.42398 7.74008 6.42398 7.15085 6.78741 6.78741C7.15083 6.42398 7.74006 6.42398 8.10349 6.78741L13.3919 12.0759C13.1237 10.8822 12.9697 9.48858 12.9697 8C12.9697 3.58173 14.3264 0 16 0C17.6736 0 19.0302 3.58173 19.0302 8C19.0302 9.48856 18.8763 10.8822 18.608 12.0758Z"
-                    fill="currentColor"></path>
-                </svg>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-warning m-1">
-                <svg viewBox="0 0 32 32" fill="none" width="16">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M18.608 12.0758L23.8965 6.78739C24.26 6.42397 24.8491 6.42397 25.2126 6.78739C25.576 7.15083 25.576 7.74006 25.2126 8.10349L19.9242 13.3919C21.1178 13.1237 22.5114 12.9697 24 12.9697C28.4182 12.9697 32 14.3264 32 16C32 17.6736 28.4182 19.0302 24 19.0302C22.5114 19.0302 21.1178 18.8763 19.9242 18.608L25.2126 23.8965C25.576 24.26 25.576 24.8491 25.2126 25.2126C24.8491 25.576 24.26 25.576 23.8965 25.2126L18.608 19.9242C18.8763 21.1178 19.0302 22.5115 19.0302 24C19.0302 28.4182 17.6736 32 16 32C14.3264 32 12.9697 28.4182 12.9697 24C12.9697 22.5114 13.1237 21.1178 13.3919 19.9242L8.10349 25.2126C7.74006 25.576 7.15083 25.576 6.78741 25.2126C6.42398 24.8491 6.42398 24.26 6.78741 23.8965L12.0758 18.608C10.8822 18.8763 9.48856 19.0302 8 19.0302C3.58173 19.0302 0 17.6736 0 16C0 14.3264 3.58173 12.9697 8 12.9697C9.48856 12.9697 10.8822 13.1237 12.0758 13.3919L6.78741 8.1035C6.42398 7.74008 6.42398 7.15085 6.78741 6.78741C7.15083 6.42398 7.74006 6.42398 8.10349 6.78741L13.3919 12.0759C13.1237 10.8822 12.9697 9.48858 12.9697 8C12.9697 3.58173 14.3264 0 16 0C17.6736 0 19.0302 3.58173 19.0302 8C19.0302 9.48856 18.8763 10.8822 18.608 12.0758Z"
-                    fill="currentColor"></path>
-                </svg>
-              </span>
-              <a class="avatar bg-soft-primary m-1" href="#">MM</a>
-              <span class="avatar avatar-thumb bg-soft-primary m-1">MM</span>
-              <a class="avatar bg-soft-primary m-1" href="#">
-                <span class="avatar-badge online"></span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-secondary m-1">
-                <span class="avatar-badge online"></span>
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-soft-secondary m-1" href="#">
-                <span class="avatar-badge bg-success">
-                  <l-i name="check"></l-i>
+              <hr />
+              <div class="bg-dark p-3">
+                <p>What about a dark background ?</p>
+                <div class="d-flex">
+                  <div class="avatar-group">
+                    <a class="avatar avatar-thumb" href="#">
+                      <span class="avatar-badge online"></span>
+                      <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" alt="user" />
+                    </a>
+                    <a class="avatar avatar-thumb me-1" href="#">
+                      <span class="avatar-badge offline"></span>
+                      <img src="https://randomuser.me/api/portraits/thumb/men/74.jpg" alt="user" />
+                    </a>
+                    <a class="avatar avatar-thumb me-1" href="#">
+                      <span class="avatar-badge online"></span>
+                      <img src="https://randomuser.me/api/portraits/thumb/men/73.jpg" alt="user" />
+                    </a>
+                  </div>
+                  <a class="avatar avatar-thumb ms-2 bg-soft-info" href="#">
+                    <span class="avatar-title">
+                      <l-i name="add"></l-i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <hr />
+              <p>Soft colors allow same style colors</p>
+              <ul>
+                <li>
+                  Use
+                  <code>bg-softy-*</code>
+                  to avoid transparency issues
+                </li>
+                <li>
+                  Position badges with
+                  <code>avatar-badge-*</code>
+                </li>
+                <li>
+                  Pad text properly in badges with
+                  <code>avatar-badge-text</code>
+                </li>
+              </ul>
+              <div class="d-flex align-items-center flex-wrap">
+                <a class="avatar bg-soft-warning m-1" href="#">
+                  <svg viewBox="0 0 32 32" fill="none" width="16">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M18.608 12.0758L23.8965 6.78739C24.26 6.42397 24.8491 6.42397 25.2126 6.78739C25.576 7.15083 25.576 7.74006 25.2126 8.10349L19.9242 13.3919C21.1178 13.1237 22.5114 12.9697 24 12.9697C28.4182 12.9697 32 14.3264 32 16C32 17.6736 28.4182 19.0302 24 19.0302C22.5114 19.0302 21.1178 18.8763 19.9242 18.608L25.2126 23.8965C25.576 24.26 25.576 24.8491 25.2126 25.2126C24.8491 25.576 24.26 25.576 23.8965 25.2126L18.608 19.9242C18.8763 21.1178 19.0302 22.5115 19.0302 24C19.0302 28.4182 17.6736 32 16 32C14.3264 32 12.9697 28.4182 12.9697 24C12.9697 22.5114 13.1237 21.1178 13.3919 19.9242L8.10349 25.2126C7.74006 25.576 7.15083 25.576 6.78741 25.2126C6.42398 24.8491 6.42398 24.26 6.78741 23.8965L12.0758 18.608C10.8822 18.8763 9.48856 19.0302 8 19.0302C3.58173 19.0302 0 17.6736 0 16C0 14.3264 3.58173 12.9697 8 12.9697C9.48856 12.9697 10.8822 13.1237 12.0758 13.3919L6.78741 8.1035C6.42398 7.74008 6.42398 7.15085 6.78741 6.78741C7.15083 6.42398 7.74006 6.42398 8.10349 6.78741L13.3919 12.0759C13.1237 10.8822 12.9697 9.48858 12.9697 8C12.9697 3.58173 14.3264 0 16 0C17.6736 0 19.0302 3.58173 19.0302 8C19.0302 9.48856 18.8763 10.8822 18.608 12.0758Z"
+                      fill="currentColor"></path>
+                  </svg>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-warning m-1">
+                  <svg viewBox="0 0 32 32" fill="none" width="16">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M18.608 12.0758L23.8965 6.78739C24.26 6.42397 24.8491 6.42397 25.2126 6.78739C25.576 7.15083 25.576 7.74006 25.2126 8.10349L19.9242 13.3919C21.1178 13.1237 22.5114 12.9697 24 12.9697C28.4182 12.9697 32 14.3264 32 16C32 17.6736 28.4182 19.0302 24 19.0302C22.5114 19.0302 21.1178 18.8763 19.9242 18.608L25.2126 23.8965C25.576 24.26 25.576 24.8491 25.2126 25.2126C24.8491 25.576 24.26 25.576 23.8965 25.2126L18.608 19.9242C18.8763 21.1178 19.0302 22.5115 19.0302 24C19.0302 28.4182 17.6736 32 16 32C14.3264 32 12.9697 28.4182 12.9697 24C12.9697 22.5114 13.1237 21.1178 13.3919 19.9242L8.10349 25.2126C7.74006 25.576 7.15083 25.576 6.78741 25.2126C6.42398 24.8491 6.42398 24.26 6.78741 23.8965L12.0758 18.608C10.8822 18.8763 9.48856 19.0302 8 19.0302C3.58173 19.0302 0 17.6736 0 16C0 14.3264 3.58173 12.9697 8 12.9697C9.48856 12.9697 10.8822 13.1237 12.0758 13.3919L6.78741 8.1035C6.42398 7.74008 6.42398 7.15085 6.78741 6.78741C7.15083 6.42398 7.74006 6.42398 8.10349 6.78741L13.3919 12.0759C13.1237 10.8822 12.9697 9.48858 12.9697 8C12.9697 3.58173 14.3264 0 16 0C17.6736 0 19.0302 3.58173 19.0302 8C19.0302 9.48856 18.8763 10.8822 18.608 12.0758Z"
+                      fill="currentColor"></path>
+                  </svg>
                 </span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-primary m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-soft-info m-1" href="#">
-                <span class="avatar-badge bg-softy-danger">
-                  <l-i name="warning"></l-i>
+                <a class="avatar bg-soft-primary m-1" href="#">MM</a>
+                <span class="avatar avatar-thumb bg-soft-primary m-1">MM</span>
+                <a class="avatar bg-soft-primary m-1" href="#">
+                  <span class="avatar-badge online"></span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-secondary m-1">
+                  <span class="avatar-badge online"></span>
+                  <l-i name="star"></l-i>
                 </span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-info m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-soft-success m-1" href="#">
-                <span class="avatar-badge bg-softy-success">
-                  <l-i name="check"></l-i>
+                <a class="avatar bg-soft-secondary m-1" href="#">
+                  <span class="avatar-badge bg-success">
+                    <l-i name="check"></l-i>
+                  </span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-primary m-1">
+                  <l-i name="star"></l-i>
                 </span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-success m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-soft-warning m-1" href="#">
-                <span class="avatar-badge avatar-badge-text avatar-badge-bottom bg-softy-success">LOL</span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-warning m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-soft-danger m-1" href="#">
-                <span class="avatar-badge avatar-badge-text avatar-badge-bottom avatar-badge-start bg-softy-success">20+</span>
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-soft-danger m-1">
-                <l-i name="star"></l-i>
-              </span>
-            </div>
-            <hr />
-            <p>They should all have white icons and proper contrast. Primary and info should not look too much alike.</p>
-            <div class="d-flex align-items-center flex-wrap">
-              <a class="avatar bg-secondary m-1" href="#">MT</a>
-              <span class="avatar avatar-thumb bg-secondary m-1">MT</span>
-              <a class="avatar bg-secondary m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-secondary m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-primary m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-primary m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-info m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-info m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-success m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-success m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-warning m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-warning m-1">
-                <l-i name="star"></l-i>
-              </span>
-              <a class="avatar bg-danger m-1" href="#">
-                <l-i name="star"></l-i>
-              </a>
-              <span class="avatar avatar-thumb bg-danger m-1">
-                <l-i name="star"></l-i>
-              </span>
-            </div>
-            <hr />
-            <div>
-              <p>User grid</p>
+                <a class="avatar bg-soft-info m-1" href="#">
+                  <span class="avatar-badge bg-softy-danger">
+                    <l-i name="warning"></l-i>
+                  </span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-info m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-soft-success m-1" href="#">
+                  <span class="avatar-badge bg-softy-success">
+                    <l-i name="check"></l-i>
+                  </span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-success m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-soft-warning m-1" href="#">
+                  <span class="avatar-badge avatar-badge-text avatar-badge-bottom bg-softy-success">LOL</span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-warning m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-soft-danger m-1" href="#">
+                  <span class="avatar-badge avatar-badge-text avatar-badge-bottom avatar-badge-start bg-softy-success">20+</span>
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-soft-danger m-1">
+                  <l-i name="star"></l-i>
+                </span>
+              </div>
+              <hr />
+              <p>They should all have white icons and proper contrast. Primary and info should not look too much alike.</p>
+              <div class="d-flex align-items-center flex-wrap">
+                <a class="avatar bg-secondary m-1" href="#">MT</a>
+                <span class="avatar avatar-thumb bg-secondary m-1">MT</span>
+                <a class="avatar bg-secondary m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-secondary m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-primary m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-primary m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-info m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-info m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-success m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-success m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-warning m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-warning m-1">
+                  <l-i name="star"></l-i>
+                </span>
+                <a class="avatar bg-danger m-1" href="#">
+                  <l-i name="star"></l-i>
+                </a>
+                <span class="avatar avatar-thumb bg-danger m-1">
+                  <l-i name="star"></l-i>
+                </span>
+              </div>
+              <hr />
+              <div>
+                <p>User grid</p>
 
-              <div class="grid grid-4 grid-large">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <a class="avatar bg-soft-primary m-1 mb-4" href="#">MM</a>
-                    <h3>Martin Macho</h3>
-                    <p>Blitz developer</p>
-                  </div>
-                  <div class="card-footer p-0">
-                    <div class="btn-group d-flex" role="group">
-                      <button type="button" class="btn btn-primary">
-                        <l-i name="person"></l-i>
-                        Profile
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        <l-i name="message"></l-i>
-                        Message
-                      </button>
+                <div class="grid grid-4 grid-large">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <a class="avatar bg-soft-primary m-1 mb-4" href="#">MM</a>
+                      <h3>Martin Macho</h3>
+                      <p>Blitz developer</p>
+                    </div>
+                    <div class="card-footer p-0">
+                      <div class="btn-group d-flex" role="group">
+                        <button type="button" class="btn btn-primary">
+                          <l-i name="person"></l-i>
+                          Profile
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                          <l-i name="message"></l-i>
+                          Message
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="card">
-                  <div class="card-body text-center">
-                    <a class="avatar bg-soft-primary m-1 mb-4" href="#">JJ</a>
-                    <h3>Jose Jano</h3>
-                    <p>Funky developer</p>
-                  </div>
-                  <div class="card-footer p-0">
-                    <div class="btn-group d-flex" role="group">
-                      <button type="button" class="btn btn-primary">
-                        <l-i name="person"></l-i>
-                        Profile
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        <l-i name="message"></l-i>
-                        Message
-                      </button>
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <a class="avatar bg-soft-primary m-1 mb-4" href="#">JJ</a>
+                      <h3>Jose Jano</h3>
+                      <p>Funky developer</p>
+                    </div>
+                    <div class="card-footer p-0">
+                      <div class="btn-group d-flex" role="group">
+                        <button type="button" class="btn btn-primary">
+                          <l-i name="person"></l-i>
+                          Profile
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                          <l-i name="message"></l-i>
+                          Message
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="card">
-                  <div class="card-body text-center">
-                    <a class="avatar bg-soft-primary m-1 mb-4" href="#">RR</a>
-                    <h3>Roger Rango</h3>
-                    <p>Rocks developer</p>
-                  </div>
-                  <div class="card-footer p-0">
-                    <div class="btn-group d-flex" role="group">
-                      <button type="button" class="btn btn-primary">
-                        <l-i name="person"></l-i>
-                        Profile
-                      </button>
-                      <button type="button" class="btn btn-secondary">
-                        <l-i name="message"></l-i>
-                        Message
-                      </button>
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <a class="avatar bg-soft-primary m-1 mb-4" href="#">RR</a>
+                      <h3>Roger Rango</h3>
+                      <p>Rocks developer</p>
+                    </div>
+                    <div class="card-footer p-0">
+                      <div class="btn-group d-flex" role="group">
+                        <button type="button" class="btn btn-primary">
+                          <l-i name="person"></l-i>
+                          Profile
+                        </button>
+                        <button type="button" class="btn btn-secondary">
+                          <l-i name="message"></l-i>
+                          Message
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- /container -->
-        </section>
+            <!-- /container -->
+          </section>
+        </div>
       </main>
     </div>
   </body>

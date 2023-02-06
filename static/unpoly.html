@@ -114,6 +114,13 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="sidemenu.html">
+                <l-i name="view_sidebar"></l-i>
+                <span>Sidemenu</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link active" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
@@ -179,12 +186,9 @@
         </div>
         <!-- /sidebar-content -->
 
-        <!-- sidebar-footer -->
+       <!-- sidebar-footer -->
         <div class="sidebar-footer">
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-          <div class="dropup">
+          <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
@@ -203,65 +207,70 @@
               </p>
             </ul>
           </div>
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
         </div>
         <!-- /sidebar-footer -->
       </aside>
 
       <main class="main">
-        <header class="main-header">
-          <div class="main-header-sidebar">
-            <button
-              type="button"
-              class="btn btn-primary btn-flex btn-square rounded-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar"
-              aria-controls="sidebar">
-              <l-i name="menu"></l-i>
-            </button>
-          </div>
-          <div class="main-header-info">
-            <nav aria-label="breadcrumb">
-              <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Unpoly</li>
-              </div>
-            </nav>
-          </div>
-          <div class="main-header-nav"></div>
-        </header>
-        <section class="scroller">
-          <div class="container-fluid">
-            <h1 class="my-4">
-              <strong>Welcome</strong>
-              to admini
-            </h1>
+        <div class="main-container">
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button
+                type="button"
+                class="btn btn-primary btn-flex btn-square rounded-0"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Unpoly</li>
+                </div>
+              </nav>
+            </div>
+            <div class="main-header-nav"></div>
+          </header>
+          <section class="scroller">
+            <div class="container-fluid">
+              <h1 class="my-4">
+                <strong>Welcome</strong>
+                to admini
+              </h1>
 
-            <p>
-              Admin works great with
-              <a href="https://github.com/unpoly/unpoly" target="_blank">unpoly</a>
-              to provide SPA like experiences.
-            </p>
+              <p>
+                Admin works great with
+                <a href="https://github.com/unpoly/unpoly" target="_blank">unpoly</a>
+                to provide SPA like experiences.
+              </p>
 
-            <p>This button leads to another section through ajax using the default target (main) with a fade anim. Note that:</p>
-            <ul>
-              <li>It is followed automatically and history is updated</li>
-              <li>Inline scripts ("init!" in console.log) are not triggered, but inline scripts in target fragment work as usual thanks to 'runScripts'</li>
-              <li>Aditionnal stylesheet are not loaded</li>
-            </ul>
+              <p>This button leads to another section through ajax using the default target (main) with a fade anim. Note that:</p>
+              <ul>
+                <li>It is followed automatically and history is updated</li>
+                <li>Inline scripts ("init!" in console.log) are not triggered, but inline scripts in target fragment work as usual thanks to 'runScripts'</li>
+                <li>Aditionnal stylesheet are not loaded</li>
+              </ul>
 
-            <a href="unpoly-next.html" class="btn btn-primary" up-transition="cross-fade">Next section</a>
+              <a href="unpoly-next.html" class="btn btn-primary" up-transition="cross-fade">Next section</a>
 
-            <hr />
-            <p>This article will open in a modal without updating the url</p>
-            <div class="card">
-              <div class="card-body">
-                <p>Story summary</p>
+              <hr />
+              <p>This article will open in a modal without updating the url</p>
+              <div class="card">
+                <div class="card-body">
+                  <p>Story summary</p>
 
-                <!-- <a href="unpoly-full.html" up-layer="new" up-mode="drawer">Read full story</a> -->
-                <a href="unpoly-full.html" up-layer="new" up-target="article">Read full story</a>
+                  <!-- <a href="unpoly-full.html" up-layer="new" up-mode="drawer">Read full story</a> -->
+                  <a href="unpoly-full.html" up-layer="new" up-target="article">Read full story</a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
     </div>
   </body>

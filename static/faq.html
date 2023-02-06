@@ -115,6 +115,13 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="sidemenu.html">
+                <l-i name="view_sidebar"></l-i>
+                <span>Sidemenu</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
@@ -180,12 +187,9 @@
         </div>
         <!-- /sidebar-content -->
 
-        <!-- sidebar-footer -->
+       <!-- sidebar-footer -->
         <div class="sidebar-footer">
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-          <div class="dropup">
+          <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
@@ -204,101 +208,106 @@
               </p>
             </ul>
           </div>
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
         </div>
         <!-- /sidebar-footer -->
       </aside>
 
       <main class="main">
-        <header class="main-header">
-          <div class="main-header-sidebar">
-            <button
-              type="button"
-              class="btn btn-primary btn-flex btn-square rounded-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar"
-              aria-controls="sidebar">
-              <l-i name="menu"></l-i>
-            </button>
-          </div>
-          <div class="main-header-info">
-            <nav aria-label="breadcrumb">
-              <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Faq</li>
-              </div>
-            </nav>
-          </div>
-        </header>
-        <section class="scroller">
-          <div class="container-fluid py-3">
-            <div class="accordion" id="faqAccordion">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne">
-                    Is Admini free ?
-                  </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      <strong>Yes.</strong>
-                      It is open-source and MIT licenced. However, nothing is free in life and funding is welcome :-).
-                    </p>
+        <div class="main-container">
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button
+                type="button"
+                class="btn btn-primary btn-flex btn-square rounded-0"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Faq</li>
+                </div>
+              </nav>
+            </div>
+          </header>
+          <section class="scroller">
+            <div class="container-fluid py-3">
+              <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne">
+                      Is Admini free ?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        <strong>Yes.</strong>
+                        It is open-source and MIT licenced. However, nothing is free in life and funding is welcome :-).
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo">
-                    Why use this admin panel ?
-                  </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      Most admin panel are bloated. Admini gives you a minimalistic approach but with a lot of powerful features. It's built using simple build
-                      processes (es6 classes, scss) and you can easily fit it within your own build processes (or use the one provided).
-                    </p>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      Why use this admin panel ?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        Most admin panel are bloated. Admini gives you a minimalistic approach but with a lot of powerful features. It's built using simple
+                        build processes (es6 classes, scss) and you can easily fit it within your own build processes (or use the one provided).
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree">
-                    What are the best features of Admini ?
-                  </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <ul>
-                      <li>Lightweight JS stack (< 200kb)</li>
-                      <li>Careful selection of scripts</li>
-                      <li>Smart tabs (fully responsive with deep linking support)</li>
-                      <li>A clean and simple user interface</li>
-                    </ul>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree">
+                      What are the best features of Admini ?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li>Lightweight JS stack (< 200kb)</li>
+                        <li>Careful selection of scripts</li>
+                        <li>Smart tabs (fully responsive with deep linking support)</li>
+                        <li>A clean and simple user interface</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
     </div>
   </body>

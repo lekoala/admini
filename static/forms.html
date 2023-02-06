@@ -110,6 +110,13 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="sidemenu.html">
+                <l-i name="view_sidebar"></l-i>
+                <span>Sidemenu</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
@@ -175,12 +182,9 @@
         </div>
         <!-- /sidebar-content -->
 
-        <!-- sidebar-footer -->
+       <!-- sidebar-footer -->
         <div class="sidebar-footer">
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-          <div class="dropup">
+          <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
@@ -199,13 +203,16 @@
               </p>
             </ul>
           </div>
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
         </div>
         <!-- /sidebar-footer -->
       </aside>
 
       <main class="main">
         <!-- The form can contain multiple tabs. It's easier to wrap everything -->
-        <form action="" class="needs-validation" data-validation-message="Some fields are not valid">
+        <form action="" class="needs-validation main-container" data-validation-message="Some fields are not valid">
           <header class="main-header">
             <div class="main-header-sidebar">
               <button

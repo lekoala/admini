@@ -221,6 +221,7 @@
 
 .sidebar-profile-mini {
   .sidebar-profile-mininame {
+    display: flex;
     max-width: calc(100% - $sidebar-footer-height);
   }
   > .btn {
@@ -367,9 +368,9 @@
 
   .sidebar-footer,
   .sidebar-profile-mini {
-    a {
+    > a {
       width: 50%;
-      display: block;
+      max-width: none;
     }
     .btn span {
       display: none;
@@ -401,7 +402,8 @@
       background: $sidebar-brand-bg-dark;
     }
     .sidebar-footer {
-      border-color: $nav-tabs-border-color;
+      border-color: $sidebar-cta-bg;
+      background: $sidebar-brand-bg-dark;
     }
   }
 }

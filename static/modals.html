@@ -176,6 +176,13 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="sidemenu.html">
+                <l-i name="view_sidebar"></l-i>
+                <span>Sidemenu</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link" href="unpoly.html">
                 <l-i name="layers"></l-i>
                 <span>Unpoly</span>
@@ -241,12 +248,9 @@
         </div>
         <!-- /sidebar-content -->
 
-        <!-- sidebar-footer -->
+       <!-- sidebar-footer -->
         <div class="sidebar-footer">
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-          <div class="dropup">
+          <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
               <l-i name="help_outline"></l-i>
             </button>
@@ -265,104 +269,109 @@
               </p>
             </ul>
           </div>
+          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+          </button>
         </div>
         <!-- /sidebar-footer -->
       </aside>
 
       <main class="main">
-        <header class="main-header">
-          <div class="main-header-sidebar">
-            <button
-              type="button"
-              class="btn btn-primary btn-flex btn-square rounded-0"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar"
-              aria-controls="sidebar">
-              <l-i name="menu"></l-i>
-            </button>
-          </div>
-          <div class="main-header-info">
-            <nav aria-label="breadcrumb">
-              <div class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Modals</li>
-              </div>
-            </nav>
-          </div>
-        </header>
-        <section class="scroller">
-          <div class="container-fluid py-3">
-            <p>Here is a static modal that cannot be dismissed. It has a tri-state button set.</p>
-            <button class="btn btn-primary" id="open-modal">Open modal</button>
+        <div class="main-container">
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button
+                type="button"
+                class="btn btn-primary btn-flex btn-square rounded-0"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Modals</li>
+                </div>
+              </nav>
+            </div>
+          </header>
+          <section class="scroller">
+            <div class="container-fluid py-3">
+              <p>Here is a static modal that cannot be dismissed. It has a tri-state button set.</p>
+              <button class="btn btn-primary" id="open-modal">Open modal</button>
 
-            <p class="mt-3">Here is a confirm modal. You can easily pass callbacks.</p>
-            <button class="btn btn-primary" id="open-confirm">Open confirm</button>
+              <p class="mt-3">Here is a confirm modal. You can easily pass callbacks.</p>
+              <button class="btn btn-primary" id="open-confirm">Open confirm</button>
 
-            <p class="mt-3">Here is a prompt modal. Its form elements are returned in the event details.</p>
-            <button class="btn btn-primary" id="open-prompt">Open prompt</button>
+              <p class="mt-3">Here is a prompt modal. Its form elements are returned in the event details.</p>
+              <button class="btn btn-primary" id="open-prompt">Open prompt</button>
 
-            <p class="mt-3">A built in data confirm thing</p>
-            <a href="https://www.google.com" data-confirm="Do you confirm you want to go to google ?" class="btn btn-primary">Confirm btn</a>
+              <p class="mt-3">A built in data confirm thing</p>
+              <a href="https://www.google.com" data-confirm="Do you confirm you want to go to google ?" class="btn btn-primary">Confirm btn</a>
 
-            <hr />
-            <h2>Modal icons</h2>
+              <hr />
+              <h2>Modal icons</h2>
 
-            <p>You can disable the icon with showIcon: false</p>
+              <p>You can disable the icon with showIcon: false</p>
 
-            <table class="table" width="400">
-              <tbody>
-                <tr>
-                  <td><strong>success</strong></td>
-                  <td>
-                    <div class="modal-icon modal-success modal-icon-show"></div>
-                  </td>
-                  <td>
-                    <button class="show-example-btn btn btn-default" data-icon="success" aria-label="Try me! Example: success modal">Try me!</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>error</strong></td>
-                  <td>
-                    <div class="modal-icon modal-error modal-icon-show"></div>
-                  </td>
-                  <td>
-                    <button class="show-example-btn btn btn-default" data-icon="error" aria-label="Try me! Example: error modal">Try me!</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>warning</strong>
-                    <br />
-                    (default)
-                  </td>
-                  <td>
-                    <div class="modal-icon modal-warning modal-icon-show"></div>
-                  </td>
-                  <td>
-                    <button class="show-example-btn btn btn-default" data-icon="warning" aria-label="Try me! Example: warning modal">Try me!</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>info</strong></td>
-                  <td>
-                    <div class="modal-icon modal-info modal-icon-show"></div>
-                  </td>
-                  <td>
-                    <button class="show-example-btn btn btn-default" data-icon="info" aria-label="Try me! Example: info modal">Try me!</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>question</strong></td>
-                  <td>
-                    <div class="modal-icon modal-question modal-icon-show"></div>
-                  </td>
-                  <td>
-                    <button class="show-example-btn btn btn-default" data-icon="question" aria-label="Try me! Example: question modal">Try me!</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+              <table class="table" width="400">
+                <tbody>
+                  <tr>
+                    <td><strong>success</strong></td>
+                    <td>
+                      <div class="modal-icon modal-success modal-icon-show"></div>
+                    </td>
+                    <td>
+                      <button class="show-example-btn btn btn-default" data-icon="success" aria-label="Try me! Example: success modal">Try me!</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>error</strong></td>
+                    <td>
+                      <div class="modal-icon modal-error modal-icon-show"></div>
+                    </td>
+                    <td>
+                      <button class="show-example-btn btn btn-default" data-icon="error" aria-label="Try me! Example: error modal">Try me!</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>warning</strong>
+                      <br />
+                      (default)
+                    </td>
+                    <td>
+                      <div class="modal-icon modal-warning modal-icon-show"></div>
+                    </td>
+                    <td>
+                      <button class="show-example-btn btn btn-default" data-icon="warning" aria-label="Try me! Example: warning modal">Try me!</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>info</strong></td>
+                    <td>
+                      <div class="modal-icon modal-info modal-icon-show"></div>
+                    </td>
+                    <td>
+                      <button class="show-example-btn btn btn-default" data-icon="info" aria-label="Try me! Example: info modal">Try me!</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>question</strong></td>
+                    <td>
+                      <div class="modal-icon modal-question modal-icon-show"></div>
+                    </td>
+                    <td>
+                      <button class="show-example-btn btn btn-default" data-icon="question" aria-label="Try me! Example: question modal">Try me!</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   </body>
