@@ -61,6 +61,18 @@
           document.querySelector(".sidebar-brand").style.backgroundColor = "inherit";
         }
       });
+
+      let btn = document.getElementById("toggle-fluid-container");
+      btn.addEventListener("click", (ev) => {
+        let container = document.getElementById("dashboard-container");
+        if (container.classList.contains("container-fluid")) {
+          container.classList.remove("container-fluid");
+          container.classList.add("container");
+        } else {
+          container.classList.remove("container");
+          container.classList.add("container-fluid");
+        }
+      });
     </script>
     <script type="module">
       window.admini.init(); // this should go last
@@ -126,7 +138,7 @@
                 <span>Tabbed navigation</span>
               </a>
             </li>
-            
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="sidemenu.html">
                 <l-i name="view_sidebar"></l-i>
@@ -327,11 +339,13 @@
             </div>
           </header>
           <section class="scroller">
-            <div class="container-fluid">
+            <div class="container-fluid" id="dashboard-container">
               <h1 class="my-4">
                 <strong>Welcome</strong>
                 to admini
               </h1>
+
+              <button type="button" class="btn btn-light mb-3" id="toggle-fluid-container">Toggle fluid container</button>
 
               <div class="row">
                 <div class="col-lg-3">
