@@ -51,7 +51,7 @@
       defer
       id="nomodule-browser-warning"></script>
 
-    <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3.1.1/modular-behaviour.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3/modular-behaviour.min.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
       document.querySelectorAll("#otherAction").forEach((btn) => {
@@ -182,7 +182,7 @@
         </div>
         <!-- /sidebar-content -->
 
-       <!-- sidebar-footer -->
+        <!-- sidebar-footer -->
         <div class="sidebar-footer">
           <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
@@ -211,330 +211,332 @@
       </aside>
 
       <main class="main">
-        <!-- The form can contain multiple tabs. It's easier to wrap everything -->
-        <form action="" class="needs-validation main-container" data-validation-message="Some fields are not valid">
-          <header class="main-header">
-            <div class="main-header-sidebar">
-              <button
-                type="button"
-                class="btn btn-primary btn-flex btn-square rounded-0"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#sidebar"
-                aria-controls="sidebar">
-                <l-i name="menu"></l-i>
-              </button>
-            </div>
-            <div class="main-header-info">
-              <nav aria-label="breadcrumb">
-                <div class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">Forms</li>
-                </div>
-              </nav>
-            </div>
-            <div class="main-header-nav main-header-tabs">
-              <bs-tabs linkable="1" responsive="1" end>
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="tab-1"
-                      data-bs-toggle="tab"
-                      data-bs-target="#panel-1"
-                      type="button"
-                      role="tab"
-                      aria-controls="panel-1"
-                      aria-selected="false">
-                      Main
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="tab-2"
-                      data-bs-toggle="tab"
-                      data-bs-target="#panel-2"
-                      type="button"
-                      role="tab"
-                      aria-controls="panel-2"
-                      aria-selected="false">
-                      Details
-                    </a>
-                  </li>
-                </ul>
-              </bs-tabs>
-            </div>
-          </header>
-          <section class="scroller">
-            <div class="tab-content container-fluid py-3">
-              <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
-                <input type="hidden" name="_hash" />
-                <!-- this stores persistent hash if needed -->
-                <div class="form-group">
-                  <label for="exampleCombineRow" class="form-label">Name</label>
-                  <div class="form-field">
-                    <!-- you can also use the simpler input-group-item alternative -->
-                    <div class="row" id="exampleCombineRow">
-                      <div class="col-6">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
-                      </div>
-                      <div class="col-6">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
-                      </div>
-                    </div>
+        <div class="main-container">
+          <!-- The form can contain multiple tabs. It's easier to wrap everything -->
+          <form action="" class="needs-validation" data-validation-message="Some fields are not valid">
+            <header class="main-header">
+              <div class="main-header-sidebar">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-flex btn-square rounded-0"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#sidebar"
+                  aria-controls="sidebar">
+                  <l-i name="menu"></l-i>
+                </button>
+              </div>
+              <div class="main-header-info">
+                <nav aria-label="breadcrumb">
+                  <div class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Forms</li>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1" class="form-label">
-                    Email address
-                    <br />
-                    (br) On two lines
-                    <br />
-                    (br) Or even three
-                  </label>
-                  <div class="form-field">
-                    <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" />
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    <div class="invalid-feedback">Please enter a valid email</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1" class="form-label">
-                    Password
-                    <l-i name="help" title="It should be secure!" data-bs-toggle="tooltip"></l-i>
-                  </label>
-                  <div class="form-field">
-                    <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="new-password" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputRadioGroup" class="form-label">Radio group</label>
-                  <div class="form-field" id="inputRadioGroup">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
-                      <label class="form-check-label" for="exampleRadios1">Default radio</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-                      <label class="form-check-label" for="exampleRadios2">Second default radio</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled />
-                      <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="disabledTextInput" class="form-label">Disabled input that should flow on multiple lines</label>
-                  <div class="form-field">
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" disabled />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayoutevenwhenitoverflows</label>
-                  <div class="form-field">
-                    <input
-                      type="text"
-                      id="disabledTextInput2"
-                      class="form-control"
-                      placeholder="Type the value"
-                      value="Some kind of input that is very very long and should not break the layouteitherevenifitsoneline" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                    <label class="form-check-label" for="flexSwitchCheckDefault">
-                      Default switch checkbox input
-                      <br />
-                      On two lines
-                    </label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="selectInput" class="form-label">Select something</label>
-                  <div class="form-field">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="validationTagsClear" class="form-label">Roles</label>
-                  <div class="form-field">
-                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1.5/tags.min.js">
-                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" size="1">
-                        <option selected disabled hidden value="">Choose a role...</option>
-                        <option value="1" selected="selected">Admin</option>
-                        <option value="2">Editor</option>
-                        <option value="3">Subscriber</option>
-                        <option value="4">Subscriber 2</option>
-                        <option value="5">Subscriber 3</option>
-                        <option value="6">Subscriber 4</option>
-                        <option value="7">Subscriber 5</option>
-                        <option value="8">Subscriber 6</option>
-                      </select>
-                    </modular-behaviour>
-                    <div class="invalid-feedback">Please select a valid role.</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="dateMask" class="form-label">Date (mask)</label>
-                  <div class="form-field">
-                    <modular-behaviour
-                      src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave-esm.js"
-                      data-date="true"
-                      data-delimiter="-"
-                      data-date-pattern="['Y', 'm', 'd']">
-                      <input id="dateMask" class="form-control" placeholder="YYYY-MM-DD" />
-                    </modular-behaviour>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="datePicker" class="form-label">Date (picker)</label>
-                  <div class="form-field">
-                    <modular-behaviour src="https://cdn.skypack.dev/flatpickr" data-alt-input="true" data-alt-format="F j, Y" data-date-format="Y-m-d">
-                      <input id="datePicker" class="form-control flatpickr" />
-                    </modular-behaviour>
-                  </div>
-                </div>
-                <div class="form-group readonly">
-                  <label for="readOnlyField" class="form-label">Readonly (paragraph)</label>
-                  <div class="form-field">
-                    <p class="form-control readonly">This is readonly</p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="readOnlyFieldReal" class="form-label">Readonly (real)</label>
-                  <div class="form-field">
-                    <input type="text" value="This is readonly" class="form-control" readonly />
-                  </div>
-                </div>
-                <div class="accordion" id="accordionExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                      <!-- it needs the collapsed class to start hidden -->
-                      <button
-                        class="accordion-button collapsed"
+                </nav>
+              </div>
+              <div class="main-header-nav main-header-tabs">
+                <bs-tabs linkable="1" responsive="1" end>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="tab-1"
+                        data-bs-toggle="tab"
+                        data-bs-target="#panel-1"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-controls="collapseOne">
-                        Hidden field element
-                      </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <div class="form-group">
-                          <label for="messageInput" class="form-label">Type a message</label>
-                          <div class="form-field">
-                            <textarea cols="50" rows="10" id="messageInput" class="form-control" required></textarea>
+                        role="tab"
+                        aria-controls="panel-1"
+                        aria-selected="false">
+                        Main
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        id="tab-2"
+                        data-bs-toggle="tab"
+                        data-bs-target="#panel-2"
+                        type="button"
+                        role="tab"
+                        aria-controls="panel-2"
+                        aria-selected="false">
+                        Details
+                      </a>
+                    </li>
+                  </ul>
+                </bs-tabs>
+              </div>
+            </header>
+            <section class="scroller">
+              <div class="tab-content container-fluid py-3">
+                <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+                  <input type="hidden" name="_hash" />
+                  <!-- this stores persistent hash if needed -->
+                  <div class="form-group">
+                    <label for="exampleCombineRow" class="form-label">Name</label>
+                    <div class="form-field">
+                      <!-- you can also use the simpler input-group-item alternative -->
+                      <div class="row" id="exampleCombineRow">
+                        <div class="col-6">
+                          <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+                        </div>
+                        <div class="col-6">
+                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Email address
+                      <br />
+                      (br) On two lines
+                      <br />
+                      (br) Or even three
+                    </label>
+                    <div class="form-field">
+                      <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" />
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                      <div class="invalid-feedback">Please enter a valid email</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1" class="form-label">
+                      Password
+                      <l-i name="help" title="It should be secure!" data-bs-toggle="tooltip"></l-i>
+                    </label>
+                    <div class="form-field">
+                      <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="new-password" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputRadioGroup" class="form-label">Radio group</label>
+                    <div class="form-field" id="inputRadioGroup">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                        <label class="form-check-label" for="exampleRadios1">Default radio</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                        <label class="form-check-label" for="exampleRadios2">Second default radio</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled />
+                        <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledTextInput" class="form-label">Disabled input that should flow on multiple lines</label>
+                    <div class="form-field">
+                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" disabled />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="disabledTextInput2" class="form-label">Labelwithwordwithnobreaksinbetweenthatcanbreakthelayoutevenwhenitoverflows</label>
+                    <div class="form-field">
+                      <input
+                        type="text"
+                        id="disabledTextInput2"
+                        class="form-control"
+                        placeholder="Type the value"
+                        value="Some kind of input that is very very long and should not break the layouteitherevenifitsoneline" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                      <label class="form-check-label" for="flexSwitchCheckDefault">
+                        Default switch checkbox input
+                        <br />
+                        On two lines
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="selectInput" class="form-label">Select something</label>
+                    <div class="form-field">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="validationTagsClear" class="form-label">Roles</label>
+                    <div class="form-field">
+                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1.5/tags.min.js">
+                        <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" size="1">
+                          <option selected disabled hidden value="">Choose a role...</option>
+                          <option value="1" selected="selected">Admin</option>
+                          <option value="2">Editor</option>
+                          <option value="3">Subscriber</option>
+                          <option value="4">Subscriber 2</option>
+                          <option value="5">Subscriber 3</option>
+                          <option value="6">Subscriber 4</option>
+                          <option value="7">Subscriber 5</option>
+                          <option value="8">Subscriber 6</option>
+                        </select>
+                      </modular-behaviour>
+                      <div class="invalid-feedback">Please select a valid role.</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="dateMask" class="form-label">Date (mask)</label>
+                    <div class="form-field">
+                      <modular-behaviour
+                        src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave-esm.js"
+                        data-date="true"
+                        data-delimiter="-"
+                        data-date-pattern="['Y', 'm', 'd']">
+                        <input id="dateMask" class="form-control" placeholder="YYYY-MM-DD" />
+                      </modular-behaviour>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="datePicker" class="form-label">Date (picker)</label>
+                    <div class="form-field">
+                      <modular-behaviour src="https://cdn.skypack.dev/flatpickr" data-alt-input="true" data-alt-format="F j, Y" data-date-format="Y-m-d">
+                        <input id="datePicker" class="form-control flatpickr" />
+                      </modular-behaviour>
+                    </div>
+                  </div>
+                  <div class="form-group readonly">
+                    <label for="readOnlyField" class="form-label">Readonly (paragraph)</label>
+                    <div class="form-field">
+                      <p class="form-control readonly">This is readonly</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="readOnlyFieldReal" class="form-label">Readonly (real)</label>
+                    <div class="form-field">
+                      <input type="text" value="This is readonly" class="form-control" readonly />
+                    </div>
+                  </div>
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <!-- it needs the collapsed class to start hidden -->
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne"
+                          aria-controls="collapseOne">
+                          Hidden field element
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <div class="form-group">
+                            <label for="messageInput" class="form-label">Type a message</label>
+                            <div class="form-field">
+                              <textarea cols="50" rows="10" id="messageInput" class="form-control" required></textarea>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
-                <div class="form-group">
-                  <label for="formFile" class="form-label">Default file input example</label>
-                  <div class="form-field superfile">
-                    <div class="input-group">
-                      <input class="form-control" type="file" id="formFile" name="file" />
-                      <button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
-                    </div>
-                    <img class="img-fluid superfile-preview" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <p class="form-label">Avatar</p>
-                  <div class="form-field">
-                    <div class="superfile avatar">
-                      <label for="formFile5" class="form-label">Avatar upload</label>
-                      <button type="button" class="btn-close superfile-clear" aria-label="Clear avatar"></button>
+                <div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <div class="form-field superfile">
                       <div class="input-group">
-                        <!-- double width/height for retina display -->
-                        <input
-                          class="form-control"
-                          type="file"
-                          id="formFile5"
-                          name="file5"
-                          accept="image/*"
-                          data-max-width="200"
-                          data-max-height="200"
-                          data-hide-clear="1"
-                          data-ratio="1:1" />
+                        <input class="form-control" type="file" id="formFile" name="file" />
+                        <button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
                       </div>
-                      <img src="https://randomuser.me/api/portraits/men/36.jpg" class="img-fluid superfile-preview" />
+                      <img class="img-fluid superfile-preview" />
                     </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheckRequired" required />
-                    <label class="form-check-label" for="exampleCheckRequired">This must be ticked</label>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="groupedinput" class="form-label">Group label</label>
-                  <div class="input-group form-field" id="groupedinput">
-                    <span class="input-group-text">First and last name</span>
-                    <input type="text" aria-label="First name" class="form-control" />
-                    <input type="text" aria-label="Last name" class="form-control" />
-                  </div>
-                </div>
-
-                <div class="form-group fieldgroup form-group--no-label">
-                  <div class="input-group">
-                    <div class="input-group-item">
-                      <label for="PrimaryColor" class="form-label">Primary color (in a row)</label>
-
-                      <input type="color" name="PrimaryColor" class="form-control" id="PrimaryColor" style="width: 60px" />
+                  <div class="form-group">
+                    <p class="form-label">Avatar</p>
+                    <div class="form-field">
+                      <div class="superfile avatar">
+                        <label for="formFile5" class="form-label">Avatar upload</label>
+                        <button type="button" class="btn-close superfile-clear" aria-label="Clear avatar"></button>
+                        <div class="input-group">
+                          <!-- double width/height for retina display -->
+                          <input
+                            class="form-control"
+                            type="file"
+                            id="formFile5"
+                            name="file5"
+                            accept="image/*"
+                            data-max-width="200"
+                            data-max-height="200"
+                            data-hide-clear="1"
+                            data-ratio="1:1" />
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/men/36.jpg" class="img-fluid superfile-preview" />
+                      </div>
                     </div>
-                    <div class="input-group-item">
-                      <label for="SecondaryColor" class="form-label">Secondary color (in a row)</label>
+                  </div>
 
-                      <input type="color" name="SecondaryColor" class="form-control" id="SecondaryColor" style="width: 60px" />
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheckRequired" required />
+                      <label class="form-check-label" for="exampleCheckRequired">This must be ticked</label>
                     </div>
-                    <div class="input-group-item">
-                      <label for="TertiaryColor" class="form-label">Tertiary color (in a row)</label>
+                  </div>
 
-                      <input type="color" name="TertiaryColor" class="form-control" id="TertiaryColor" style="width: 60px" />
+                  <div class="form-group">
+                    <label for="groupedinput" class="form-label">Group label</label>
+                    <div class="input-group form-field" id="groupedinput">
+                      <span class="input-group-text">First and last name</span>
+                      <input type="text" aria-label="First name" class="form-control" />
+                      <input type="text" aria-label="Last name" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="form-group fieldgroup form-group--no-label">
+                    <div class="input-group">
+                      <div class="input-group-item">
+                        <label for="PrimaryColor" class="form-label">Primary color (in a row)</label>
+
+                        <input type="color" name="PrimaryColor" class="form-control" id="PrimaryColor" style="width: 60px" />
+                      </div>
+                      <div class="input-group-item">
+                        <label for="SecondaryColor" class="form-label">Secondary color (in a row)</label>
+
+                        <input type="color" name="SecondaryColor" class="form-control" id="SecondaryColor" style="width: 60px" />
+                      </div>
+                      <div class="input-group-item">
+                        <label for="TertiaryColor" class="form-label">Tertiary color (in a row)</label>
+
+                        <input type="color" name="TertiaryColor" class="form-control" id="TertiaryColor" style="width: 60px" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-          <footer class="main-footer">
-            <button type="submit" class="btn btn-success">
-              <l-i name="done"></l-i>
-              Save
-            </button>
-            <button type="button" class="btn btn-primary" id="otherAction">Other action</button>
-            <!-- align end with ms auto -->
-            <div class="btn-group ms-auto" aria-label="Navigation">
-              <button type="button" class="btn btn-light">
-                <l-i name="navigate_before"></l-i>
+            </section>
+            <footer class="main-footer">
+              <button type="submit" class="btn btn-success">
+                <l-i name="done"></l-i>
+                Save
               </button>
-              <button type="button" class="btn btn-light">
-                <l-i name="navigate_next"></l-i>
-              </button>
-            </div>
-          </footer>
-        </form>
+              <button type="button" class="btn btn-primary" id="otherAction">Other action</button>
+              <!-- align end with ms auto -->
+              <div class="btn-group ms-auto" aria-label="Navigation">
+                <button type="button" class="btn btn-light">
+                  <l-i name="navigate_before"></l-i>
+                </button>
+                <button type="button" class="btn btn-light">
+                  <l-i name="navigate_next"></l-i>
+                </button>
+              </div>
+            </footer>
+          </form>
+        </div>
       </main>
     </div>
   </body>

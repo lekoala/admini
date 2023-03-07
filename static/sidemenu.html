@@ -191,10 +191,12 @@
       </aside>
 
       <main class="main">
-        <div class="sidemenu offcanvas offcanvas-start" id="my-demo-panel">
+        <!-- .offcanvas-md hides content in an offcanvas below the md breakpoint, but shows the content above the md breakpoint. -->
+        <div class="sidemenu offcanvas-md offcanvas-start" id="my-demo-panel">
           <header class="sidemenu-header">
             <strong>My menu</strong>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <!-- this gets hidden automatically -->
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#my-demo-panel" aria-label="Close"></button>
           </header>
           <section class="scroller">
             <div class="p-3">
@@ -250,11 +252,14 @@
             </div>
           </footer>
         </div>
-        <div class="sidemenu offcanvas offcanvas-start" style="width: 320px" id="my-scroll-panel">
+        <!-- .offcanvas-lg hides content in an offcanvas below the lg breakpoint, but shows the content above the lg breakpoint. -->
+        <!-- align to end to avoid juxtaposition with sidebar -->
+        <div class="sidemenu offcanvas-lg offcanvas-end" style="width: 320px" id="my-scroll-panel">
           <!-- any width :) -->
           <header class="sidemenu-header">
             <strong>Scroll menu</strong>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <!-- this gets hidden automatically -->
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#my-scroll-panel" aria-label="Close"></button>
           </header>
           <section class="scroller">
             <div class="p-3">
@@ -409,10 +414,12 @@
               </nav>
             </div>
             <div class="main-header-nav">
-              <button id="show-demo-panel-top" type="button" class="btn btn-default ms-2 sidemenu-toggle" data-bs-toggle="offcanvas" href="#my-demo-panel">
+              <!-- you can use -md or -lg toggles depending on how many menus and their size relative to viewport -->
+              <!-- data-bs-target is mandatory for responsive offcanvas -->
+              <button id="show-demo-panel-top" type="button" class="btn btn-default ms-2 sidemenu-toggle-md" data-bs-toggle="offcanvas" data-bs-target="#my-demo-panel">
                 <l-i name="menu_open" size="24" style="--size: 24px"><i class="material-icons-two-tone">menu_open</i></l-i>
               </button>
-              <button id="show-scroll-panel-top" type="button" class="btn btn-default ms-2 sidemenu-toggle" data-bs-toggle="offcanvas" href="#my-scroll-panel">
+              <button id="show-scroll-panel-top" type="button" class="btn btn-default ms-2 sidemenu-toggle-lg" data-bs-toggle="offcanvas" data-bs-target="#my-scroll-panel">
                 <l-i name="view_list" size="24" style="--size: 24px"><i class="material-icons-two-tone">menu_open</i></l-i>
               </button>
             </div>
@@ -423,8 +430,8 @@
                 <strong>Creating</strong>
                 side panels
               </h1>
-              <p>Admin section can have one (or more!) side panels. These panels are full scrollable and can have any width.</p>
-              <p>In mobile view, they are controlled as offcanvas menus.</p>
+              <p>Admin section can have one (or more! but two is probably more than enough) side panels. These panels are full scrollable and can have any width.</p>
+              <p>In mobile view, they are controlled as offcanvas menus. They can collapse at -md and -lg breakpoints.</p>
             </div>
           </section>
         </div>

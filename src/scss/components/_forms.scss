@@ -3,6 +3,12 @@ $form-label-width: $spacer * 12 !default;
 $form-max-width: 768px;
 
 form {
+  // glitchy when switching theme
+  // .form-control,
+  // .form-select {
+  //   transition: unset;
+  // }
+
   // Using these classes allow automatic responsive layout
   .form-group {
     margin-bottom: $spacer;

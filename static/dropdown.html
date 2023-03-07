@@ -45,6 +45,7 @@
       nomodule
       defer
       id="nomodule-browser-warning"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3/modular-behaviour.min.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
       window.admini.init(); // this should go last
@@ -163,7 +164,7 @@
         </div>
         <!-- /sidebar-content -->
 
-       <!-- sidebar-footer -->
+        <!-- sidebar-footer -->
         <div class="sidebar-footer">
           <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
@@ -411,7 +412,74 @@
                   </ul>
                 </div>
               </div>
+              <!-- / fixed -->
+
+              <hr>
+              <div class="row">
+                <div class="col-auto" style="width: 300px">
+                  <label for="validationTagsClear" class="form-label">Tags</label>
+                  <div class="form-field">
+                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
+                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" data-fixed="1" size="1">
+                        <option selected disabled hidden value="">Choose a role...</option>
+                        <option value="1" selected="selected">Admin</option>
+                        <option value="2">Editor</option>
+                        <option value="3">Subscriber</option>
+                        <option value="4">Subscriber 2</option>
+                        <option value="5">Subscriber 3</option>
+                        <option value="6">Subscriber 4</option>
+                        <option value="7">Subscriber 5</option>
+                        <option value="8">Subscriber 6</option>
+                      </select>
+                    </modular-behaviour>
+                    <div class="invalid-feedback">Please select a valid role.</div>
+                  </div>
+                </div>
+
+                <div class="col-auto" style="width: 300px">
+                  <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
+                    <div class="form-field">
+                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
+                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" data-fixed="1" size="1">
+                          <option selected disabled hidden value="">Choose a role...</option>
+                          <option value="1" selected="selected">Admin</option>
+                          <option value="2">Editor</option>
+                          <option value="3">Subscriber</option>
+                          <option value="4">Subscriber 2</option>
+                          <option value="5">Subscriber 3</option>
+                          <option value="6">Subscriber 4</option>
+                          <option value="7">Subscriber 5</option>
+                          <option value="8">Subscriber 6</option>
+                        </select>
+                      </modular-behaviour>
+                      <div class="invalid-feedback">Please select a valid role.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-auto" style="width: 300px">
+                  <div style="position: relative; overflow: hidden; overflow-x: scroll; height: 80px; width: 400px; background: #ccc">
+                    <div class="form-field" style="margin-left: 500px;width:200px">
+                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
+                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" data-fixed="1" size="1">
+                          <option selected disabled hidden value="">Choose a role...</option>
+                          <option value="1" selected="selected">Admin</option>
+                          <option value="2">Editor</option>
+                          <option value="3">Subscriber</option>
+                          <option value="4">Subscriber 2</option>
+                          <option value="5">Subscriber 3</option>
+                          <option value="6">Subscriber 4</option>
+                          <option value="7">Subscriber 5</option>
+                          <option value="8">Subscriber 6</option>
+                        </select>
+                      </modular-behaviour>
+                      <div class="invalid-feedback">Please select a valid role.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- / container -->
           </section>
         </div>
       </main>

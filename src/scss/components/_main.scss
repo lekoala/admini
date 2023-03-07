@@ -46,7 +46,8 @@ html {
   }
 }
 
-.main-container {
+.main-container,
+.main-container > form {
   display: flex;
   height: 100%;
   width: 100%;
@@ -55,7 +56,8 @@ html {
 
 @include media-breakpoint-up(md) {
   .main,
-  .main-container {
+  .main-container,
+  .main-container > form {
     max-height: 100vh;
   }
 }

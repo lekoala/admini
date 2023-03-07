@@ -4,8 +4,15 @@
   flex-direction: column;
   border-right: 1px solid $nav-tabs-border-color;
 
-  &.offcanvas {
+  &.offcanvas,
+  &.offcanvas-md,
+  &.offcanvas-lg {
     border-right: 1px solid $nav-tabs-border-color;
+
+    &.show {
+      // should be able to override sidebar if necessary
+      z-index: 1050;
+    }
   }
 
   section {
@@ -39,9 +46,10 @@
 
   l-i {
     --size: 20px;
-  }
-  l-i + span {
-    margin-left: $spacer * 0.5;
+
+    & + span {
+      margin-left: $spacer * 0.5;
+    }
   }
 
   > div {
@@ -54,21 +62,33 @@
   .sidemenu {
     width: $sidemenu-width;
     display: flex;
-    // Negate offcanvas effect
-    &.offcanvas {
-      position: inherit;
-      visibility: visible;
-      transform: unset;
-      transition: none;
-      z-index: unset;
+
+    &.offcanvas-md {
+      .sidemenu-header {
+        .btn-close {
+          display: none;
+        }
+      }
     }
   }
-  .sidemenu-header {
-    .btn-close {
-      display: none;
+
+  .sidemenu-toggle-md {
+    display: none;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .sidemenu {
+    &.offcanvas-lg {
+      .sidemenu-header {
+        .btn-close {
+          display: none;
+        }
+      }
     }
   }
-  .sidemenu-toggle {
+
+  .sidemenu-toggle-lg {
     display: none;
   }
 }

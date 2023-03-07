@@ -43,6 +43,7 @@
       --dropdown-animation-factor: 2;
       --dropdown-animation-end-factor: -1;
     }
+    // With popper, don't have any margin at all
     .dropdown-menu[data-popper-placement].show {
       --dropdown-animation-factor: -2;
       --dropdown-animation-end-factor: 0;
