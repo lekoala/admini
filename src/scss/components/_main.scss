@@ -176,8 +176,15 @@ html {
     white-space: nowrap;
   }
 
+  .nav-tabs .nav-link:hover {
+    border-color: transparent;
+    color: var(--#{$prefix}nav-tabs-link-active-color);
+    // border-bottom: 1px solid $primary;
+  }
+
   .nav-tabs .nav-link.active {
     background: $main-bg;
+    border-color: $nav-tabs-border-color;
   }
 
   .nav-tabs,

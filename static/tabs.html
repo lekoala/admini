@@ -170,7 +170,7 @@
         </div>
         <!-- /sidebar-content -->
 
-       <!-- sidebar-footer -->
+        <!-- sidebar-footer -->
         <div class="sidebar-footer">
           <div class="dropup dropend">
             <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
@@ -353,9 +353,11 @@
               </div>
               <div class="tab-pane fade" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
                 Panel 3
-                <div class="lazy-loadable" id="panel-3-lazy">
-                  <l-i name="three_dots_loading" set="eo" type="animated" size="36"></l-i>
-                </div>
+                <lazy-loader>
+                  <div id="panel-3-lazy">
+                    <l-i name="three_dots_loading" set="eo" type="animated" size="36"></l-i>
+                  </div>
+                </lazy-loader>
               </div>
               <div class="tab-pane fade" id="panel-6" role="tabpanel" aria-labelledby="tab-6">Panel 6</div>
             </div>
