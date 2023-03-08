@@ -3,7 +3,7 @@ import debounce from "./utils/debounce.js";
 
 const MOBILE_SIZE = 768;
 const MINIMENU = "minimenu";
-const DARKMODE = "darkmode";
+const THEME = "theme";
 
 class AdminiUi {
   constructor() {
@@ -29,6 +29,7 @@ class AdminiUi {
 
         document.body.classList.toggle(MINIMENU);
         const enabled = document.body.classList.contains(MINIMENU);
+        // If you set a new cookie, older cookies are not overwritten
         if (enabled) {
           document.cookie = `${MINIMENU}=1`;
         } else {
@@ -221,10 +222,21 @@ class AdminiUi {
   }
 
   darkMode() {
-    const selector = document.querySelector("#toggle-dark-mode");
-    let mode = localStorage.getItem(DARKMODE) ?? "";
-    document.documentElement.dataset.bsTheme = mode;
+    // Set mode according to html value
+    let mode = document.documentElement.dataset.bsTheme ?? "";
+    // If none set, check cookies
+    // It's better to set it server side to avoid transition glitches
+    if (!mode) {
+      if (document.cookie.includes(`${THEME}=light`)) {
+        mode = "light";
+      } else if (document.cookie.includes(`${THEME}=dark`)) {
+        mode = "dark";
+      }
+      document.documentElement.dataset.bsTheme = mode;
+    }
 
+    // Deal with selector
+    const selector = document.querySelector("#toggle-dark-mode");
     if (selector) {
       selector.querySelectorAll("[value]").forEach((node) => {
         if (node.getAttribute("value") == mode) {
@@ -247,8 +259,16 @@ class AdminiUi {
             node.setAttribute("hidden", "");
           }
         });
-        localStorage.setItem(DARKMODE, mode);
+        document.cookie = `${THEME}=${mode}`;
+
         document.documentElement.dataset.bsTheme = mode;
+        document.dispatchEvent(
+          new CustomEvent("admini.darkmode", {
+            detail: {
+              theme: mode,
+            },
+          })
+        );
       });
     }
   }

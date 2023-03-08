@@ -50,11 +50,15 @@
 }
 
 #sidebar-selector {
-  background-color: desaturate(mix(black, $primary, 80%), 20%);
+  background-color: transparent;
   border: 0;
-  border-bottom: 1px solid $sidebar-cta-bg;
+  border-bottom: 1px solid $sidebar-border-color;
   border-radius: 0;
   color: $sidebar-link-color;
+
+  option {
+    background-color: $sidebar-cta-bg;
+  }
 
   &:focus {
     box-shadow: none;
@@ -71,12 +75,12 @@
   text-decoration: none;
   cursor: pointer;
   border-left-style: solid;
-  border-left-width: 3px;
+  border-left-width: 2px;
   color: $sidebar-link-color;
   border-left-color: $sidebar-link-border-left-color;
 
   l-i {
-    margin-right: 0.5rem;
+    margin-right: calc($sidebar-link-padding-x - 2px);
     color: $sidebar-link-icon-color;
   }
 
@@ -120,7 +124,7 @@
   color: $sidebar-brand-color;
   flex: 0 0 $sidebar-brand-height;
   background: $sidebar-brand-bg;
-  border-bottom: 1px solid $sidebar-brand-border-color;
+  border-bottom: 1px solid $sidebar-border-color;
   // Bottom shadow
   box-shadow: inset 0 -7px 9px -7px rgba(0, 0, 0, 0.4);
 
@@ -152,12 +156,13 @@
 }
 
 .sidebar-profile {
-  border-bottom: 1px solid $sidebar-cta-bg;
-  padding: ($sidebar-cta-padding * 0.5) $sidebar-cta-padding;
+  border: 0;
+  border-bottom: 1px solid $sidebar-border-color;
+  padding: $sidebar-link-padding;
   display: block;
   width: 100%;
   text-align: left;
-  border: 0;
+  color: $sidebar-link-color;
 
   img {
     display: block;
@@ -168,13 +173,17 @@
   // We use data-bs-display="static"
   .dropdown-menu {
     // Align with actual trigger, not with the icon
-    left: calc($sidebar-cta-padding + ($spacer * 0.5) + 44px);
+    left: calc($sidebar-link-padding-x + ($spacer * 0.5) + 44px);
     top: ($sidebar-cta-padding * 0.5) + 1.5rem;
   }
 
   .sidebar-profile-name {
     color: $primary;
     padding: 0;
+  }
+
+  .sidebar-profile-subtitle {
+    opacity: 0.5;
   }
 }
 
@@ -189,7 +198,7 @@
     --size: 20px;
   }
   l-i + span {
-    margin-left: $spacer * 0.5;
+    margin-left: $sidebar-link-padding-x;
   }
 
   > .btn,
@@ -220,9 +229,13 @@
 }
 
 .sidebar-profile-mini {
+  border: 0;
+  border-bottom: 1px solid $sidebar-border-color;
+
   .sidebar-profile-mininame {
     display: flex;
     max-width: calc(100% - $sidebar-footer-height);
+    padding: $sidebar-link-padding;
   }
   > .btn {
     color: $primary;
@@ -238,7 +251,7 @@
 }
 
 .sidebar-footer {
-  border-top: 1px solid $sidebar-cta-bg;
+  border-top: 1px solid $sidebar-border-color;
 }
 
 // Sidebar nav header
@@ -300,7 +313,6 @@
   }
 
   .sidebar-link {
-    padding: $sidebar-link-compact-padding;
     l-i {
       --size: 24px;
       display: flex;
@@ -398,11 +410,9 @@
       background: $sidebar-bg-dark;
     }
     .sidebar-brand {
-      border-color: $sidebar-cta-bg;
       background: $sidebar-brand-bg-dark;
     }
     .sidebar-footer {
-      border-color: $sidebar-cta-bg;
       background: $sidebar-brand-bg-dark;
     }
   }
