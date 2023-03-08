@@ -66,7 +66,7 @@ html {
 
 .main-header {
   background: $header-bg;
-  height: $sidebar-brand-height;
+  min-height: $sidebar-brand-height;
   border-bottom: 1px solid $nav-tabs-border-color;
 
   // We always keep everything on one line. We rely on our bs-tabs component to fit things as needed
@@ -74,6 +74,10 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &.main-header-wrap {
+    flex-wrap: wrap;
+  }
 }
 
 .main-header-sidebar {
@@ -100,7 +104,9 @@ html {
   display: flex;
   align-items: center;
   flex-grow: 0;
+  max-height: $sidebar-brand-height;
   max-width: 70vw; // leave some space for the tabs
+  margin-right: $spacer;
   overflow: hidden;
   min-height: $sidebar-brand-height; // ensure consistent layout if tabs shift below
 
@@ -154,23 +160,44 @@ html {
     }
   }
 }
+.main-header.main-header-wrap .main-header-info {
+  max-width: none;
+}
 
 .main-header-nav,
 .main-header-tabs {
   padding: ($spacer * 0.5) ($grid-gutter-width * 0.5);
   display: flex;
   justify-content: flex-end; // Align to end
+  align-items: center;
   flex-grow: 1; // Fill space to allow responsive tabs
+
+  // There can be extra buttons in the nav
+  a.btn,
+  button.btn {
+    &:active {
+      border-color: transparent;
+      color: $primary;
+    }
+  }
+}
+
+// Extra tools always visible
+.main-header-utils {
+  align-self: center;
 }
 
 // Nicely tuck the tabs to the bottom
 .main-header-tabs {
   padding-bottom: 0;
   height: $sidebar-brand-height;
-  align-items: flex-end; // Align to bottom of container
   align-self: flex-end;
   position: relative;
   bottom: -1px;
+
+  bs-tabs {
+    align-self: flex-end; // Align to bottom of container
+  }
 
   .bs-tabs-dropdown a.active {
     white-space: nowrap;

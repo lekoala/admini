@@ -200,7 +200,7 @@
 
       <main class="main">
         <div class="main-container">
-          <header class="main-header">
+          <header class="main-header main-header-wrap">
             <div class="main-header-sidebar">
               <button
                 type="button"
@@ -227,6 +227,7 @@
             </div>
             <!-- keep in mind that responsive tabs need to have flex-grow in order to check for available space -->
             <div class="main-header-nav main-header-tabs">
+              <div class="main-header-utils">Some utils here</div>
               <bs-tabs linkable responsive end>
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
@@ -286,6 +287,10 @@
                   </li>
                 </ul>
               </bs-tabs>
+              <!-- you can add a random button -->
+              <button type="button" class="btn btn-default">
+                <l-i name="view_list" size="24" style="--size: 24px"><i class="material-icons-two-tone">menu_open</i></l-i>
+              </button>
             </div>
           </header>
           <section class="scroller">
