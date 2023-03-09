@@ -48,6 +48,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="js/admini.min.js"></script>
     <script type="module">
+      // Even if the lazy-loader is parsed first, observer will fire after script are evaluated
       let el = document.querySelector("#panel-3-lazy");
       el.addEventListener(
         "lazyload",
@@ -293,6 +294,7 @@
               <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
                 <h1>Panel 1</h1>
                 <p>Tabs are fully responsive and take into account available width in the container.</p>
+                <p>If you really need a lot of space, add <code>main-header-wrap</code> to <code>main-header</code> to allow wrapping on multiple lines.</p>
                 <p>
                   You can use
                   <code>bs-tabs</code>

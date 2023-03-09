@@ -105,7 +105,6 @@ html {
   align-items: center;
   flex-grow: 0;
   max-height: $sidebar-brand-height;
-  max-width: 70vw; // leave some space for the tabs
   margin-right: $spacer;
   overflow: hidden;
   min-height: $sidebar-brand-height; // ensure consistent layout if tabs shift below
