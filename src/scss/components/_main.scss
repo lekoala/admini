@@ -229,7 +229,8 @@ html {
   padding: 0 $spacer;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // don't do this, it's better to add margin-left: auto to last element
+  // justify-content: space-between;
   align-items: center;
 
   .input-group {
@@ -237,13 +238,15 @@ html {
   }
 
   // Automate spacing
+  // We cannot add a margin left because it would look weird when wrapping on multiple lines
   > * {
     margin-top: $spacer * 0.25;
     margin-bottom: $spacer * 0.25;
+    margin-left: 0;
+    margin-right: $spacer * 0.5;
   }
-  > *:not(:first-child) {
-    margin-left: $spacer * 0.25;
-    margin-right: $spacer * 0.25;
+  > *:last-child {
+    margin-right: 0;
   }
 
   // Nicer outlines in groups
