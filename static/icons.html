@@ -37,7 +37,7 @@
     </script>
     <script type="module">
       const wrapper = document.querySelector(".icon-wrapper");
-      const icons = fetch("./icons.txt").then((response) => {
+      const icons = fetch("./resources/icons.txt").then((response) => {
         response.text().then((list) => {
           const array = list.split(/\r?\n/);
           array.forEach((line) => {
