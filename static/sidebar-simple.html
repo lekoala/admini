@@ -28,44 +28,20 @@
   <script src="js/last-icon.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
-  <style type="text/css">
-    .grid l-i {
-      --size: 36px;
-      margin-bottom: 1rem;
-    }
-
-    .icon-wrapper>div {
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    .icon-wrapper>div:after {
-      content: attr(data-name);
-      display: block;
-      font-size: 12px;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  </style>
 
   <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module" src="js/admini.min.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
-    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="sidebar-scope" src="/partials/sidebar-simple.html"></sco-pe>
     <sco-pe id="main-scope">
       <main class="main">
         <div class="main-container">
+          <!-- header -->
           <header class="main-header">
             <div class="main-header-sidebar">
               <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
@@ -74,20 +50,22 @@
               </button>
             </div>
             <div class="main-header-info">
+              <!-- breadcrumb -->
               <nav aria-label="breadcrumb">
                 <div class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">Help</li>
+                  <li class="breadcrumb-item active" aria-current="page">Admin section</li>
                 </div>
               </nav>
             </div>
+            <div class="main-header-nav"></div>
           </header>
+          <!-- section -->
           <section class="scroller">
-            <div class="container-fluid py-3">
-              <p>
-                Need help ? Have a question ?
-                <a href="https://github.com/lekoala/admini/issues">Head towards the repository</a>
-                .
-              </p>
+            <div class="container-fluid">
+              <h1 class="my-4">
+                <strong>Welcome</strong>
+                to admini
+              </h1>
             </div>
           </section>
         </div>

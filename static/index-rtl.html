@@ -1,251 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- page meta -->
-    <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
-    <meta name="author" content="LeKoala" />
-    <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
 
-    <!-- page title & icon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
-    <title>Admini</title>
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- styles -->
-    <link href="css/admini.rtl.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
 
-    <!-- icons -->
-    <script>
-      window.LastIcon = {
-        types: {
-          material: "twotone",
-        },
-        defaultSet: "material",
-        fonts: ["material"],
-      };
-    </script>
-    <script src="js/last-icon.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+  <!-- styles -->
+  <link href="css/admini.rtl.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
-    <!-- scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js"
-      nomodule
-      defer
-      id="nomodule-browser-warning"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="js/admini.min.js"></script>
-    <script type="module">
-      window.admini.init(); // this should go last
-    </script>
-  </head>
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
-  <!-- minimenu class should be applied on render -->
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/admini.min.js"></script>
+</head>
 
-  <body>
-    <div class="wrapper">
-      <aside id="sidebar" class="sidebar" data-bs-scroll="true">
-        <a class="sidebar-brand" href="index.html">
-          <span class="sidebar-brand-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
-              <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
-            </svg>
-          </span>
-          <span class="sidebar-brand-title">Admini</span>
-        </a>
+<!-- minimenu class should be applied on render -->
 
-        <!-- optional selector -->
-        <select name="" id="sidebar-selector" class="form-select">
-          <option value="">Main site</option>
-          <option value="" style="background: crimson; color: #fff">This site</option>
-          <option value="">That site</option>
-          <option value="">Other site with a long name&nbsp;&nbsp;</option>
-          <!-- cheap trick to add space after -->
-        </select>
-
-        <!-- optional dropdown or profile -->
-        <div class="sidebar-profile dropdown">
-          <button class="btn btn-default" id="profile-trigger" data-bs-toggle="dropdown" data-bs-display="static" data-bs-offset="-32" aria-expanded="false">
-            <img src="https://randomuser.me/api/portraits/thumb/men/75.jpg" class="avatar avatar-thumb rounded cursor-pointer" alt="John Nemo" />
-            <div class="sidebar-profile-name dropdown-toggle">John Nemo</div>
-            <div class="sidebar-profile-subtitle">Administrator</div>
-          </button>
-
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="profile.html">Profile</a>
-            <a class="dropdown-item" href="#">Log out</a>
-          </div>
-        </div>
-
-        <!-- sidebar-content -->
-        <div class="sidebar-content scroller">
-          <ul class="sidebar-nav">
-            <li class="sidebar-nav-header">UI</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link active" href="index.html">
-                <l-i name="dashboard"></l-i>
-                <span>Dashboard</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="bottom.html">
-                <l-i name="vertical_align_bottom"></l-i>
-                <span>Bottom actions</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="tabs.html">
-                <l-i name="tab"></l-i>
-                <span>Tabbed navigation</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="sidemenu.html">
-                <l-i name="view_sidebar"></l-i>
-                <span>Sidemenu</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="unpoly.html">
-                <l-i name="layers"></l-i>
-                <span>Unpoly</span>
-              </a>
-            </li>
-
-            <li class="sidebar-nav-header">Components</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="avatars.html">
-                <l-i name="person"></l-i>
-                <span>Avatars</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="forms.html">
-                <l-i name="feed"></l-i>
-                <span>Forms</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="tables.html">
-                <l-i name="view_list"></l-i>
-                <span>Tables</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="modals.html">
-                <l-i name="panorama_wide_angle"></l-i>
-                <span>Modals</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="datatable.html">
-                <l-i name="view_agenda"></l-i>
-                <span>Datatable</span>
-              </a>
-            </li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="icons.html">
-                <l-i name="star"></l-i>
-                <span>Icons</span>
-                <bs-toggle mobile>
-                  <span class="sidebar-badge badge bg-primary">2.191</span>
-                </bs-toggle>
-              </a>
-            </li>
-
-            <li class="sidebar-nav-header">Useful links</li>
-
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="https://github.com/lekoala/admini">
-                <l-i name="star"></l-i>
-                <span>Repository</span>
-              </a>
-            </li>
-            <li class="sidebar-item" style="margin-bottom: 500px">
-              <a class="sidebar-link" href="#">
-                <l-i name="star"></l-i>
-                <span>Link with lots of space below, scroll to see the CTA</span>
-              </a>
-            </li>
-          </ul>
-
-          <!-- this will collapse to a button when sidebar is collapsed -->
-          <div class="sidebar-cta dropdown">
-            <button class="btn dropdown-toggle" id="sidebar-cta-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <l-i name="star"></l-i>
-            </button>
-            <div class="sidebar-cta-content dropdown-menu">
-              <strong class="d-inline-block mb-2">Heads up!</strong>
-              <div class="mb-3 text-sm">This is a warning message</div>
-              <div class="d-grid">
-                <a href="#" class="btn btn-primary">Do something</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /sidebar-content -->
-
-       <!-- sidebar-footer -->
-        <div class="sidebar-footer">
-          <div class="dropup dropend">
-            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
-              <l-i name="help_outline"></l-i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
-              <li><a class="dropdown-item" href="help.html">Help</a></li>
-              <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="" id="toggle-dark-mode">Toggle dark mode</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <p class="m-3 mb-0">
-                <small>Built with Admini</small>
-              </p>
-            </ul>
-          </div>
-          <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
-            <l-i name="menu_open"></l-i>
-          </button>
-        </div>
-        <!-- /sidebar-footer -->
-      </aside>
-
+<body>
+  <div class="wrapper">
+    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="main-scope">
       <main class="main">
         <div class="main-container">
           <header class="main-header">
             <div class="main-header-sidebar">
-              <button
-                type="button"
-                class="btn btn-primary btn-flex btn-square rounded-0"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#sidebar"
-                aria-controls="sidebar">
+              <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar" aria-controls="sidebar">
                 <l-i name="menu"></l-i>
               </button>
             </div>
@@ -364,13 +166,8 @@
                     <div class="card-badge text-primary">
                       <l-i name="star"></l-i>
                     </div>
-                    <svg
-                      class="card-img-svg card-img-top"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Image cap"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false">
+                    <svg class="card-img-svg card-img-top" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
+                      preserveAspectRatio="xMidYMid slice" focusable="false">
                       <rect width="100%" height="100%" fill="#868e96"></rect>
                       <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
                     </svg>
@@ -489,6 +286,8 @@
           </section>
         </div>
       </main>
-    </div>
-  </body>
+    </sco-pe>
+  </div>
+</body>
+
 </html>

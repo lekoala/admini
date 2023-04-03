@@ -1,4 +1,3 @@
-import attach from "./utils/attach.js";
 import debounce from "./utils/debounce.js";
 
 const MOBILE_SIZE = 768;
@@ -78,9 +77,11 @@ class AdminiUi {
    * Sidebar layout is controlled with offcanvas but we may need to restore
    * visibility if it was hidden
    * @param {Number} w
-   * @return {bootstrap.Offcanvas|null}
    */
   toggleSidebar(w = null) {
+    if (!this.sidebar) {
+      return;
+    }
     const classes = ["offcanvas", "offcanvas-start"];
     if (w === null) {
       w = window.innerWidth;
@@ -100,9 +101,7 @@ class AdminiUi {
     if (w <= MOBILE_SIZE) {
       this.sidebar.classList.add(...classes);
       const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
-      return sidebarOffcanvas;
     }
-    return null;
   }
 
   /**
@@ -156,69 +155,6 @@ class AdminiUi {
   setMobileSize() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
-  }
-
-  /**
-   * Simple utilities for dropdowns
-   */
-  simpleDropdowns() {
-    const showClass = "show";
-    const menuClass = ".dropdown-menu";
-    const fixedClass = "dropdown-fixed";
-
-    // Dropdowns not using the bs-toggle
-    document.querySelectorAll(".dropdown-toggle:not([data-bs-toggle])").forEach(
-      /**
-       * @param {HTMLElement} el
-       */
-      (el) => {
-        /**
-         * @type {HTMLElement}
-         */
-        const menu = el.parentElement.querySelector(menuClass);
-        const isDropup = el.parentElement.classList.contains("dropup");
-        el.ariaExpanded = menu.classList.contains(showClass) ? "true" : "false";
-        el.addEventListener("click", (e) => {
-          menu.classList.toggle(showClass);
-          el.ariaExpanded = menu.classList.contains(showClass) ? "true" : "false";
-          // Dropup need some love
-          if (isDropup && !menu.classList.contains(fixedClass)) {
-            menu.style.transform = "translateY(calc(-100% - " + el.offsetHeight + "px))";
-          }
-          // Another click should trigger blur
-          if (!menu.classList.contains(showClass)) {
-            //@ts-ignore
-            document.activeElement.blur();
-          }
-          // Trigger positioning
-          if (menu.classList.contains(fixedClass)) {
-            menu.dispatchEvent(new CustomEvent("update_position"));
-          }
-        });
-        el.addEventListener("blur", (e) => {
-          menu.classList.remove(showClass);
-        });
-
-        // Fixed strategy
-        if (menu.classList.contains(fixedClass)) {
-          attach(menu, {
-            parent: el,
-            end: menu.classList.contains("dropdown-end"),
-            offsetY: (y) => {
-              return isDropup ? `calc(-100% - ${el.offsetHeight + y}px)` : `-${y}px`;
-            },
-          });
-        }
-      }
-    );
-
-    // Alternative triggers for dropdowns
-    document.querySelectorAll(".dropdown-alias").forEach((el) => {
-      const menu = el.parentElement.querySelector(menuClass);
-      el.addEventListener("click", (e) => {
-        menu.classList.toggle(showClass);
-      });
-    });
   }
 
   darkMode() {
@@ -281,7 +217,6 @@ class AdminiUi {
     this.dismissableAlerts();
     this.toasts();
     this.toggleSidebar();
-    this.simpleDropdowns();
     this.darkMode();
   }
 }

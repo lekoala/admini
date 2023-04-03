@@ -75,6 +75,7 @@ function getScrollPosition(el) {
 function init() {
   const fn = debounce((e) => {
     for (let [el, opts] of map) {
+      // Skip hidden elements
       if (!el.offsetHeight) {
         continue;
       }
@@ -109,11 +110,11 @@ function init() {
     }
   }, 0);
   //@ts-ignore
-  window.addEventListener("scroll", fn, true);
+  window.addEventListener("scroll", fn);
   //@ts-ignore
-  window.addEventListener("resize", fn, true);
+  window.addEventListener("resize", fn);
   //@ts-ignore
-  window.addEventListener("update_position", fn, true);
+  window.addEventListener("update_position", fn);
   observer.observe(document, { subtree: true, childList: true });
 }
 

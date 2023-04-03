@@ -1,6 +1,6 @@
 {
   "name": "admini",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "Minimalistic Admin Panel built with Bootstrap 5",
   "main": "src/js/index.js",
   "keywords": [
@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "bootstrap": "^5.3.0-alpha2",
-    "bs-companion": "^1.3.2"
+    "bs-companion": "^1.3.2",
+    "last-icon": "^2.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -34,10 +35,12 @@
     "prefix-css": "postcss static/css/admini.min.css --replace --use autoprefixer",
     "rtl-css": "rtlcss static/css/admini.min.css static/css/admini.rtl.min.css",
     "build-css": "npm run compile-css && npm run prefix-css && npm run rtl-css",
-    "copy-assets": "shx cp -r ./node_modules/last-icon/last-icon.min.js* ./static/js/",
+    "build-li": "esbuild --bundle --minify --format=iife --sourcemap src/js/last-icon.js --outfile=static/js/last-icon.min.js",
+    "_copy-assets": "shx cp -r ./node_modules/last-icon/last-icon.min.js* ./static/js/",
     "build-all": "npm run build && npm run build-css && git add -A && git commit -m \"build files\"",
     "update-deps": "npx npm-check-updates -u",
-    "bump": "npm run build-all && npm version patch"
+    "bump": "npm run build-all && npm version patch",
+    "local-server": "php -S localhost:8002 -t ./static"
   },
   "author": "LeKoala",
   "repository": {

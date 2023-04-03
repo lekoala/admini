@@ -3,6 +3,7 @@
 html {
   height: -webkit-fill-available;
 }
+
 .wrapper {
   align-items: stretch;
   display: flex;
@@ -27,11 +28,29 @@ html {
 //   bottom: 0;
 // }
 
+sco-pe {
+  visibility: hidden;
+  transition: opacity 0.5s ease-out;
+  opacity: 0;
+
+  &.scope-loaded {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+/* Scope - can be a regular div if not using sco-pe */
+
+#main-scope {
+  width: 100%;
+  height: 100%;
+}
+
 /* Main container */
 
 .main {
   display: flex;
-  width: 100%;
   height: 100%;
   background: $main-bg;
   flex-direction: row;
@@ -47,7 +66,7 @@ html {
 }
 
 .main-container,
-.main-container > form {
+.main-container>form {
   display: flex;
   height: 100%;
   width: 100%;
@@ -55,9 +74,10 @@ html {
 }
 
 @include media-breakpoint-up(md) {
+
   .main,
   .main-container,
-  .main-container > form {
+  .main-container>form {
     max-height: 100vh;
   }
 }
@@ -122,19 +142,22 @@ html {
     }
   }
 
-  a + nav {
+  a+nav {
     margin-left: 0.5rem;
   }
+
   .breadcrumb {
     margin-bottom: 0;
     align-items: center;
   }
+
   // @link https://tobiasahlin.com/blog/flexbox-break-to-new-row/
   .breadcrumb-break {
     flex-basis: 100%;
     height: 0;
     width: 0;
   }
+
   .breadcrumb-item {
     font-size: $font-size-sm;
 
@@ -153,12 +176,14 @@ html {
       }
     }
   }
+
   .breadcrumb-item {
     &.active {
       font-size: 1.2em;
     }
   }
 }
+
 .main-header.main-header-wrap .main-header-info {
   max-width: none;
 }
@@ -239,13 +264,14 @@ html {
 
   // Automate spacing
   // We cannot add a margin left because it would look weird when wrapping on multiple lines
-  > * {
+  >* {
     margin-top: $spacer * 0.25;
     margin-bottom: $spacer * 0.25;
     margin-left: 0;
     margin-right: $spacer * 0.5;
   }
-  > *:last-child {
+
+  >*:last-child {
     margin-right: 0;
   }
 
@@ -269,13 +295,16 @@ html {
     .main {
       background: $main-bg-dark;
     }
+
     .main-footer {
       background: $header-bg-dark;
     }
+
     .main-header {
       background: $sidebar-brand-bg;
       border-color: $sidebar-cta-bg;
     }
+
     .main-header-tabs {
       .nav-tabs .nav-link.active {
         background: $main-bg-dark;

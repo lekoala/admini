@@ -1,0 +1,59 @@
+<aside id="sidebar" class="sidebar" data-bs-scroll="true">
+    <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">
+                <text x="50%" y="52%" dominant-baseline="central" text-anchor="middle" font-size="120">💠</text>
+            </svg>
+        </span>
+        <span class="sidebar-brand-title">Admini</span>
+    </a>
+
+
+    <!-- mini profile -->
+    <div class="sidebar-profile-mini">
+        <a href="profile.html" class="btn sidebar-profile-mininame">
+            <l-i name="person"></l-i>
+            <span>John Nemo with a very long name</span>
+        </a>
+
+        <a href="login.html" class="btn">
+            <l-i name="exit_to_app"></l-i>
+        </a>
+    </div>
+
+    <!-- sidebar-content -->
+    <div class="sidebar-content scroller">
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a class="sidebar-link active" href="index.html">
+                    <l-i name="dashboard"></l-i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /sidebar-content -->
+
+    <!-- sidebar-footer -->
+    <div class="sidebar-footer">
+        <button class="btn btn-default sidebar-toggle js-sidebar-toggle">
+            <l-i name="menu_open"></l-i>
+        </button>
+        <div class="dropup">
+            <button class="btn btn-default" id="help-dropdown-btn" data-bs-toggle="dropdown">
+                <l-i name="help_outline"></l-i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="help-dropdown-btn">
+                <li><a class="dropdown-item" href="help.html">Help</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
+                <p class="m-3 mb-0">
+                    <small>Built with Admini</small>
+                </p>
+            </ul>
+        </div>
+    </div>
+    <!-- /sidebar-footer -->
+</aside>

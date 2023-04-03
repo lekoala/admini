@@ -9,12 +9,17 @@ form {
   //   transition: unset;
   // }
 
+  // Fix background
+  .form-floating:not(.form-control:disabled):before {
+    background-color: unset;
+  }
+
   // Using these classes allow automatic responsive layout
   .form-group {
     margin-bottom: $spacer;
 
     // No need for form-label
-    > label {
+    >label {
       margin-bottom: $spacer * 0.5;
       max-width: 100%;
       text-overflow: ellipsis;
@@ -34,8 +39,8 @@ form {
         margin-left: $form-label-width;
       }
 
-      > label,
-      > .form-label {
+      >label,
+      >.form-label {
         padding-top: add($input-padding-y, $input-border-width);
         flex: 0 0 100%;
         max-width: $form-label-width;
@@ -52,11 +57,11 @@ form {
         }
       }
 
-      > .form-check {
+      >.form-check {
         margin-left: $form-label-width;
       }
 
-      > .form-field {
+      >.form-field {
         flex: 0 0 calc(100% - $form-label-width);
         max-width: $form-max-width; // avoid super large inputs
 

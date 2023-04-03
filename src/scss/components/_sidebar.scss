@@ -1,3 +1,15 @@
+/* Scope - can be a regular div if not using sco-pe */
+
+#sidebar-scope {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+}
+
+/* Sidebar */
+
 .sidebar {
   min-width: $sidebar-width;
   max-width: $sidebar-width;
@@ -5,13 +17,7 @@
   background: $sidebar-bg;
   display: none;
   flex-direction: column;
-
-  // Sticky sidebar
-  position: sticky;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1050;
+  height: 100%;
 
   // Offcanvas
   &.offcanvas {
@@ -21,14 +27,15 @@
 }
 
 // Adjust main width so that 100% width works as expected
-@include media-breakpoint-up(md) {
-  .main {
-    width: calc(100% - $sidebar-width);
-  }
-  .minimenu .main {
-    width: calc(100% - $sidebar-compact-width);
-  }
-}
+// TODO: is this really needed ?
+// @include media-breakpoint-up(md) {
+//   .main {
+//     width: calc(100% - $sidebar-width);
+//   }
+//   .minimenu .main {
+//     width: calc(100% - $sidebar-compact-width);
+//   }
+// }
 
 // It should have a .scroller class as well
 .sidebar-content {

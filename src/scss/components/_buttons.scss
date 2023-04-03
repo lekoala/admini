@@ -2,6 +2,10 @@
   background: rgba(0, 0, 0, 0.05);
 }
 
+.btn {
+  position: relative; // needed for badges in buttons
+}
+
 // https://codepen.io/lekoalabe/pen/JjWExoN
 .btn-flex {
   display: inline-flex;
@@ -9,7 +13,8 @@
   justify-content: center;
   vertical-align: middle;
   flex-wrap: wrap;
-  > * {
+
+  >* {
     margin-right: 0.5ch;
   }
 
@@ -27,7 +32,8 @@
 .btn-square {
   height: 44px;
   width: 44px;
-  > * {
+
+  >* {
     margin-right: 0;
   }
 }
@@ -65,7 +71,7 @@
 }
 
 @include media-breakpoint-down(md) {
-  .btn-mobile-collapse > span {
+  .btn-mobile-collapse>span {
     display: none;
   }
 }
