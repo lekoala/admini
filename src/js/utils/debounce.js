@@ -1,7 +1,11 @@
 /**
+ * @typedef {Function & EventListenerOrEventListenerObject} ExtendedFunction
+ */
+
+/**
  * @param {Function} handler
  * @param {Number} timeout
- * @returns {Function}
+ * @returns {ExtendedFunction}
  */
 export default function debounce(handler, timeout = 300) {
   let timer = null;

@@ -18,6 +18,7 @@
   display: none;
   flex-direction: column;
   height: 100%;
+  // z-index: 1041;
 
   // Offcanvas
   &.offcanvas {
@@ -204,17 +205,18 @@
   l-i {
     --size: 20px;
   }
-  l-i + span {
+
+  l-i+span {
     margin-left: $sidebar-link-padding-x;
   }
 
-  > .btn,
-  > div {
+  >.btn,
+  >div {
     max-width: $sidebar-compact-width * 0.5;
   }
 
   .btn,
-  div > .btn {
+  div>.btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,11 +246,14 @@
     max-width: calc(100% - $sidebar-footer-height);
     padding: $sidebar-link-padding;
   }
-  > .btn {
+
+  >.btn {
     color: $primary;
+
     &:hover {
       color: $white;
     }
+
     span {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -279,17 +284,20 @@
 
 // Sidebar bottom (thanks to sidebar-content being flexed)
 .sidebar-cta {
+
   // Hide dropdown toggle if not on minimenu
   .dropdown-toggle {
     display: none;
     background: $sidebar-cta-bg;
     color: $sidebar-cta-color;
   }
+
   // Show the content of the dropdown element
   .dropdown-menu {
     display: block;
     position: inherit;
   }
+
   .sidebar-cta-content {
     min-width: calc($sidebar-width - ($sidebar-cta-margin * 2));
     max-width: 100%;
@@ -307,13 +315,17 @@
   max-width: $sidebar-compact-width;
 
   .sidebar-nav-header {
-    display: none;
+    height: 1px;
+    padding: 0;
+    background: $sidebar-cta-bg;
+    text-indent: -9999px;
   }
 
   .sidebar-brand {
     .sidebar-brand-title {
       display: none;
     }
+
     .sidebar-brand-icon {
       margin-right: 0;
     }
@@ -325,9 +337,11 @@
       display: flex;
       margin: 0 auto;
     }
+
     span {
       display: none;
     }
+
     // Collapse to dot and show tooltip
     span.sidebar-badge {
       text-indent: -9999px;
@@ -350,6 +364,7 @@
     .dropdown-toggle {
       display: block;
     }
+
     // The element is absolutely positioned on the page because we removed the position relative
     // This is required to make the element go out of the parent overflow:scroll
     .dropdown-menu {
@@ -357,11 +372,13 @@
       left: $sidebar-compact-width + 2px;
       bottom: $sidebar-footer-height;
     }
+
     // .dropdown-toggle:focus + .dropdown-menu,
     .dropdown-menu.show {
       display: block;
       position: absolute;
     }
+
     .sidebar-cta-content {
       margin: 0;
     }
@@ -387,10 +404,11 @@
 
   .sidebar-footer,
   .sidebar-profile-mini {
-    > a {
+    >a {
       width: 50%;
       max-width: none;
     }
+
     .btn span {
       display: none;
     }
@@ -406,6 +424,7 @@
     display: flex;
   }
 }
+
 .sidebar.show {
   display: flex;
   position: fixed;
@@ -416,9 +435,11 @@
     .sidebar {
       background: $sidebar-bg-dark;
     }
+
     .sidebar-brand {
       background: $sidebar-brand-bg-dark;
     }
+
     .sidebar-footer {
       background: $sidebar-brand-bg-dark;
     }

@@ -7,25 +7,24 @@ import escapeHTML from "./utils/escapeHTML.js";
 import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
 import Scope from "./thirdparty/Scope.js";
 
-let initialized = false;
 const debugMode = true;
 const ui = new AdminiUi();
 const init = () => {
-  if (initialized) {
-    return;
-  }
-  initialized = true;
   ui.init();
   BsCompanion.FormValidator.init();
   simpleDropdowns(); // optional
 };
 
+// Obviously, not refreshing the whole page each time comes with its own issues
+// This is optional, feel free to disable sco-pe and replace with regular divs
 // TODO: install from https://github.com/lekoala/sco-pe once stable
 customElements.define("sco-pe", Scope);
-
 Scope.configure({
   debug: debugMode,
-  onLoad: (scope) => {
+  onLoad: () => {
+    // Keep in mind that this will be called multiple times on the whole page
+    // Avoid initializing things twice!
+    // You can use listen(selector, 'match') or initiliaze(selector, callback)
     init();
   },
 });

@@ -1,34 +1,26 @@
-import debounce from "./utils/debounce.js";
-
-const MOBILE_SIZE = 768;
-const MINIMENU = "minimenu";
-const THEME = "theme";
+import resizer from "./utils/resizer.js";
+import initialize from "./utils/initialize.js";
 
 class AdminiUi {
-  constructor() {
-    /**
-     * @type {HTMLElement}
-     */
-    this.sidebar = document.querySelector("#sidebar");
-  }
-
   /**
    * The minimenu behaviour of the sidebar is controlled by a toggle
    * We store the state in a cookie so that user preference is preserved and can be read by the server for rendering
    */
   minimenu() {
+    const MINIMENU = "minimenu";
+
     // Class should be added serverside to avoid layout shift on load
     if (document.cookie.includes(`${MINIMENU}=1`) && !document.body.classList.contains(MINIMENU)) {
       document.body.classList.add(MINIMENU);
     }
 
-    document.querySelectorAll(".js-sidebar-toggle").forEach((el) => {
+    initialize(".js-sidebar-toggle", (el) => {
       el.addEventListener("click", (ev) => {
         ev.preventDefault();
 
         document.body.classList.toggle(MINIMENU);
         const enabled = document.body.classList.contains(MINIMENU);
-        // If you set a new cookie, older cookies are not overwritten
+        // If you set a new cookie, other cookies are not overwritten
         if (enabled) {
           document.cookie = `${MINIMENU}=1`;
         } else {
@@ -60,78 +52,71 @@ class AdminiUi {
     if (!window.bootstrap.Tooltip) {
       return;
     }
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(
-      /**
-       * @param {HTMLElement} el
-       */
-      (el) => {
-        if (!el.hasAttribute("title")) {
-          el.setAttribute("title", el.innerText.trim());
-        }
-        window.bootstrap.Tooltip.getOrCreateInstance(el);
+    initialize('[data-bs-toggle="tooltip"]', (el) => {
+      if (!el.hasAttribute("title")) {
+        el.setAttribute("title", el.innerText.trim());
       }
-    );
+      window.bootstrap.Tooltip.getOrCreateInstance(el);
+    });
   }
 
   /**
    * Sidebar layout is controlled with offcanvas but we may need to restore
    * visibility if it was hidden
-   * @param {Number} w
    */
-  toggleSidebar(w = null) {
-    if (!this.sidebar) {
-      return;
-    }
+  toggleSidebar() {
+    const MOBILE_SIZE = 768;
+    /**
+     * @type {HTMLElement}
+     */
+    const sidebar = document.querySelector("#sidebar");
     const classes = ["offcanvas", "offcanvas-start"];
-    if (w === null) {
-      w = window.innerWidth;
-    }
+    const w = window.innerWidth;
     if (w > MOBILE_SIZE) {
       // A simple fix in case we resized the window and the menu was hidden by offcanvas
-      this.sidebar.style.visibility = "visible";
-      this.sidebar.classList.remove("show");
+      sidebar.style.visibility = "visible";
+      sidebar.classList.remove("show");
       // Kill offcanvas if created
-      if (this.sidebar.classList.contains("offcanvas")) {
-        const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
+      if (sidebar.classList.contains("offcanvas")) {
+        const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(sidebar);
         sidebarOffcanvas.dispose();
-        this.sidebar.classList.remove(...classes);
+        sidebar.classList.remove(...classes);
       }
     }
     // BSN does not init offcanvas like BS5
     if (w <= MOBILE_SIZE) {
-      this.sidebar.classList.add(...classes);
-      const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(this.sidebar);
+      sidebar.classList.add(...classes);
+      const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(sidebar);
     }
   }
 
   /**
-   * Register js behaviour that augment response behaviour
+   * Register js behaviour that augment responsive behaviour
    */
   responsive() {
-    const fn = debounce(() => {
-      this.toggleSidebar(window.innerWidth);
-      this.setMobileSize();
-    });
-    //@ts-ignore
-    window.addEventListener("resize", fn);
+    // A Set only add the value if it does not exist
+    // Functions must be stateless to ensure they don't get added multiple times
+    resizer.add(this.toggleSidebar);
+    resizer.add(this.setMobileSize);
   }
 
   /**
    * Dismissable alerts with an id will be stored in a localStorage
    */
   dismissableAlerts() {
-    document.querySelectorAll(".alert-dismissible[id]").forEach((el) => {
-      let dismissed = localStorage.getItem("dismissed_alerts");
+    initialize(".alert-dismissible[id]", (el) => {
+      const storageKey = "admini.dismissed_alerts";
+      let dismissed = localStorage.getItem(storageKey);
       let arr = dismissed ? JSON.parse(dismissed) : [];
       if (arr.includes(el.getAttribute("id"))) {
-        //@ts-ignore
         el.style.display = "none";
       }
+      // On close, add to storage
       el.addEventListener(
         "closed.bs.alert",
         () => {
           arr.push(el.getAttribute("id"));
-          localStorage.setItem("dismissed_alerts", JSON.stringify(arr));
+          localStorage.setItem(storageKey, JSON.stringify(arr));
         },
         { once: true }
       );
@@ -139,11 +124,10 @@ class AdminiUi {
   }
 
   /**
-   * Create test from html. To create toast from js, use toaster
+   * Create toast from html. To create toast from js, use toaster
    */
   toasts() {
-    let list = document.querySelectorAll(".toast:not(.toaster)");
-    list.forEach((el) => {
+    initialize(".toast:not(.toaster)", (el) => {
       let toast = window.bootstrap.Toast.getOrCreateInstance(el);
       toast.show();
     });
@@ -157,47 +141,60 @@ class AdminiUi {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
+  /**
+   */
   darkMode() {
+    const THEME = "theme";
+    const LIGHT = "light";
+    const DARK = "dark";
+
     // Set mode according to html value
     let mode = document.documentElement.dataset.bsTheme ?? "";
     // If none set, check cookies
     // It's better to set it server side to avoid transition glitches
     if (!mode) {
-      if (document.cookie.includes(`${THEME}=light`)) {
-        mode = "light";
-      } else if (document.cookie.includes(`${THEME}=dark`)) {
-        mode = "dark";
+      if (document.cookie.includes(`${THEME}=${LIGHT}`)) {
+        mode = LIGHT;
+      } else if (document.cookie.includes(`${THEME}=${DARK}`)) {
+        mode = DARK;
+      } else {
+        mode = LIGHT;
       }
       document.documentElement.dataset.bsTheme = mode;
     }
 
-    // Deal with selector
-    const selector = document.querySelector("#toggle-dark-mode");
-    if (selector) {
-      selector.querySelectorAll("[value]").forEach((node) => {
+    // We can have multiple toggles
+    initialize(".js-darkmode-toggle", (el) => {
+      // If we have a button toggle
+      el.querySelectorAll("[value]").forEach((node) => {
         if (node.getAttribute("value") == mode) {
           node.removeAttribute("hidden");
         } else {
           node.setAttribute("hidden", "");
         }
       });
-      selector.addEventListener("click", (e) => {
+      // When clicking on a toggle
+      el.addEventListener("click", (e) => {
         e.preventDefault();
-        if (document.documentElement.dataset.bsTheme == "dark") {
-          mode = "light";
+        // Update mode
+        if (document.documentElement.dataset.bsTheme == DARK) {
+          mode = LIGHT;
         } else {
-          mode = "dark";
+          mode = DARK;
         }
-        selector.querySelectorAll("[value]").forEach((node) => {
-          if (node.getAttribute("value") == mode) {
-            node.removeAttribute("hidden");
-          } else {
-            node.setAttribute("hidden", "");
-          }
-        });
         document.cookie = `${THEME}=${mode}`;
-
         document.documentElement.dataset.bsTheme = mode;
+        // Adjust all buttons
+        document.querySelectorAll(".js-darkmode-toggle").forEach((el) => {
+          el.querySelectorAll("[value]").forEach((node) => {
+            if (node.getAttribute("value") == mode) {
+              node.removeAttribute("hidden");
+            } else {
+              node.setAttribute("hidden", "");
+            }
+          });
+        });
+        // Notify
         document.dispatchEvent(
           new CustomEvent("admini.darkmode", {
             detail: {
@@ -206,14 +203,16 @@ class AdminiUi {
           })
         );
       });
-    }
+    });
   }
 
   init() {
+    // Document level
     this.setMobileSize();
+    this.responsive();
+    // Fragment level
     this.minimenu();
     this.tooltips();
-    this.responsive();
     this.dismissableAlerts();
     this.toasts();
     this.toggleSidebar();

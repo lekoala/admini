@@ -34,6 +34,22 @@ One easy way to bind behaviour to your html nodes is to use [Modular Behaviour](
 
 It works beautifully in combination with [skypack](https://www.skypack.dev/).
 
+## Ajax navigation
+
+The admin panel provides a built-in (but optional) navigation with sco-pe, a custom element made to load page fragments.
+
+Changing from a full page load on each action to a ajax powered navigation as a few side effects that you should not ignore:
+
+- Avoid initializing things multiple time
+- But aware of the state
+- Cleanup when elements are removed
+
+Avoid initializing things multiple time can be done in three ways:
+
+- Have self initializing custom elements or use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
+- Happily trigger full page init with multiple init safe scripts
+- Define custom per fragment code with onScopeLoad
+
 ## Icons and images
 
 Icons are powered by [Last Icon](https://github.com/lekoala/last-icon)

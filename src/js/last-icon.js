@@ -1,5 +1,7 @@
 import "last-icon/last-icon.js";
 
+// This should be compiled separatly
+
 customElements.whenDefined("l-i").then(() => {
   //@ts-ignore
   customElements.get("l-i").configure({

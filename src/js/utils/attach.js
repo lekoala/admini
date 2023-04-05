@@ -24,21 +24,26 @@ let initComplete = false;
 let map = new Map();
 
 // This mutation observer helps clearing the map from deleted nodes
-const observer = new MutationObserver(function (mutations) {
-  mutations.forEach(function (mutation) {
-    if (!mutation.removedNodes.length) {
-      return;
-    }
-    const nodes = Array.from(mutation.removedNodes);
-    for (const [target] of map) {
-      const directMatch = nodes.indexOf(target) > -1;
-      const parentMatch = nodes.some((parent) => parent.contains(target));
-      if (directMatch || parentMatch) {
-        map.delete(target);
+const observer = new MutationObserver(
+  /**
+   * @param {Array<MutationRecord>} mutations
+   */
+  (mutations) => {
+    mutations.forEach((mutation) => {
+      if (!mutation.removedNodes.length) {
+        return;
       }
-    }
-  });
-});
+      const nodes = Array.from(mutation.removedNodes);
+      for (const [target] of map) {
+        const directMatch = nodes.indexOf(target) > -1;
+        const parentMatch = nodes.some((parent) => parent.contains(target));
+        if (directMatch || parentMatch) {
+          map.delete(target);
+        }
+      }
+    });
+  }
+);
 
 /**
  * Get scroll offset from all scrollable parents
