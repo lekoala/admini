@@ -12,7 +12,7 @@
 - A sane default layout for forms (includes tabbed form support and responsive by default)
 - A nice default set of colors that are more accessible
 - Powerful (but optional) ajax navigation
-- Super lightweight (94kb)
+- Super lightweight (around 100kb)
 - Dark mode support
 
 ## BS Companion
