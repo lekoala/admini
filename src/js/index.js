@@ -12,7 +12,7 @@ import initialize from "./utils/initialize.js";
 import Scope from "./thirdparty/Scope.js";
 import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
 
-const debugMode = document.body.dataset.debug ? true : false;
+const debugMode = document.documentElement.dataset.debug ? true : false;
 const ui = new AdminiUi();
 const init = () => {
   ui.init();
