@@ -1,4 +1,5 @@
 /**
+ * Define a function that can be happily passed to addEventListener
  * @typedef {Function & EventListenerOrEventListenerObject} ExtendedFunction
  */
 

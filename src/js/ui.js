@@ -142,6 +142,7 @@ class AdminiUi {
   }
 
   /**
+   * Dark mode support
    */
   darkMode() {
     const THEME = "theme";
@@ -206,17 +207,32 @@ class AdminiUi {
     });
   }
 
+  /**
+   * Trigger dropdown from other elements
+   */
+  dropdownAlias() {
+    const showClass = "show";
+    const menuClass = ".dropdown-menu";
+
+    // Alternative triggers for dropdowns
+    initialize(".dropdown-alias", (el) => {
+      const menu = el.parentElement.querySelector(menuClass);
+      el.addEventListener("click", (e) => {
+        menu.classList.toggle(showClass);
+      });
+    });
+  }
+
   init() {
-    // Document level
     this.setMobileSize();
     this.responsive();
-    // Fragment level
     this.minimenu();
     this.tooltips();
     this.dismissableAlerts();
     this.toasts();
     this.toggleSidebar();
     this.darkMode();
+    this.dropdownAlias();
   }
 }
 

@@ -34,24 +34,12 @@
     id="nomodule-browser-warning"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module">
-    const darkMode = localStorage.getItem("darkmode") == "dark" ? true : false;
+    // This will not update dynamically but i have no idea how that could work without redrawing everything
+    const darkMode = document.cookie.includes(`theme=dark`) ? true : false;
     Chart.defaults.borderColor = darkMode ? "#333" : "#ddd";
   </script>
   <script type="module" src="js/admini.min.js"></script>
   <script type="module">
-    let scope = document.getElementById('sidebar-scope');
-    scope.addEventListener('scope-loaded', (ev) => {
-      let sel = document.getElementById("sidebar-selector");
-      sel.addEventListener("change", (ev) => {
-        let color = sel.selectedOptions[0].style.backgroundColor;
-        if (color) {
-          document.querySelector(".sidebar-brand").style.backgroundColor = color;
-        } else {
-          document.querySelector(".sidebar-brand").style.backgroundColor = "inherit";
-        }
-      });
-    }, { once: true }); // listen only once since this get executed each time
-
     let btn = document.getElementById("toggle-fluid-container");
     btn.addEventListener("click", (ev) => {
       let container = document.getElementById("dashboard-container");
@@ -68,7 +56,7 @@
 
 <!-- minimenu class should be applied on render -->
 
-<body>
+<body data-debug="1">
   <div class="wrapper">
     <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
     <sco-pe id="main-scope">

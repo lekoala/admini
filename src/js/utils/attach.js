@@ -114,11 +114,8 @@ function init() {
       }
     }
   }, 0);
-  //@ts-ignore
   window.addEventListener("scroll", fn);
-  //@ts-ignore
   window.addEventListener("resize", fn);
-  //@ts-ignore
   window.addEventListener("update_position", fn);
   observer.observe(document, { subtree: true, childList: true });
 }

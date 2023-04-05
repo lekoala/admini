@@ -86,7 +86,7 @@ sco-pe {
 
 .main-header {
   background: $header-bg;
-  min-height: $sidebar-brand-height;
+  height: $sidebar-brand-height;
   border-bottom: 1px solid $nav-tabs-border-color;
 
   // We always keep everything on one line. We rely on our bs-tabs component to fit things as needed
@@ -95,8 +95,11 @@ sco-pe {
   align-items: center;
   justify-content: space-between;
 
+  // With this, header can expand in height if needed to accomodate some situations
   &.main-header-wrap {
     flex-wrap: wrap;
+    height: auto;
+    min-height: $sidebar-brand-height;
   }
 }
 

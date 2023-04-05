@@ -11,6 +11,7 @@
 - A powerful action system that supports many use cases (multiple actions, drops, navigation, offcanvas panel...)
 - A sane default layout for forms (includes tabbed form support and responsive by default)
 - A nice default set of colors that are more accessible
+- Powerful (but optional) ajax navigation
 - Super lightweight (94kb)
 - Dark mode support
 
@@ -47,8 +48,12 @@ Changing from a full page load on each action to a ajax powered navigation as a 
 Avoid initializing things multiple time can be done in three ways:
 
 - Have self initializing custom elements or use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
-- Happily trigger full page init with multiple init safe scripts
+- Happily trigger full page init with multiple init safe scripts (eg: using initialize util provided)
 - Define custom per fragment code with onScopeLoad
+
+You can also ditch sco-pe completely and use a more robust solution like Turbo or Unpoly. I didn't want to use these
+libraries because they tend to creep to much into the project architecture. With sco-pe, you can pretty much write
+regular html and it will work with minimal changes.
 
 ## Icons and images
 

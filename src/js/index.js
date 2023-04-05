@@ -1,13 +1,18 @@
 "use strict";
 
+// Core
 import "./custom-bootstrap.js";
 import BsCompanion from "bs-companion/bs-companion.js";
 import AdminiUi from "./ui.js";
+// Utils
 import escapeHTML from "./utils/escapeHTML.js";
-import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
+import withElements from "./utils/withElements.js";
+import initialize from "./utils/initialize.js";
+// Third party
 import Scope from "./thirdparty/Scope.js";
+import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
 
-const debugMode = true;
+const debugMode = document.body.dataset.debug ? true : false;
 const ui = new AdminiUi();
 const init = () => {
   ui.init();
@@ -27,6 +32,16 @@ Scope.configure({
     // You can use listen(selector, 'match') or initiliaze(selector, callback)
     init();
   },
+  onScopeLoad: (scope) => {
+    // Close dropdowns in scope
+    withElements(
+      ".dropdown-menu.show",
+      (el) => {
+        el.classList.remove("show");
+      },
+      scope
+    );
+  },
 });
 
 // admini is reserved in global namespace
@@ -34,12 +49,15 @@ window["admini"] = window["admini"] || {};
 window["admini"] = Object.assign(window["admini"], {
   // Third party
   escapeHTML,
+  initialize,
+  withElements,
   // Our libs
   ui,
   init,
 });
 
 // auto init by default if no data-admini-manual on body
+// you may want to enable this if not using sco-pe
 // if (!document.body.dataset.adminiManual) {
 //   init();
 // }

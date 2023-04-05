@@ -153,6 +153,26 @@ function htmlToDocument(html) {
 }
 
 /**
+ * @param {String} html
+ * @return {DocumentFragment}
+ */
+function htmlFragment(html) {
+  const temp = document.createElement("template");
+  temp.innerHTML = html;
+  return temp.content;
+}
+
+/**
+ * @param {DocumentFragment|Document} fragment
+ * @returns {String}
+ */
+function fragmentToString(fragment) {
+  const div = document.createElement("div");
+  div.appendChild(fragment);
+  return div.innerHTML;
+}
+
+/**
  * @param {Element} node
  * @returns {Boolean}
  */
@@ -625,7 +645,7 @@ class Scope extends HTMLElement {
   /**
    * @param {DocumentFragment} doc
    */
-  processScriptsAndStyles(doc) {
+  _processScriptsAndStyles(doc) {
     // Make sure our existing inline scripts & styles have a custom id
     document.querySelectorAll("script:not([src]):not([id]),style:not([id])").forEach(
       /**
@@ -650,6 +670,8 @@ class Scope extends HTMLElement {
           canTriggerImmediately = false;
         }
       }
+      // Cleanup
+      script.remove();
     });
     // We have new scripts to process
     if (!canTriggerImmediately) {
@@ -690,8 +712,8 @@ class Scope extends HTMLElement {
     // It may contain one or more sco-pe to replace
     const containsScope = data.indexOf("<sco-pe") !== -1;
 
-    const tmp = htmlToDocument(data);
-    this.processScriptsAndStyles(tmp);
+    const tmp = isFull ? htmlToDocument(data) : htmlFragment(data);
+    this._processScriptsAndStyles(tmp);
 
     if (isFull || containsScope) {
       log(`Loading scopes ${isFull ? "(full)" : "(partial)"}`);
@@ -746,17 +768,17 @@ class Scope extends HTMLElement {
           log(`Replacing ${id} content`);
           if (src) {
             oldScope.src = src;
-            // afterLoad will happen automatically through connectedCallback
+            // _afterLoad will happen automatically through connectedCallback
           } else {
             oldScope.innerHTML = newScope.innerHTML;
-            this.afterLoad();
+            this._afterLoad();
           }
         }
       );
     } else {
       log(`Loading partial document into self ${this.id}`);
-      this.innerHTML = data;
-      this.afterLoad();
+      this.innerHTML = fragmentToString(tmp);
+      this._afterLoad();
     }
   }
 
@@ -779,11 +801,11 @@ class Scope extends HTMLElement {
         signal: this.abortController.signal,
       });
     } else {
-      this.afterLoad();
+      this._afterLoad();
     }
   }
 
-  afterLoad() {
+  _afterLoad() {
     this._listenToEvents();
 
     // Mark active class in any link matching href
@@ -880,9 +902,9 @@ class Scope extends HTMLElement {
   connectedCallback() {
     // delay execution until the Event Loop is done and all DOM is parsed
     // @link https://stackoverflow.com/questions/70949141/web-components-accessing-innerhtml-in-connectedcallback/75402874
-    setTimeout(() => {
+    setTimeout(async () => {
       // content can be provided by server rendering, in this case, don't load
-      this.loadContent(true);
+      await this.loadContent(true);
       this.init = true;
       log(`Scope created ${this.id || "(no id)"}`);
     });
@@ -892,6 +914,7 @@ class Scope extends HTMLElement {
     this.events.forEach((event) => {
       this.removeEventListener(event, this);
     });
+    log(`Scope destroyed ${this.id || "(no id)"}`);
   }
 }
 

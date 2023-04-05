@@ -24,7 +24,7 @@
         <button class="btn btn-link sidebar-profile-name dropdown-alias" aria-expanded="false">John Nemo</button>
         <div class="dropdown-menu">
             <a class="dropdown-item" href="profile.html">Profile</a>
-            <a class="dropdown-item" href="#">Log out</a>
+            <a class="dropdown-item" href="login.html">Log out</a>
         </div>
         <div class="sidebar-profile-subtitle">Administrator</div>
     </div>
@@ -228,3 +228,19 @@
     </div>
     <!-- /sidebar-footer -->
 </aside>
+
+<script type="module">
+    // this get cleaned up by sco-pe automatically and added to head
+    
+    let scope = document.getElementById('sidebar-scope');
+    window.admini.initialize("#sidebar-selector", (el) => {
+        el.addEventListener("change", (ev) => {
+            let color = el.selectedOptions[0].style.backgroundColor;
+            if (color) {
+                document.querySelector(".sidebar-brand").style.backgroundColor = color;
+            } else {
+                document.querySelector(".sidebar-brand").style.backgroundColor = "inherit";
+            }
+        });
+    })
+</script>
