@@ -37,7 +37,7 @@
     "build-css": "npm run compile-css && npm run prefix-css && npm run rtl-css",
     "build-li": "esbuild --bundle --minify --format=iife --sourcemap src/js/last-icon.js --outfile=static/js/last-icon.min.js",
     "_copy-assets": "shx cp -r ./node_modules/last-icon/last-icon.min.js* ./static/js/",
-    "build-all": "npm run build && npm run build-css && git add -A && git commit -m \"build files\"",
+    "build-all": "npm run build && npm run build-li && npm run build-css && git add -A && git commit -m \"build files\"",
     "update-deps": "npx npm-check-updates -u",
     "bump": "npm run build-all && npm version patch",
     "local-server": "php -S localhost:8002 -t ./static"
