@@ -852,9 +852,13 @@ class Scope extends HTMLElement {
 
       this.abortLoading();
       this.abortController = new AbortController();
-      await this.loadURL(src, {
-        signal: this.abortController.signal,
-      });
+      try {
+        await this.loadURL(src, {
+          signal: this.abortController.signal,
+        });
+      } catch (error) {
+        config.statusHandler(error.message);
+      }
     } else {
       this._afterLoad();
     }
