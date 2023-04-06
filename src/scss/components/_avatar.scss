@@ -20,7 +20,8 @@
   l-i {
     --size: calc(var(--avatar-size) / 2);
   }
-  > svg {
+
+  >svg {
     width: calc(var(--avatar-size) / 2);
     height: calc(var(--avatar-size) / 2);
     fill: currentColor;
@@ -39,8 +40,8 @@
   .avatar-badge {
     position: absolute;
     background: $white;
-    top: calc(var(--avatar-badge-size) / 3.5);
-    right: calc(var(--avatar-badge-size) / 3.5);
+    top: calc(var(--avatar-badge-size) / 5);
+    right: calc(var(--avatar-badge-size) / 5);
     min-width: var(--avatar-badge-size);
     height: var(--avatar-badge-size);
     border-radius: var(--avatar-badge-size);
@@ -53,18 +54,21 @@
     &.avatar-badge-text {
       padding: 0 0.25rem;
     }
+
     &.avatar-badge-bottom {
       top: auto;
-      bottom: calc(var(--avatar-badge-size) / 3.5);
+      bottom: calc(var(--avatar-badge-size) / 5);
     }
+
     &.avatar-badge-start {
       right: auto;
-      left: calc(var(--avatar-badge-size) / 3.5);
+      left: calc(var(--avatar-badge-size) / 5);
     }
 
     &.online {
       background: $success;
     }
+
     &.offline {
       background: $gray-400;
     }
@@ -90,6 +94,7 @@
 
 .avatar-group {
   .avatar {
+
     // Allow focus on hover
     &:focus,
     &:hover {

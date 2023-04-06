@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
+
+  <!-- styles -->
+  <link href="css/admini.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+  <script type="module" src="js/admini.min.js"></script>
+
+  <style>
+    .color {
+      padding: 25px 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 30px;
+      box-shadow: 0 0 25px rgba(40, 47, 60, .05), 0 20px 25px rgba(40, 47, 60, .05), 0 3px 4px rgba(40, 47, 60, .05);
+    }
+
+    .swatch {
+      position: relative;
+      border-radius: 50%;
+      margin: 0 auto 15px auto;
+      width: 110px;
+      height: 110px;
+    }
+
+    .color .title {
+      display: block;
+      font-weight: 300;
+      font-size: 1.2em;
+    }
+  </style>
+
+  <script type="module">
+    const rgba2hex = (rgba) => `#${rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/).slice(1).map((n, i) => (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n)).toString(16).padStart(2, '0').replace('NaN', '')).join('')}`
+
+    window.admini.withElements('.color-palette .swatch', (el) => {
+      const color = window.getComputedStyle(el).getPropertyValue('background-color');
+      el.parentElement.querySelector('.hex-value').innerText = rgba2hex(color);
+    })
+
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="main-scope">
+      <main class="main">
+        <div class="main-container">
+          <!-- header -->
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar" aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <!-- breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Colors</li>
+                </div>
+              </nav>
+            </div>
+            <div class="main-header-nav"></div>
+          </header>
+          <!-- section -->
+          <section class="scroller">
+            <div class="container-fluid">
+              <h1 class="my-4">
+                Colors
+              </h1>
+
+              <p>A set of nice, <a
+                  href="https://accessiblepalette.com/?lightness=98.2,93.9,85,76.2,67.4,59,48,40.2,31.8,24.9&e11629=1,0&f65b01=1,0&f9d103=1,0&218246=1,0&00c2c2=1,0&669999=1,0&0077bc=0,0&bed0ed=1,0&2A1770=1,0&AF34FE=1,0&DF2F9B=1,0&e0e0e0=1,0"
+                  target="_blank">accessible colors</a>.</p>
+
+              <p>
+                <a href="https://getbootstrap.com/docs/5.3/customize/color/#colors" target="_blank" class="btn btn-primary">Bootstrap
+                  Reference</a>
+              </p>
+
+              <div class="col-md-10 ml-auto mr-auto color-palette">
+                <div class="row">
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-primary"></div><span class="title">Primary</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-secondary"></div><span class="title">Secondary</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-success"></div><span class="title">Success</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-info"></div><span class="title">Info</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-warning"></div><span class="title">Warning</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-danger"></div><span class="title">Danger</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-light"></div><span class="title">Light</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch bg-dark"></div><span class="title">Dark</span> <span class="hex-value"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="col-md-10 ml-auto mr-auto color-palette">
+                <div class="row">
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-100);"></div><span class="title">--bs-gray-100</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-200);"></div><span class="title">--bs-gray-200</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-300);"></div><span class="title">--bs-gray-300</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-400);"></div><span class="title">--bs-gray-400</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-500);"></div><span class="title">--bs-gray-500</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-600);"></div><span class="title">--bs-gray-600</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-700);"></div><span class="title">--bs-gray-700</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-800);"></div><span class="title">--bs-gray-800</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-900);"></div><span class="title">--bs-gray-900</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray-dark);"></div><span class="title">--bs-gray-dark</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                  <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+                    <div class="color">
+                      <div class="swatch" style="background-color: var(--bs-gray);"></div><span class="title">--bs-gray</span>
+                      <span class="hex-value"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <table class="table table-swatches">
+                <thead>
+                  <tr>
+                    <th style="width: 340px;">Description</th>
+                    <th style="width: 200px;" class="ps-0">Swatch</th>
+                    <th>Variables</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2">
+                      <strong>Body —</strong> Default foreground (color) and background, including components.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-body-color);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-body-color</code><br><code>--bs-body-color-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2 border" style="background-color: var(--bs-body-bg);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-body-bg</code><br><code>--bs-body-bg-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">
+                      <strong>Secondary —</strong> Use the <code>color</code> option for lighter text. Use the <code>bg</code> option for
+                      dividers and to indicate disabled component states.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-secondary-color);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-secondary-color</code><br><code>--bs-secondary-color-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2 border" style="background-color: var(--bs-secondary-bg);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-secondary-bg</code><br><code>--bs-secondary-bg-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">
+                      <strong>Tertiary —</strong> Use the <code>color</code> option for even lighter text. Use the <code>bg</code> option to
+                      style backgrounds for hover states, accents, and wells.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-tertiary-color);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-tertiary-color</code><br><code>--bs-tertiary-color-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2 border" style="background-color: var(--bs-tertiary-bg);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-tertiary-bg</code><br><code>--bs-tertiary-bg-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Emphasis —</strong> For higher contrast text. Not applicable for backgrounds.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-emphasis-color);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-emphasis-color</code><br><code>--bs-emphasis-color-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Border —</strong> For component borders, dividers, and rules. Use <code>--bs-border-color-translucent</code>
+                      to blend with backgrounds with an <code>rgba()</code> value.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-border-color);">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-border-color</code><br><code>--bs-border-color-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Primary —</strong> Main theme color, used for hyperlinks, focus styles, and component and form active states.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-primary">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-primary</code><br><code>--bs-primary-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-primary-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-primary-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-primary-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-primary-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-primary-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-primary-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Success —</strong> Theme color used for positive or successful actions and information.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-success">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-success</code><br><code>--bs-success-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-success-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-success-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-success-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-success-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-success-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-success-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Danger —</strong> Theme color used for errors and dangerous actions.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-danger">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-danger</code><br><code>--bs-danger-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-danger-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-danger-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-danger-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-danger-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-danger-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-danger-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Warning —</strong> Theme color used for non-destructive warning messages.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-warning">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-warning</code><br><code>--bs-warning-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-warning-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-warning-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-warning-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-warning-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-warning-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-warning-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Info —</strong> Theme color used for neutral and informative content.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-info">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-info</code><br><code>--bs-info-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-info-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-info-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-info-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-info-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-info-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-info-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Light —</strong> Additional theme option for less contrasting colors.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-light">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-light</code><br><code>--bs-light-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-light-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-light-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-light-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-light-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-light-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-light-text-emphasis</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">
+                      <strong>Dark —</strong> Additional theme option for higher contrasting colors.
+                    </td>
+                    <td class="ps-0">
+                      <div class="p-3 rounded-2 bg-dark">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-dark</code><br><code>--bs-dark-rgb</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="background-color: var(--bs-dark-bg-subtle)">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-dark-bg-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="p-3 rounded-2" style="border: 5px var(--bs-dark-border-subtle) solid">&nbsp;</div>
+                    </td>
+                    <td>
+                      <code>--bs-dark-border-subtle</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="py-3 fw-bold h5" style="color: var(--bs-dark-text-emphasis)">Text</div>
+                    </td>
+                    <td>
+                      <code>--bs-dark-text-emphasis</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </sco-pe>
+  </div>
+</body>
+
+</html>

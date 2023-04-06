@@ -1,50 +1,72 @@
-// Same as .bg util but with automatic text contrast and a:hover
-@each $color, $value in $theme-colors {
+// Same as .bg-{variant} util but with automatic text contrast and a:hover
+@each $color,
+$value in $theme-colors {
   .bg-#{$color} {
+    --color-rgb: #{to-rgb($value)};
+    --color-alpha: 0.08;
+    --color-alpha-hover: 0.2;
     background: $value !important;
     color: color-contrast($value) !important;
   }
+
   a.bg-#{$color} {
     &:hover {
-      background-color: if(
-        $color == $color-contrast-light,
-        shade-color($value, $btn-hover-bg-shade-amount),
-        tint-color($value, $btn-hover-bg-tint-amount)
-      ) !important;
-    }
-  }
-}
-
-// Softer contrast and a:hover
-@each $color, $value in $theme-colors {
-  .bg-soft-#{$color} {
-    background-color: rgba($value, 0.08) !important;
-    color: $value !important;
-  }
-  a.bg-soft-#{$color} {
-    &:hover {
-      background-color: $value !important;
-      color: $white !important;
-    }
-  }
-  // Avoid transparency issues
-  .bg-softy-#{$color} {
-    position: relative;
-    background: #fff;
-    overflow: hidden;
-    color: $value !important;
-    &::before {
-      background-color: rgba($value, 0.08) !important;
-      color: $value !important;
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
+      background-color: if($color ==$color-contrast-light,
+          shade-color($value, $btn-hover-bg-shade-amount),
+          tint-color($value, $btn-hover-bg-tint-amount)) !important;
     }
   }
 }
 
 .card-bg {
   background: $card-bg;
+}
+
+// Add this to any bg-* to get a soft variant
+.bg-soft {
+  background-color: rgba(var(--color-rgb), var(--color-alpha)) !important;
+  color: rgb(var(--color-rgb)) !important;
+}
+
+a.bg-soft {
+  &:hover {
+    background-color: rgba(var(--color-rgb), var(--color-alpha-hover)) !important;
+  }
+}
+
+// @linkhttps://blog.lekoala.be/why-you-should-use-rgb-values-for-css-variables
+// Similar to bg-soft, but avoid transparency issue by using a white or black background
+.bg-softy {
+  // You may need to tweak this to match the actual bg color
+  --softy-background: #fff;
+  position: relative;
+  overflow: hidden;
+  background: var(--softy-background) !important;
+  color: rgb(var(--color-rgb)) !important;
+
+  &::before {
+    background-color: rgba(var(--color-rgb), var(--color-alpha)) !important;
+    color: rgb(var(--color-rgb)) !important;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+
+    .bg-soft,
+    .bg-softy {
+      --color-alpha: 0.2;
+      --color-alpha-hover: 0.42;
+    }
+
+    .bg-softy {
+      // You may need to tweak this to match the actual bg color
+      --softy-background: #000;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import resizer from "./utils/resizer.js";
 import initialize from "./utils/initialize.js";
+import withElements from "./utils/withElements.js";
 
 class AdminiUi {
   /**
@@ -70,6 +71,9 @@ class AdminiUi {
      * @type {HTMLElement}
      */
     const sidebar = document.querySelector("#sidebar");
+    if (!sidebar) {
+      return;
+    }
     const classes = ["offcanvas", "offcanvas-start"];
     const w = window.innerWidth;
     if (w > MOBILE_SIZE) {
@@ -88,6 +92,28 @@ class AdminiUi {
       sidebar.classList.add(...classes);
       const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(sidebar);
     }
+  }
+
+  hideSidebar() {
+    /**
+     * @type {HTMLElement}
+     */
+    const sidebar = document.querySelector("#sidebar");
+    if (!sidebar) {
+      return;
+    }
+    const sidebarOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(sidebar);
+    sidebarOffcanvas.hide();
+  }
+
+  hideDropdowns(root = document) {
+    withElements(
+      ".dropdown-menu.show",
+      (el) => {
+        el.classList.remove("show");
+      },
+      root
+    );
   }
 
   /**

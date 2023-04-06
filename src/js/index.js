@@ -33,14 +33,8 @@ Scope.configure({
     init();
   },
   onScopeLoad: (scope) => {
-    // Close dropdowns in scope
-    withElements(
-      ".dropdown-menu.show",
-      (el) => {
-        el.classList.remove("show");
-      },
-      scope
-    );
+    ui.hideDropdowns(scope);
+    ui.hideSidebar();
   },
 });
 

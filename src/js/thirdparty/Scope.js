@@ -201,6 +201,14 @@ function isExternalURL(url) {
 }
 
 /**
+ * @param {HTMLElement} el
+ * @returns {Boolean}
+ */
+function hasBlankTarget(el) {
+  return el.getAttribute("target") === "_blank";
+}
+
+/**
  * @param {URL} url
  * @returns {String}
  */
@@ -237,6 +245,32 @@ function simpleHash(str) {
     hash &= hash; // Convert to 32bit integer
   }
   return new Uint32Array([hash])[0].toString(36);
+}
+
+/**
+ * @param {HTMLElement} el
+ * @returns {HTMLElement}
+ */
+function getScrollParent(el) {
+  if (el === null) {
+    return null;
+  }
+  if (el.scrollHeight > el.clientHeight) {
+    return el;
+  }
+  return getScrollParent(el.parentElement);
+}
+
+/**
+ * @param {HTMLElement} el
+ */
+function scrollIntoParentView(el) {
+  const parent = getScrollParent(el);
+  if (parent) {
+    parent.scrollTop = 0;
+  } else {
+    el.scrollIntoView(true);
+  }
 }
 
 /**
@@ -329,7 +363,7 @@ class Scope extends HTMLElement {
       }
       const action = getAction(trigger);
       // Ignore empty, external and anchors links
-      if (!action || isExternalURL(action) || isAnchorURL(action)) {
+      if (!action || hasBlankTarget(trigger) || isExternalURL(action) || isAnchorURL(action)) {
         return;
       }
       log(`Handling ${ev.type} on ${trigger.nodeName}`);
@@ -775,10 +809,13 @@ class Scope extends HTMLElement {
           }
         }
       );
+      // Scroll top
+      document.scrollingElement.scrollTo(0, 0);
     } else {
       log(`Loading partial document into self ${this.id}`);
       this.innerHTML = fragmentToString(tmp);
       this._afterLoad();
+      scrollIntoParentView(this);
     }
   }
 
