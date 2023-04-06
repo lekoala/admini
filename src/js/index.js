@@ -11,6 +11,8 @@ import initialize from "./utils/initialize.js";
 // Third party
 import Scope from "./thirdparty/Scope.js";
 import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
+import Toasts from "bs-companion/src/Toasts.js";
+import modalizerConfirm from "bs-companion/src/modalizerConfirm.js";
 
 const debugMode = document.documentElement.dataset.debug ? true : false;
 const ui = new AdminiUi();
@@ -31,6 +33,18 @@ Scope.configure({
     // Avoid initializing things twice!
     // You can use listen(selector, 'match') or initiliaze(selector, callback)
     init();
+  },
+  statusHandler: (message, statusCode) => {
+    if (statusCode === 200) {
+      Toasts.success(message);
+    } else {
+      Toasts.error(message);
+    }
+  },
+  confirmHandler: (message) => {
+    return new Promise((resolve, reject) => {
+      modalizerConfirm(message, resolve, reject);
+    });
   },
   onScopeLoad: (scope) => {
     ui.hideDropdowns(scope);

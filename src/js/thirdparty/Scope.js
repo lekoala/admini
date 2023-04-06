@@ -487,15 +487,20 @@ class Scope extends HTMLElement {
       },
       fetchOptions
     );
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      const message = response.headers.get(config.statusHeader) || response.statusText;
-      config.statusHandler(message, response.status);
-      return;
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        const message = response.headers.get(config.statusHeader) || response.statusText;
+        config.statusHandler(message, response.status);
+        return;
+      }
+      this._processHeaders(response);
+      const data = await response.text();
+      this._processResponse(data);
+    } catch (error) {
+      config.statusHandler(error.message);
     }
-    this._processHeaders(response);
-    const data = await response.text();
-    this._processResponse(data);
   }
 
   /**
@@ -852,13 +857,9 @@ class Scope extends HTMLElement {
 
       this.abortLoading();
       this.abortController = new AbortController();
-      try {
-        await this.loadURL(src, {
-          signal: this.abortController.signal,
-        });
-      } catch (error) {
-        config.statusHandler(error.message);
-      }
+      await this.loadURL(src, {
+        signal: this.abortController.signal,
+      });
     } else {
       this._afterLoad();
     }
