@@ -52,9 +52,16 @@
       }
     });
   </script>
+  <script type="module" id="custom-init-callback">
+    // This script needs its own id otherwise callback will be added multiple times
+    window.admini.ui.addInitCallback(() => {
+      console.log("custom callback");
+    })
+  </script>
 </head>
 
 <!-- minimenu class should be applied on render -->
+
 <body>
   <div class="wrapper">
     <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>

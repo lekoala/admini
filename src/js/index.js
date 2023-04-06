@@ -23,7 +23,7 @@ const init = () => {
 };
 
 // Obviously, not refreshing the whole page each time comes with its own issues
-// This is optional, feel free to disable sco-pe and replace with regular divs
+// This is optional, feel free to disable sco-pe and replace with regular divs and adjust this script
 // TODO: install from https://github.com/lekoala/sco-pe once stable
 customElements.define("sco-pe", Scope);
 Scope.configure({
@@ -34,6 +34,7 @@ Scope.configure({
     // You can use listen(selector, 'match') or initiliaze(selector, callback)
     init();
   },
+  // Show a nice toast message on http status
   statusHandler: (message, statusCode) => {
     if (statusCode === 200) {
       Toasts.success(message);
@@ -41,20 +42,20 @@ Scope.configure({
       Toasts.error(message);
     }
   },
+  // Use bootstrap modal instead of native confirm
   confirmHandler: (message) => {
     return new Promise((resolve, reject) => {
       modalizerConfirm(message, resolve, reject);
     });
   },
   onScopeLoad: (scope) => {
+    // Ui cleanup
     ui.hideDropdowns(scope);
     ui.hideSidebar();
   },
 });
 
-// admini is reserved in global namespace
-window["admini"] = window["admini"] || {};
-window["admini"] = Object.assign(window["admini"], {
+const admini = {
   // Third party
   escapeHTML,
   initialize,
@@ -62,10 +63,16 @@ window["admini"] = Object.assign(window["admini"], {
   // Our libs
   ui,
   init,
-});
+};
+
+// admini is reserved in global namespace
+window["admini"] = window["admini"] || {};
+window["admini"] = Object.assign(window["admini"], admini);
 
 // auto init by default if no data-admini-manual on body
 // you may want to enable this if not using sco-pe
 // if (!document.body.dataset.adminiManual) {
 //   init();
 // }
+
+export default admini;

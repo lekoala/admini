@@ -2,6 +2,8 @@ import resizer from "./utils/resizer.js";
 import initialize from "./utils/initialize.js";
 import withElements from "./utils/withElements.js";
 
+const initCallbacks = new Set();
+
 class AdminiUi {
   /**
    * The minimenu behaviour of the sidebar is controlled by a toggle
@@ -249,6 +251,20 @@ class AdminiUi {
     });
   }
 
+  addInitCallback(cb) {
+    initCallbacks.add(cb);
+  }
+
+  removeInitCallback(cb) {
+    initCallbacks.delete(cb);
+  }
+
+  callInitCallbacks() {
+    for (let callback of initCallbacks) {
+      callback();
+    }
+  }
+
   init() {
     this.setMobileSize();
     this.responsive();
@@ -259,6 +275,7 @@ class AdminiUi {
     this.toggleSidebar();
     this.darkMode();
     this.dropdownAlias();
+    this.callInitCallbacks();
   }
 }
 
