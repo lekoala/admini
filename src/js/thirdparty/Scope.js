@@ -558,8 +558,21 @@ class Scope extends HTMLElement {
     document.body.style.cssText = body.style.cssText;
     const attrs = ["class"];
     attrs.forEach((attr) => {
-      document.body.setAttribute(attr, body.getAttribute("class"));
+      document.body.setAttribute(attr, body.getAttribute(attr) || "");
     });
+  }
+  /**
+   * @param {Document} doc
+   */
+  _processDocument(doc) {
+    const attrs = ["class"];
+    attrs.forEach((attr) => {
+      document.documentElement.setAttribute(attr, doc.documentElement.getAttribute(attr) || "");
+    });
+
+    for (const d in doc.documentElement.dataset) {
+      document.documentElement.dataset[d] = doc.documentElement.dataset[d];
+    }
   }
 
   /**
@@ -761,11 +774,16 @@ class Scope extends HTMLElement {
         this._processBody(body);
       }
 
+      if (isFull) {
+        this._processDocument(tmp);
+      }
+
       const scopes = tmp.querySelectorAll("sco-pe");
 
       // No scopes ? replace body
       if (!scopes.length) {
         document.body.innerHTML = data;
+
         this._checkScopesAreLoaded();
       }
 

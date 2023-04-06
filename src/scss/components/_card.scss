@@ -1,5 +1,8 @@
+$card-default-height: 9rem !default;
+$card-double-height: $card-default-height * 2 + $grid-gutter-width;
+
 .card {
-  --card-default-height: 160px;
+  --card-default-height: #{$card-default-height};
   margin-bottom: $grid-gutter-width;
   box-shadow: $card-shadow;
 
@@ -20,7 +23,7 @@
   }
 
   &.card-double {
-    --card-default-height: 336px;
+    --card-default-height: #{$card-double-height};
   }
 
   &.card-full {

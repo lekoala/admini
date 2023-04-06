@@ -264,6 +264,11 @@
 
 .sidebar-footer {
   border-top: 1px solid $sidebar-border-color;
+
+  // Hover buttons should have full bg height
+  > .btn, > div, > div > .btn {
+    height: 100%;
+  }
 }
 
 // Sidebar nav header

@@ -59,8 +59,22 @@ a.bg-soft {
   background: rgba(0, 0, 0, 0.04);
 }
 
+.bg-dark {
+  .bg-soft,
+  .bg-softy {
+    --color-alpha: 0.2;
+    --color-alpha-hover: 0.42;
+  }
+
+  .bg-softy {
+    // You may need to tweak this to match the actual bg color
+    --softy-background: #000;
+  }
+}
+
 @if $enable-dark-mode {
   @include color-mode(dark) {
+
     .bg-soft,
     .bg-softy {
       --color-alpha: 0.2;

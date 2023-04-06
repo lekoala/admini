@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-
+  
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,7 +43,8 @@
     <div class="row g-0 h-100">
 
       <div class="col-12 col-xl-7 col-xxl-8 align-items-center justify-content-center d-none d-xl-flex main-bg">
-        <img src="assets/images/undraw_login_re_4vu2.svg" class="img-fluid auth-img-cover-login" width="650" alt="" loading="lazy">
+        <img src="assets/images/undraw_forgot_password_re_hxwm.svg" class="img-fluid auth-img-cover-login" width="650" alt=""
+          loading="lazy">
       </div>
 
       <div class="col-12 col-xl-5 col-xxl-4 align-items-center bg-dark">
@@ -57,47 +58,22 @@
             </svg>
           </a>
           <p class="mt-3 mb-0 opacity-50">
-            Sign in to continue to Admini.
+            Enter your email to recover your password
           </p>
         </div>
 
         <div class="mx-auto mwp-480">
-          <form class="m-4" action="index.html" data-validation-message="Invalid login details">
-            <!-- labels must be placed AFTER the input -->
-            <div class="form-floating mb-2">
-              <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" spellcheck="false" />
-              <label class="form-label" for="username">Username</label>
-            </div>
-
-            <div class="form-floating">
-              <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password" />
-              <label class="form-label" for="userpassword">
-                Password
-              </label>
-            </div>
-
-            <div class="flex mt-3">
-              <div class="">
-                <div class="form-check form-switch form-switch-success">
-                  <input class="form-check-input" type="checkbox" id="rememberMe" />
-                  <label class="form-check-label" for="rememberMe">
-                    Remember me
-                  </label>
-                </div>
-              </div>
-              <div class="text-end">
-                <a href="forgot.html" class="btn btn-default">
-                  <l-i name="lock_open"></l-i>
-                  Forgot password?
-                </a>
-              </div>
+          <form class="m-4" action="forgot-sent.html" data-validation-message="Invalid login details">
+            <div class="col-12 mb-3">
+              <label for="inputEmailAddress" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com">
             </div>
 
             <div class="form-group mb-0 row">
               <div class="col-12">
                 <div class="d-grid mt-3">
                   <button class="btn btn-primary" type="submit">
-                    Log In
+                    Recover my password
                     <l-i name="exit_to_app"></l-i>
                   </button>
                 </div>
@@ -106,27 +82,11 @@
             <!--end form-group-->
           </form>
           <!--end form-->
-          <div class="text-center position-relative">
-            <h6 class="my-4 d-inline-block opacity-50">
-              Or Login With
-            </h6>
-          </div>
-          <div class="d-flex justify-content-center mb-4">
-            <a href="" class="d-flex justify-content-center align-items-center avatar avatar-thumb bg-primary bg-soft rounded-circle me-2">
-              <l-i name="facebook" set="bx" type="logos"></l-i>
-            </a>
-            <a href="" class="d-flex justify-content-center align-items-center avatar avatar-thumb bg-info bg-soft rounded-circle me-2">
-              <l-i name="twitter" set="bx" type="logos"></l-i>
-            </a>
-            <a href="" class="d-flex justify-content-center align-items-center avatar avatar-thumb bg-danger bg-soft rounded-circle">
-              <l-i name="google" set="bx" type="logos"></l-i>
-            </a>
-          </div>
-
+     
           <div class="m-3 text-center">
             <p class="mb-0">
-              <span class="opacity-50">Don't have an account ?</span>
-              <a href="register.html" class="text-primary ms-2">Register</a>
+              <span class="opacity-50">Did you receive your password ?</span>
+              <a href="login.html" class="text-primary ms-2">Log In</a>
             </p>
           </div>
         </div>
