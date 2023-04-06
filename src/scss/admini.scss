@@ -74,11 +74,15 @@
 @import "components/headings";
 @import "components/last-icon";
 @import "components/main";
+@import "components/nav";
 @import "components/sidebar";
 @import "components/sidemenu";
 @import "components/tables";
 @import "components/tabs";
 @import "components/treeview";
+
+// Tweaks for dark mode
+@import "components/dark";
 
 // Optional vendor components
 @import "vendor/flatpickr";

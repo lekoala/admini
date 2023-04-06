@@ -55,9 +55,12 @@ a.bg-soft {
   }
 }
 
+.bg-translucent {
+  background: rgba(0, 0, 0, 0.04);
+}
+
 @if $enable-dark-mode {
   @include color-mode(dark) {
-
     .bg-soft,
     .bg-softy {
       --color-alpha: 0.2;
@@ -67,6 +70,10 @@ a.bg-soft {
     .bg-softy {
       // You may need to tweak this to match the actual bg color
       --softy-background: #000;
+    }
+
+    .bg-translucent {
+      background: rgba(255, 255, 255, 0.08);
     }
   }
 }

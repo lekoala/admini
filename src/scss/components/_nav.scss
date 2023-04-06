@@ -1,0 +1,35 @@
+.nav-line {
+  .nav-link {
+    display: block;
+    transition: background 0.1s ease-in-out;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-left-color: transparent;
+
+    l-i {
+      margin-right: 0.5em;
+    }
+
+    &:focus {
+      outline: 0;
+      border-left-color: var(--bs-primary-bg-subtle);
+    }
+
+    &:hover {
+      border-left-color: var(--bs-primary-bg-subtle);
+
+      l-i {
+        color: currentColor;
+      }
+    }
+  }
+
+  // Active items (on A)
+  .nav-item .nav-link.active,
+  .nav-item .nav-link.active:hover {
+    border-left-color: var(--bs-primary-bg);
+  }
+}

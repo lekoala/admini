@@ -1,26 +1,29 @@
 .card {
+  --card-default-height: 160px;
   margin-bottom: $grid-gutter-width;
   box-shadow: $card-shadow;
 
   // Make tiles from standard sizes
-  &.card-default {
-    min-height: 154px;
+  // This allow proper alignement across multiple rows/cols
+  &.card-tile {
+    min-height: var(--card-default-height);
 
     .card-img-top {
       width: 100%;
-      height: calc(154px + $grid-gutter-width);
+      height: calc(var(--card-default-height) + $grid-gutter-width);
       object-fit: cover;
     }
-    .card-img-top + .card-body {
-      min-height: 154px;
+
+    .card-img-top+.card-body {
+      min-height: var(--card-default-height);
     }
   }
+
   &.card-double {
-    min-height: 154px;
-    height: calc((154px * 2) + $grid-gutter-width);
+    --card-default-height: 336px;
   }
+
   &.card-full {
-    min-height: 154px;
     height: calc(100% - ($grid-gutter-width));
   }
 
@@ -57,19 +60,30 @@
     .btn {
       border-radius: 0;
     }
-    .btn-group > *:first-child {
+
+    .btn-group>*:first-child {
       border-bottom-left-radius: $card-border-radius;
     }
-    .btn-group > .btn:last-child {
+
+    .btn-group>.btn:last-child {
       border-bottom-right-radius: $card-border-radius;
     }
-    .btn-group > .dropdown:last-child .btn {
+
+    .btn-group>.dropdown:last-child .btn {
       border-bottom-right-radius: $card-border-radius;
     }
   }
 
   .card-header {
     border-bottom-width: 1px;
+  }
+
+  .card-cover {
+    background-color: $primary;
+    background-image: escape-svg($default-pattern);
+    height: 10rem;
+    background-position: center;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   }
 
   .card-title {

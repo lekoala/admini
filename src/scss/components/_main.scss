@@ -49,10 +49,14 @@ sco-pe {
 
 /* Main container */
 
+.main,
+.main-bg {
+  background: $main-bg;
+}
+
 .main {
   display: flex;
   height: 100%;
-  background: $main-bg;
   flex-direction: row;
 
   section {
@@ -295,7 +299,9 @@ sco-pe {
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .main {
+
+    .main,
+    .main-bg {
       background: $main-bg-dark;
     }
 

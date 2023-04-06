@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
+
+  <!-- styles -->
+  <link href="css/admini.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/admini.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="main-scope">
+      <main class="main">
+        <div class="main-container">
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar" aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                </div>
+              </nav>
+            </div>
+          </header>
+          <section class="scroller">
+            <!-- example of full height rows -->
+            <div class="container-fluid h-100">
+              <div class="row h-100">
+                <div class="col-sm-2 py-3 ">
+                  <ul class="nav nav-line flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="tab" data-bs-target="#tab-1"
+                        type="button"><l-i name="person"></l-i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#tab-2" type="button"><l-i name="settings"></l-i>
+                        Account Settings</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#tab-3" type="button"><l-i name="message"></l-i>
+                        Emails</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#tab-4" type="button"><l-i
+                          name="notifications"></l-i> Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" data-bs-toggle="tab" data-bs-target="#tab-5" type="button"><l-i name="shield"></l-i>
+                        Security</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-10 p-3 bg-translucent">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab-1">
+                      <div class="px-3 py-4 m-n3 h3 main-bg">Profile</div>
+                      <div class="mt-3 py-3">
+                        <form role="form" class="col-md-6">
+                          <div class="form-group"><label>Profile picture</label>
+                            <input class="form-control" type="file" id="form-file">
+                          </div>
+                          <div class="form-group"><label>First Name</label><input type="text" class="form-control"></div>
+                          <div class="form-group"><label>Last Name</label><input type="text" class="form-control"></div>
+                          <div class="form-group"><label>URL</label><input type="text" class="form-control"></div>
+                          <div class="form-group"><label>Company</label><input type="text" class="form-control"></div>
+                          <div class="form-group"><label>Location</label><input type="text" class="form-control"></div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="hire-me">
+                            <label class="form-check-label" for="hire-me">
+                              Available for hire
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-info mt-3">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-2">
+                      <div class="px-3 py-4 m-n3 h3 main-bg">Account settings</div>
+                      <div class="mt-3 py-3">
+                        <form role="form" class="col-md-6">
+                          <div class="form-group"><label>Client ID</label><input type="text" disabled="disabled" class="form-control"
+                              value="xxx"></div>
+                          <div class="form-group"><label>Secret Key</label><input type="text" disabled="disabled" class="form-control"
+                              value="zzz"></div>
+                          <div class="form-group"><label>App Name</label><input type="text" class="form-control"></div>
+                          <div class="form-group"><label>App URL</label><input type="text" class="form-control"></div><button type="submit"
+                            class="btn btn-info mt-3">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
+                      <div class="px-3 py-4 m-n3 h3 main-bg">Emails</div>
+                      <div class="mt-3 py-3">
+                        <form role="form" class="col-md-6">
+                          <p>E-mail me whenever</p>
+
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="email-1">
+                            <label class="form-check-label" for="email-1">Anyone posts a
+                              comment</label>
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="email-2">
+                            <label class="form-check-label" for="email-2">Anyone send me a
+                              message</label>
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="email-3">
+                            <label class="form-check-label" for="email-3">Anyone invite me to
+                              group</label>
+                          </div>
+                          <button type="submit" class="btn btn-info mt-3">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-4">
+                      <div class="px-3 py-4 m-n3 h3 main-bg">Notifications</div>
+                      <div class="mt-3 py-3">
+                        <form role="form" class="col-md-6">
+                          <p>Notice me whenever</p>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="notif-1">
+                            <label class="form-check-label" for="notif-1">Anyone posts a
+                              comment</label>
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="notif-2">
+                            <label class="form-check-label" for="notif-2">Anyone send me a
+                              message</label>
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="notif-3">
+                            <label class="form-check-label" for="notif-3">Anyone invite me to
+                              group</label>
+                          </div>
+                          <button type="submit" class="btn btn-info mt-3">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tab-5">
+                      <div class="px-3 py-4 m-n3 h3 main-bg">Security</div>
+                      <div class="mt-3 py-3">
+                        <form role="form" class="col-md-6">
+                          <div class="form-group"><label>Old Password</label><input type="password" class="form-control"></div>
+                          <div class="form-group"><label>New Password</label><input type="password" class="form-control"></div>
+                          <div class="form-group"><label>New Password Again</label><input type="password" class="form-control"></div>
+                          <button type="submit" class="btn btn-info mt-3">Update</button>
+                        </form>
+                        <hr>
+                        <p><strong>Delete account?</strong></p><button type="button" class="btn btn-danger"
+                          id="delete-account-button">Delete Account</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </sco-pe>
+  </div>
+  <script type="module">
+    admini.initialize('#delete-account-button', (el) => {
+      el.addEventListener('click', (ev) => {
+        modalizerConfirm(
+          "Are you sure you want to delete your account ?",
+          (res) => {
+            Toasts.success('Account deleted!');
+          },
+          (res) => {
+
+          }
+        );
+      })
+    })
+  </script>
+</body>
+
+</html>
