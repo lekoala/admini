@@ -401,7 +401,7 @@ class Scope extends HTMLElement {
   async load(el) {
     // Build url
     let action = getAction(el);
-    let url = new URL(action, window.location.href).href; // make absolute
+    let url = expandURL(action).href;
     let urlWithParams = url;
     const isLink = el.nodeName === "A";
     const method = (el.getAttribute("method") || el.dataset.scopeMethod || "GET").toUpperCase();
