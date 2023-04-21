@@ -63,11 +63,40 @@
       })
     }
 
+    const editIcon = function (cell, formatterParams, onRendered) { //plain text value
+      return "<l-i name='edit'>";
+    };
+
+    function onCellClick(e, cell) { Toasts.success("Editing row data for: " + cell.getRow().getData().name) }
+
     var table = new Tabulator("#tabulator-table", {
       layout: "fitColumns",
       data: tabledata,
-      autoColumns: true,
+      // autoColumns: true,
+      responsiveLayout: "hide",
+      columns: [ //set column definitions for imported table data
+        { formatter: "rowSelection", titleFormatter: "rowSelection", align: "center", headerSort: false, maxWidth: 40 },
+        { title: "ID", field: "id", responsive: 0, minWidth: 120 }, // this column wil never be hidden
+        { title: "Name", field: "name", responsive: 0, minWidth: 240, editor: true }, // this column wil never be hidden
+        { title: "Location", field: "location", responsive: 3 }, // hidden first
+        { title: "Gender", field: "gender", minWidth: 100 }, // hidden fifth
+        { title: "Rating", field: "rating", responsive: 2, editor: "star", formatter: "star" }, // hidden third
+        { title: "Favourite Color", field: "col", responsive: 2 }, // hidden second
+        { title: "Date of Birth", field: "dob" }, // hidden fourth
+        { formatter: editIcon, width: 40, hozAlign: "center", cellClick: onCellClick, headerSort: false },
+      ],
     });
+
+    table.on("cellEdited", function (cell) {
+      Toasts.success("Data edited");
+    });
+
+    admini.initialize('#table-select', (el) => {
+      el.addEventListener('click', (ev) => {
+        const selectedData = table.getSelectedData();
+        Toasts.success("Selected " + selectedData.length + " rows");
+      })
+    })
   </script>
 </head>
 
@@ -96,6 +125,9 @@
             <div class="container-fluid py-3">
               <h1>Tabulator</h1>
               <p><a href="/datatable.html">Back to datatable</a></p>
+            </div>
+            <div class="p-3">
+              <button class="btn btn-secondary" id="table-select">Do something with selection</button>
             </div>
             <div id="tabulator-table"></div>
           </section>
