@@ -1,10 +1,16 @@
 /**
  * Define a function that can be happily passed to addEventListener
- * @typedef {Function & EventListenerOrEventListenerObject} ExtendedFunction
+ * @typedef {Function & EventListener | EventListenerObject} ExtendedFunction
  */
 
 /**
- * @param {Function} handler
+ * @callback EventCallback
+ * @param {Event} ev
+ * @returns {void}
+ */
+
+/**
+ * @param {EventCallback} handler
  * @param {Number} timeout
  * @returns {ExtendedFunction}
  */

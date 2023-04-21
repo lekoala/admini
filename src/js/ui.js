@@ -1,6 +1,7 @@
 import resizer from "./utils/resizer.js";
 import initialize from "./utils/initialize.js";
-import withElements from "./utils/withElements.js";
+import q from "./utils/q.js";
+import cookies from "./utils/cookies.js";
 
 const initCallbacks = new Set();
 
@@ -13,7 +14,7 @@ class AdminiUi {
     const MINIMENU = "minimenu";
 
     // Class should be added serverside to avoid layout shift on load
-    if (document.cookie.includes(`${MINIMENU}=1`) && !document.body.classList.contains(MINIMENU)) {
+    if (cookies(MINIMENU) === "1" && !document.body.classList.contains(MINIMENU)) {
       document.body.classList.add(MINIMENU);
     }
 
@@ -25,9 +26,9 @@ class AdminiUi {
         const enabled = document.body.classList.contains(MINIMENU);
         // If you set a new cookie, other cookies are not overwritten
         if (enabled) {
-          document.cookie = `${MINIMENU}=1`;
+          cookies(MINIMENU, 1);
         } else {
-          document.cookie = `${MINIMENU}=0`;
+          cookies(MINIMENU, 0);
           const cta = document.querySelector(".sidebar-cta-content");
           if (cta) {
             //@ts-ignore
@@ -109,13 +110,9 @@ class AdminiUi {
   }
 
   hideDropdowns(root = document) {
-    withElements(
-      ".dropdown-menu.show",
-      (el) => {
-        el.classList.remove("show");
-      },
-      root
-    );
+    q("div", ".dropdown-menu.show", root).forEach((el) => {
+      el.classList.remove("show");
+    });
   }
 
   /**
@@ -182,9 +179,9 @@ class AdminiUi {
     // If none set, check cookies
     // It's better to set it server side to avoid transition glitches
     if (!mode) {
-      if (document.cookie.includes(`${THEME}=${LIGHT}`)) {
+      if (cookies(THEME) == LIGHT) {
         mode = LIGHT;
-      } else if (document.cookie.includes(`${THEME}=${DARK}`)) {
+      } else if (cookies(THEME) == DARK) {
         mode = DARK;
       } else {
         mode = LIGHT;
@@ -211,7 +208,7 @@ class AdminiUi {
         } else {
           mode = DARK;
         }
-        document.cookie = `${THEME}=${mode}`;
+        cookies(THEME, mode);
         document.documentElement.dataset.bsTheme = mode;
         // Adjust all buttons
         document.querySelectorAll(".js-darkmode-toggle").forEach((el) => {
@@ -251,10 +248,16 @@ class AdminiUi {
     });
   }
 
+  /**
+   * @param {Function} cb
+   */
   addInitCallback(cb) {
     initCallbacks.add(cb);
   }
 
+  /**
+   * @param {Function} cb
+   */
   removeInitCallback(cb) {
     initCallbacks.delete(cb);
   }

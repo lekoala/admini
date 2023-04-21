@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
+
+  <!-- styles -->
+  <link href="css/admini.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+  <!-- scripts -->
+  <script src="js/admini.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+
+  <style type="text/css">
+    header,
+    footer {
+      padding: 1em;
+      background: #ccc;
+    }
+
+    main {
+      padding: 1em;
+    }
+  </style>
+  <script type="module">
+    document.getElementById('add-btn').addEventListener('click', (e) => {
+      const btn = document.createElement("button");
+      btn.classList.add('my-elem');
+      btn.innerText = "My element";
+      document.querySelector('.holder').appendChild(btn);
+    })
+
+    document.getElementById('add-self-btn').addEventListener('click', (e) => {
+      const btn = document.createElement("button");
+      btn.classList.add('self-button');
+      btn.innerText = "Self element";
+      document.querySelector('.holder').appendChild(btn);
+    })
+
+    document.getElementById('rm-btn').addEventListener('click', (e) => {
+      const el = document.querySelector('.holder').querySelector(':scope > button');
+      if (el) {
+        el.parentElement.removeChild(el);
+      }
+    })
+
+    document.getElementById('add-btn-div').addEventListener('click', (e) => {
+      const div = document.createElement("div");
+      const btn = document.createElement("button");
+      btn.classList.add('my-elem');
+      btn.innerText = "My element (div)";
+      div.appendChild(btn);
+      document.querySelector('.holder').appendChild(div);
+    })
+
+    document.getElementById('rm-btn-div').addEventListener('click', (e) => {
+      const el = document.querySelector('.holder').querySelector(':scope > div');
+      if (el) {
+        el.parentElement.removeChild(el);
+      }
+    })
+
+    admini.entwine('.my-elem', {
+      click: (e, el) => {
+        // this will not work since we are using an arrow function
+        // this._private();
+        // This will be undefined because we cannot rebind, but we can use el as 2nd argument
+        console.log("click", e, this, el);
+      },
+      connected: (e) => {
+        console.log("connected", e);
+      },
+      disconnected: (e) => {
+        console.log("disconnected", e);
+      },
+      _private: function () {
+        console.log("im private", this);
+      }
+    });
+    admini.entwine('.my-elem', {
+      click: function (e, el) {
+        this._private();
+        console.log("click2", e, this, el, el === this);
+      },
+      mouseenter: (e) => {
+        console.log("enter", e);
+      },
+      mouseleave: (e) => {
+        console.log("leave", e);
+      },
+    });
+    admini.entwine('button', {
+      click: function (e, el) {
+        console.log("button click");
+      },
+    });
+    admini.entwine('button', {
+      click: function (e, el) {
+        console.log("ns button click");
+      },
+      once_click: function () {
+        console.log("one click!");
+      }
+    }, "ns"); // you can scope to a namespace to avoid conflicting definitions
+    admini.entwine('.self-button', {
+      connected: function (e, el) {
+        console.log("will remove in 3")
+        setTimeout(() => {
+          if (el.parentElement) {
+            el.parentElement.removeChild(el);
+          }
+        }, 3000);
+      },
+    });
+
+    setTimeout(() => {
+      // if we add definitions after domcontentloaded, it should fire anyway
+      admini.entwine('button', {
+        connected: function (e, el) {
+          console.log("lazy", el)
+        },
+      }, "lazy"); // use another ns to avoid conflicts
+
+      // You can also dispatch manually if you want?
+      admini.q('button').forEach((btn) => {
+        btn.dispatchEvent(new Event('connected'));
+      })
+    }, 2000);
+  </script>
+</head>
+
+<body>
+  <div class="holder p-3">
+    <button class="my-elem">
+      <?xml version="1.0" ?>
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <g id="Complete">
+          <g id="alert-circle">
+            <g>
+              <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8"
+                y2="12" />
+              <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16"
+                y2="16" />
+              <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#000000" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2" />
+            </g>
+          </g>
+        </g>
+      </svg> My element
+    </button>
+
+    <button class="self-button">I will disappear</button>
+  </div>
+  <div class="p-3">
+    <button id="add-btn">Add button</button>
+    <button id="add-btn-div">Add button in div</button>
+    <button id="rm-btn">Rm button</button>
+    <button id="rm-btn-div">Rm button in div</button>
+    <button id="add-self-btn">Add self destructive button</button>
+  </div>
+</body>
+
+</html>

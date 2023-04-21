@@ -6,16 +6,11 @@ import debounce from "./debounce.js";
  */
 
 const scroller = new Set();
-const fn = debounce(
-  /**
-   * @param {Event} ev
-   */
-  (ev) => {
-    for (let callback of scroller) {
-      callback(ev);
-    }
+const fn = debounce((ev) => {
+  for (let callback of scroller) {
+    callback(ev);
   }
-);
+});
 window.addEventListener("scroll", fn, {
   passive: true,
 });

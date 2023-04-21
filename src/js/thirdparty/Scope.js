@@ -1,6 +1,20 @@
 /**
- * @typedef {Function} PromiseHandler
+ * @callback ConfirmCallback
+ * @param {String} message
  * @returns {Promise}
+ */
+
+/**
+ * @callback LoadCallback
+ * @param {Scope} scope
+ * @returns {void}
+ */
+
+/**
+ * @callback StatusCallback
+ * @param {String} message
+ * @param {Number} statusCode
+ * @returns {void}
  */
 
 /**
@@ -26,11 +40,11 @@
  * @property {String} titleHeader
  * @property {String} styleHeader
  * @property {String} scriptHeader
- * @property {PromiseHandler} confirmHandler
+ * @property {ConfirmCallback} confirmHandler
  * @property {String} statusHeader
- * @property {Function} statusHandler
- * @property {Function} onLoad
- * @property {Function} onScopeLoad
+ * @property {StatusCallback} statusHandler
+ * @property {LoadCallback} onLoad
+ * @property {LoadCallback} onScopeLoad
  */
 let config = {
   debug: false,
@@ -53,7 +67,7 @@ let config = {
   statusHandler: (message, statusCode) => {
     alert(message);
   },
-  onLoad: () => {},
+  onLoad: (scope) => {},
   onScopeLoad: (scope) => {},
 };
 
@@ -284,24 +298,23 @@ function log(message) {
 
 // Make a full page load on back
 window.addEventListener("popstate", (event) => {
-  if (!event.state) {
-    return;
+  if (event.state) {
+    const id = event.state.id || null;
+    if (id) {
+      /**
+       * @type {Scope}
+       */
+      const scope = document.querySelector(`sco-pe[id="${id}"]`);
+      if (scope) {
+        log(`Restore location from history`);
+        scope.loadURL(document.location.toString());
+        return;
+      }
+    }
   }
-  const id = event.state.id || null;
-  if (!id) {
-    return;
-  }
-  /**
-   * @type {Scope}
-   */
-  const scope = document.querySelector(`sco-pe[id="${id}"]`);
-  if (!scope) {
-    // Do a full page load
-    window.location.replace(document.location.toString());
-    return;
-  }
-  log(`Restore location from history`);
-  scope.loadURL(document.location.toString());
+
+  // Do a full page load
+  window.location.replace(document.location.toString());
 });
 
 class Scope extends HTMLElement {
@@ -323,8 +336,8 @@ class Scope extends HTMLElement {
     /**
      * @type {Function}
      */
-    this.loadFunc = debounce((trigger) => {
-      this.load(trigger);
+    this.loadFunc = debounce((trigger, ev) => {
+      this.load(trigger, ev);
     }, config.debounceTime);
   }
 
@@ -351,6 +364,7 @@ class Scope extends HTMLElement {
      */
     let trigger = ev.target.closest("a,button,[data-scope-action]");
 
+    // A submit action means form submit
     if (ev.type === "submit") {
       trigger = ev.target;
     }
@@ -372,9 +386,9 @@ class Scope extends HTMLElement {
       const load = () => {
         // For click, no debounce
         if (ev.type === "click") {
-          this.load(trigger);
+          this.load(trigger, ev);
         } else {
-          this.loadFunc(trigger);
+          this.loadFunc(trigger, ev);
         }
       };
       // Check confirm ?
@@ -397,17 +411,24 @@ class Scope extends HTMLElement {
 
   /**
    * @param {HTMLElement} el
+   * @param {SubmitEvent} ev
    */
-  async load(el) {
+  async load(el, ev) {
     // Build url
     let action = getAction(el);
     let url = expandURL(action).href;
     let urlWithParams = url;
     const isLink = el.nodeName === "A";
+    const submitter = ev.submitter || null;
     const method = (el.getAttribute("method") || el.dataset.scopeMethod || "GET").toUpperCase();
     // Update history for links for named scopes
     let pushToHistory = isLink && getHistory(el, this) && this.hasAttribute("id");
     let postBody;
+
+    // F need some love
+    if (submitter) {
+      submitter.setAttribute("disabled", "");
+    }
 
     // Pass along current query string and params for elements with value
     const searchParams = new URLSearchParams(window.location.search);
@@ -454,6 +475,10 @@ class Scope extends HTMLElement {
       method,
       body,
     });
+
+    if (submitter) {
+      submitter.removeAttribute("disabled");
+    }
   }
 
   /**
@@ -461,9 +486,17 @@ class Scope extends HTMLElement {
    */
   setActive(el) {
     log(`Set active element`);
-    this.querySelectorAll(`.${config.activeClass}`).forEach((el) => {
-      el.classList.remove(config.activeClass);
-    });
+    this.querySelectorAll(`.${config.activeClass}`).forEach(
+      /**
+       * @param {HTMLElement} el
+       */
+      (el) => {
+        if (el === document.activeElement) {
+          el.blur();
+        }
+        el.classList.remove(config.activeClass);
+      }
+    );
     el.classList.add(config.activeClass);
   }
 
@@ -488,6 +521,7 @@ class Scope extends HTMLElement {
       fetchOptions
     );
 
+    this.classList.add("scope-fetching");
     try {
       const response = await fetch(url, options);
       if (!response.ok) {
@@ -499,8 +533,14 @@ class Scope extends HTMLElement {
       const data = await response.text();
       this._processResponse(data);
     } catch (error) {
-      config.statusHandler(error.message);
+      //@link https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal#aborting_a_fetch_with_timeout_or_explicit_abort
+      if (error.name === "AbortError") {
+        // The user knows he aborted, no notification
+      } else {
+        config.statusHandler(error.message);
+      }
     }
+    this.classList.remove("scope-fetching");
   }
 
   /**
@@ -679,7 +719,7 @@ class Scope extends HTMLElement {
     // Execute global onLoad. It must happen only once per "load" event,
     // which can be multiple scopes or only a partial scope
     log(`Calling global onload`);
-    config.onLoad();
+    config.onLoad(this);
   }
 
   _loadStyle(href) {
@@ -779,7 +819,7 @@ class Scope extends HTMLElement {
         this._processBody(body);
       }
 
-      if (isFull) {
+      if (isFull && tmp instanceof Document) {
         this._processDocument(tmp);
       }
 
@@ -916,24 +956,6 @@ class Scope extends HTMLElement {
     this.events.forEach((event) => {
       this.addEventListener(event, this);
     });
-  }
-
-  /**
-   * @param {String} url
-   * @param {Object} fetchOptions
-   * @returns {Promise<String>}
-   */
-  async fetchSelf(url, fetchOptions = {}) {
-    this.abortLoading();
-    this.abortController = new AbortController();
-    const options = Object.assign(
-      {
-        signal: this.abortController.signal,
-      },
-      fetchOptions
-    );
-    const response = await fetch(url, options);
-    return await response.text();
   }
 
   static get observedAttributes() {

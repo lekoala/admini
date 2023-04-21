@@ -1,5 +1,6 @@
 import attach from "./attach.js";
-import initialize from "./initialize.js";
+import initialize from "../utils/initialize.js";
+
 /**
  * Simple utilities if you don't use bootstrap dropdowns
  */

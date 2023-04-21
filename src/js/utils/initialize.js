@@ -1,7 +1,15 @@
 /**
+ * @callback ElementCallback
+ * @param {HTMLElement} el
+ * @returns {void}
+ */
+
+const set = new WeakSet();
+
+/**
  * Initialize an element exactly once
  * @param {String} selector
- * @param {(el:HTMLElement) => void} callback
+ * @param {ElementCallback} callback
  */
 export default function initialize(selector, callback) {
   document.querySelectorAll(selector).forEach(
@@ -9,10 +17,10 @@ export default function initialize(selector, callback) {
      * @param {HTMLElement} el
      */
     (el) => {
-      if (el.dataset.initialized) {
+      if (set.has(el)) {
         return;
       }
-      el.dataset.initialized = "1";
+      set.add(el);
       callback(el);
     }
   );

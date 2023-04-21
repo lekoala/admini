@@ -1,4 +1,4 @@
-import debounce from "./debounce.js";
+import debounce from "../utils/debounce.js";
 
 // A lightweight alternative to popper.js or floating ui
 

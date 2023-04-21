@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
+
+  <!-- styles -->
+  <link href="css/admini.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3/modular-behaviour.min.js"></script>
+  <script type="module" src="js/admini.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="main-scope">
+      <main class="main">
+        <div class="main-container">
+          <!-- The form can contain multiple tabs. It's easier to wrap everything -->
+          <form action="/php/submit-form.php" class="needs-validation" data-validation-message="Some fields are not valid">
+            <header class="main-header">
+              <div class="main-header-sidebar">
+                <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
+                  data-bs-target="#sidebar" aria-controls="sidebar">
+                  <l-i name="menu"></l-i>
+                </button>
+              </div>
+              <div class="main-header-info">
+                <nav aria-label="breadcrumb">
+                  <div class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Simple Form</li>
+                  </div>
+                </nav>
+              </div>
+              <div class="main-header-nav main-header-tabs">
+                <bs-tabs linkable="1" responsive="1" end>
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link" id="tab-1" data-bs-toggle="tab" data-bs-target="#panel-1" type="button" role="tab"
+                        aria-controls="panel-1" aria-selected="false">
+                        Main
+                      </a>
+                    </li>
+                  </ul>
+                </bs-tabs>
+              </div>
+            </header>
+            <section class="scroller">
+              <div class="tab-content container-fluid py-3">
+                <div class="tab-pane fade" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+                  <input type="hidden" name="_hash" />
+                  <!-- this stores persistent hash if needed -->
+                  <div class="form-group">
+                    <label for="exampleCombineRow" class="form-label">Name</label>
+                    <div class="form-field">
+                      <!-- you can also use the simpler input-group-item alternative -->
+                      <div class="row" id="exampleCombineRow">
+                        <div class="col-6">
+                          <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+                        </div>
+                        <div class="col-6">
+                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <footer class="main-footer">
+              <button type="submit" class="btn btn-success">
+                <l-i name="done"></l-i>
+                Save
+              </button>
+            </footer>
+          </form>
+        </div>
+      </main>
+    </sco-pe>
+  </div>
+</body>
+
+</html>

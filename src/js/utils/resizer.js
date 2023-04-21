@@ -6,16 +6,11 @@ import debounce from "./debounce.js";
  */
 
 const resizer = new Set();
-const fn = debounce(
-  /**
-   * @param {Event} ev
-   */
-  (ev) => {
-    for (let callback of resizer) {
-      callback(ev);
-    }
+const fn = debounce((ev) => {
+  for (let callback of resizer) {
+    callback(ev);
   }
-);
+});
 window.addEventListener("resize", fn, {
   passive: true,
 });

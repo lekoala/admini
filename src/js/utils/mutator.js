@@ -2,7 +2,7 @@ const mutator = new Set();
 
 /**
  * This set allows to easily watch mutations
- * Thansk to the Set, the same handlers cannot be added multiple times
+ * Thanks to the Set, the same handlers cannot be added multiple times
  */
 
 const observer = new MutationObserver((mutations) => {

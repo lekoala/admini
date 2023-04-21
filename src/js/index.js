@@ -5,12 +5,19 @@ import "./custom-bootstrap.js";
 import BsCompanion from "bs-companion/bs-companion.js";
 import AdminiUi from "./ui.js";
 // Utils
+// TODO: migrate to third party utils framework
 import escapeHTML from "./utils/escapeHTML.js";
-import withElements from "./utils/withElements.js";
 import initialize from "./utils/initialize.js";
+import entwine from "./utils/entwine.js";
+import listen from "./utils/listen.js";
+import delegate from "./utils/delegate.js";
+import on from "./utils/on.js";
+import q from "./utils/q.js";
+import { $, $$ } from "./utils/dollar.js";
+import resizer from "./utils/resizer.js";
 // Third party
 import Scope from "./thirdparty/Scope.js";
-import simpleDropdowns from "./utils/simpleDrodowns.js"; // optional
+import simpleDropdowns from "./dropdowns/simpleDrodowns.js"; // optional
 import Toasts from "bs-companion/src/Toasts.js";
 import modalizerConfirm from "bs-companion/src/modalizerConfirm.js";
 
@@ -55,11 +62,19 @@ Scope.configure({
   },
 });
 
+// Should the utils be exposed on the global object ?
 const admini = {
-  // Third party
+  // Utils
   escapeHTML,
   initialize,
-  withElements,
+  entwine,
+  listen,
+  delegate,
+  q,
+  $,
+  $$,
+  on,
+  resizer,
   // Our libs
   ui,
   init,

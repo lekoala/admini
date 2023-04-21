@@ -2,9 +2,10 @@
  * Listen to any events on any elements
  * Set passive elements by default
  * Avoid listening multiple times to the same event for the same handler
- * Support a virtual "match" event that allows triggering code only once
+ * Support a virtual "connected" event that allows triggering code only once
  */
 
+const CONNECTED = "connected";
 const supportedPassiveTypes = [
   "scroll",
   "wheel",
@@ -29,14 +30,19 @@ const supportedPassiveTypes = [
 const map = new WeakMap();
 
 /**
- *
- * @param {String|NodeList} target
- * @param {String} type
+ * @param {String|NodeList|Array} target
+ * @param {String|Array} type
  * @param {EventListener} listener
  * @param {EventListenerOptions|Boolean} options
  */
 function listen(target, type, listener, options = false) {
-  const list = target instanceof NodeList ? target : document.querySelectorAll(target);
+  if (Array.isArray(type)) {
+    type.forEach((type) => {
+      listen(target, type, listener, options);
+    });
+    return;
+  }
+  const list = target instanceof NodeList || target instanceof Array ? target : document.querySelectorAll(target);
   list.forEach(
     /**
      * @param {HTMLElement} el
@@ -53,25 +59,13 @@ function listen(target, type, listener, options = false) {
         set = new Set();
         registry.set(type, set);
       }
-      // Need toString comparison to compare
+      // Need toString comparison to compare anonymous functions instantiated multiple times
       const str = listener.toString();
       if (set.has(str)) {
         // Don't listen multiple times for the same listener
         return;
       }
       set.add(str);
-
-      // Virtual match event
-      if (type === "match") {
-        listener(
-          new CustomEvent("match", {
-            detail: {
-              target: el,
-            },
-          })
-        );
-        return;
-      }
 
       /**
        * @type {AddEventListenerOptions}
@@ -82,6 +76,7 @@ function listen(target, type, listener, options = false) {
       } else {
         listenerOptions = Object.assign(listenerOptions, options);
       }
+      // @link https://developer.chrome.com/docs/lighthouse/best-practices/uses-passive-event-listeners/
       if (supportedPassiveTypes.includes(type)) {
         listenerOptions = Object.assign(
           {
@@ -91,6 +86,11 @@ function listen(target, type, listener, options = false) {
         );
       }
       el.addEventListener(type, listener, listenerOptions);
+
+      // Fake connected event, which makes syntax simpler when defining init code that should run only once
+      if (type === CONNECTED) {
+        el.dispatchEvent(new Event(CONNECTED));
+      }
     }
   );
 }
