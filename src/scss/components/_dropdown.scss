@@ -5,16 +5,19 @@
     opacity: 0;
     margin-top: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-factor));
   }
+
   to {
     opacity: 1;
     margin-top: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-end-factor));
   }
 }
+
 @keyframes dropupAnimation {
   from {
     opacity: 0;
     margin-bottom: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-factor));
   }
+
   to {
     opacity: 1;
     margin-bottom: calc(var(--bs-dropdown-spacer, 0.125) * var(--dropdown-animation-end-factor));
@@ -22,6 +25,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+
   .dropdown,
   .dropup {
     .dropdown-menu.show {
@@ -33,16 +37,19 @@
       animation-timing-function: ease-out;
       animation-fill-mode: forwards;
     }
+
     // With popper, don't have any margin at all
     .dropdown-menu[data-popper-placement] {
       --dropdown-animation-end-factor: 0;
     }
   }
+
   .dropup {
     .dropdown-menu.show {
       --dropdown-animation-factor: 2;
       --dropdown-animation-end-factor: -1;
     }
+
     // With popper, don't have any margin at all
     .dropdown-menu[data-popper-placement].show {
       --dropdown-animation-factor: -2;
@@ -75,6 +82,7 @@ header .dropdown-menu {
     transform: rotate(45deg);
   }
 }
+
 .dropup {
   .dropdown-toggle:after {
     vertical-align: middle;
@@ -103,6 +111,7 @@ header .dropdown-menu {
   &:first-child {
     border-top-width: 1px;
   }
+
   &:first-child,
   &:last-child {
     border-radius: 0;
@@ -137,6 +146,7 @@ header .dropdown-menu {
     margin-bottom: 0; // for headers
   }
 }
+
 .dropdown-menu-footer {
   display: block;
   padding: $dropdown-header-padding;
@@ -151,4 +161,8 @@ header .dropdown-menu {
     color: $dropdown-header-color;
     text-decoration: none;
   }
+}
+
+.dropdown-alias {
+  cursor: pointer;
 }

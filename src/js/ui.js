@@ -241,8 +241,8 @@ class AdminiUi {
 
     // Alternative triggers for dropdowns
     initialize(".dropdown-alias", (el) => {
-      const menu = el.parentElement.querySelector(menuClass);
       el.addEventListener("click", (e) => {
+        const menu = el.parentElement.querySelector(menuClass);
         menu.classList.toggle(showClass);
       });
     });

@@ -67,6 +67,13 @@
       return "<l-i name='edit'>";
     };
 
+    const maleFemale = function (cell, formatterParams, onRendered) { //plain text value
+      if (cell.getValue() == "male" || cell.getValue() == "female") {
+        return "<l-i name='" + cell.getValue() + "'>";
+      }
+      return '';
+    };
+
     function onCellClick(e, cell) { Toasts.success("Editing row data for: " + cell.getRow().getData().name) }
 
     var table = new Tabulator("#tabulator-table", {
@@ -75,15 +82,15 @@
       // autoColumns: true,
       responsiveLayout: "hide",
       columns: [ //set column definitions for imported table data
-        { formatter: "rowSelection", titleFormatter: "rowSelection", align: "center", headerSort: false, maxWidth: 40 },
+        { formatter: "rowSelection", titleFormatter: "rowSelection", hozAlign: "center", headerSort: false, maxWidth: 40 },
         { title: "ID", field: "id", responsive: 0, minWidth: 120 }, // this column wil never be hidden
         { title: "Name", field: "name", responsive: 0, minWidth: 240, editor: true }, // this column wil never be hidden
         { title: "Location", field: "location", responsive: 3 }, // hidden first
-        { title: "Gender", field: "gender", minWidth: 100 }, // hidden fifth
-        { title: "Rating", field: "rating", responsive: 2, editor: "star", formatter: "star" }, // hidden third
-        { title: "Favourite Color", field: "col", responsive: 2 }, // hidden second
-        { title: "Date of Birth", field: "dob" }, // hidden fourth
-        { formatter: editIcon, width: 40, hozAlign: "center", cellClick: onCellClick, headerSort: false },
+        { title: "Gender", field: "gender", minWidth: 60, formatter: maleFemale, }, // hidden fifth
+        { title: "Rating", field: "rating", responsive: 2, editor: "star", formatter: "star", minWidth: 120 }, // hidden third
+        { title: "Favourite Color", field: "col", responsive: 2, minWidth: 120 }, // hidden second
+        { title: "Date of Birth", field: "dob", minWidth: 120 }, // hidden fourth
+        { formatter: editIcon, width: 40, hozAlign: "center", cellClick: onCellClick, headerSort: false, responsive: 0 },
       ],
     });
 

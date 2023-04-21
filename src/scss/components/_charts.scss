@@ -1,5 +1,6 @@
 // Don't forget to set maintainAspectRatio to false
 // @link https://www.chartjs.org/docs/latest/configuration/responsive.html
+// @link https://itnext.io/a-fully-responsive-chart-js-chart-91a72ef5e2c
 
 $chart-default-height: 8rem !default;
 
@@ -19,4 +20,13 @@ $chart-default-height: 8rem !default;
 .chart-lg {
   height: $chart-default-height * 3;
   max-height: $chart-default-height * 3;
+}
+
+// https://github.com/chartjs/Chart.js/discussions/9214
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .chart {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  }
 }
