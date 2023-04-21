@@ -44,7 +44,7 @@
       <main class="main">
         <div class="main-container">
           <!-- The form can contain multiple tabs. It's easier to wrap everything -->
-          <form action="/php/submit-form.php" class="needs-validation" data-validation-message="Some fields are not valid">
+          <form action="/php/submit-form.php" method="post" class="needs-validation" data-validation-message="Some fields are not valid">
             <header class="main-header">
               <div class="main-header-sidebar">
                 <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
@@ -83,10 +83,10 @@
                       <!-- you can also use the simpler input-group-item alternative -->
                       <div class="row" id="exampleCombineRow">
                         <div class="col-6">
-                          <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+                          <input type="text" class="form-control" name="fname" placeholder="First name" aria-label="First name" />
                         </div>
                         <div class="col-6">
-                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" />
+                          <input type="text" class="form-control" name="lname" placeholder="Last name" aria-label="Last name" />
                         </div>
                       </div>
                     </div>
