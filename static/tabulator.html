@@ -23,13 +23,7 @@
   <!-- styles -->
   <link href="css/admini.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lekoala/data-grid@fb919cd/data-grid.min.css" />
-  <style type="text/css">
-    button.is-danger {
-      background: crimson;
-      color: #fff;
-    }
-  </style>
+
   <!-- icons -->
   <script src="js/last-icon.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -38,25 +32,41 @@
   <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/data-grid-component@2/data-grid.min.js"></script>
   <script type="module" src="js/admini.min.js"></script>
+
+  <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator_bootstrap5.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+
   <script type="module">
-    document.getElementById("demo-grid").addEventListener("action", (ev) => {
-      let grid = document.getElementById("demo-grid");
-      let className = ev.detail.action == "delete" ? "bg-danger" : "bg-info";
-      const toast = toaster({
-        body: ev.detail.action,
-        className: "border-0 " + className + " text-white",
-        btnCloseWhite: true,
-      });
-    });
-    document.getElementById("demo-grid").addEventListener("edit", (ev) => {
-      let grid = document.getElementById("demo-grid");
-      const toast = toaster({
-        body: "Record edited",
-        className: "border-0 bg-success text-white",
-        btnCloseWhite: true,
-      });
+    var tabledata = [
+      { id: 1, name: "Oli Bob", location: "United Kingdom", gender: "male", rating: 1, col: "red", dob: "14/04/1984" },
+      { id: 2, name: "Mary May", location: "Germany", gender: "female", rating: 2, col: "blue", dob: "14/05/1982" },
+      { id: 3, name: "Christine Lobowski", location: "France", gender: "female", rating: 0, col: "green", dob: "22/05/1982" },
+      { id: 4, name: "Brendon Philips", location: "USA", gender: "male", rating: 1, col: "orange", dob: "01/08/1980" },
+      { id: 5, name: "Margret Marmajuke", location: "Canada", gender: "female", rating: 5, col: "yellow", dob: "31/01/1999" },
+      { id: 6, name: "Frank Harbours", location: "Russia", gender: "male", rating: 4, col: "red", dob: "12/05/1966" },
+      { id: 7, name: "Jamie Newhart", location: "India", gender: "male", rating: 3, col: "green", dob: "14/05/1985" },
+      { id: 8, name: "Gemma Jane", location: "China", gender: "female", rating: 0, col: "red", dob: "22/05/1982" },
+      { id: 9, name: "Emily Sykes", location: "South Korea", gender: "female", rating: 1, col: "maroon", dob: "11/11/1970" },
+      { id: 10, name: "James Newman", location: "Japan", gender: "male", rating: 5, col: "red", dob: "22/03/1998" },
+    ];
+    for (let i = 11; i < 100; i++) {
+      tabledata.push({
+        id: i,
+        name: `fn ${i}`,
+        location: `location ${i}`,
+        location: i % 2 ? 'male' : 'female',
+        rating: 0,
+        col: 'green',
+        dob: '01/01/2023'
+      })
+    }
+
+    var table = new Tabulator("#tabulator-table", {
+      layout: "fitColumns",
+      data: tabledata,
+      autoColumns: true,
     });
   </script>
 </head>
@@ -77,23 +87,17 @@
             <div class="main-header-info">
               <nav aria-label="breadcrumb">
                 <div class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">Datatables</li>
+                  <li class="breadcrumb-item active" aria-current="page">Tabulator</li>
                 </div>
               </nav>
             </div>
           </header>
           <section class="scroller">
             <div class="container-fluid py-3">
-              <h1>Datatable</h1>
-              <p>
-                Admini doesn't come with a specific Datatable support in mind, but you can use for example
-                <a href="https://github.com/lekoala/data-grid">data-grid</a>
-                or
-                <a href="http://www.tabulator.info/">tabulator</a> (<a href="/tabulator.html">see example</a>)
-              </p>
+              <h1>Tabulator</h1>
+              <p><a href="/datatable.html">Back to datatable</a></p>
             </div>
-            <data-grid id="demo-grid" data-url="https://cdn.jsdelivr.net/gh/lekoala/data-grid/demo/demo.json" data-autosize="true"
-              data-filter="true" data-sort="true" data-default-sort="id" data-debug="true" sticky></data-grid>
+            <div id="tabulator-table"></div>
           </section>
         </div>
       </main>

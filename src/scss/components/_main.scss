@@ -43,8 +43,8 @@ sco-pe {
 /* Scope - can be a regular div if not using sco-pe */
 
 #main-scope {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 /* Main container */
@@ -78,7 +78,13 @@ sco-pe {
 }
 
 @include media-breakpoint-up(md) {
+  // Make sure actual widht is reported properly with the sidebar
+  #main-scope {
+    height: 100%;
+    width: calc(100% - var(--sidebar-width));
+  }
 
+  // We want the .scroller to do its job and avoid double scrollbars
   .main,
   .main-container,
   .main-container>form {

@@ -1,3 +1,11 @@
+body {
+  --sidebar-width: #{$sidebar-width};
+
+  &.minimenu {
+    --sidebar-width: #{$sidebar-compact-width};
+  }
+}
+
 /* Scope - can be a regular div if not using sco-pe */
 
 #sidebar-scope {
@@ -11,8 +19,8 @@
 /* Sidebar */
 
 .sidebar {
-  min-width: $sidebar-width;
-  max-width: $sidebar-width;
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
   direction: ltr;
   background: $sidebar-bg;
   display: none;
@@ -26,17 +34,6 @@
     display: flex;
   }
 }
-
-// Adjust main width so that 100% width works as expected
-// TODO: is this really needed ?
-// @include media-breakpoint-up(md) {
-//   .main {
-//     width: calc(100% - $sidebar-width);
-//   }
-//   .minimenu .main {
-//     width: calc(100% - $sidebar-compact-width);
-//   }
-// }
 
 // It should have a .scroller class as well
 .sidebar-content {
@@ -266,7 +263,9 @@
   border-top: 1px solid $sidebar-border-color;
 
   // Hover buttons should have full bg height
-  > .btn, > div, > div > .btn {
+  >.btn,
+  >div,
+  >div>.btn {
     height: 100%;
   }
 }
@@ -316,9 +315,6 @@
 
 // Compact sidebar
 .minimenu .sidebar {
-  min-width: $sidebar-compact-width;
-  max-width: $sidebar-compact-width;
-
   .sidebar-nav-header {
     height: 1px;
     padding: 0;

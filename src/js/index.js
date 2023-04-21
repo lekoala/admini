@@ -20,12 +20,21 @@ import Scope from "./thirdparty/Scope.js";
 import simpleDropdowns from "./dropdowns/simpleDrodowns.js"; // optional
 import Toasts from "bs-companion/src/Toasts.js";
 import modalizerConfirm from "bs-companion/src/modalizerConfirm.js";
+import FormValidator from "bs-companion/src/FormValidator.js";
 
 const debugMode = document.documentElement.dataset.debug ? true : false;
 const ui = new AdminiUi();
 const init = () => {
   ui.init();
-  BsCompanion.FormValidator.init();
+  initialize(
+    "form.needs-validation",
+    /**
+     * @param {HTMLFormElement} form
+     */
+    (form) => {
+      new FormValidator(form);
+    }
+  );
   simpleDropdowns(); // optional
 };
 

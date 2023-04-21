@@ -30,7 +30,7 @@
     "build": "esbuild --bundle --minify --format=esm --sourcemap src/js/index.js --outfile=static/js/admini.min.js",
     "start": "npm run build -- --servedir=./static",
     "watch": "npm run build -- --watch",
-    "compile-css": "sass src/scss/admini.scss:static/css/admini.min.css --style compressed --load-path=node_modules/",
+    "compile-css": "sass src/scss/admini.scss:static/css/admini.min.css --no-source-map --style compressed --load-path=node_modules/",
     "watch-css": "npm run compile-css -- --watch --poll",
     "prefix-css": "postcss static/css/admini.min.css --replace --use autoprefixer",
     "rtl-css": "rtlcss static/css/admini.min.css static/css/admini.rtl.min.css",
