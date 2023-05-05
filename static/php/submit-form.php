@@ -5,7 +5,9 @@ sleep(random_int(0, 2)); // simulate load time
 $fname = $_POST['fname'] ?? null;
 $lname = $_POST['lname'] ?? null;
 
-header('X-Status: posted at ' . date('Y-m-d H:i:s') . ' for ' . $fname . ' ' . $lname);
+$name = trim($fname . ' ' . $lname) ?? '(no name)';
+
+header('X-Status: posted at ' . date('Y-m-d H:i:s') . ' for ' . $name);
 
 $content = file_get_contents('../forms-simple.html');
 

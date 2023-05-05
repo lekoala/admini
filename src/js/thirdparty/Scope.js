@@ -297,7 +297,7 @@ function log(message) {
 }
 
 // Make a full page load on back
-window.addEventListener("popstate", (event) => {
+window.addEventListener("popstate", async (event) => {
   if (event.state) {
     const id = event.state.id || null;
     if (id) {
@@ -307,7 +307,7 @@ window.addEventListener("popstate", (event) => {
       const scope = document.querySelector(`sco-pe[id="${id}"]`);
       if (scope) {
         log(`Restore location from history`);
-        scope.loadURL(document.location.toString());
+        await scope.loadURL(document.location.toString(), {}, event.state.hint);
         return;
       }
     }
@@ -419,13 +419,18 @@ class Scope extends HTMLElement {
     let url = expandURL(action).href;
     let urlWithParams = url;
     const isLink = el.nodeName === "A";
+    /**
+     * @type {HTMLButtonElement}
+     */
+    //@ts-ignore
     const submitter = ev.submitter || null;
+    const hint = el.dataset.scopeHint; // helps to determine fetch target, this by default
     const method = (el.getAttribute("method") || el.dataset.scopeMethod || "GET").toUpperCase();
     // Update history for links for named scopes
     let pushToHistory = isLink && getHistory(el, this) && this.hasAttribute("id");
     let postBody;
 
-    // F need some love
+    // Forms need some love
     if (submitter) {
       submitter.setAttribute("disabled", "");
     }
@@ -443,6 +448,10 @@ class Scope extends HTMLElement {
     // Pass form data
     if (el instanceof HTMLFormElement) {
       const formData = new FormData(el);
+      // Pass clicked action
+      if (submitter) {
+        formData.append(submitter.name, submitter.value || "true");
+      }
       postBody = formData;
     }
 
@@ -450,18 +459,13 @@ class Scope extends HTMLElement {
     // Always use GET request for sco-pe requests and delegate loading to instance
     const target = el.dataset.scopeTarget || this.dataset.scopeTarget;
     if (target && target !== "_self") {
-      log(`Loading partial document into scope ${target}`);
+      log(`Loading into targeted scope ${target}`);
       document.getElementById(target).setAttribute("src", urlWithParams);
       return;
     }
 
     if (pushToHistory) {
-      const id = this.getAttribute("id");
-      const state = {
-        id,
-        url,
-      };
-      history.pushState(state, null, url);
+      this.updateHistory(url, hint);
     }
     if (isLink) {
       this.setActive(el);
@@ -471,14 +475,28 @@ class Scope extends HTMLElement {
       url = urlWithParams;
     }
     const body = method === "POST" ? postBody : null;
-    await this.loadURL(url, {
-      method,
-      body,
-    });
 
+    await this.loadURL(
+      url,
+      {
+        method,
+        body,
+      },
+      hint
+    );
     if (submitter) {
       submitter.removeAttribute("disabled");
     }
+  }
+
+  updateHistory(url, hint) {
+    const id = this.getAttribute("id");
+    const state = {
+      id,
+      url,
+      hint,
+    };
+    history.pushState(state, null, url);
   }
 
   /**
@@ -503,8 +521,9 @@ class Scope extends HTMLElement {
   /**
    * @param {String} url
    * @param {Object} fetchOptions
+   * @param {String} hint
    */
-  async loadURL(url, fetchOptions = {}) {
+  async loadURL(url, fetchOptions = {}, hint = null) {
     if (!fetchOptions.signal) {
       log(`GET ${url}`);
       // If not targeting a specific scope, we use a global context
@@ -521,9 +540,17 @@ class Scope extends HTMLElement {
       fetchOptions
     );
 
-    this.classList.add("scope-fetching");
+    // Since we don't know before getting the server response which sco-pe will be given
+    // you can "hint" to show proper loading state in the dom
+    const loadTarget = hint ? document.getElementById(hint) : this;
+    loadTarget.classList.add("scope-fetching");
+
     try {
       const response = await fetch(url, options);
+      if (response.redirected) {
+        // TODO: check if we should always do this ?
+        this.updateHistory(response.url, hint);
+      }
       if (!response.ok) {
         const message = response.headers.get(config.statusHeader) || response.statusText;
         config.statusHandler(message, response.status);
@@ -540,7 +567,8 @@ class Scope extends HTMLElement {
         config.statusHandler(error.message);
       }
     }
-    this.classList.remove("scope-fetching");
+
+    loadTarget.classList.remove("scope-fetching");
   }
 
   /**
@@ -695,6 +723,10 @@ class Scope extends HTMLElement {
    * This can be called either when:
    * - all scripts are loaded (and scopes are already loaded)
    * - all scopes are loaded (and scripts are already loaded)
+   *
+   * Note! there is no way to know when the inline scripts is executed
+   * Therefore, your content cannot rely for example on inline imports
+   * since we don't have a load callback
    */
   _processInlineScriptsQueue() {
     log(`Executing ${pendingInlineScripts.length} inline scripts`);
@@ -769,7 +801,7 @@ class Scope extends HTMLElement {
     if (!canTriggerImmediately) {
       this._processScriptsQueue();
     }
-    log(`There are ${pendingInlineScripts.length} pending inline scripts (${canTriggerImmediately})`);
+    log(`${pendingInlineScripts.length} pending inline scripts ${canTriggerImmediately ? "(can trigger immediately)" : ""}`);
 
     // Obviously order can get tricky here, namespace as needed to avoid collisions
     // or avoid scope pollution
@@ -875,7 +907,7 @@ class Scope extends HTMLElement {
       // Scroll top
       document.scrollingElement.scrollTo(0, 0);
     } else {
-      log(`Loading partial document into self ${this.id}`);
+      log(`Loading partial document into self (${this.id})`);
       this.innerHTML = fragmentToString(tmp);
       this._afterLoad();
       scrollIntoParentView(this);
@@ -892,11 +924,11 @@ class Scope extends HTMLElement {
     const src = this.src;
     const preventLoading = check && !isNodeEmpty(this);
     if (src && !preventLoading) {
-      this.classList.add("scope-loading");
       this.classList.remove("scope-loaded");
 
       this.abortLoading();
       this.abortController = new AbortController();
+
       await this.loadURL(src, {
         signal: this.abortController.signal,
       });
@@ -920,7 +952,7 @@ class Scope extends HTMLElement {
       }
     });
 
-    this.classList.remove("scope-loading");
+    this.classList.remove("scope-fetching");
     this.classList.add("scope-loaded");
     this.dispatchEvent(new CustomEvent("scope-loaded"));
     config.onScopeLoad(this);
@@ -985,6 +1017,7 @@ class Scope extends HTMLElement {
     // delay execution until the Event Loop is done and all DOM is parsed
     // @link https://stackoverflow.com/questions/70949141/web-components-accessing-innerhtml-in-connectedcallback/75402874
     setTimeout(async () => {
+      log(`Scope init ${this.id || "(no id)"}`);
       // content can be provided by server rendering, in this case, don't load
       await this.loadContent(true);
       this.init = true;

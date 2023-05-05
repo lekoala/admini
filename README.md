@@ -17,7 +17,7 @@
 
 ## BS Companion
 
-Some features of admini have been extracted to a third party module called [BS Companion](https://bs-companion.vercel.app/)
+Some bootstrap related features of admini have been extracted to a third party module called [BS Companion](https://bs-companion.vercel.app/)
 
 - Responsive Table : Nice responsive tables without ugly scrollbars
 - BS Tabs : Improved tabs, that collapse down to a dropdown and with linkable tabs
@@ -31,13 +31,14 @@ Some features of admini have been extracted to a third party module called [BS C
 Admini does not provide any built in custom form elements. This is because we are often used to use specifics
 libraries based on our usage and personal preferences.
 
-One easy way to bind behaviour to your html nodes is to use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
+I highly recommend you to use my WIP (but already very stable) [Formidable Elements](https://github.com/lekoala/formidable-elements) collection.
 
+If you don't find what you need there, you can use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
 It works beautifully in combination with [skypack](https://www.skypack.dev/).
 
 ## Ajax navigation
 
-The admin panel provides a built-in (but optional) navigation with sco-pe, a custom element made to load page fragments.
+The admin panel provides a built-in (but optional) navigation with [sco-pe](https://github.com/lekoala/sco-pe), a custom element made to load page fragments.
 
 Changing from a full page load on each action to a ajax powered navigation as a few side effects that you should not ignore:
 
@@ -47,21 +48,19 @@ Changing from a full page load on each action to a ajax powered navigation as a 
 
 Avoid initializing things multiple time can be done in three ways:
 
-- Have self initializing custom elements or use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
+- Have self initializing [custom elements](https://github.com/lekoala/formidable-elements) or use [Modular Behaviour](https://github.com/lekoala/modular-behaviour.js).
 - Happily trigger full page init with multiple init safe scripts (eg: using initialize util provided)
 - Define custom per fragment code with onScopeLoad
 
 You can also ditch sco-pe completely and use a more robust solution like Turbo or Unpoly. I didn't want to use these
 libraries because they tend to creep to much into the project architecture. With sco-pe, you can pretty much write
-regular html and it will work with minimal changes.
+regular html and it will work with minimal changes. [More on that topic](https://blog.lekoala.be/many-ways-to-deal-with-events-in-javascript).
 
 ## Icons and images
 
-Icons are powered by [Last Icon](https://github.com/lekoala/last-icon)
-
-Default set is [material icons](https://fonts.google.com/icons)
-
-Images are from [undraw](https://undraw.co/)
+- Icons are powered by [Last Icon](https://github.com/lekoala/last-icon)
+- Default set is [material icons](https://fonts.google.com/icons)
+- Images are from [undraw](https://undraw.co/)
 
 ## Demo
 

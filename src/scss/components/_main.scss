@@ -28,18 +28,6 @@ html {
 //   bottom: 0;
 // }
 
-sco-pe {
-  visibility: hidden;
-  transition: opacity 0.5s ease-out;
-  opacity: 0;
-
-  &.scope-loaded {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-
 /* Scope - can be a regular div if not using sco-pe */
 
 #main-scope {

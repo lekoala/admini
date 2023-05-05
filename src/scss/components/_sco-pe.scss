@@ -1,0 +1,27 @@
+@keyframes scopeShow {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+sco-pe {
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
+
+    &.scope-loaded {
+        opacity: 1;
+    }
+
+    &.scope-fetching {
+        opacity: 1;
+        animation-name: scopeShow;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        animation-duration: 0.3s; // only triggers after 300ms
+        pointer-events: none; // disable clicks while loading
+    }
+}

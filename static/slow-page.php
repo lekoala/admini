@@ -1,0 +1,80 @@
+<?php
+sleep(random_int(1, 3)); // simulate load time
+?>
+<!DOCTYPE html>
+<html lang="en" data-debug=1>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- page meta -->
+  <meta name="description" content="Minimalistic Admin Panel built with Bootstrap 5" />
+  <meta name="author" content="LeKoala" />
+  <meta name="keywords" content="bootstrap, bootstrap 5, admin, panel, template, minimalistic" />
+
+  <!-- performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- page title & icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2252%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%22120%22>💠</text></svg>" />
+  <title>Admini</title>
+
+  <!-- styles -->
+  <link href="css/admini.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
+    id="nomodule-browser-warning"></script>
+
+  <script type="module" src="js/admini.min.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <sco-pe id="sidebar-scope" src="/partials/sidebar-php.html"></sco-pe>
+    <sco-pe id="main-scope">
+      <main class="main">
+        <div class="main-container">
+          <!-- header -->
+          <header class="main-header">
+            <div class="main-header-sidebar">
+              <button type="button" class="btn btn-primary btn-flex btn-square rounded-0" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar" aria-controls="sidebar">
+                <l-i name="menu"></l-i>
+              </button>
+            </div>
+            <div class="main-header-info">
+              <!-- breadcrumb -->
+              <nav aria-label="breadcrumb">
+                <div class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Admin section</li>
+                </div>
+              </nav>
+            </div>
+            <div class="main-header-nav"></div>
+          </header>
+          <!-- section -->
+          <section class="scroller">
+            <div class="container-fluid">
+              <h1 class="my-4">
+                This is a slow page
+              </h1>
+            </div>
+          </section>
+        </div>
+      </main>
+    </sco-pe>
+  </div>
+</body>
+
+</html>

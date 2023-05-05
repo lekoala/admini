@@ -29,10 +29,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
+  <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/bs-tags.min.js"></script>
+  
   <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3/modular-behaviour.min.js"></script>
   <script type="module" src="js/admini.min.js"></script>
 </head>
 
@@ -265,8 +266,8 @@
                 <div class="col-auto" style="width: 300px">
                   <label for="validationTagsClear" class="form-label">Tags</label>
                   <div class="form-field">
-                    <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
-                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" data-fixed="1" size="1">
+                    <bs-tags>
+                      <select class="form-select" id="validationTagsClear" multiple data-allow-clear="true" size="1">
                         <option selected disabled hidden value="">Choose a role...</option>
                         <option value="1" selected="selected">Admin</option>
                         <option value="2">Editor</option>
@@ -277,7 +278,7 @@
                         <option value="7">Subscriber 5</option>
                         <option value="8">Subscriber 6</option>
                       </select>
-                    </modular-behaviour>
+                    </bs-tags>
                     <div class="invalid-feedback">Please select a valid role.</div>
                   </div>
                 </div>
@@ -285,8 +286,8 @@
                 <div class="col-auto" style="width: 300px">
                   <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
                     <div class="form-field">
-                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
-                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" data-fixed="1" size="1">
+                      <bs-tags>
+                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" size="1">
                           <option selected disabled hidden value="">Choose a role...</option>
                           <option value="1" selected="selected">Admin</option>
                           <option value="2">Editor</option>
@@ -297,7 +298,7 @@
                           <option value="7">Subscriber 5</option>
                           <option value="8">Subscriber 6</option>
                         </select>
-                      </modular-behaviour>
+                      </bs-tags>
                       <div class="invalid-feedback">Please select a valid role.</div>
                     </div>
                   </div>
@@ -306,8 +307,8 @@
                 <div class="col-auto" style="width: 300px" dir="rtl">
                   <div style="position: relative; overflow: hidden; height: 40px; background: #ccc">
                     <div class="form-field">
-                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
-                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" data-fixed="1" size="1">
+                      <bs-tags>
+                        <select class="form-select" id="validationTagsClear3" multiple data-allow-clear="true" size="1">
                           <option selected disabled hidden value="">Choose a role...</option>
                           <option value="1" selected="selected">Admin</option>
                           <option value="2">Editor</option>
@@ -318,7 +319,7 @@
                           <option value="7">Subscriber 5</option>
                           <option value="8">Subscriber 6</option>
                         </select>
-                      </modular-behaviour>
+                      </bs-tags>
                       <div class="invalid-feedback">Please select a valid role.</div>
                     </div>
                   </div>
@@ -327,8 +328,8 @@
                 <div class="col-auto" style="width: 300px">
                   <div style="position: relative; overflow: hidden; overflow-x: scroll; height: 80px; width: 400px; background: #ccc">
                     <div class="form-field" style="margin-left: 500px;width:200px">
-                      <modular-behaviour src="https://cdn.jsdelivr.net/npm/bootstrap5-tags@1/tags.min.js">
-                        <select class="form-select" id="validationTagsClear2" multiple data-allow-clear="true" data-fixed="1" size="1">
+                      <bs-tags>
+                        <select class="form-select" id="validationTagsClear4" multiple data-allow-clear="true" size="1">
                           <option selected disabled hidden value="">Choose a role...</option>
                           <option value="1" selected="selected">Admin</option>
                           <option value="2">Editor</option>
@@ -339,7 +340,7 @@
                           <option value="7">Subscriber 5</option>
                           <option value="8">Subscriber 6</option>
                         </select>
-                      </modular-behaviour>
+                      </bs-tags>
                       <div class="invalid-feedback">Please select a valid role.</div>
                     </div>
                   </div>

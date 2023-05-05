@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-debug="1">
 
 <head>
   <meta charset="utf-8" />
@@ -33,13 +33,12 @@
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/modular-behaviour.js@3/modular-behaviour.min.js"></script>
   <script type="module" src="js/admini.min.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
-    <sco-pe id="sidebar-scope" src="/partials/sidebar.html"></sco-pe>
+    <sco-pe id="sidebar-scope" src="/partials/sidebar-php.html"></sco-pe>
     <sco-pe id="main-scope">
       <main class="main">
         <div class="main-container">
@@ -95,9 +94,12 @@
               </div>
             </section>
             <footer class="main-footer">
-              <button type="submit" class="btn btn-success">
+              <button type="submit" name="action_submit" class="btn btn-success">
                 <l-i name="done"></l-i>
                 Save
+              </button>
+              <button type="submit" name="action_other" class="btn btn-secondary">
+                Other action
               </button>
             </footer>
           </form>

@@ -33,9 +33,12 @@
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/dist/patternomaly.js"></script>
   <script type="module">
-    import patternomaly from 'https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/+esm';
-    window.pattern = patternomaly;
+    // Inline scripts don't provide load callbacks for import and therefore content cannot rely on it
+    // import patternomaly from 'https://cdn.jsdelivr.net/npm/patternomaly@1.3.2/+esm';
+    // window.pattern = patternomaly;
+    // console.log("pattern loaded");
   </script>
   <script type="module">
     // Chart.defaults.borderColor = '#36A2EB';
