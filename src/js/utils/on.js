@@ -1,3 +1,5 @@
+import passiveOpts from "./passiveOpts";
+
 /**
  * Adds an event listener (or more) to an element and returns a function to unsubscribe.
  * @param {EventTarget} el
@@ -8,8 +10,8 @@
  */
 export default function on(el, type, listener, options) {
   const types = Array.isArray(type) ? type : [type];
-  types.forEach((t) => el.addEventListener(t, listener, options));
+  types.forEach((t) => el.addEventListener(t, listener, passiveOpts(t, options)));
   return () => {
-    types.forEach((t) => el.removeEventListener(t, listener, options));
+    types.forEach((t) => el.removeEventListener(t, listener, passiveOpts(t, options)));
   };
 }

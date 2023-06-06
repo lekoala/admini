@@ -53,13 +53,6 @@
       document.querySelector('.holder').appendChild(btn);
     })
 
-    document.getElementById('add-self-btn').addEventListener('click', (e) => {
-      const btn = document.createElement("button");
-      btn.classList.add('self-button');
-      btn.innerText = "Self element";
-      document.querySelector('.holder').appendChild(btn);
-    })
-
     document.getElementById('rm-btn').addEventListener('click', (e) => {
       const el = document.querySelector('.holder').querySelector(':scope > button');
       if (el) {
@@ -83,21 +76,49 @@
       }
     })
 
-    admini.listen('button', 'click', (ev) => {
-      console.log("button click");
-    })
-    admini.listen('button', 'click', (ev) => {
-      console.log("one click");
-    }, { once: true })
+    function setListeners() {
+      admini.delegate('.my-elem', 'click', (ev, el) => {
+        // if you click on the svg, el will be the actual matched target
+        console.log("delegate my-elem click", ev.currentTarget, ev.target, el);
+      })
+      // Same delegate will overwrite stored handler, use different selectors for different features if you want multiple callbacks
+      // eg: js-feat-one, js-feat-two
+      admini.delegate('.my-elem', 'click', (ev, el) => {
+        // This prevent regular listeners to receive the event => no my-elem click and no one click
+        ev.preventDefault();
+        ev.stopPropagation();
+        console.log("delegate2 my-elem click", ev.currentTarget, ev.target, el);
+      })
+      // The focusin and focusout fire at the same time as focus and blur, however, they bubble while the focus and blur do not.
+      // These are converted on the fly
+      admini.delegate("textarea", ["focus", "blur"], (ev, el) => {
+        console.log(ev.type, el);
+      })
+      // will also trigger when clicking on button
 
-    admini.listen('.self-button', 'connected', (ev) => {
-      console.log("will remove in 3", ev, ev.target, ev.currentTarget);
-      const el = ev.currentTarget;
-      setTimeout(() => {
-        if (el.parentElement) {
-          el.parentElement.removeChild(el);
-        }
-      }, 3000);
+      admini.delegate('body', 'click',
+        /**
+         * @param {MouseEvent} ev
+         */
+        (ev, el) => {
+          // console.log(ev.defaultPrevented)
+          console.log("delegate click on the body", ev.target);
+          // ev.preventDefault();
+          // ev.stopPropagation();
+        })
+
+      const stopEnterLeave = admini.delegate('.my-elem', ['mouseenter', 'mouseleave'], (ev, el) => {
+        console.log("delegate my-elem mouse", ev.type);
+      })
+      return stopEnterLeave;
+    }
+
+    // Running twice won't add listeners twice
+    setListeners();
+    const stopEnterLeave = setListeners();
+
+    document.querySelector('#stop-enter-leave').addEventListener("click", () => {
+      stopEnterLeave();
     })
   </script>
 </head>
@@ -121,16 +142,19 @@
         </g>
       </svg> My <b>element</b>
     </button>
+    <!-- inner elements should NOT trigger enter/leave events -->
 
-    <button class="self-button">
-      I will disappear</button>
+    <button class="self-button"><span>I will disappear</span></button>
+
+    <textarea name="test" id="" cols="30" rows="10"></textarea>
   </div>
+  <hr>
   <div class="p-3">
     <button id="add-btn">Add button</button>
     <button id="add-btn-div">Add button in div</button>
     <button id="rm-btn">Rm button</button>
     <button id="rm-btn-div">Rm button in div</button>
-    <button id="add-self-btn">Add self destructive button</button>
+    <button id="stop-enter-leave">Stop enter/leave</button>
 
     <div class="scrollable" style="overflow-y:scroll;height:200px">
       <div style="height:400px"></div>

@@ -5,24 +5,9 @@
  * Support a virtual "connected" event that allows triggering code only once
  */
 
+import passiveOpts from "./passiveOpts.js";
+
 const CONNECTED = "connected";
-const supportedPassiveTypes = [
-  "scroll",
-  "wheel",
-  "touchstart",
-  "touchmove",
-  "touchenter",
-  "touchend",
-  "touchleave",
-  "mouseout",
-  "mouseleave",
-  "mouseup",
-  "mousedown",
-  "mousemove",
-  "mouseenter",
-  "mousewheel",
-  "mouseover",
-];
 
 // Store all listened elements in here
 // Use a WeakMap so they can be garbage collected once removed from dom
@@ -67,25 +52,7 @@ function listen(target, type, listener, options = false) {
       }
       set.add(str);
 
-      /**
-       * @type {AddEventListenerOptions}
-       */
-      let listenerOptions = {};
-      if (options instanceof Boolean) {
-        listenerOptions.capture = !!options;
-      } else {
-        listenerOptions = Object.assign(listenerOptions, options);
-      }
-      // @link https://developer.chrome.com/docs/lighthouse/best-practices/uses-passive-event-listeners/
-      if (supportedPassiveTypes.includes(type)) {
-        listenerOptions = Object.assign(
-          {
-            passive: true,
-          },
-          listenerOptions
-        );
-      }
-      el.addEventListener(type, listener, listenerOptions);
+      el.addEventListener(type, listener, passiveOpts(type, options));
 
       // Fake connected event, which makes syntax simpler when defining init code that should run only once
       if (type === CONNECTED) {

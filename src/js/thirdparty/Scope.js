@@ -34,7 +34,7 @@
 /**
  * @typedef ScopeConfig
  * @property {Boolean} debug
- * @property {Number} debounceTime
+ * @property {Number} loadDelay
  * @property {String} activeClass
  * @property {String} reloadHeader
  * @property {String} titleHeader
@@ -48,7 +48,7 @@
  */
 let config = {
   debug: false,
-  debounceTime: 300,
+  loadDelay: 300,
   activeClass: "active",
   reloadHeader: "X-Reload",
   titleHeader: "X-Title",
@@ -131,6 +131,23 @@ function debounce(func, timeout = 300) {
       //@ts-ignore
       func.apply(this, args);
     }, timeout);
+  };
+}
+
+/**
+ * @param {Function} func
+ * @param {number} timeFrame
+ * @returns {Function}
+ */
+function throttle(func, timeFrame = 300) {
+  var lastTime = 0;
+  return (...args) => {
+    var now = Date.now();
+    if (now - lastTime >= timeFrame) {
+      //@ts-ignore
+      func.apply(this, args);
+      lastTime = now;
+    }
   };
 }
 
@@ -336,9 +353,9 @@ class Scope extends HTMLElement {
     /**
      * @type {Function}
      */
-    this.loadFunc = debounce((trigger, ev) => {
+    this.loadFunc = throttle((trigger, ev) => {
       this.load(trigger, ev);
-    }, config.debounceTime);
+    }, config.loadDelay);
   }
 
   /**

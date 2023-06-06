@@ -91,7 +91,7 @@ const admini = {
 
 // admini is reserved in global namespace
 window["admini"] = window["admini"] || {};
-window["admini"] = Object.assign(window["admini"], admini);
+Object.assign(window["admini"], admini);
 
 // auto init by default if no data-admini-manual on body
 // you may want to enable this if not using sco-pe

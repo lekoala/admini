@@ -1,15 +1,17 @@
+import passiveOpts from "./passiveOpts.js";
+
 /**
- * Entwine is inspired by a js lib (https://github.com/hafriedlander/jquery.entwine) 
+ * Entwine is inspired by a js lib (https://github.com/hafriedlander/jquery.entwine)
  * that allows binding behaviour to a give selector
- * 
+ *
  * This library is a modern take on the same subject
  *
  * All elements get their own event listeners attached. This is an alternative approach
  * to have one big delegator that deals with everything (see listen.js if that's what you want)
  * I'm actually not sure what's the course of action ? :-)
- * 
+ *
  * Supports once and passive events
- * 
+ *
  * (dis)connected logic inspired by https://github.com/WebReflection/disconnected
  */
 const CONNECTED = "connected";
@@ -31,24 +33,6 @@ let elementsMap = new WeakMap();
  * @type {Object<string, Map<string, Object>>}
  */
 let definitionsNS = {};
-
-const supportedPassiveTypes = [
-  "scroll",
-  "wheel",
-  "touchstart",
-  "touchmove",
-  "touchenter",
-  "touchend",
-  "touchleave",
-  "mouseout",
-  "mouseleave",
-  "mouseup",
-  "mousedown",
-  "mousemove",
-  "mouseenter",
-  "mousewheel",
-  "mouseover",
-];
 
 class Listener {
   constructor(once = false) {
@@ -151,10 +135,7 @@ function getValidEvents(definitions) {
  * @returns {ListenerOptions}
  */
 function getListenerOptions(type) {
-  const opts = {};
-  if (supportedPassiveTypes.includes(type)) {
-    opts.passive = true;
-  }
+  const opts = passiveOpts(type);
   let listener = globalListener;
   if (type.indexOf("once_") === 0) {
     listener = onceListener;
