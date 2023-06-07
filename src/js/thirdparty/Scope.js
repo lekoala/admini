@@ -126,7 +126,7 @@ function getAction(el) {
 function debounce(func, timeout = 300) {
   let timer;
   return (...args) => {
-    clearTimeout(timer);
+    if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       //@ts-ignore
       func.apply(this, args);
@@ -139,17 +139,17 @@ function debounce(func, timeout = 300) {
  * @param {number} timeFrame
  * @returns {Function}
  */
-function throttle(func, timeFrame = 300) {
-  var lastTime = 0;
-  return (...args) => {
-    var now = Date.now();
-    if (now - lastTime >= timeFrame) {
-      //@ts-ignore
-      func.apply(this, args);
-      lastTime = now;
-    }
-  };
-}
+// function throttle(func, timeFrame = 300) {
+//   var lastTime = 0;
+//   return (...args) => {
+//     var now = Date.now();
+//     if (now - lastTime >= timeFrame) {
+//       //@ts-ignore
+//       func.apply(this, args);
+//       lastTime = now;
+//     }
+//   };
+// }
 
 /**
  * @param {*} v
@@ -353,7 +353,7 @@ class Scope extends HTMLElement {
     /**
      * @type {Function}
      */
-    this.loadFunc = throttle((trigger, ev) => {
+    this.loadFunc = debounce((trigger, ev) => {
       this.load(trigger, ev);
     }, config.loadDelay);
   }
@@ -400,12 +400,12 @@ class Scope extends HTMLElement {
       log(`Handling ${ev.type} on ${trigger.nodeName}`);
       ev.preventDefault();
 
+      const debounced = ["input", "scroll", "resize", "mousemove", "touchmove", "keyup", "keydown"];
       const load = () => {
-        // For click, no debounce
-        if (ev.type === "click") {
-          this.load(trigger, ev);
-        } else {
+        if (debounced.includes(ev.type)) {
           this.loadFunc(trigger, ev);
+        } else {
+          this.load(trigger, ev);
         }
       };
       // Check confirm ?
