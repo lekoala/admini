@@ -313,6 +313,44 @@ function log(message) {
   }
 }
 
+/**
+ * @param {HTMLElement} o
+ * @param {HTMLElement} n
+ */
+function replaceDom(o, n) {
+  const fragments = o.querySelectorAll("[data-scope-fragment]");
+  // No fragments, replace the whole thing
+  if (!fragments.length) {
+    log(`Replacing ${o.id} content`);
+    o.innerHTML = n.innerHTML;
+    return;
+  }
+  // Replace only if changed
+  fragments.forEach(
+    /**
+     * @param {HTMLElement} fragment
+     */
+    (fragment) => {
+      const sel = fragment.id ? `#${fragment.id}` : `.${fragment.classList.item(0)}`;
+      /**
+       * @type {HTMLElement}
+       */
+      const nid = n.querySelector(sel);
+      if (nid) {
+        const v = fragment.dataset.scopeFragment;
+        // You can use a hash value if your html has mutated and cannot be reliably compared with isEqualNode
+        const isChanged = v.length > 0 ? v != nid.dataset.scopeFragment : !fragment.isEqualNode(nid);
+        if (isChanged) {
+          log(`Replacing ${sel} fragment`);
+          fragment.innerHTML = nid.innerHTML;
+        }
+      } else if (!fragment.dataset.scopedFixed) {
+        fragment.remove();
+      }
+    }
+  );
+}
+
 // Make a full page load on back
 window.addEventListener("popstate", async (event) => {
   if (event.state) {
@@ -911,13 +949,15 @@ class Scope extends HTMLElement {
             log(`Url has not changed for ${id}`);
             return;
           }
-          log(`Replacing ${id} content`);
-          if (src) {
+          if (src && src != oldScope.src) {
+            log(`Replacing ${id} src`);
             oldScope.src = src;
             // _afterLoad will happen automatically through connectedCallback
           } else {
-            oldScope.innerHTML = newScope.innerHTML;
-            this._afterLoad();
+            if (oldScope.innerHTML != newScope.innerHTML) {
+              replaceDom(oldScope, newScope);
+              this._afterLoad();
+            }
           }
         }
       );
