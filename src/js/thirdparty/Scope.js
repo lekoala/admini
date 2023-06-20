@@ -319,9 +319,11 @@ function log(message) {
  * @returns {Boolean}
  */
 function hasDomChanged(o, n) {
-  // filter out custom elements that most of the time inject their own logic
-  const regex = /<(.+-.+)>.*<\/(.+-.+)>/gi;
-  return o.innerHTML.replace(regex, "") != n.innerHTML.replace(regex, "");
+  // filter out custom elements that most of the time inject their own logic, actives classes, spaces and styles
+  const regex = new RegExp(`<[a-z]+-[a-z]+.*>.*<\/[a-z]+-[a-z]+>|${config.activeClass}|\\s+|style=".*?"`, "gmi");
+  const fo = o.innerHTML.replace(regex, "").trim();
+  const fn = n.innerHTML.replace(regex, "").trim();
+  return fo != fn;
 }
 
 /**
