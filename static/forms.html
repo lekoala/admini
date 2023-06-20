@@ -38,11 +38,13 @@
   <script src="https://cdn.jsdelivr.net/gh/lekoala/nomodule-browser-warning.js/nomodule-browser-warning.min.js" nomodule defer
     id="nomodule-browser-warning"></script>
 
-    
+
   <!-- formidable elements -->
   <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/flatpickr-input.min.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/bs-tags.min.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/cleave-input.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/coloris-input.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/lekoala/formidable-elements/dist/superfile-input.min.js"></script>
 
   <script type="module" src="js/admini.min.js"></script>
   <script type="module">
@@ -273,20 +275,23 @@
                 </div>
                 <div class="tab-pane fade" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
                   <div class="form-group">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <div class="form-field superfile">
-                      <div class="input-group">
-                        <input class="form-control" type="file" id="formFile" name="file" />
-                        <button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
-                      </div>
-                      <img class="img-fluid superfile-preview" />
+                    <label for="formFile3" class="form-label">Default file input example</label>
+                    <div class="form-field">
+                      <superfile-input>
+                        <div class="input-group">
+                          <input class="form-control" type="file" id="formFile3" name="file3" accept="image/*" data-max-width="100"
+                            data-max-height="100">
+                          <button class="btn btn-outline-secondary superfile-clear" type="button">Clear</button>
+                        </div>
+                        <img class="img-fluid superfile-preview">
+                      </superfile-input>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <p class="form-label">Avatar</p>
+                    <p class="form-label">Avatar upload</p>
                     <div class="form-field">
-                      <div class="superfile avatar">
+                      <superfile-input class="avatar">
                         <label for="formFile5" class="form-label">Avatar upload</label>
                         <button type="button" class="btn-close superfile-clear" aria-label="Clear avatar"></button>
                         <div class="input-group">
@@ -295,7 +300,7 @@
                             data-max-height="200" data-hide-clear="1" data-ratio="1:1" />
                         </div>
                         <img src="https://randomuser.me/api/portraits/men/36.jpg" class="img-fluid superfile-preview" />
-                      </div>
+                      </superfile-input>
                     </div>
                   </div>
 
@@ -319,18 +324,21 @@
                     <div class="input-group">
                       <div class="input-group-item">
                         <label for="PrimaryColor" class="form-label">Primary color (in a row)</label>
-
-                        <input type="color" name="PrimaryColor" class="form-control" id="PrimaryColor" style="width: 60px" />
+                        <coloris-input>
+                          <input type="text" class="form-control" id="PrimaryColort" name="PrimaryColor">
+                        </coloris-input>
                       </div>
                       <div class="input-group-item">
                         <label for="SecondaryColor" class="form-label">Secondary color (in a row)</label>
-
-                        <input type="color" name="SecondaryColor" class="form-control" id="SecondaryColor" style="width: 60px" />
+                        <coloris-input>
+                          <input type="text" class="form-control" id="SecondaryColor" name="SecondaryColor">
+                        </coloris-input>
                       </div>
                       <div class="input-group-item">
                         <label for="TertiaryColor" class="form-label">Tertiary color (in a row)</label>
-
-                        <input type="color" name="TertiaryColor" class="form-control" id="TertiaryColor" style="width: 60px" />
+                        <coloris-input>
+                          <input type="text" class="form-control" id="TertiaryColor" name="TertiaryColor">
+                        </coloris-input>
                       </div>
                     </div>
                   </div>

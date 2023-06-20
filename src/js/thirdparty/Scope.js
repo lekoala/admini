@@ -316,6 +316,17 @@ function log(message) {
 /**
  * @param {HTMLElement} o
  * @param {HTMLElement} n
+ * @returns {Boolean}
+ */
+function hasDomChanged(o, n) {
+  // filter out custom elements that most of the time inject their own logic
+  const regex = /<(.+-.+)>.*<\/(.+-.+)>/gi;
+  return o.innerHTML.replace(regex, "") != n.innerHTML.replace(regex, "");
+}
+
+/**
+ * @param {HTMLElement} o
+ * @param {HTMLElement} n
  */
 function replaceDom(o, n) {
   const fragments = o.querySelectorAll("[data-scope-fragment]");
@@ -954,7 +965,7 @@ class Scope extends HTMLElement {
             oldScope.src = src;
             // _afterLoad will happen automatically through connectedCallback
           } else {
-            if (oldScope.innerHTML != newScope.innerHTML) {
+            if (hasDomChanged(oldScope, newScope)) {
               replaceDom(oldScope, newScope);
               this._afterLoad();
             }
