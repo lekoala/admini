@@ -222,6 +222,14 @@ function expandURL(url) {
 
 /**
  * @param {String|URL} url
+ * @returns {String}
+ */
+function removeAnchorFromURL(url) {
+  return expandURL(url).href.split("#")[0];
+}
+
+/**
+ * @param {String|URL} url
  * @returns {Boolean}
  */
 function isExternalURL(url) {
@@ -562,6 +570,13 @@ class Scope extends HTMLElement {
   }
 
   updateHistory(url, hint) {
+    // Don't push if same url
+    if (history.state) {
+      const prevUrl = history.state.scope && history.state.scope.url;
+      if (removeAnchorFromURL(prevUrl) == removeAnchorFromURL(url)) {
+        return;
+      }
+    }
     const id = this.getAttribute("id");
     const state = {
       id,
