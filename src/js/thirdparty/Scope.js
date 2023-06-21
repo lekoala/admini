@@ -367,22 +367,26 @@ function replaceDom(o, n) {
 // Make a full page load on back
 window.addEventListener("popstate", async (event) => {
   if (event.state) {
-    const id = event.state.id || null;
-    if (id) {
+    const state = event.state.scope || null;
+    if (state) {
+      const id = state.id;
+      const url = state.url;
       /**
        * @type {Scope}
        */
       const scope = document.querySelector(`sco-pe[id="${id}"]`);
       if (scope) {
         log(`Restore location from history`);
-        await scope.loadURL(document.location.toString(), {}, event.state.hint);
+        await scope.loadURL(url, {}, state.hint);
         return;
       }
     }
   }
 
   // Do a full page load
-  window.location.replace(document.location.toString());
+  if (event.state === null) {
+    window.location.replace(document.location.toString());
+  }
 });
 
 class Scope extends HTMLElement {
@@ -564,7 +568,13 @@ class Scope extends HTMLElement {
       url,
       hint,
     };
-    history.pushState(state, null, url);
+    history.pushState(
+      {
+        scope: state,
+      },
+      null,
+      url
+    );
   }
 
   /**
@@ -615,8 +625,8 @@ class Scope extends HTMLElement {
 
     try {
       const response = await fetch(url, options);
-      if (response.redirected) {
-        // TODO: check if we should always do this ?
+      // If we are redirected from a GET call, update history
+      if (response.redirected && options.method == "GET") {
         this.updateHistory(response.url, hint);
       }
       if (!response.ok) {
