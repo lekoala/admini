@@ -119,6 +119,15 @@ function getAction(el) {
 }
 
 /**
+ * @param {HTMLElement} el
+ * @returns {Boolean}
+ */
+function ignoreElement(el) {
+  const action = getAction(el);
+  return !action || hasBlankTarget(el) || isExternalURL(action) || isAnchorURL(action);
+}
+
+/**
  * @param {Function} func
  * @param {number} timeout
  * @returns {Function}
@@ -455,9 +464,8 @@ class Scope extends HTMLElement {
       if (!events.includes(ev.type)) {
         return;
       }
-      const action = getAction(trigger);
       // Ignore empty, external and anchors links
-      if (!action || hasBlankTarget(trigger) || isExternalURL(action) || isAnchorURL(action)) {
+      if (ignoreElement(trigger)) {
         return;
       }
       log(`Handling ${ev.type} on ${trigger.nodeName}`);
@@ -607,6 +615,9 @@ class Scope extends HTMLElement {
        * @param {HTMLElement} el
        */
       (el) => {
+        if (ignoreElement(el)) {
+          return;
+        }
         if (el === document.activeElement) {
           el.blur();
         }
@@ -1041,13 +1052,14 @@ class Scope extends HTMLElement {
 
     // Mark active class in any link matching href
     this.removeActiveClass();
+    const baseHref = removeAnchorFromURL(document.location.href).replace(/\/$/, "");
     this.querySelectorAll(`a`).forEach((el) => {
       const href = el.getAttribute("href");
       const url = expandURL(href);
       if (isAnchorURL(url)) {
         return;
       }
-      if (url.toString() == document.location.href) {
+      if (url.toString().replace(/\/$/, "") == baseHref) {
         this.setActive(el);
       }
     });
