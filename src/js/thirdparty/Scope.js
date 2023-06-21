@@ -548,6 +548,7 @@ class Scope extends HTMLElement {
       this.updateHistory(url, hint);
     }
     if (isLink) {
+      this.removeActiveClass();
       this.setActive(el);
     }
 
@@ -597,6 +598,10 @@ class Scope extends HTMLElement {
    */
   setActive(el) {
     log(`Set active element`);
+    el.classList.add(config.activeClass);
+  }
+
+  removeActiveClass() {
     this.querySelectorAll(`.${config.activeClass}`).forEach(
       /**
        * @param {HTMLElement} el
@@ -608,7 +613,6 @@ class Scope extends HTMLElement {
         el.classList.remove(config.activeClass);
       }
     );
-    el.classList.add(config.activeClass);
   }
 
   /**
@@ -641,7 +645,7 @@ class Scope extends HTMLElement {
     try {
       const response = await fetch(url, options);
       // If we are redirected from a GET call, update history
-      if (response.redirected && options.method == "GET") {
+      if (response.redirected) {
         this.updateHistory(response.url, hint);
       }
       if (!response.ok) {
@@ -992,7 +996,6 @@ class Scope extends HTMLElement {
             oldScope.src = src;
             // _afterLoad will happen automatically through connectedCallback
           } else {
-            // maybe it would be better to compare with original html before any changes ?
             if (hasDomChanged(oldScope, newScope)) {
               replaceDom(oldScope, newScope);
               this._afterLoad();
@@ -1037,6 +1040,7 @@ class Scope extends HTMLElement {
     this._listenToEvents();
 
     // Mark active class in any link matching href
+    this.removeActiveClass();
     this.querySelectorAll(`a`).forEach((el) => {
       const href = el.getAttribute("href");
       const url = expandURL(href);
