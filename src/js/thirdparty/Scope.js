@@ -540,6 +540,8 @@ class Scope extends HTMLElement {
       if (submitter) {
         formData.append(submitter.name, submitter.value || "true");
       }
+      // Track hash when submitting a form
+      this._hash = formData.get("_hash");
       postBody = formData;
     }
 
@@ -657,7 +659,11 @@ class Scope extends HTMLElement {
       const response = await fetch(url, options);
       // If we are redirected from a GET call, update history
       if (response.redirected) {
-        this.updateHistory(response.url, hint);
+        let url = response.url;
+        if (this._hash) {
+          url += this._hash;
+        }
+        this.updateHistory(url, hint);
       }
       if (!response.ok) {
         const message = response.headers.get(config.statusHeader) || response.statusText;
