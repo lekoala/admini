@@ -992,6 +992,7 @@ class Scope extends HTMLElement {
             oldScope.src = src;
             // _afterLoad will happen automatically through connectedCallback
           } else {
+            // maybe it would be better to compare with original html before any changes ?
             if (hasDomChanged(oldScope, newScope)) {
               replaceDom(oldScope, newScope);
               this._afterLoad();
