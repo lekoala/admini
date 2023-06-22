@@ -1057,7 +1057,7 @@ class Scope extends HTMLElement {
     this._listenToEvents();
 
     // Mark active class in any link matching href
-    this.removeActiveClass();
+    let isRemoved = false;
     const baseHref = removeAnchorFromURL(document.location.href).replace(/\/$/, "");
     this.querySelectorAll(`a`).forEach((el) => {
       const href = el.getAttribute("href");
@@ -1066,6 +1066,11 @@ class Scope extends HTMLElement {
         return;
       }
       if (url.toString().replace(/\/$/, "") == baseHref) {
+        // Only remove if we find another
+        if (!isRemoved) {
+          this.removeActiveClass();
+          isRemoved = true;
+        }
         this.setActive(el);
       }
     });
