@@ -383,6 +383,7 @@ function replaceDom(o, n) {
 
 // Make a full page load on back
 window.addEventListener("popstate", async (event) => {
+  let scopeNotFound = false;
   if (event.state) {
     const state = event.state.scope || null;
     if (state) {
@@ -396,12 +397,14 @@ window.addEventListener("popstate", async (event) => {
         log(`Restore location from history`);
         await scope.loadURL(url, {}, state.hint);
         return;
+      } else {
+        scopeNotFound = true;
       }
     }
   }
 
   // Do a full page load
-  if (event.state === null) {
+  if (event.state === null || scopeNotFound) {
     window.location.replace(document.location.toString());
   }
 });
