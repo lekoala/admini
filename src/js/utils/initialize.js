@@ -17,11 +17,10 @@ export default function initialize(selector, callback) {
      * @param {HTMLElement} el
      */
     (el) => {
-      if (set.has(el)) {
-        return;
+      if (!set.has(el)) {
+        set.add(el);
+        callback(el);
       }
-      set.add(el);
-      callback(el);
     }
   );
 }
