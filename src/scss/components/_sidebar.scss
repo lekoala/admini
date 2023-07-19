@@ -19,6 +19,7 @@ body {
 /* Sidebar */
 
 .sidebar {
+  --bs-body-color: #{$sidebar-link-color};
   min-width: var(--sidebar-width);
   max-width: var(--sidebar-width);
   direction: ltr;
@@ -55,6 +56,7 @@ body {
 }
 
 #sidebar-selector {
+  --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid $sidebar-border-color;
@@ -188,7 +190,7 @@ body {
   }
 
   .sidebar-profile-subtitle {
-    opacity: 0.5;
+    opacity: 0.7;
     pointer-events: none;
   }
 }

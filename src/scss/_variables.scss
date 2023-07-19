@@ -223,7 +223,7 @@ $display-font-sizes: (
   4: 3.5rem,
   5: 3rem,
   6: 2.5rem,
-) !default;
+  ) !default;
 
 // Border radius
 $border-radius-sm: 0.1rem !default;
@@ -240,12 +240,9 @@ $form-validation-states: (
   //   "color": $form-feedback-valid-color,
   //   "icon": $form-feedback-icon-valid
   // ),
-  "invalid":
-    (
-      "color": $form-feedback-invalid-color,
-      "icon": $form-feedback-icon-invalid,
-    )
-) !default;
+  "invalid": ("color": $form-feedback-invalid-color,
+    "icon": $form-feedback-icon-invalid,
+  )) !default;
 
 // Cards
 $card-border-radius: 0.25rem !default;
@@ -290,7 +287,8 @@ $sidebar-brand-bg: mix(black, $sidebar-bg, 60%) !default;
 $sidebar-brand-bg-dark: mix(black, $sidebar-bg-dark, 20%) !default;
 
 // Sidebar scroller
-$sidebar-scroller-color: color.hue($sidebar-brand-bg), color.saturation($sidebar-brand-bg) * 0.5 !default;
+$sidebar-scroller-color: color.hue($sidebar-brand-bg),
+  color.saturation($sidebar-brand-bg) * 0.5 !default;
 $sidebar-scroller-lightness: 30% !default;
 
 // Sidebar nav header
@@ -306,7 +304,7 @@ $sidebar-link-padding-x: 0.625rem !default;
 $sidebar-link-padding-y: 0.625rem !default;
 $sidebar-link-padding: $sidebar-link-padding-y $sidebar-link-padding-x !default;
 $sidebar-link-font-weight: 400 !default;
-$sidebar-link-color: rgba($gray-200, 0.7) !default;
+$sidebar-link-color: rgba($light, 0.7) !default;
 $sidebar-link-border-left-color: transparent !default;
 
 $sidebar-link-hover-font-weight: $font-weight-normal !default;
