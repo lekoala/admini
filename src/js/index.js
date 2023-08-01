@@ -17,6 +17,7 @@ import { $, $$ } from "./utils/dollar.js";
 import resizer from "./utils/resizer.js";
 // Third party
 import Scope from "./thirdparty/Scope.js";
+import LoadProgress from "./thirdparty/LoadProgress.js";
 import simpleDropdowns from "./dropdowns/simpleDrodowns.js"; // optional
 import Toasts from "bs-companion/src/Toasts.js";
 import modalizerConfirm from "bs-companion/src/modalizerConfirm.js";
@@ -63,6 +64,9 @@ Scope.configure({
     return new Promise((resolve, reject) => {
       modalizerConfirm(message, resolve, reject);
     });
+  },
+  progressHandler: (target, step) => {
+    LoadProgress[step]();
   },
   onScopeLoad: (scope) => {
     // Ui cleanup

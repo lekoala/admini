@@ -67,6 +67,7 @@ let config = {
   statusHandler: (message, statusCode) => {
     alert(message);
   },
+  progressHandler: (scope, step) => {},
   onLoad: (scope) => {},
   onScopeLoad: (scope) => {},
 };
@@ -509,13 +510,15 @@ class Scope extends HTMLElement {
     let action = getAction(el);
     let url = expandURL(action).href;
     let urlWithParams = url;
-    const isLink = el.nodeName === "A";
+    const isLink = el.nodeName === "A" || el.dataset.scopeLink; // a link or behave like a link
     /**
      * @type {HTMLButtonElement}
      */
     //@ts-ignore
     const submitter = ev.submitter || null;
-    const hint = el.dataset.scopeHint; // helps to determine fetch target, this by default
+
+    // helps to determine fetch target, this by default
+    const hint = el.dataset.scopeHint || this.dataset.scopeHint;
     const method = (el.getAttribute("method") || el.dataset.scopeMethod || "GET").toUpperCase();
     // Update history for links for named scopes
     let pushToHistory = isLink && getHistory(el, this) && this.hasAttribute("id");
@@ -570,6 +573,9 @@ class Scope extends HTMLElement {
     }
     const body = method === "POST" ? postBody : null;
 
+    // Show progress bar
+    config.progressHandler(this, "start");
+
     await this.loadURL(
       url,
       {
@@ -581,6 +587,8 @@ class Scope extends HTMLElement {
     if (submitter) {
       submitter.removeAttribute("disabled");
     }
+
+    config.progressHandler(this, "done");
   }
 
   updateHistory(url, hint) {
@@ -653,11 +661,6 @@ class Scope extends HTMLElement {
       fetchOptions
     );
 
-    // Since we don't know before getting the server response which sco-pe will be given
-    // you can "hint" to show proper loading state in the dom
-    const loadTarget = hint ? document.getElementById(hint) : this;
-    loadTarget.classList.add("scope-fetching");
-
     try {
       const response = await fetch(url, options);
       // If we are redirected from a GET call, update history
@@ -684,8 +687,6 @@ class Scope extends HTMLElement {
         config.statusHandler(error.message);
       }
     }
-
-    loadTarget.classList.remove("scope-fetching");
   }
 
   /**
@@ -1048,9 +1049,13 @@ class Scope extends HTMLElement {
       this.abortLoading();
       this.abortController = new AbortController();
 
+      this.classList.add("scope-fetching");
+
       await this.loadURL(src, {
         signal: this.abortController.signal,
       });
+
+      this.classList.remove("scope-fetching");
     } else {
       this._afterLoad();
     }
