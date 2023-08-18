@@ -27,6 +27,7 @@ let playing = false;
 
 if (pbar) {
   animation.cancel();
+  playbackRate = animation.playbackRate;
 }
 
 class LoadProgress {
@@ -45,7 +46,7 @@ class LoadProgress {
 
       fp.style.visibility = "visible";
       animation.play();
-      playbackRate = animation.playbackRate;
+      animation.updatePlaybackRate(playbackRate);
     }, 300);
   }
 
@@ -58,7 +59,7 @@ class LoadProgress {
     }
 
     // Increase speed in order to finish quickly
-    animation.updatePlaybackRate(playbackRate * 4);
+    animation.updatePlaybackRate(animation.playbackRate * 4);
 
     // Pause on end
     pbar.addEventListener(
@@ -66,7 +67,6 @@ class LoadProgress {
       (ev) => {
         fp.style.visibility = "hidden";
         animation.cancel();
-        animation.updatePlaybackRate(playbackRate);
         playing = false;
       },
       {
