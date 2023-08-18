@@ -382,6 +382,17 @@ function replaceDom(o, n) {
   );
 }
 
+// Handles +
+// @link https://stackoverflow.com/questions/12042592/decoding-url-parameters-with-javascript
+const uri = {
+  encode: (str) => {
+    return encodeURIComponent(str).replace(/\%20/gm, "+");
+  },
+  decode: (str) => {
+    return decodeURIComponent(str).replace(/\%20/gm, "+");
+  },
+};
+
 // Restore state or make a full page load on back
 window.addEventListener("popstate", async (event) => {
   let scopeNotFound = false;
@@ -702,7 +713,7 @@ class Scope extends HTMLElement {
     if (config.titleHeader) {
       const title = response.headers.get(config.titleHeader);
       if (title) {
-        document.title = title;
+        document.title = uri.decode(title);
       }
     }
     if (config.reloadHeader) {
