@@ -23,15 +23,15 @@ const pbar = fp ? fp.firstElementChild.firstElementChild : null;
 const animation = pbar ? pbar.getAnimations()[0] : null;
 let playbackRate;
 let to;
+let playing = false;
 
 if (pbar) {
-  pbar.style.animationPlayState = "paused";
   animation.cancel();
 }
 
 class LoadProgress {
   static start() {
-    if (!pbar) {
+    if (!pbar || playing) {
       return;
     }
 
@@ -41,13 +41,11 @@ class LoadProgress {
     barCe.setRatio(pbar);
 
     to = setTimeout(() => {
-      // Reset anim
-      animation.play();
+      playing = true;
 
-      playbackRate = animation.playbackRate;
-
-      pbar.style.animationPlayState = "running";
       fp.style.visibility = "visible";
+      animation.play();
+      playbackRate = animation.playbackRate;
     }, 300);
   }
 
@@ -55,7 +53,7 @@ class LoadProgress {
     if (to) {
       clearTimeout(to);
     }
-    if (!pbar || pbar.style.animationPlayState != "running") {
+    if (!pbar) {
       return;
     }
 
@@ -67,9 +65,9 @@ class LoadProgress {
       "animationiteration",
       (ev) => {
         fp.style.visibility = "hidden";
-
         animation.cancel();
         animation.updatePlaybackRate(playbackRate);
+        playing = false;
       },
       {
         once: true,
