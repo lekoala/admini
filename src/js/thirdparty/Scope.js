@@ -382,7 +382,7 @@ function replaceDom(o, n) {
   );
 }
 
-// Make a full page load on back
+// Restore state or make a full page load on back
 window.addEventListener("popstate", async (event) => {
   let scopeNotFound = false;
   if (event.state) {
