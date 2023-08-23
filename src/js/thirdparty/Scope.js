@@ -707,7 +707,7 @@ class Scope extends HTMLElement {
     if (config.statusHeader) {
       const status = response.headers.get(config.statusHeader);
       if (status) {
-        config.statusHandler(status, response.status);
+        config.statusHandler(uri.decode(status), response.status);
       }
     }
     if (config.titleHeader) {
