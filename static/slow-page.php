@@ -102,6 +102,12 @@ sleep(random_int(1, 3)); // simulate load time
                 <span>Redirect page</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="redirect-status-page.php" data-scope-hint="main-scope">
+                <l-i name="directions"></l-i>
+                <span>Faux Redirect page</span>
+              </a>
+            </li>
           </ul>
         </div>
         <!-- /sidebar-content -->

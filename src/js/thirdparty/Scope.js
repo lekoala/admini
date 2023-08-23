@@ -36,6 +36,7 @@
  * @property {Boolean} debug
  * @property {Number} loadDelay
  * @property {String} activeClass
+ * @property {String} fakeLocationHeader
  * @property {String} reloadHeader
  * @property {String} titleHeader
  * @property {String} styleHeader
@@ -50,6 +51,7 @@ let config = {
   debug: false,
   loadDelay: 300,
   activeClass: "active",
+  fakeLocationHeader: "X-Location",
   reloadHeader: "X-Reload",
   titleHeader: "X-Title",
   cssHeader: "x-include-css",
@@ -602,7 +604,7 @@ class Scope extends HTMLElement {
     config.progressHandler(this, "done");
   }
 
-  updateHistory(url, hint) {
+  updateHistory(url, hint, replace = false) {
     // Don't push if same url
     if (history.state) {
       const prevUrl = history.state.scope && history.state.scope.url;
@@ -616,7 +618,8 @@ class Scope extends HTMLElement {
       url,
       hint,
     };
-    history.pushState(
+    const method = replace ? "pushState" : "replaceState";
+    history[method](
       {
         scope: state,
       },
@@ -680,14 +683,23 @@ class Scope extends HTMLElement {
         if (this._hash) {
           url += this._hash;
         }
-        this.updateHistory(url, hint);
+        this.updateHistory(url, hint, true);
       }
       if (!response.ok) {
         const message = response.headers.get(config.statusHeader) || response.statusText;
         config.statusHandler(message, response.status);
         return;
       }
+
       this._processHeaders(response);
+      // Fake redirect can read statuses
+      if (config.fakeLocationHeader) {
+        const location = response.headers.get(config.fakeLocationHeader);
+        if (location) {
+          this.updateHistory(location, hint, true);
+          return await this.loadURL(location);
+        }
+      }
       const data = await response.text();
       this._processResponse(data);
     } catch (error) {
