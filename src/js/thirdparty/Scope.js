@@ -54,8 +54,8 @@ let config = {
   fakeLocationHeader: "X-Location",
   reloadHeader: "X-Reload",
   titleHeader: "X-Title",
-  cssHeader: "x-include-css",
-  jsHeader: "x-include-js",
+  cssHeader: "X-Include-CSS",
+  jsHeader: "X-include-JS",
   confirmHandler: (message) => {
     return new Promise((resolve, reject) => {
       if (confirm(message)) {
@@ -384,6 +384,18 @@ function replaceDom(o, n) {
   );
 }
 
+/**
+ * @param {RequestInfo | URL} url
+ * @param {RequestInit} options
+ * @returns {Promise<Response>}
+ */
+function justFetch(url, options) {
+  options = options || {};
+  options.headers = options.headers || {};
+  options.headers["X-Requested-With"] = "XMLHttpRequest";
+  return fetch(url, options);
+}
+
 // Handles +
 // @link https://stackoverflow.com/questions/12042592/decoding-url-parameters-with-javascript
 const uri = {
@@ -676,7 +688,7 @@ class Scope extends HTMLElement {
     );
 
     try {
-      const response = await fetch(url, options);
+      const response = await justFetch(url, options);
       // If we are redirected from a GET call, update history
       if (response.redirected) {
         let url = response.url;
