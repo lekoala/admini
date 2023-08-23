@@ -577,11 +577,6 @@ class Scope extends HTMLElement {
       return;
     }
 
-    if (isLink) {
-      this.removeActiveClass();
-      this.setActive(el);
-    }
-
     if (method === "GET") {
       url = urlWithParams;
     }
@@ -603,6 +598,12 @@ class Scope extends HTMLElement {
     if (pushToHistory && !result.error) {
       const historyUrl = result.redirected || url;
       this.updateHistory(historyUrl, hint);
+    }
+
+    // Set active based on updated URL
+    if (isLink) {
+      this.removeActiveClass();
+      this.setActive(el);
     }
 
     if (submitter) {
