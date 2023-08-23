@@ -393,19 +393,11 @@ function justFetch(url, options) {
   options = options || {};
   options.headers = options.headers || {};
   options.headers["X-Requested-With"] = "XMLHttpRequest";
+  if (!options.referrerPolicy) {
+    options.referrerPolicy = "no-referrer-when-downgrade";
+  }
   return fetch(url, options);
 }
-
-// Handles +
-// @link https://stackoverflow.com/questions/12042592/decoding-url-parameters-with-javascript
-const uri = {
-  encode: (str) => {
-    return encodeURIComponent(str).replace(/\%20/gm, "+");
-  },
-  decode: (str) => {
-    return decodeURIComponent(str).replace(/\%20/gm, "+");
-  },
-};
 
 // Restore state or make a full page load on back
 window.addEventListener("popstate", async (event) => {
@@ -731,13 +723,13 @@ class Scope extends HTMLElement {
     if (config.statusHeader) {
       const status = response.headers.get(config.statusHeader);
       if (status) {
-        config.statusHandler(uri.decode(status), response.status);
+        config.statusHandler(decodeURI(status), response.status);
       }
     }
     if (config.titleHeader) {
       const title = response.headers.get(config.titleHeader);
       if (title) {
-        document.title = uri.decode(title);
+        document.title = decodeURI(title);
       }
     }
     if (config.reloadHeader) {
