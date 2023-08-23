@@ -577,9 +577,6 @@ class Scope extends HTMLElement {
       return;
     }
 
-    if (pushToHistory) {
-      this.updateHistory(url, hint);
-    }
     if (isLink) {
       this.removeActiveClass();
       this.setActive(el);
@@ -593,7 +590,7 @@ class Scope extends HTMLElement {
     // Show progress bar
     config.progressHandler(this, "start");
 
-    await this.loadURL(
+    const result = await this.loadURL(
       url,
       {
         method,
@@ -601,6 +598,13 @@ class Scope extends HTMLElement {
       },
       hint
     );
+
+    // Update AFTER loading otherwise you mess up the refer(r)er
+    if (pushToHistory && !result.error) {
+      const historyUrl = result.redirected || url;
+      this.updateHistory(historyUrl, hint);
+    }
+
     if (submitter) {
       submitter.removeAttribute("disabled");
     }
@@ -608,7 +612,7 @@ class Scope extends HTMLElement {
     config.progressHandler(this, "done");
   }
 
-  updateHistory(url, hint, replace = false) {
+  updateHistory(url, hint) {
     // Don't push if same url
     if (history.state) {
       const prevUrl = history.state.scope && history.state.scope.url;
@@ -622,8 +626,7 @@ class Scope extends HTMLElement {
       url,
       hint,
     };
-    const method = replace ? "pushState" : "replaceState";
-    history[method](
+    history.pushState(
       {
         scope: state,
       },
@@ -661,6 +664,7 @@ class Scope extends HTMLElement {
    * @param {String} url
    * @param {Object} fetchOptions
    * @param {String} hint
+   * @param {Object}
    */
   async loadURL(url, fetchOptions = {}, hint = null) {
     if (!fetchOptions.signal) {
@@ -681,18 +685,12 @@ class Scope extends HTMLElement {
 
     try {
       const response = await justFetch(url, options);
-      // If we are redirected from a GET call, update history
-      if (response.redirected) {
-        let url = response.url;
-        if (this._hash) {
-          url += this._hash;
-        }
-        this.updateHistory(url, hint, true);
-      }
       if (!response.ok) {
         const message = response.headers.get(config.statusHeader) || response.statusText;
         config.statusHandler(message, response.status);
-        return;
+        return {
+          error: true,
+        };
       }
 
       this._processHeaders(response);
@@ -700,8 +698,10 @@ class Scope extends HTMLElement {
       if (config.fakeLocationHeader) {
         const location = response.headers.get(config.fakeLocationHeader);
         if (location) {
-          this.updateHistory(location, hint, true);
-          return await this.loadURL(location);
+          await this.loadURL(location);
+          return {
+            redirected: location,
+          };
         }
       }
       const data = await response.text();
@@ -714,6 +714,8 @@ class Scope extends HTMLElement {
         config.statusHandler(error.message);
       }
     }
+
+    return {};
   }
 
   /**
