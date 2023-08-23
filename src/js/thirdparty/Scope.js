@@ -604,6 +604,7 @@ class Scope extends HTMLElement {
     if (isLink) {
       this.removeActiveClass();
       this.setActive(el);
+      this._markActive();
     }
 
     if (submitter) {
@@ -707,6 +708,12 @@ class Scope extends HTMLElement {
       }
       const data = await response.text();
       this._processResponse(data);
+
+      if (response.redirected) {
+        return {
+          redirected: response.url,
+        };
+      }
     } catch (error) {
       //@link https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal#aborting_a_fetch_with_timeout_or_explicit_abort
       if (error.name === "AbortError") {
@@ -715,7 +722,6 @@ class Scope extends HTMLElement {
         config.statusHandler(error.message);
       }
     }
-
     return {};
   }
 
@@ -1085,15 +1091,16 @@ class Scope extends HTMLElement {
         signal: this.abortController.signal,
       });
 
+      this._markActive();
+
       this.classList.remove("scope-fetching");
     } else {
+      this._markActive();
       this._afterLoad();
     }
   }
 
-  _afterLoad() {
-    this._listenToEvents();
-
+  _markActive() {
     // Mark active class in any link matching href
     let isRemoved = false;
     const baseHref = removeAnchorFromURL(document.location.href).replace(/\/$/, "");
@@ -1112,7 +1119,10 @@ class Scope extends HTMLElement {
         this.setActive(el);
       }
     });
+  }
 
+  _afterLoad() {
+    this._listenToEvents();
     this.classList.remove("scope-fetching");
     this.classList.add("scope-loaded");
     this.dispatchEvent(new CustomEvent("scope-loaded"));

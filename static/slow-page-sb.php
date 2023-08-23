@@ -87,7 +87,7 @@ sleep(random_int(1, 3)); // simulate load time
             <li class="sidebar-item">
               <a class="sidebar-link" href="slow-page-sb.php" data-scope-hint="main-scope">
                 <l-i name="speed"></l-i>
-                <span>Slow page Sidebar</span>
+                <span>Slow page Sidebar (with scope hint)</span>
               </a>
             </li>
             <li class="sidebar-item">
