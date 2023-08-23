@@ -611,7 +611,9 @@ class Scope extends HTMLElement {
       submitter.removeAttribute("disabled");
     }
 
-    config.progressHandler(this, "done");
+    if (!result.aborted) {
+      config.progressHandler(this, "done");
+    }
   }
 
   updateHistory(url, hint) {
@@ -666,7 +668,7 @@ class Scope extends HTMLElement {
    * @param {String} url
    * @param {Object} fetchOptions
    * @param {String} hint
-   * @param {Object}
+   * @returns {Promise<Object>}
    */
   async loadURL(url, fetchOptions = {}, hint = null) {
     if (!fetchOptions.signal) {
@@ -687,11 +689,13 @@ class Scope extends HTMLElement {
 
     try {
       const response = await justFetch(url, options);
+
+      // Get error message from headers or response
       if (!response.ok) {
         const message = response.headers.get(config.statusHeader) || response.statusText;
         config.statusHandler(message, response.status);
         return {
-          error: true,
+          error: message,
         };
       }
 
@@ -715,12 +719,17 @@ class Scope extends HTMLElement {
         };
       }
     } catch (error) {
+      // Deal with network errors
       //@link https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal#aborting_a_fetch_with_timeout_or_explicit_abort
       if (error.name === "AbortError") {
         // The user knows he aborted, no notification
       } else {
         config.statusHandler(error.message);
       }
+      return {
+        error: error.message,
+        aborted: error.name === "AbortError",
+      };
     }
     return {};
   }
@@ -1077,6 +1086,10 @@ class Scope extends HTMLElement {
    * @param {Boolean} check Check if there is existing content
    */
   async loadContent(check = false) {
+    const fetchingClass = "scope-fetching";
+    if (this.classList.contains(fetchingClass)) {
+      return;
+    }
     const src = this.src;
     const preventLoading = check && !isNodeEmpty(this);
     if (src && !preventLoading) {
@@ -1085,19 +1098,17 @@ class Scope extends HTMLElement {
       this.abortLoading();
       this.abortController = new AbortController();
 
-      this.classList.add("scope-fetching");
+      this.classList.add(fetchingClass);
 
       await this.loadURL(src, {
         signal: this.abortController.signal,
       });
 
-      this._markActive();
-
-      this.classList.remove("scope-fetching");
+      this.classList.remove(fetchingClass);
     } else {
-      this._markActive();
       this._afterLoad();
     }
+    this._markActive();
   }
 
   _markActive() {
@@ -1123,7 +1134,6 @@ class Scope extends HTMLElement {
 
   _afterLoad() {
     this._listenToEvents();
-    this.classList.remove("scope-fetching");
     this.classList.add("scope-loaded");
     this.dispatchEvent(new CustomEvent("scope-loaded"));
     config.onScopeLoad(this);
