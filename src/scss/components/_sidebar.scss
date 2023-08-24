@@ -243,8 +243,9 @@ body {
 
   .sidebar-profile-mininame {
     display: flex;
-    max-width: calc(100% - $sidebar-footer-height);
-    padding: $sidebar-link-padding;
+    max-width: 100%;
+    padding-left: $sidebar-link-padding-x;
+    font-size: 0.8em;
   }
 
   >.btn {
@@ -257,7 +258,12 @@ body {
     span {
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      text-align: left;
+      max-height: 36px;
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 }
