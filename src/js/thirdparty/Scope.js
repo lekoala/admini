@@ -399,6 +399,14 @@ function justFetch(url, options) {
   return fetch(url, options);
 }
 
+/**
+ * @param {String} str
+ * @returns {String}
+ */
+function decodeURIPlus(str) {
+    return decodeURI(str.replace(/\+/g, ' '));
+}
+
 // Restore state or make a full page load on back
 window.addEventListener("popstate", async (event) => {
   let scopeNotFound = false;
@@ -741,13 +749,13 @@ class Scope extends HTMLElement {
     if (config.statusHeader) {
       const status = response.headers.get(config.statusHeader);
       if (status) {
-        config.statusHandler(decodeURI(status), response.status);
+        config.statusHandler(decodeURIPlus(status), response.status);
       }
     }
     if (config.titleHeader) {
       const title = response.headers.get(config.titleHeader);
       if (title) {
-        document.title = decodeURI(title);
+        document.title = decodeURIPlus(title);
       }
     }
     if (config.reloadHeader) {
