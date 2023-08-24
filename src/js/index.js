@@ -56,13 +56,11 @@ Scope.configure({
     // Since redirect are opaque (cannot read status),
     // we might actually get 2xx that are redirects or errors
     const parts = message.split("|");
-    if (statusCode === 200) {
-      const type = parts[1] ?? "success";
-      Toasts[type](parts[0]);
-    } else {
-      const type = parts[1] ?? "error";
-      Toasts[type](parts[0]);
-    }
+    const defaultType = statusCode === 200 ? "success" : "error";
+    const msg = parts[0];
+    // Check that actual type is set or fallback
+    const type = parts[1] && Toasts[parts[1]] ? parts[1] : defaultType;
+    Toasts[type](msg);
   },
   // Use bootstrap modal instead of native confirm
   confirmHandler: (message) => {
