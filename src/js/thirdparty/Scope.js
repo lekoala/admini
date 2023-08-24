@@ -404,7 +404,7 @@ function justFetch(url, options) {
  * @returns {String}
  */
 function decodeURIPlus(str) {
-    return decodeURI(str.replace(/\+/g, ' '));
+  return decodeURI(str.replace(/\+/g, " "));
 }
 
 // Restore state or make a full page load on back
