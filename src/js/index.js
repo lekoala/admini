@@ -61,7 +61,7 @@ Scope.configure({
       Toasts[type](parts[0]);
     } else {
       const type = parts[1] ?? "error";
-      Toasts[type](parts);
+      Toasts[type](parts[0]);
     }
   },
   // Use bootstrap modal instead of native confirm
