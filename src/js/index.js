@@ -53,10 +53,15 @@ Scope.configure({
   },
   // Show a nice toast message on http status
   statusHandler: (message, statusCode) => {
+    // Since redirect are opaque (cannot read status),
+    // we might actually get 2xx that are redirects or errors
+    const parts = message.split("|");
     if (statusCode === 200) {
-      Toasts.success(message);
+      const type = parts[1] ?? "success";
+      Toasts[type](parts[0]);
     } else {
-      Toasts.error(message);
+      const type = parts[1] ?? "error";
+      Toasts[type](parts);
     }
   },
   // Use bootstrap modal instead of native confirm
