@@ -954,7 +954,8 @@ class Scope extends HTMLElement {
     );
 
     // Append new styles and scripts
-    let canTriggerImmediately = true;
+    // canTriggerImmediately unless there is a new script or an already pending script (from ajax headers)
+    let canTriggerImmediately = pendingExternalScripts.length === 0;
     doc.querySelectorAll("script").forEach((script) => {
       if (!script.hasAttribute("src")) {
         this._loadInlineScript(script);
