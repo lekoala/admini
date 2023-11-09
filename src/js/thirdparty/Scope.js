@@ -38,6 +38,7 @@ import hasEventListener from "./hasEventListener.js";
  * @property {Boolean} debug
  * @property {Number} loadDelay
  * @property {String} activeClass
+ * @property {Array} activeClasses
  * @property {String} fakeLocationHeader
  * @property {String} reloadHeader
  * @property {String} titleHeader
@@ -53,6 +54,7 @@ let config = {
   debug: false,
   loadDelay: 300,
   activeClass: "active",
+  ignoreClasses: ["no-ajax"],
   fakeLocationHeader: "X-Location",
   reloadHeader: "X-Reload",
   titleHeader: "X-Title",
@@ -514,6 +516,11 @@ class Scope extends HTMLElement {
 
     // Don't handle if there is a custom listener for it
     if (!trigger.dataset.scopeAction && hasEventListener(trigger, ev.type)) {
+      return;
+    }
+    // Don't handle if trigger has a ignore class
+    const hasIgnoreClass = config.ignoreClasses.some((cl) => trigger.classList.contains(cl));
+    if (hasIgnoreClass) {
       return;
     }
     // Don't handle if some custom code has called preventDefault
