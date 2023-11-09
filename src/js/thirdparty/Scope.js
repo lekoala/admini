@@ -409,6 +409,24 @@ function decodeURIPlus(str) {
   return decodeURI(str.replace(/\+/g, " "));
 }
 
+async function downloadFile(response) {
+  let contentDisposition = response.headers.get("content-disposition") ?? "file";
+  let blobData = await response.blob();
+  let url = window.URL.createObjectURL(blobData);
+  let a = document.createElement("a");
+  a.href = url;
+  a.download = contentDisposition.replace("attachment; filename=", "").replaceAll('"', "");
+  // we need to append the element to the dom -> otherwise it will not work in firefox
+  document.body.appendChild(a);
+  a.click();
+
+  setTimeout(() => {
+    // For Firefox it is necessary to delay revoking the ObjectURL
+    window.URL.revokeObjectURL(url);
+    a.remove();
+  }, 100);
+}
+
 // Restore state or make a full page load on back
 window.addEventListener("popstate", async (event) => {
   let scopeNotFound = false;
@@ -474,15 +492,20 @@ class Scope extends HTMLElement {
       return;
     }
 
-    // Don't handle events if disabled
-    if (parseBool(this.dataset.scopeDisabled)) {
-      return;
-    }
-
     /**
      * @type {HTMLElement}
      */
     let trigger = ev.target.closest("a,button,[data-scope-action]");
+
+    // Check for unscoped
+    if (!trigger.dataset.scopeAction && ev.target.closest("unsco-pe")) {
+      return;
+    }
+
+    // Don't handle events if disabled
+    if (parseBool(trigger.dataset.scopeDisabled)) {
+      return;
+    }
 
     // A submit action means form submit (ie: the trigger is the target)
     if (ev.type === "submit") {
@@ -490,7 +513,11 @@ class Scope extends HTMLElement {
     }
 
     // Don't handle if there is a custom listener for it
-    if (hasEventListener(trigger, ev.type)) {
+    if (!trigger.dataset.scopeAction && hasEventListener(trigger, ev.type)) {
+      return;
+    }
+    // Don't handle if some custom code has called preventDefault
+    if (ev.defaultPrevented) {
       return;
     }
 
@@ -516,9 +543,10 @@ class Scope extends HTMLElement {
         }
       };
       // Check confirm ?
-      if (trigger.dataset.scopeConfirm) {
+      const confirm = trigger.dataset && parseBool(trigger.dataset.scopeConfirm);
+      if (confirm) {
         config
-          .confirmHandler(trigger.dataset.scopeConfirm)
+          .confirmHandler(confirm)
           .then(load)
           .catch((err) => null);
       } else {
@@ -610,7 +638,7 @@ class Scope extends HTMLElement {
     );
 
     // Update AFTER loading otherwise you mess up the refer(r)er
-    if (pushToHistory && !result.error) {
+    if (result && pushToHistory && !result.error && !result.file) {
       const historyUrl = result.redirected || url;
       this.updateHistory(historyUrl, hint);
     }
@@ -626,7 +654,7 @@ class Scope extends HTMLElement {
       submitter.removeAttribute("disabled");
     }
 
-    if (!result.aborted) {
+    if (result && !result.aborted) {
       config.progressHandler(this, "done");
     }
   }
@@ -658,6 +686,9 @@ class Scope extends HTMLElement {
    * @param {HTMLElement} el
    */
   setActive(el) {
+    if (!el) {
+      return;
+    }
     log(`Set active element`);
     el.classList.add(config.activeClass);
   }
@@ -711,6 +742,15 @@ class Scope extends HTMLElement {
         config.statusHandler(message, response.status);
         return {
           error: message,
+        };
+      }
+
+      // Download files and medias
+      const contentType = response.headers.get("content-type") ?? "text/plain";
+      if (!["text", "multiplart"].includes(contentType.split("/")[0])) {
+        await downloadFile(response);
+        return {
+          file: true,
         };
       }
 
@@ -1229,5 +1269,7 @@ class Scope extends HTMLElement {
     log(`Scope destroyed ${this.id || "(no id)"}`);
   }
 }
+
+customElements.define("unsco-pe", class extends HTMLElement {});
 
 export default Scope;
