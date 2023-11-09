@@ -24,7 +24,8 @@
   <link href="css/admini.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
- <!-- icons --><script src="js/last-icon.min.js"></script>
+  <!-- icons -->
+  <script src="js/last-icon.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone" rel="stylesheet" />
 
@@ -52,6 +53,11 @@
         });
       });
     });
+
+    document.querySelector('#custom-action').addEventListener('click', (ev) => {
+      ev.preventDefault();
+      alert('Doing custom action not handled by sco-pe');
+    })
   </script>
 </head>
 
@@ -168,10 +174,10 @@
                 <span class="visually-hidden">unread messages</span>
               </span>
             </button>
-            <button type="submit" class="btn btn-outline-primary">
-              That action
+            <a href="/index.html" id="custom-action" class="btn btn-outline-primary">
+              Custom action
               <span class="badge bg-light">!</span>
-            </button>
+            </a>
             <div class="dropup">
               <button id="secondary-actions" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false">

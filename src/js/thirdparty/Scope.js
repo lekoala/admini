@@ -1,3 +1,5 @@
+import hasEventListener from "./hasEventListener.js";
+
 /**
  * @callback ConfirmCallback
  * @param {String} message
@@ -482,9 +484,14 @@ class Scope extends HTMLElement {
      */
     let trigger = ev.target.closest("a,button,[data-scope-action]");
 
-    // A submit action means form submit
+    // A submit action means form submit (ie: the trigger is the target)
     if (ev.type === "submit") {
       trigger = ev.target;
+    }
+
+    // Don't handle if there is a custom listener for it
+    if (hasEventListener(trigger, ev.type)) {
+      return;
     }
 
     if (trigger) {
