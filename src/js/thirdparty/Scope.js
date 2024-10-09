@@ -453,7 +453,10 @@ window.addEventListener("popstate", async (event) => {
 
   // Do a full page load
   if (event.state === null || scopeNotFound) {
-    window.location.replace(document.location.toString());
+    const newLocation = document.location.toString();
+    if (window.location.href != newLocation) {
+      window.location.replace(newLocation);
+    }
   }
 });
 
