@@ -499,19 +499,26 @@ class Scope extends HTMLElement {
      */
     let trigger = ev.target.closest("a,button,[data-scope-action]");
 
-    // Check for unscoped
-    if (!trigger.dataset.scopeAction && ev.target.closest("unsco-pe")) {
-      return;
-    }
+    if (trigger) {
+      // Check for unscoped
+      if (!trigger.dataset.scopeAction && ev.target.closest("unsco-pe")) {
+        return;
+      }
 
-    // Don't handle events if disabled
-    if (parseBool(trigger.dataset.scopeDisabled)) {
-      return;
+      // Don't handle events if disabled
+      if (parseBool(trigger.dataset.scopeDisabled)) {
+        return;
+      }
     }
 
     // A submit action means form submit (ie: the trigger is the target)
     if (ev.type === "submit") {
       trigger = ev.target;
+    }
+
+    // No trigger
+    if (!trigger) {
+      return;
     }
 
     // Don't handle if there is a custom listener for it
